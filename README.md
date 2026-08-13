@@ -1,14 +1,12 @@
 # One-Room Behavior Lab
 
-This repository contains the executable One-Room Behavior Lab prototype. Its current role is to test bounded social-interaction mechanics in a small, deterministic room.
+This repository contains a bounded, deterministic social-tactics prototype. It tests how observation, simultaneous planning, message construction, movement, attention, object control, and action collision produce legible consequences inside one room.
 
-The canonical social-interaction architecture lives in [`fargo161/social-interaction-system`](https://github.com/fargo161/social-interaction-system). The generic PSG parent grammar lives in [`fargo161/periodic-semantic-grammar`](https://github.com/fargo161/periodic-semantic-grammar).
+The canonical social-interaction architecture remains in [`fargo161/social-interaction-system`](https://github.com/fargo161/social-interaction-system), and the generic PSG parent grammar remains in [`fargo161/periodic-semantic-grammar`](https://github.com/fargo161/periodic-semantic-grammar). This prototype does not vendor, modify, or supersede either project.
 
-This repository does not vendor, modify, or supersede either upstream project. Prototype mechanics are implementation experiments, not universal social-interaction laws.
+## Current focused-repair branch
 
-## v0.3.0
-
-v0.3 replaces the ordinary semantic-selector interface with a readable social-tactics loop:
+`v0.3-focused-repair` repairs the v0.3 architecture in place:
 
 ```text
 OBSERVE
@@ -19,23 +17,29 @@ OBSERVE
 → REINTERPRET
 ```
 
-The player reads a static room tableau and queues up to three 1-AP actions:
+Every active actor receives three prototype-local AP. The player can queue `MOVE`, `MESSAGE`, `SCAN`, `INTERACT`, and `DISTRACT`; Mara and Drew use the same underlying action grammar except for explicit scenario affordances. Everyone plans from the same Beat-start tableau, and NPCs never inspect the player's queued plan.
 
-- `MOVE` through a discrete room graph;
-- `MESSAGE` using constructed content and delivery choices;
-- `SCAN` an actor, object, or the room for observable evidence;
-- `INTERACT` with the envelope or exit;
-- `DISTRACT` an NPC while success and attribution resolve separately.
+## Focused repairs
 
-Mara and Drew each receive three AP and share `MOVE`, `MESSAGE`, `SCAN`, and `INTERACT`. They plan independently from the same Beat-start tableau. Their actions resolve in three slots with rotating initiative, so queued actions can degrade or become invalid without a normal AP refund.
+- Envelope possession, guarding, securing, placement, and lock-away transitions now enforce coherent invariants.
+- Held objects follow their holders; guards remain only as reachable, intentional contest relations.
+- Permanent room nodes are physical: `CENTER`, `TABLE`, `DOOR`, `WINDOW`, and `CABINET`.
+- `MOVE` may target a physical location or an actor. If an actor moves first, the original target identity can resolve as `NATURAL_RETARGET` without strategic replanning.
+- Distraction attribution is observer-relative. `DIRECT`, `LIKELY`, `POSSIBLE`, and `NONE` produce bounded differences in later vigilance and interpretation.
+- The ordinary message builder exposes only recipient, core content, directness, and plausible delivery before contextual additions.
+- Scenario-authored compatibility data distinguishes invalid combinations, required support, current availability, and risky-but-playable support.
+- NPC priorities are operative in a deterministic legal-candidate ranking under hard trajectory constraints, with rationale available in debug mode.
+- Every active room-event family has a real, deterministic, traceable world effect.
+- Normal play exposes observable evidence rather than internal trajectory labels or counters.
+- Terminal states receive mutation-time provenance, and every later committed action gets an explicit `CANCELLED_BY_TERMINAL` resolution while retaining its AP commitment.
 
 ## Communication
 
-Messages are built from scenario-authored components such as recipient, core content, reason, evidence, acknowledgment, promise, offer, qualification, condition, warning, directness, refusal space, and delivery mode.
+Structured message identity remains mechanically authoritative; generated wording is downstream. Contextual optional components can include reasons, evidence, acknowledgments, promises, offers, qualifications, conditions, warnings, or explicit refusal space when relevant.
 
-Generated natural language is downstream of structured message identity. Packaging evidence is descriptive context; it is not an emotion, BASED Cue, Function, motive, or truth classifier.
+One valid message costs one AP regardless of its number of components. Free-text semantic parsing is not implemented. Packaging Evidence describes only grounded controls such as directness, delivery, qualification, acknowledgment, refusal space, and explanation density; it does not infer emotion, BASED Cue/Vibe, Function, motive, or truth.
 
-An actor can directly address a recipient at most once per Beat. Actor-specific reception supports:
+Actor-specific reception remains:
 
 ```text
 DIRECT
@@ -45,28 +49,25 @@ NOTICED_ONLY
 NONE
 ```
 
-Overhearing does not consume a direct-recipient allowance. Position, attention, delivery mode, and room noise determine whether private communication remains private or leaks.
+Direct address strongly supports reception but does not override impossible audibility. Overhearing never consumes a direct-recipient allowance.
 
-## Cause and effect
+## Cause, evidence, and debug
 
-The normal view presents observable action sequences instead of hidden-value deltas. Debug mode exposes exact actor plans, action-resolution states, reception records, and mutation-time traces.
+Normal play presents physical positions, gaze, orientation, posture, hands, face, object state, room events, and observable causal history. `SCAN` returns richer evidence without revealing internal trajectory labels.
 
-Every consequential mutation records its Beat, actor, action, source event, prior and new state, rule, cause, resolution status, and relevant reception, visibility, or attribution context when the mutation occurs.
+Debug mode exposes exact hidden actor state, planner candidates and weights, plans, action resolutions, message compatibility, reception, observer attribution beliefs, and mutation-time provenance.
 
-## Prototype-local boundary
+## Prototype boundary
 
-The following values are centralized in [`src/v3/config.ts`](src/v3/config.ts) and labeled `PROVISIONAL / PROTOTYPE-LOCAL`:
+AP, initiative, topology, hearing thresholds, message compatibility, event definitions, planner weights, guard rules, and fail thresholds remain **PROVISIONAL / PROTOTYPE-LOCAL**. `MISHEARD`, group messages, canonical Function mapping, final BASED ratios, full Textual Paralanguage, runtime LLM planning, stochastic planning, free-text interpretation, Design Mode, and a Scenario Builder remain unresolved or out of scope.
 
-- three AP per actor;
-- initiative rotation;
-- room anchors and graph edges;
-- hearing and whisper thresholds;
-- room-event selection;
-- distraction positioning;
-- NPC priority weights;
-- fail-trajectory thresholds and effects.
+See:
 
-See [`PROTOTYPE_ASSUMPTIONS_v0_3.md`](PROTOTYPE_ASSUMPTIONS_v0_3.md), [`REWORK_v0_2_1_to_v0_3.md`](REWORK_v0_2_1_to_v0_3.md), [`TEST_ACCEPTANCE_v0_3.md`](TEST_ACCEPTANCE_v0_3.md), and [`MANUAL_ACCEPTANCE_v0_3.md`](MANUAL_ACCEPTANCE_v0_3.md).
+- [`PROTOTYPE_ASSUMPTIONS_v0_3.md`](PROTOTYPE_ASSUMPTIONS_v0_3.md)
+- [`FOCUSED_REPAIR_REPORT_v0_3.md`](FOCUSED_REPAIR_REPORT_v0_3.md)
+- [`TEST_ACCEPTANCE_v0_3.md`](TEST_ACCEPTANCE_v0_3.md)
+- [`MANUAL_ACCEPTANCE_v0_3_FOCUSED_REPAIR.md`](MANUAL_ACCEPTANCE_v0_3_FOCUSED_REPAIR.md)
+- [`REWORK_v0_2_1_to_v0_3.md`](REWORK_v0_2_1_to_v0_3.md)
 
 ## Validation
 
@@ -78,5 +79,4 @@ npm run build
 npm run test:rendered
 ```
 
-The immutable stabilized baseline is preserved by the `v0.2.1` tag. v0.3 development remains on `v0.3-prototype-rework` until separately authorized for merge.
-
+The immutable stabilized baseline remains at tag `v0.2.1`. The pre-repair v0.3 proof remains on `v0.3-prototype-rework`. Focused repair work remains isolated on `v0.3-focused-repair` until separately reviewed and authorized for integration.

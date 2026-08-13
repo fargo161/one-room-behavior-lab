@@ -51,3 +51,6 @@ All concrete tuning in `src/v3/config.ts`, including AP count, initiative order,
 
 This rework modifies only the executable prototype repository. It does not modify PSG core or the canonical Social Interaction Master, and it does not claim that prototype `FunctionalElementId` values are the canonical four Functions.
 
+## Focused-repair continuation
+
+The first v0.3 architectural proof is preserved on `v0.3-prototype-rework`. The later `v0.3-focused-repair` branch does not replace this historical rework description; it closes the pre-merge diagnostic defects in place. Its implementation and acceptance details are recorded in `FOCUSED_REPAIR_REPORT_v0_3.md` and `MANUAL_ACCEPTANCE_v0_3_FOCUSED_REPAIR.md`.

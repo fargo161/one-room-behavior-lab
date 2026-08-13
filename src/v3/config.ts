@@ -1,4 +1,4 @@
-import type { ActorId, AttentionTarget, CoreContentId, RoomAnchor } from "./types";
+import type { ActorId, AttentionTarget, CoreContentId, NpcPriorityWeights, RoomAnchor, RoomEventState } from "./types";
 
 export const PROTOTYPE_LOCAL_LABEL = "PROVISIONAL / PROTOTYPE-LOCAL" as const;
 
@@ -15,23 +15,23 @@ export const prototypeConfig = {
     ["DREW", "PLAYER", "MARA"],
   ] as ActorId[][],
   roomGraph: {
-    CENTER: ["NEAR_MARA", "NEAR_DREW", "NEAR_TABLE", "NEAR_WINDOW"],
-    NEAR_MARA: ["CENTER", "NEAR_DOOR"],
-    NEAR_DREW: ["CENTER", "NEAR_ENVELOPE"],
-    NEAR_TABLE: ["CENTER", "NEAR_ENVELOPE", "NEAR_DOOR"],
-    NEAR_ENVELOPE: ["NEAR_TABLE", "NEAR_DREW"],
-    NEAR_DOOR: ["NEAR_MARA", "NEAR_TABLE"],
-    NEAR_WINDOW: ["CENTER"],
+    CENTER: ["TABLE", "DOOR", "WINDOW"],
+    TABLE: ["CENTER", "CABINET"],
+    DOOR: ["CENTER", "CABINET"],
+    WINDOW: ["CENTER"],
+    CABINET: ["TABLE", "DOOR"],
   } satisfies Record<RoomAnchor, RoomAnchor[]>,
   reception: {
     whisperDirectMaxDistance: 0,
+    lowVoiceDirectMaxDistance: 2,
+    normalDirectMaxDistance: 3,
     lowVoiceFullOverhearMaxDistance: 1,
     normalFullOverhearMaxDistance: 2,
     noticedOnlyMaxDistance: 2,
     loudRoomDistancePenalty: 1,
   },
   distraction: {
-    covertRequiredAnchor: "NEAR_WINDOW" as RoomAnchor,
+    covertRequiredAnchor: "WINDOW" as RoomAnchor,
   },
   failThresholds: {
     drewWatchful: 1,
@@ -51,6 +51,10 @@ export const prototypeConfig = {
     bluntWarningMaraPressure: 1,
     drewGuardingMaraPressure: 1,
     playerNearMaraRelief: -1,
+    directManipulationVigilance: 2,
+    likelyManipulationVigilance: 1,
+    possibleManipulationVigilance: 1,
+    observedExploitConcern: 2,
   },
   npcPriorityWeights: {
     protectEnvelope: 100,
@@ -58,17 +62,15 @@ export const prototypeConfig = {
     seekInformation: 70,
     communicateConcern: 60,
     approachOrAvoid: 50,
-  },
+  } satisfies NpcPriorityWeights,
 } as const;
 
 export const roomAnchorLabels: Record<RoomAnchor, string> = {
-  CENTER: "room center",
-  NEAR_MARA: "near Mara",
-  NEAR_DREW: "near Drew",
-  NEAR_TABLE: "beside the table",
-  NEAR_ENVELOPE: "within reach of the envelope",
-  NEAR_DOOR: "near the door",
-  NEAR_WINDOW: "near the window",
+  CENTER: "at the room center",
+  TABLE: "beside the table",
+  DOOR: "at the door",
+  WINDOW: "at the window",
+  CABINET: "beside the wall cabinet",
 };
 
 export const initialAttention: Record<ActorId, AttentionTarget> = {
@@ -86,3 +88,64 @@ export const contentLabels: Record<CoreContentId, string> = {
   WARN_ABOUT_EXIT: "warn that the exit situation is changing",
   REPORT_DANGER: "report a danger in the room",
 };
+
+type RoomEventDefinition = Omit<RoomEventState, "id" | "beat">;
+
+/** Narrow scenario-authored seam; not a general scenario editor. */
+export const roomEventDefinitions: RoomEventDefinition[] = [
+  {
+    family: "INTERRUPTION",
+    effectId: "HALLWAY_INTERRUPTION",
+    title: "Hallway footsteps",
+    description: "Footsteps pass outside the door, pulling Mara's gaze toward the exit.",
+    noise: "MODERATE",
+    attentionActorId: "MARA",
+    attentionTarget: { kind: "LOCATION", id: "DOOR" },
+    actionableEffect: "Mara turns toward the sound beyond the door.",
+    durationBeats: 1,
+  },
+  {
+    family: "POSITION_CHANGE",
+    effectId: "OPEN_DOOR",
+    title: "Door shifts open",
+    description: "The door eases wider, leaving the hall plainly visible.",
+    noise: "QUIET",
+    attentionActorId: "MARA",
+    attentionTarget: { kind: "LOCATION", id: "DOOR" },
+    actionableEffect: "The open doorway changes what can be cited and seen.",
+    durationBeats: null,
+  },
+  {
+    family: "OCCUPATION",
+    effectId: "LIGHT_OCCUPATION",
+    title: "Light flicker",
+    description: "The overhead light flickers; Drew checks the center of the room.",
+    noise: "QUIET",
+    attentionActorId: "DREW",
+    attentionTarget: { kind: "LOCATION", id: "CENTER" },
+    actionableEffect: "Drew's hand loosens from the table for this Beat.",
+    durationBeats: 1,
+  },
+  {
+    family: "REVEAL_ACCESS",
+    effectId: "REVEAL_ENVELOPE",
+    title: "Envelope corner exposed",
+    description: "A draft lifts papers that had obscured the envelope's seal.",
+    noise: "QUIET",
+    attentionActorId: "PLAYER",
+    attentionTarget: { kind: "OBJECT", id: "ENVELOPE" },
+    actionableEffect: "The exposed seal can be inspected from farther away this Beat.",
+    durationBeats: 1,
+  },
+  {
+    family: "DISTRACTION",
+    effectId: "NATURAL_PHONE_DISTRACTION",
+    title: "Phone buzz",
+    description: "Drew's phone buzzes against the table. His eyes drop to it.",
+    noise: "MODERATE",
+    attentionActorId: "DREW",
+    attentionTarget: { kind: "ROOM_EVENT", id: "PHONE_BUZZ" },
+    actionableEffect: "Drew's attention leaves the envelope for this Beat.",
+    durationBeats: 1,
+  },
+];

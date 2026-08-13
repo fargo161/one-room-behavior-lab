@@ -30,7 +30,7 @@ describe("v0.3 shared Beat economy", () => {
   it("provides three AP and accepts three normal actions", () => {
     const world = createInitialWorldV3();
     const player = plan(world, "PLAYER", [
-      makeMoveAction(world, "PLAYER", "NEAR_MARA", 1),
+      makeMoveAction(world, "PLAYER", "DOOR", 1),
       makeScanAction(world, "PLAYER", "ROOM", "ROOM", 2),
       makeMessageAction(world, "PLAYER", draft(), 3),
     ]);
@@ -40,13 +40,13 @@ describe("v0.3 shared Beat economy", () => {
   it("allows repeated action families, including two Moves", () => {
     const world = createInitialWorldV3();
     const player = plan(world, "PLAYER", [
-      makeMoveAction(world, "PLAYER", "NEAR_TABLE", 1),
-      makeMoveAction(world, "PLAYER", "NEAR_ENVELOPE", 2),
+      makeMoveAction(world, "PLAYER", "TABLE", 1),
+      makeMoveAction(world, "PLAYER", "CABINET", 2),
       makeScanAction(world, "PLAYER", "OBJECT", "ENVELOPE", 3),
     ]);
     expect(validatePlan(world, player).legal).toBe(true);
     const next = resolveBeatV3(world, player, { npcPlans: noNpcs(world) });
-    expect(next.actors.PLAYER.position).toBe("NEAR_ENVELOPE");
+    expect(next.actors.PLAYER.position).toBe("CABINET");
   });
 
   it("rejects a fourth 1-AP action", () => {
@@ -122,7 +122,7 @@ describe("v0.3 reception, attention, and private delivery", () => {
   it("supports full overhearing", () => {
     const world = createInitialWorldV3();
     world.actors.PLAYER.position = "CENTER";
-    world.actors.MARA.position = "NEAR_MARA";
+    world.actors.MARA.position = "CENTER";
     world.actors.DREW.position = "CENTER";
     const action = makeMessageAction(world, "PLAYER", draft({ recipientId: "MARA", deliveryMode: "NORMAL" }), 1);
     const next = resolveBeatV3(world, plan(world, "PLAYER", [action]), { npcPlans: noNpcs(world) });
@@ -133,7 +133,7 @@ describe("v0.3 reception, attention, and private delivery", () => {
     const world = createInitialWorldV3();
     world.actors.PLAYER.position = "CENTER";
     world.actors.MARA.position = "CENTER";
-    world.actors.DREW.position = "NEAR_DREW";
+    world.actors.DREW.position = "TABLE";
     world.actors.DREW.attention = { kind: "ACTOR", id: "PLAYER" };
     const action = makeMessageAction(world, "PLAYER", draft({ recipientId: "MARA", deliveryMode: "WHISPER" }), 1);
     const next = resolveBeatV3(world, plan(world, "PLAYER", [action]), { npcPlans: noNpcs(world) });
@@ -146,7 +146,7 @@ describe("v0.3 reception, attention, and private delivery", () => {
     const world = createInitialWorldV3();
     world.actors.PLAYER.position = "CENTER";
     world.actors.MARA.position = "CENTER";
-    world.actors.DREW.position = "NEAR_DREW";
+    world.actors.DREW.position = "TABLE";
     world.actors.DREW.attention = { kind: "LOCATION", id: "CENTER" };
     const action = makeMessageAction(world, "PLAYER", draft({ recipientId: "MARA", deliveryMode: "WHISPER" }), 1);
     const next = resolveBeatV3(world, plan(world, "PLAYER", [action]), { npcPlans: noNpcs(world) });
@@ -155,9 +155,9 @@ describe("v0.3 reception, attention, and private delivery", () => {
 
   it("supports private delivery with no observer detection", () => {
     const world = createInitialWorldV3();
-    world.actors.PLAYER.position = "NEAR_MARA";
-    world.actors.MARA.position = "NEAR_MARA";
-    world.actors.DREW.position = "NEAR_DREW";
+    world.actors.PLAYER.position = "CENTER";
+    world.actors.MARA.position = "CENTER";
+    world.actors.DREW.position = "TABLE";
     world.actors.DREW.attention = { kind: "ROOM_EVENT", id: "PHONE_BUZZ" };
     const action = makeMessageAction(world, "PLAYER", draft({ recipientId: "MARA", deliveryMode: "WHISPER" }), 1);
     const next = resolveBeatV3(world, plan(world, "PLAYER", [action]), { npcPlans: noNpcs(world) });
@@ -168,7 +168,7 @@ describe("v0.3 reception, attention, and private delivery", () => {
     const base = createInitialWorldV3();
     base.actors.PLAYER.position = "CENTER";
     base.actors.MARA.position = "CENTER";
-    base.actors.DREW.position = "NEAR_DREW";
+    base.actors.DREW.position = "TABLE";
     const attentive = structuredClone(base);
     attentive.actors.DREW.attention = { kind: "ACTOR", id: "PLAYER" };
     const distracted = structuredClone(base);
@@ -184,8 +184,8 @@ describe("v0.3 reception, attention, and private delivery", () => {
 
 describe("v0.3 movement, Scan, and room events", () => {
   it("uses a discrete connected room graph", () => {
-    expect(roomDistance("CENTER", "NEAR_ENVELOPE")).toBe(2);
-    expect(roomDistance("NEAR_WINDOW", "NEAR_DOOR")).toBeGreaterThan(1);
+    expect(roomDistance("WINDOW", "CABINET")).toBe(3);
+    expect(roomDistance("WINDOW", "DOOR")).toBeGreaterThan(1);
   });
 
   it("Scan reveals observable evidence without hidden-value dumps", () => {
@@ -207,8 +207,8 @@ describe("v0.3 movement, Scan, and room events", () => {
 
   it("lets the player exploit an existing room-event opening without spending DISTRACT AP", () => {
     const world = createInitialWorldV3(7);
-    world.actors.PLAYER.position = "NEAR_MARA";
-    world.actors.MARA.position = "NEAR_MARA";
+    world.actors.PLAYER.position = "CENTER";
+    world.actors.MARA.position = "CENTER";
     const whisper = makeMessageAction(world, "PLAYER", draft({ deliveryMode: "WHISPER" }), 1);
     const player = plan(world, "PLAYER", [whisper]);
     const next = resolveBeatV3(world, player, { npcPlans: noNpcs(world) });
@@ -224,26 +224,26 @@ describe("v0.3 distraction separates success and attribution", () => {
   };
 
   it("supports success plus direct attribution", () => {
-    expect(run(createInitialWorldV3(), "VISIBLE_CALL")).toMatchObject({ success: true, attribution: "DIRECT" });
+    expect(run(createInitialWorldV3(), "VISIBLE_CALL")).toMatchObject({ success: true, attributionByObserver: { DREW: "DIRECT" } });
   });
 
   it("supports success plus covert attribution", () => {
     const world = createInitialWorldV3();
-    world.actors.PLAYER.position = "NEAR_WINDOW";
+    world.actors.PLAYER.position = "WINDOW";
     world.actors.DREW.attention = { kind: "OBJECT", id: "ENVELOPE" };
-    expect(run(world, "COVERT_WINDOW_RATTLE")).toMatchObject({ success: true, attribution: "NONE" });
+    expect(run(world, "COVERT_WINDOW_RATTLE")).toMatchObject({ success: true, attributionByObserver: { DREW: "NONE" } });
   });
 
   it("supports failure plus covert attribution", () => {
     const world = createInitialWorldV3();
     world.actors.DREW.attention = { kind: "OBJECT", id: "ENVELOPE" };
-    expect(run(world, "COVERT_WINDOW_RATTLE")).toMatchObject({ success: false, attribution: "NONE" });
+    expect(run(world, "COVERT_WINDOW_RATTLE")).toMatchObject({ success: false, attributionByObserver: { DREW: "NONE" } });
   });
 
   it("supports failure plus likely attribution", () => {
     const world = createInitialWorldV3();
     world.actors.DREW.attention = { kind: "ACTOR", id: "PLAYER" };
-    expect(run(world, "COVERT_WINDOW_RATTLE")).toMatchObject({ success: false, attribution: "LIKELY" });
+    expect(run(world, "COVERT_WINDOW_RATTLE")).toMatchObject({ success: false, attributionByObserver: { DREW: "LIKELY" } });
   });
 });
 
@@ -253,7 +253,9 @@ describe("v0.3 NPC symmetry and planning", () => {
     for (const actorId of ["MARA", "DREW"] as const) {
       const npcPlan = planNpcFromBeatStart(world, actorId);
       expect(validatePlan(world, npcPlan)).toMatchObject({ legal: true, apCommitted: 3 });
-      expect(new Set(npcPlan.actions.map((action) => action.kind))).toEqual(new Set(["MOVE", "MESSAGE", "SCAN"]));
+      expect(npcPlan.actions).toHaveLength(3);
+      expect(npcPlan.actions.some((action) => action.kind === "MESSAGE")).toBe(true);
+      expect(npcPlan.actions.some((action) => action.kind === "SCAN")).toBe(true);
     }
   });
 
@@ -261,7 +263,7 @@ describe("v0.3 NPC symmetry and planning", () => {
     const world = createInitialWorldV3();
     world.actors.DREW.drewConcern = 2;
     world.actors.DREW.drewTrajectory = "GUARDING";
-    world.actors.DREW.position = "NEAR_ENVELOPE";
+    world.actors.DREW.position = "TABLE";
     expect(planNpcFromBeatStart(world, "DREW").actions.some((action) => action.kind === "INTERACT")).toBe(true);
   });
 
@@ -269,7 +271,7 @@ describe("v0.3 NPC symmetry and planning", () => {
     const world = createInitialWorldV3();
     world.actors.PLAYER.position = "CENTER";
     world.actors.DREW.position = "CENTER";
-    world.actors.MARA.position = "NEAR_MARA";
+    world.actors.MARA.position = "CENTER";
     const drewMessage = makeMessageAction(world, "DREW", draft({ recipientId: "MARA", coreContentId: "ASK_INTENTIONS", deliveryMode: "NORMAL" }), 1);
     const next = resolveBeatV3(world, createEmptyPlan(world, "PLAYER"), { npcPlans: { MARA: createEmptyPlan(world, "MARA"), DREW: plan(world, "DREW", [drewMessage]) } });
     expect(next.receptions.find((item) => item.messageId === drewMessage.message.id && item.actorId === "PLAYER")?.kind).toBe("OVERHEARD_FULL");
@@ -287,8 +289,8 @@ describe("v0.3 NPC symmetry and planning", () => {
 describe("v0.3 ordered collisions and revalidation", () => {
   it("lets the player invalidate an NPC object action", () => {
     const world = createInitialWorldV3();
-    world.actors.PLAYER.position = "NEAR_ENVELOPE";
-    world.actors.DREW.position = "NEAR_ENVELOPE";
+    world.actors.PLAYER.position = "TABLE";
+    world.actors.DREW.position = "TABLE";
     const playerTake = makeInteractAction(world, "PLAYER", "ENVELOPE", "TAKE", 1);
     const drewTake = makeInteractAction(world, "DREW", "ENVELOPE", "TAKE", 1);
     const next = resolveBeatV3(world, plan(world, "PLAYER", [playerTake]), { npcPlans: { MARA: createEmptyPlan(world, "MARA"), DREW: plan(world, "DREW", [drewTake]) } });
@@ -300,8 +302,8 @@ describe("v0.3 ordered collisions and revalidation", () => {
     const world = createInitialWorldV3();
     world.beat = 2;
     world.stateId = "TEST_BEAT_2";
-    world.actors.PLAYER.position = "NEAR_ENVELOPE";
-    world.actors.DREW.position = "NEAR_ENVELOPE";
+    world.actors.PLAYER.position = "TABLE";
+    world.actors.DREW.position = "TABLE";
     const playerTake = makeInteractAction(world, "PLAYER", "ENVELOPE", "TAKE", 1);
     const drewTake = makeInteractAction(world, "DREW", "ENVELOPE", "TAKE", 1);
     const next = resolveBeatV3(world, plan(world, "PLAYER", [playerTake]), { npcPlans: { MARA: createEmptyPlan(world, "MARA"), DREW: plan(world, "DREW", [drewTake]) } });
@@ -314,9 +316,9 @@ describe("v0.3 ordered collisions and revalidation", () => {
     world.beat = 2;
     world.stateId = "TEST_BEAT_2_WHISPER";
     world.actors.PLAYER.position = "CENTER";
-    world.actors.MARA.position = "NEAR_MARA";
+    world.actors.MARA.position = "CENTER";
     const whisper = makeMessageAction(world, "PLAYER", draft({ recipientId: "MARA", deliveryMode: "WHISPER" }), 1);
-    const maraMove = makeMoveAction(world, "MARA", "NEAR_DOOR", 1);
+    const maraMove = makeMoveAction(world, "MARA", "DOOR", 1);
     const next = resolveBeatV3(world, plan(world, "PLAYER", [whisper]), { npcPlans: { MARA: plan(world, "MARA", [maraMove]), DREW: createEmptyPlan(world, "DREW") } });
     const result = next.lastResolutions.find((item) => item.actionId === whisper.id);
     expect(result?.status).toBe("DEGRADED");
@@ -329,7 +331,7 @@ describe("v0.3 visible fail trajectories", () => {
   it("progresses Drew toward lockdown through accumulated state plus an immediate trigger", () => {
     const world = createInitialWorldV3();
     world.actors.DREW.drewConcern = 2;
-    world.actors.PLAYER.position = "NEAR_ENVELOPE";
+    world.actors.PLAYER.position = "TABLE";
     const take = makeInteractAction(world, "PLAYER", "ENVELOPE", "TAKE", 1);
     const next = resolveBeatV3(world, plan(world, "PLAYER", [take]), { npcPlans: noNpcs(world) });
     expect(next.actors.DREW.drewTrajectory).toBe("LOCKDOWN");
@@ -346,10 +348,10 @@ describe("v0.3 visible fail trajectories", () => {
 
   it("progresses Mara to ready-to-leave at the exit after accumulated pressure and a message trigger", () => {
     const world = createInitialWorldV3();
-    world.actors.MARA.position = "NEAR_DOOR";
-    world.actors.PLAYER.position = "NEAR_DOOR";
+    world.actors.MARA.position = "DOOR";
+    world.actors.PLAYER.position = "DOOR";
     world.actors.MARA.maraExitPressure = 3;
-    const warning = makeMessageAction(world, "PLAYER", draft({ recipientId: "MARA", deliveryMode: "NORMAL", directness: "BLUNT", warningId: "MARA_MAY_LEAVE", refusalSpace: false }), 1);
+    const warning = makeMessageAction(world, "PLAYER", draft({ recipientId: "MARA", coreContentId: "WARN_ABOUT_EXIT", deliveryMode: "NORMAL", directness: "BLUNT", warningId: "MARA_MAY_LEAVE", refusalSpace: false }), 1);
     const next = resolveBeatV3(world, plan(world, "PLAYER", [warning]), { npcPlans: noNpcs(world) });
     expect(next.actors.MARA.maraTrajectory).toBe("READY_TO_LEAVE");
     expect(next.terminal).toBeNull();
@@ -357,7 +359,7 @@ describe("v0.3 visible fail trajectories", () => {
 
   it("manifests Mara's hard fail through her ordinary LEAVE action", () => {
     const world = createInitialWorldV3();
-    world.actors.MARA.position = "NEAR_DOOR";
+    world.actors.MARA.position = "DOOR";
     world.actors.MARA.maraExitPressure = 4;
     world.actors.MARA.maraTrajectory = "READY_TO_LEAVE";
     const maraPlan = planNpcFromBeatStart(world, "MARA");
@@ -382,7 +384,7 @@ describe("v0.3 visible fail trajectories", () => {
 
   it("keeps accumulated Mara pressure non-terminal without the immediate trigger", () => {
     const world = createInitialWorldV3();
-    world.actors.MARA.position = "NEAR_DOOR";
+    world.actors.MARA.position = "DOOR";
     world.actors.MARA.maraExitPressure = 4;
     world.actors.MARA.maraTrajectory = "READY_TO_LEAVE";
     const next = resolveBeatV3(world, createEmptyPlan(world, "PLAYER"), { npcPlans: noNpcs(world) });
@@ -394,8 +396,8 @@ describe("v0.3 determinism and mutation-time provenance", () => {
   it("replays the same seed, state, and plans into the same outcome and trace", () => {
     const first = createInitialWorldV3(7);
     const second = createInitialWorldV3(7);
-    const firstAction = makeMoveAction(first, "PLAYER", "NEAR_MARA", 1);
-    const secondAction = makeMoveAction(second, "PLAYER", "NEAR_MARA", 1);
+    const firstAction = makeMoveAction(first, "PLAYER", "DOOR", 1);
+    const secondAction = makeMoveAction(second, "PLAYER", "DOOR", 1);
     const firstResult = resolveBeatV3(first, plan(first, "PLAYER", [firstAction]));
     const secondResult = resolveBeatV3(second, plan(second, "PLAYER", [secondAction]));
     expect(firstResult).toEqual(secondResult);
@@ -403,10 +405,10 @@ describe("v0.3 determinism and mutation-time provenance", () => {
 
   it("retains mutation-time cause, prior/new state, action, and resolution status", () => {
     const world = createInitialWorldV3();
-    const action = makeMoveAction(world, "PLAYER", "NEAR_MARA", 1);
+    const action = makeMoveAction(world, "PLAYER", "DOOR", 1);
     const next = resolveBeatV3(world, plan(world, "PLAYER", [action]), { npcPlans: noNpcs(world) });
     const trace = next.traces.find((item) => item.actionId === action.id && item.path === "actors.PLAYER.position");
-    expect(trace).toMatchObject({ actorId: "PLAYER", actionId: action.id, priorState: "CENTER", newState: "NEAR_MARA", ruleId: "RULE_DISCRETE_MOVE_STEP", resolutionStatus: "NORMAL" });
+    expect(trace).toMatchObject({ actorId: "PLAYER", actionId: action.id, priorState: "CENTER", newState: "DOOR", ruleId: "RULE_DISCRETE_MOVE_STEP", resolutionStatus: "NORMAL" });
     expect(trace?.cause).toBeTruthy();
   });
 
@@ -431,16 +433,16 @@ describe("v0.3 determinism and mutation-time provenance", () => {
 });
 
 describe("v0.3 documented end-to-end acceptance Beat", () => {
-  it("revalidates a whisper after independent movement, leaks a fragment, and ends with Drew guarding", () => {
+  it("revalidates a whisper after independent movement, exposes it to Drew, and ends with Drew guarding", () => {
     const world = createInitialWorldV3(7);
     expect(world.currentRoomEvent.title).toBe("Phone buzz");
-    const playerMove = makeMoveAction(world, "PLAYER", "NEAR_MARA", 1);
+    const playerMove = makeMoveAction(world, "PLAYER", "TABLE", 1);
     const playerWhisper = makeMessageAction(world, "PLAYER", draft({ recipientId: "MARA", coreContentId: "ASK_FOR_ENVELOPE", deliveryMode: "WHISPER", reasonId: "SAFETY" }), 2);
     const playerScan = makeScanAction(world, "PLAYER", "OBJECT", "ENVELOPE", 3);
-    const maraMove = makeMoveAction(world, "MARA", "NEAR_DOOR", 1);
+    const maraMove = makeMoveAction(world, "MARA", "DOOR", 1);
     const maraScan = makeScanAction(world, "MARA", "ACTOR", "DREW", 2);
     const drewScan = makeScanAction(world, "DREW", "ACTOR", "MARA", 1);
-    const drewMove = makeMoveAction(world, "DREW", "NEAR_ENVELOPE", 2);
+    const drewMove = makeMoveAction(world, "DREW", "TABLE", 2);
     const drewGuard = makeInteractAction(world, "DREW", "ENVELOPE", "GUARD", 3);
     const next = resolveBeatV3(world, plan(world, "PLAYER", [playerMove, playerWhisper, playerScan]), {
       npcPlans: {
@@ -449,9 +451,9 @@ describe("v0.3 documented end-to-end acceptance Beat", () => {
       },
     });
     expect(next.lastResolutions.find((item) => item.actionId === playerWhisper.id)?.status).toBe("DEGRADED");
-    expect(next.receptions.find((item) => item.messageId === playerWhisper.message.id && item.actorId === "DREW")).toMatchObject({ kind: "OVERHEARD_PARTIAL", fragment: "...the envelope..." });
-    expect(next.actors.MARA.position).toBe("NEAR_DOOR");
-    expect(next.actors.DREW.position).toBe("NEAR_ENVELOPE");
+    expect(next.receptions.find((item) => item.messageId === playerWhisper.message.id && item.actorId === "DREW")).toMatchObject({ kind: "OVERHEARD_FULL" });
+    expect(next.actors.MARA.position).toBe("DOOR");
+    expect(next.actors.DREW.position).toBe("TABLE");
     expect(next.envelope).toMatchObject({ state: "GUARDED", guardedBy: "DREW" });
     expect(next.history.some((event) => event.text.includes("degraded"))).toBe(true);
     expect(next.traces.every((trace) => trace.ruleId && trace.cause)).toBe(true);

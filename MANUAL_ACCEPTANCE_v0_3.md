@@ -1,5 +1,7 @@
 # v0.3 End-to-End Manual Acceptance
 
+> Historical note: this walkthrough documents the pre-repair `v0.3-prototype-rework` behavior and preserves its reviewed acceptance case. The current focused-repair walkthrough is `MANUAL_ACCEPTANCE_v0_3_FOCUSED_REPAIR.md`.
+
 This walkthrough is also encoded as an automated acceptance test in `src/v3/engine.test.ts`.
 
 ## Beat-start tableau
@@ -66,4 +68,3 @@ No plan sees another actor's queued choices. Beat 1 uses Player → Mara → Dre
 ## Result
 
 **PASS** when the automated acceptance test and full validation stack succeed with the state and reception results above.
-

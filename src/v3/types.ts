@@ -2,19 +2,12 @@ export const actorIds = ["PLAYER", "MARA", "DREW"] as const;
 export type ActorId = (typeof actorIds)[number];
 export type NpcId = Exclude<ActorId, "PLAYER">;
 
-export const roomAnchors = [
-  "CENTER",
-  "NEAR_MARA",
-  "NEAR_DREW",
-  "NEAR_TABLE",
-  "NEAR_ENVELOPE",
-  "NEAR_DOOR",
-  "NEAR_WINDOW",
-] as const;
+/** PROVISIONAL / PROTOTYPE-LOCAL: physical topology only. */
+export const roomAnchors = ["CENTER", "TABLE", "DOOR", "WINDOW", "CABINET"] as const;
 export type RoomAnchor = (typeof roomAnchors)[number];
 
 export type ActionKind = "MOVE" | "MESSAGE" | "SCAN" | "INTERACT" | "DISTRACT";
-export type ResolutionStatus = "NORMAL" | "DEGRADED" | "NATURAL_RETARGET" | "INVALIDATED";
+export type ResolutionStatus = "NORMAL" | "DEGRADED" | "NATURAL_RETARGET" | "INVALIDATED" | "CANCELLED_BY_TERMINAL";
 export type ReceptionKind = "DIRECT" | "OVERHEARD_FULL" | "OVERHEARD_PARTIAL" | "NOTICED_ONLY" | "NONE";
 export type DeliveryMode = "NORMAL" | "LOW_VOICE" | "WHISPER";
 export type Attribution = "NONE" | "POSSIBLE" | "LIKELY" | "DIRECT";
@@ -62,19 +55,36 @@ export interface MessageDraftV3 {
   deliveryMode: DeliveryMode;
 }
 
+export type MessageComponentCategory =
+  | "reasonId"
+  | "evidenceId"
+  | "acknowledgmentId"
+  | "promiseId"
+  | "offerId"
+  | "qualificationId"
+  | "conditionId"
+  | "warningId"
+  | "refusalSpace";
+
+export interface MessageCompatibilityResult {
+  valid: boolean;
+  invalidReasons: string[];
+  requiredMissing: MessageComponentCategory[];
+  unavailableComponents: MessageComponentCategory[];
+  riskyComponents: MessageComponentCategory[];
+}
+
 export interface PackagingEvidence {
   directness: Directness;
+  delivery: DeliveryMode;
   explicitness: "LOW" | "MEDIUM" | "HIGH";
   qualification: boolean;
   hedging: boolean;
   closure: "OPEN" | "CONDITIONAL" | "CLOSED";
-  fragmentation: "LOW";
   emphasis: "LOW" | "MEDIUM" | "HIGH";
   acknowledgment: boolean;
   refusalSpace: boolean;
-  repetition: false;
   explanationDensity: number;
-  punctuationFeatures: string[];
   turnBehavior: "YIELDS" | "HOLDS";
 }
 
@@ -112,6 +122,15 @@ export interface ObservationRecord {
   sourceActionId: string;
 }
 
+export interface DistractionBelief {
+  actionId: string;
+  beat: number;
+  targetActorId: NpcId;
+  success: boolean;
+  attribution: Attribution;
+  exploited: boolean;
+}
+
 export interface ActorStateV3 {
   id: ActorId;
   name: string;
@@ -125,6 +144,9 @@ export interface ActorStateV3 {
   face: FaceState;
   apCommitted: number;
   observations: ObservationRecord[];
+  distractionBeliefs: DistractionBelief[];
+  vigilance: number;
+  guardCompromisedUntilBeat: number | null;
   drewConcern: number;
   maraExitPressure: number;
   drewTrajectory: DrewTrajectory | null;
@@ -140,16 +162,33 @@ export interface EnvelopeState {
   visible: boolean;
 }
 
+export type RoomEventFamily = "DISTRACTION" | "OCCUPATION" | "INTERRUPTION" | "REVEAL_ACCESS" | "POSITION_CHANGE";
+export type RoomEventEffectId = "HALLWAY_INTERRUPTION" | "OPEN_DOOR" | "LIGHT_OCCUPATION" | "REVEAL_ENVELOPE" | "NATURAL_PHONE_DISTRACTION";
+
 export interface RoomEventState {
   id: string;
   beat: number;
-  family: "DISTRACTION" | "OCCUPATION" | "INTERRUPTION" | "REVEAL_ACCESS" | "POSITION_CHANGE";
+  family: RoomEventFamily;
+  effectId: RoomEventEffectId;
   title: string;
   description: string;
   noise: "QUIET" | "MODERATE" | "LOUD";
   attentionActorId: ActorId | null;
   attentionTarget: AttentionTarget | null;
   actionableEffect: string;
+  durationBeats: number | null;
+}
+
+export interface TemporaryAffordance {
+  id: "ENVELOPE_REVEALED" | "DREW_NATURALLY_DISTRACTED" | "LIGHT_FLICKER_OPENING";
+  sourceEventId: string;
+  expiresAfterBeat: number;
+}
+
+export interface RoomStateV3 {
+  doorOpen: boolean;
+  envelopeAccessRevealed: boolean;
+  temporaryAffordances: TemporaryAffordance[];
 }
 
 interface BaseAction {
@@ -161,9 +200,12 @@ interface BaseAction {
   ordinal: number;
 }
 
+export type MoveTarget = { kind: "LOCATION"; id: RoomAnchor } | { kind: "ACTOR"; id: ActorId };
+
 export interface MoveAction extends BaseAction {
   kind: "MOVE";
-  target: RoomAnchor;
+  target: MoveTarget;
+  plannedTargetPosition: RoomAnchor;
 }
 
 export interface MessageAction extends BaseAction {
@@ -171,6 +213,7 @@ export interface MessageAction extends BaseAction {
   message: StructuredMessageEvent;
   plannedSenderPosition: RoomAnchor;
   plannedRecipientPositions: Partial<Record<ActorId, RoomAnchor>>;
+  plannedCompatibility: MessageCompatibilityResult;
 }
 
 export interface ScanAction extends BaseAction {
@@ -184,6 +227,7 @@ export interface InteractAction extends BaseAction {
   kind: "INTERACT";
   targetId: "ENVELOPE" | "DOOR";
   operation: InteractionOperation;
+  plannedTargetPosition: RoomAnchor;
 }
 
 export type DistractionMode = "VISIBLE_CALL" | "COVERT_WINDOW_RATTLE";
@@ -195,11 +239,35 @@ export interface DistractAction extends BaseAction {
 
 export type PlannedAction = MoveAction | MessageAction | ScanAction | InteractAction | DistractAction;
 
+export interface PlannerCandidateRationale {
+  label: string;
+  goal: keyof NpcPriorityWeights;
+  weight: number;
+  legal: boolean;
+  selected: boolean;
+  reason: string;
+}
+
+export interface PlannerRationale {
+  actorId: NpcId;
+  hardConstraint: string | null;
+  candidates: PlannerCandidateRationale[];
+}
+
 export interface ActorPlan {
   actorId: ActorId;
   beat: number;
   actions: PlannedAction[];
   plannedFromStateId: string;
+  rationale?: PlannerRationale;
+}
+
+export interface NpcPriorityWeights {
+  protectEnvelope: number;
+  preserveExit: number;
+  seekInformation: number;
+  communicateConcern: number;
+  approachOrAvoid: number;
 }
 
 export interface DistractionOutcome {
@@ -207,7 +275,7 @@ export interface DistractionOutcome {
   eventVisible: boolean;
   playerActionVisible: boolean;
   causalVisibility: boolean;
-  attribution: Attribution;
+  attributionByObserver: Record<NpcId, Attribution>;
 }
 
 export interface ActionResolution {
@@ -223,6 +291,7 @@ export interface ActionResolution {
   sourceTraceRefs: string[];
   receptionIds: string[];
   distraction: DistractionOutcome | null;
+  messageCompatibility: MessageCompatibilityResult | null;
 }
 
 export interface MutationTraceV3 {
@@ -252,12 +321,14 @@ export interface CausalHistoryEvent {
   actionId: string;
   text: string;
   traceRefs: string[];
+  playerVisible: boolean;
 }
 
 export interface TerminalStateV3 {
   kind: "PLAYER_EJECTED" | "MARA_FLED" | "ENVELOPE_SECURED" | "TURN_LIMIT";
   beat: number;
   explanation: string;
+  sourceTraceRefs: string[];
 }
 
 export interface WorldStateV3 {
@@ -268,6 +339,7 @@ export interface WorldStateV3 {
   maxBeats: number;
   actors: Record<ActorId, ActorStateV3>;
   envelope: EnvelopeState;
+  room: RoomStateV3;
   roomNoise: "QUIET" | "MODERATE" | "LOUD";
   currentRoomEvent: RoomEventState;
   roomEvents: RoomEventState[];

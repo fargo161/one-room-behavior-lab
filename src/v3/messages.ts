@@ -4,6 +4,8 @@ import type {
   ConditionId,
   CoreContentId,
   EvidenceId,
+  MessageCompatibilityResult,
+  MessageComponentCategory,
   MessageDraftV3,
   OfferId,
   PackagingEvidence,
@@ -12,6 +14,7 @@ import type {
   ReasonId,
   StructuredMessageEvent,
   WarningId,
+  WorldStateV3,
 } from "./types";
 
 type Piece<T extends string> = Record<T, string>;
@@ -87,25 +90,110 @@ const warnings: Piece<WarningId> = {
   OTHERS_MAY_NOTICE: "If we continue openly, others may notice",
 };
 
-export const messageOptions = {
-  coreText,
-  reasons,
-  evidence,
-  acknowledgments,
-  promises,
-  offers,
-  qualifications,
-  conditions,
-  warnings,
+export const messageOptions = { coreText, reasons, evidence, acknowledgments, promises, offers, qualifications, conditions, warnings };
+
+export const messageComponentLabels: Record<MessageComponentCategory, string> = {
+  reasonId: "Give a reason",
+  evidenceId: "Cite evidence",
+  acknowledgmentId: "Acknowledge concern",
+  promiseId: "Make a promise",
+  offerId: "Make an offer",
+  qualificationId: "Add a qualification",
+  conditionId: "Add a condition",
+  warningId: "Add a warning",
+  refusalSpace: "Leave room to refuse",
 };
+
+interface MessageRule {
+  allowed: MessageComponentCategory[];
+  required: MessageComponentCategory[];
+}
+
+/** PROVISIONAL / PROTOTYPE-LOCAL compatibility data shared by engine and UI. */
+export const messageCompatibilityRules: Record<CoreContentId, MessageRule> = {
+  ASK_FOR_ENVELOPE: { allowed: ["reasonId", "evidenceId", "acknowledgmentId", "promiseId", "offerId", "qualificationId", "conditionId", "refusalSpace"], required: [] },
+  ASK_INTENTIONS: { allowed: ["reasonId", "acknowledgmentId", "qualificationId", "refusalSpace"], required: [] },
+  OFFER_HELP: { allowed: ["reasonId", "acknowledgmentId", "promiseId", "offerId", "qualificationId", "conditionId", "refusalSpace"], required: [] },
+  SHARE_AUTHORIZATION: { allowed: ["reasonId", "evidenceId", "acknowledgmentId", "offerId", "qualificationId", "refusalSpace"], required: ["evidenceId"] },
+  REQUEST_PRIVACY: { allowed: ["reasonId", "acknowledgmentId", "promiseId", "qualificationId", "conditionId", "warningId", "refusalSpace"], required: [] },
+  WARN_ABOUT_EXIT: { allowed: ["reasonId", "evidenceId", "acknowledgmentId", "conditionId", "warningId", "refusalSpace"], required: [] },
+  REPORT_DANGER: { allowed: ["reasonId", "evidenceId", "qualificationId", "warningId", "refusalSpace"], required: [] },
+};
+
+const componentValue = (draft: MessageDraftV3, category: MessageComponentCategory): string | boolean => draft[category];
+const componentActive = (draft: MessageDraftV3, category: MessageComponentCategory): boolean => {
+  const value = componentValue(draft, category);
+  return typeof value === "boolean" ? value : value !== "NONE";
+};
+
+const worldAvailability = (world: WorldStateV3, draft: MessageDraftV3, category: MessageComponentCategory): string | null => {
+  if (!componentActive(draft, category)) return null;
+  if (category === "evidenceId" && draft.evidenceId === "OPEN_DOOR" && !world.room.doorOpen) return "The door is not currently open.";
+  if (category === "evidenceId" && draft.evidenceId === "MARA_STATEMENT" && !world.actors.MARA.active) return "Mara is no longer present to verify the statement.";
+  if (category === "evidenceId" && draft.evidenceId === "DREW_GLANCES" && !world.actors.DREW.active) return "Drew is no longer present for the cited behavior to be checked.";
+  if (category === "conditionId" && draft.conditionId === "IF_DOOR_STAYS_OPEN" && !world.room.doorOpen) return "The door is not currently open.";
+  if (category === "conditionId" && draft.conditionId === "IF_DREW_STEPS_AWAY" && !world.actors.DREW.active) return "Drew is no longer in the room.";
+  return null;
+};
+
+const risky = (world: WorldStateV3, draft: MessageDraftV3, category: MessageComponentCategory): boolean => {
+  if (category === "evidenceId" && draft.evidenceId === "SIGNED_NOTE") return !world.actors.PLAYER.observations.some((item) => item.evidence.some((line) => line.toLowerCase().includes("signed note")));
+  if (category === "evidenceId" && draft.evidenceId === "MARA_STATEMENT") return !world.messages.some((item) => item.senderId === "MARA");
+  if (category === "promiseId" && draft.promiseId === "RETURN_ENVELOPE") return world.envelope.state === "LOCKED_AWAY" || world.envelope.holderId !== "PLAYER";
+  if (category === "offerId" && draft.offerId === "SHOW_AUTHORIZATION") return draft.evidenceId !== "SIGNED_NOTE";
+  return false;
+};
+
+export function validateMessageDraft(world: WorldStateV3, draft: MessageDraftV3): MessageCompatibilityResult {
+  const rule = messageCompatibilityRules[draft.coreContentId];
+  const invalidReasons: string[] = [];
+  const unavailableComponents: MessageComponentCategory[] = [];
+  const riskyComponents: MessageComponentCategory[] = [];
+  for (const category of Object.keys(messageComponentLabels) as MessageComponentCategory[]) {
+    if (!componentActive(draft, category)) continue;
+    if (!rule.allowed.includes(category)) invalidReasons.push(`${messageComponentLabels[category]} is not relevant to ${draft.coreContentId}.`);
+    const unavailable = worldAvailability(world, draft, category);
+    if (unavailable) {
+      unavailableComponents.push(category);
+      invalidReasons.push(`${messageComponentLabels[category]} is unavailable: ${unavailable}`);
+    }
+    if (risky(world, draft, category)) riskyComponents.push(category);
+  }
+  const requiredMissing = rule.required.filter((category) => !componentActive(draft, category) || unavailableComponents.includes(category));
+  for (const category of requiredMissing) invalidReasons.push(`${messageComponentLabels[category]} is required for ${draft.coreContentId}.`);
+  return { valid: invalidReasons.length === 0, invalidReasons, requiredMissing, unavailableComponents, riskyComponents };
+}
+
+export function getMessageOptionState(world: WorldStateV3, draft: MessageDraftV3, category: MessageComponentCategory, value: string | boolean): { enabled: boolean; reason: string | null; risky: boolean } {
+  if (!messageCompatibilityRules[draft.coreContentId].allowed.includes(category)) return { enabled: false, reason: "Not relevant to this core message.", risky: false };
+  const candidate = { ...draft, [category]: value } as MessageDraftV3;
+  const unavailable = worldAvailability(world, candidate, category);
+  return { enabled: !unavailable, reason: unavailable, risky: risky(world, candidate, category) };
+}
+
+export const contextualMessageCategories = (coreContentId: CoreContentId): MessageComponentCategory[] => [...messageCompatibilityRules[coreContentId].allowed];
+
+export const clearIncompatibleMessageComponents = (draft: MessageDraftV3): MessageDraftV3 => {
+  const allowed = messageCompatibilityRules[draft.coreContentId].allowed;
+  const next = { ...draft };
+  const defaults = defaultPlayerMessageDraft();
+  for (const category of Object.keys(messageComponentLabels) as MessageComponentCategory[]) {
+    if (!allowed.includes(category)) Object.assign(next, { [category]: defaults[category] });
+  }
+  return next;
+};
+
+export const messageToDraft = (message: StructuredMessageEvent): MessageDraftV3 => ({
+  recipientId: message.intendedRecipients[0],
+  coreContentId: message.coreContentId,
+  ...message.components,
+  deliveryMode: message.deliveryMode,
+});
 
 const canonicalize = (value: unknown): string => {
   if (Array.isArray(value)) return `[${value.map(canonicalize).join(",")}]`;
   if (value && typeof value === "object") {
-    return `{${Object.entries(value as Record<string, unknown>)
-      .sort(([left], [right]) => left.localeCompare(right))
-      .map(([key, item]) => `${JSON.stringify(key)}:${canonicalize(item)}`)
-      .join(",")}}`;
+    return `{${Object.entries(value as Record<string, unknown>).sort(([left], [right]) => left.localeCompare(right)).map(([key, item]) => `${JSON.stringify(key)}:${canonicalize(item)}`).join(",")}}`;
   }
   return JSON.stringify(value);
 };
@@ -130,30 +218,33 @@ export const derivePackagingEvidence = (draft: MessageDraftV3): PackagingEvidenc
   const warning = draft.warningId !== "NONE";
   return {
     directness: draft.directness,
+    delivery: draft.deliveryMode,
     explicitness: explanationDensity >= 3 ? "HIGH" : explanationDensity >= 1 ? "MEDIUM" : "LOW",
     qualification,
     hedging: qualification,
     closure: draft.refusalSpace ? "OPEN" : draft.conditionId !== "NONE" ? "CONDITIONAL" : "CLOSED",
-    fragmentation: "LOW",
     emphasis: warning || draft.directness === "BLUNT" ? "HIGH" : draft.directness === "PLAIN" ? "MEDIUM" : "LOW",
     acknowledgment: draft.acknowledgmentId !== "NONE",
     refusalSpace: draft.refusalSpace,
-    repetition: false,
     explanationDensity,
-    punctuationFeatures: warning ? ["terminal-period", "warning-clause"] : ["terminal-period"],
     turnBehavior: draft.refusalSpace ? "YIELDS" : "HOLDS",
   };
 };
 
 export const renderMessage = (draft: MessageDraftV3): string => {
-  const opening = draft.acknowledgmentId !== "NONE" ? acknowledgments[draft.acknowledgmentId] : "";
-  const qualification = qualifications[draft.qualificationId];
-  const core = coreText[draft.coreContentId];
-  const reason = reasons[draft.reasonId];
-  const pieces = [opening, qualification, core, reason, evidence[draft.evidenceId], promises[draft.promiseId], offers[draft.offerId], conditions[draft.conditionId], warnings[draft.warningId]].filter(Boolean);
+  const pieces = [
+    draft.acknowledgmentId !== "NONE" ? acknowledgments[draft.acknowledgmentId] : "",
+    qualifications[draft.qualificationId],
+    coreText[draft.coreContentId],
+    reasons[draft.reasonId],
+    evidence[draft.evidenceId],
+    promises[draft.promiseId],
+    offers[draft.offerId],
+    conditions[draft.conditionId],
+    warnings[draft.warningId],
+  ].filter(Boolean);
   if (draft.refusalSpace) pieces.push("You can say no");
-  const sentence = pieces.join(". ").replace(/\.\s*$/, "");
-  return `${sentence}.`;
+  return `${pieces.join(". ").replace(/\.\s*$/, "")}.`;
 };
 
 export function createStructuredMessage(senderId: ActorId, beat: number, draft: MessageDraftV3): StructuredMessageEvent {
@@ -177,12 +268,7 @@ export function createStructuredMessage(senderId: ActorId, beat: number, draft: 
     },
     deliveryMode: draft.deliveryMode,
   } as const;
-  return {
-    ...payload,
-    id: `MSG_B${String(beat).padStart(2, "0")}_${messagePayloadFingerprint(payload)}`,
-    packagingEvidence: derivePackagingEvidence(draft),
-    surfaceText: renderMessage(draft),
-  };
+  return { ...payload, id: `MSG_B${String(beat).padStart(2, "0")}_${messagePayloadFingerprint(payload)}`, packagingEvidence: derivePackagingEvidence(draft), surfaceText: renderMessage(draft) };
 }
 
 export const partialMessageFragment = (message: StructuredMessageEvent): string => partialFragments[message.coreContentId];
@@ -199,6 +285,6 @@ export const defaultPlayerMessageDraft = (): MessageDraftV3 => ({
   conditionId: "NONE",
   warningId: "NONE",
   directness: "PLAIN",
-  refusalSpace: true,
+  refusalSpace: false,
   deliveryMode: "NORMAL",
 });
