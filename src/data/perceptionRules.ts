@@ -1,0 +1,21 @@
+export const perceptionRules = {
+  version: "0.2-provisional" as const,
+  noticeThreshold: 0.6,
+  privateSalience: 0.24,
+  publicSalience: 0.52,
+  primaryRecipientMatch: 0.36,
+  primaryPlayerChannelMatch: 0.28,
+  secondaryRecipientMatch: 0.16,
+  alertContribution: 0.12,
+  suspicionContribution: 0.14,
+  lowAttentionPenalty: -0.2,
+  ruleIds: {
+    eventSalience: "RULE_NOTICE_EVENT_SALIENCE",
+    primaryMatch: "RULE_NOTICE_PRIMARY_ATTENTION",
+    secondaryMatch: "RULE_NOTICE_SECONDARY_ATTENTION",
+    alert: "RULE_NOTICE_ALERT",
+    suspicion: "RULE_NOTICE_SUSPICION",
+    lowAttention: "RULE_NOTICE_LOW_ATTENTION",
+    threshold: "RULE_NOTICE_THRESHOLD",
+  },
+};
