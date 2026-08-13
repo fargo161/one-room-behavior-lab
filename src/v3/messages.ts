@@ -159,7 +159,7 @@ const evidenceGrounded = (world: WorldStateV3, draft: MessageDraftV3): boolean =
   if (draft.evidenceId === "SIGNED_NOTE") return playerObserved(world, "ENVELOPE", /signed note/i);
   if (draft.evidenceId === "OPEN_DOOR") return world.room.doorOpen;
   if (draft.evidenceId === "DREW_GLANCES") return playerObserved(world, "DREW", /(envelope|checking|glance)/i);
-  if (draft.evidenceId === "MARA_STATEMENT") return world.messages.some((item) => item.senderId === "MARA" && relevantMaraStatementCores[draft.coreContentId].includes(item.coreContentId));
+  if (draft.evidenceId === "MARA_STATEMENT") return world.messages.some((item) => item.senderId === "MARA" && relevantMaraStatementCores[draft.coreContentId].includes(item.coreContentId) && world.receptions.some((reception) => reception.messageId === item.id && reception.actorId === "PLAYER" && ["DIRECT", "OVERHEARD_FULL"].includes(reception.kind)));
   return true;
 };
 

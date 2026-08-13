@@ -852,8 +852,8 @@ export function planNpcFromBeatStart(world: WorldStateV3, actorId: NpcId, weight
     const mara = world.actors.MARA;
     const exitAction = (ordinal: number) => mara.position === "DOOR" && ["READY_TO_LEAVE", "FLEE"].includes(mara.maraTrajectory ?? "") ? makeInteractAction(world, "MARA", "DOOR", "LEAVE", ordinal) : makeMoveAction(world, "MARA", "DOOR", ordinal);
     const vigilantScan = (ordinal: number) => makeScanAction(world, "MARA", "ACTOR", "PLAYER", ordinal);
-    if (mara.vigilance > 0) hardConstraint = { label: "watch the player", goal: "seekInformation", reason: "Mara's observer-relative vigilance makes checking the player her first deterministic priority.", make: vigilantScan };
-    else if (["NEAR_EXIT", "READY_TO_LEAVE", "FLEE"].includes(mara.maraTrajectory ?? "ENGAGED")) hardConstraint = { label: "preserve access to exit", goal: "preserveExit", reason: "Mara's current trajectory makes the exit mandatory.", make: exitAction };
+    if (["NEAR_EXIT", "READY_TO_LEAVE", "FLEE"].includes(mara.maraTrajectory ?? "ENGAGED")) hardConstraint = { label: "preserve access to exit", goal: "preserveExit", reason: "Mara's current trajectory makes the exit mandatory before vigilance or ordinary priorities.", make: exitAction };
+    else if (mara.vigilance > 0) hardConstraint = { label: "watch the player", goal: "seekInformation", reason: "With no stronger fail-trajectory obligation, Mara's observer-relative vigilance makes checking the player her first deterministic priority.", make: vigilantScan };
     candidates.push(
       { label: "preserve access to exit", goal: "preserveExit", reason: "Keep a viable route to the door.", make: exitAction },
       { label: mara.vigilance > 0 ? "watch the player" : "read Drew", goal: "seekInformation", reason: mara.vigilance > 0 ? "Prior attributable manipulation redirects Mara's observation toward the player." : "Observe Drew's directly visible behavior.", make: mara.vigilance > 0 ? vigilantScan : (ordinal) => makeScanAction(world, "MARA", "ACTOR", "DREW", ordinal) },

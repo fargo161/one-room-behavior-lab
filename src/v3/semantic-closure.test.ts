@@ -15,12 +15,18 @@ import {
   resolveBeatV3,
 } from "./engine";
 import { createStructuredMessage, defaultPlayerMessageDraft, getMessageOptionState, messagePayloadFingerprint, validateMessageDraft } from "./messages";
-import type { ActorId, ActorPlan, MessageDraftV3, PlannedAction, RoomEventState, WorldStateV3 } from "./types";
+import type { ActorId, ActorPlan, MessageDraftV3, PlannedAction, ReceptionKind, RoomEventState, StructuredMessageEvent, WorldStateV3 } from "./types";
 
 const plan = (world: WorldStateV3, actorId: ActorId, actions: PlannedAction[]): ActorPlan => ({ actorId, beat: world.beat, actions, plannedFromStateId: world.stateId });
 const noNpcs = (world: WorldStateV3) => ({ MARA: createEmptyPlan(world, "MARA"), DREW: createEmptyPlan(world, "DREW") });
 const draft = (overrides: Partial<MessageDraftV3> = {}): MessageDraftV3 => ({ ...defaultPlayerMessageDraft(), ...overrides });
 const observe = (world: WorldStateV3, target: string, line: string) => world.actors.PLAYER.observations.push({ id: `OBS_${target}_${world.actors.PLAYER.observations.length}`, beat: world.beat, actorId: "PLAYER", target, evidence: [line], sourceActionId: "TEST_OBSERVATION" });
+const addMaraMessage = (world: WorldStateV3, coreContentId: MessageDraftV3["coreContentId"], receptionKind?: ReceptionKind): StructuredMessageEvent => {
+  const message = createStructuredMessage("MARA", world.beat, draft({ recipientId: receptionKind === "DIRECT" ? "PLAYER" : "DREW", coreContentId, evidenceId: coreContentId === "SHARE_AUTHORIZATION" ? "SIGNED_NOTE" : "NONE" }));
+  world.messages.push(message);
+  if (receptionKind) world.receptions.push({ id: `RECEPTION_${message.id}_PLAYER_${receptionKind}`, beat: world.beat, messageId: message.id, actorId: "PLAYER", kind: receptionKind, content: ["DIRECT", "OVERHEARD_FULL"].includes(receptionKind) ? message.surfaceText : null, fragment: receptionKind === "OVERHEARD_PARTIAL" ? "...authorization..." : null, deliveryResolvedAs: message.deliveryMode, sourceTraceRefs: [] });
+  return message;
+};
 
 describe("semantic closure 1 and 7: possession truth and shared SECURE affordance", () => {
   it("does not let a guard-only actor SECURE an envelope held by someone else", () => {
@@ -89,13 +95,42 @@ describe("semantic closure 3: value-level evidence and provenance", () => {
     expect(validateMessageDraft(world, message).componentStatuses.evidenceId).toBe("SUPPORTED");
   });
 
-  it("requires a relevant Mara statement rather than any Mara speech", () => {
+  it("does not ground MARA_STATEMENT from a relevant private message the player missed", () => {
     const world = createInitialWorldV3();
     const message = draft({ coreContentId: "SHARE_AUTHORIZATION", evidenceId: "MARA_STATEMENT" });
-    world.messages.push(createStructuredMessage("MARA", world.beat, draft({ recipientId: "PLAYER", coreContentId: "ASK_INTENTIONS" })));
+    addMaraMessage(world, "SHARE_AUTHORIZATION");
     expect(validateMessageDraft(world, message).componentStatuses.evidenceId).toBe("RISKY_UNSUPPORTED");
-    world.messages.push(createStructuredMessage("MARA", world.beat, draft({ recipientId: "PLAYER", coreContentId: "SHARE_AUTHORIZATION", evidenceId: "SIGNED_NOTE" })));
+  });
+
+  it("does not ground MARA_STATEMENT from noticed-only player reception", () => {
+    const world = createInitialWorldV3();
+    addMaraMessage(world, "SHARE_AUTHORIZATION", "NOTICED_ONLY");
+    expect(validateMessageDraft(world, draft({ coreContentId: "SHARE_AUTHORIZATION", evidenceId: "MARA_STATEMENT" })).componentStatuses.evidenceId).toBe("RISKY_UNSUPPORTED");
+  });
+
+  it("does not fully ground MARA_STATEMENT from partial player reception", () => {
+    const world = createInitialWorldV3();
+    addMaraMessage(world, "SHARE_AUTHORIZATION", "OVERHEARD_PARTIAL");
+    expect(validateMessageDraft(world, draft({ coreContentId: "SHARE_AUTHORIZATION", evidenceId: "MARA_STATEMENT" })).componentStatuses.evidenceId).toBe("RISKY_UNSUPPORTED");
+  });
+
+  it("grounds MARA_STATEMENT from direct player reception of the relevant message", () => {
+    const world = createInitialWorldV3();
+    addMaraMessage(world, "SHARE_AUTHORIZATION", "DIRECT");
+    const message = draft({ coreContentId: "SHARE_AUTHORIZATION", evidenceId: "MARA_STATEMENT" });
     expect(validateMessageDraft(world, message).componentStatuses.evidenceId).toBe("SUPPORTED");
+  });
+
+  it("grounds MARA_STATEMENT from a full player overhear of the relevant message", () => {
+    const world = createInitialWorldV3();
+    addMaraMessage(world, "SHARE_AUTHORIZATION", "OVERHEARD_FULL");
+    expect(validateMessageDraft(world, draft({ coreContentId: "SHARE_AUTHORIZATION", evidenceId: "MARA_STATEMENT" })).componentStatuses.evidenceId).toBe("SUPPORTED");
+  });
+
+  it("does not ground MARA_STATEMENT from an unrelated directly received message", () => {
+    const world = createInitialWorldV3();
+    addMaraMessage(world, "ASK_INTENTIONS", "DIRECT");
+    expect(validateMessageDraft(world, draft({ coreContentId: "SHARE_AUTHORIZATION", evidenceId: "MARA_STATEMENT" })).componentStatuses.evidenceId).toBe("RISKY_UNSUPPORTED");
   });
 
   it("keeps open-door evidence valid for exit-related messages", () => {
@@ -178,6 +213,29 @@ describe("semantic closure 5, 6, and 11: observer evidence and operative vigilan
     expect(planNpcFromBeatStart(calm, "MARA").actions[0].kind).toBe("MOVE");
     expect(planNpcFromBeatStart(vigilant, "MARA").actions[0]).toMatchObject({ kind: "SCAN", targetId: "PLAYER" });
     expect(planNpcFromBeatStart(vigilant, "MARA").rationale?.hardConstraint).toContain("vigilance");
+  });
+
+  it("keeps READY_TO_LEAVE ahead of vigilance while retaining a later vigilant Scan", () => {
+    const world = createInitialWorldV3();
+    world.actors.MARA.position = "DOOR";
+    world.actors.MARA.maraTrajectory = "READY_TO_LEAVE";
+    world.actors.MARA.vigilance = 1;
+    const npcPlan = planNpcFromBeatStart(world, "MARA");
+    expect(npcPlan.actions[0]).toMatchObject({ kind: "INTERACT", operation: "LEAVE" });
+    expect(npcPlan.actions.some((action) => action.kind === "SCAN" && action.targetId === "PLAYER")).toBe(true);
+    expect(npcPlan.rationale?.hardConstraint).toContain("exit mandatory before vigilance");
+    expect(npcPlan.rationale?.candidates.find((item) => item.label === "watch the player")).toMatchObject({ selected: true });
+  });
+
+  it("keeps NEAR_EXIT movement toward the door ahead of vigilance", () => {
+    const world = createInitialWorldV3();
+    world.actors.MARA.position = "CENTER";
+    world.actors.MARA.maraTrajectory = "NEAR_EXIT";
+    world.actors.MARA.vigilance = 1;
+    const npcPlan = planNpcFromBeatStart(world, "MARA");
+    expect(npcPlan.actions[0]).toMatchObject({ kind: "MOVE", target: { kind: "LOCATION", id: "DOOR" } });
+    expect(npcPlan.actions.some((action) => action.kind === "SCAN" && action.targetId === "PLAYER")).toBe(true);
+    expect(npcPlan.rationale?.hardConstraint).toContain("exit mandatory before vigilance");
   });
 });
 

@@ -55,3 +55,21 @@ Local validation result before branch handoff:
 - GitHub Actions YAML parse: pass
 
 All closure gates are satisfied for branch handoff. Final branch state is **READY FOR FINAL READ-ONLY AUDIT**. This is not merge authorization.
+
+## Final-audit micro-fix follow-up
+
+The final read-only audit found two remaining micro-defects:
+
+1. Mara fail-trajectory precedence over vigilance.
+2. `MARA_STATEMENT` player reception provenance.
+
+Both were corrected in the follow-up commit. Mara's `NEAR_EXIT`, `READY_TO_LEAVE`, and `FLEE` obligations now establish the first hard constraint before vigilance; vigilance still redirects a later Scan and suppresses approach. `MARA_STATEMENT` is now fully supported only when the player has a matching `DIRECT` or `OVERHEARD_FULL` `ReceptionRecord` for the specific relevant Mara message. Missing, noticed-only, partial, and unrelated receptions remain risky/unsupported.
+
+The proving additions in `src/v3/semantic-closure.test.ts` cover:
+
+- `READY_TO_LEAVE + vigilance`;
+- `NEAR_EXIT + vigilance`;
+- calm vigilance remaining operative;
+- missed, noticed-only, partial, direct, full-overhear, and unrelated Mara statements.
+
+The semantic-closure file now contains 25 focused tests; the full Vitest count is 192 across five files. Final status after successful local and GitHub validation: **READY FOR FINAL TWO-FIX READ-ONLY VERIFICATION**.

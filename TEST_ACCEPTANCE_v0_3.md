@@ -2,15 +2,15 @@
 
 ## Automated suite
 
-The semantic-closure branch retains all stabilized, original v0.3, and focused-repair coverage. It adds 18 exact semantic-closure regressions in `src/v3/semantic-closure.test.ts` and 3 interaction-capable component/render tests in `src/v3/dynamic-ui.test.tsx`.
+The semantic-closure branch retains all stabilized, original v0.3, and focused-repair coverage. It contains 25 exact semantic-closure regressions in `src/v3/semantic-closure.test.ts`, including the nine final-audit micro-fix cases, and 3 interaction-capable component/render tests in `src/v3/dynamic-ui.test.tsx`.
 
 Current expected result:
 
-- **185 Vitest tests** across five test files;
-- **18 focused semantic-closure tests**;
+- **192 Vitest tests** across five test files;
+- **25 focused semantic-closure tests**;
 - **3 dynamic UI/component tests**;
 - **1 rendered-page smoke test**;
-- **186 distinct automated checks total**.
+- **193 distinct automated checks total**.
 
 | Area | Automated evidence |
 | --- | --- |
@@ -20,10 +20,10 @@ Current expected result:
 | Physical movement | physical-only nodes; one-edge movement; derived proximity; actor-targeted movement; natural retarget; departed target invalidation |
 | Message limits | duplicate direct recipient rejected; overhearing does not consume direct allowance; one valid message remains 1 AP |
 | Message identity | same payload/same ID; semantic change/new ID; planned/effective degradation lineage; wording remains downstream |
-| Message compatibility | value-level support and relevance; signed-note, Drew-observation, and actual-Mara-statement provenance; exit evidence; risky vs incompatible |
+| Message compatibility | value-level support and relevance; signed-note/Drew observation; exact player reception provenance for relevant Mara statements; exit evidence; risky vs incompatible |
 | Delivery and reception | direct/full/partial/noticed/none; plausible delivery; impossible intended hearing; ordinary direct address remains robust |
 | Distraction | observer-relative visibility/attribution; exploit requires seeing both stages; different observers can disagree; ordinary UI remains bounded |
-| NPC planning | Mara and Drew vigilance are operative; hard constraints; legal candidates; weights; deterministic output; rationale |
+| NPC planning | fail trajectories outrank Mara vigilance; vigilance remains operative for later choices; hard constraints; legal candidates; weights; deterministic output; rationale |
 | Room events | operative light flicker; `durationBeats` one/two-Beat semantics; deterministic expiry; transient expression overlay/removal; provenance |
 | Player object affordance | player `SECURE` appears only for the holder; `LOCK_AWAY` remains Drew-specific; UI/engine rules share one source |
 | Player inference | Scan returns observable channels without trajectory labels; normal history avoids weak hidden attribution labels |
