@@ -4,9 +4,17 @@ This repository contains a bounded, deterministic social-tactics prototype. It t
 
 The canonical social-interaction architecture remains in [`fargo161/social-interaction-system`](https://github.com/fargo161/social-interaction-system), and the generic PSG parent grammar remains in [`fargo161/periodic-semantic-grammar`](https://github.com/fargo161/periodic-semantic-grammar). This prototype does not vendor, modify, or supersede either project.
 
-## Current semantic-closure branch
+## Official design path
 
-`v0.3-semantic-closure` preserves the focused-repair architecture and closes the post-repair audit contradictions in place:
+`v0.3.1` is the stable executable reference implementation for the social-simulation semantics. It remains the regression oracle, deterministic semantic test bed, provenance validator, and reference for future presentation-layer integrations.
+
+The official future designer-facing implementation path is **Unity + Adventure Creator**, connected to the Social Simulation Core through a narrow bridge. Unity and Adventure Creator will provide scene construction, interaction authoring, dialogue and audiovisual presentation, and conventional adventure-game orchestration. The Social Simulation Core will remain the authoritative source of truth for social state and resolution. The bridge is future work; no Unity or Adventure Creator implementation is present in this repository today.
+
+See [`ADVENTURE_CREATOR_DESIGN_PATH.md`](ADVENTURE_CREATOR_DESIGN_PATH.md) for the responsibility boundary, non-goals, and staged migration direction.
+
+## Stable v0.3.1 reference implementation
+
+`main` at `v0.3.1` preserves the focused-repair architecture and the integrated semantic-closure and dependency-maintenance work:
 
 ```text
 OBSERVE
@@ -65,6 +73,7 @@ AP, initiative, topology, hearing thresholds, message compatibility, event defin
 
 See:
 
+- [`ADVENTURE_CREATOR_DESIGN_PATH.md`](ADVENTURE_CREATOR_DESIGN_PATH.md)
 - [`PROTOTYPE_ASSUMPTIONS_v0_3.md`](PROTOTYPE_ASSUMPTIONS_v0_3.md)
 - [`FOCUSED_REPAIR_REPORT_v0_3.md`](FOCUSED_REPAIR_REPORT_v0_3.md)
 - [`SEMANTIC_CLOSURE_REPORT_v0_3.md`](SEMANTIC_CLOSURE_REPORT_v0_3.md)
@@ -83,4 +92,4 @@ npm run build
 npm run test:rendered
 ```
 
-The immutable stabilized baseline remains at tag `v0.2.1`. The pre-repair proof remains on `v0.3-prototype-rework`, and the audited focused repair remains on `v0.3-focused-repair`. Semantic closure remains isolated on `v0.3-semantic-closure` until a final read-only audit and separate integration authorization.
+The current stable reference release is tag `v0.3.1`. Earlier tags `v0.2.1` and `v0.3.0`, the pre-repair proof on `v0.3-prototype-rework`, the audited focused repair on `v0.3-focused-repair`, the semantic-closure branch, and the dependency-maintenance branches remain preserved as project history.
