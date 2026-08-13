@@ -230,14 +230,11 @@ describe("focused repair P1 bounded message construction", () => {
     expect(next.traces.some((trace) => trace.ruleId === "RULE_MESSAGE_SUPPORT_REVALIDATION")).toBe(true);
   });
 
-  it("invalidates when required support disappears mid-Beat", () => {
+  it("blocks semantically incompatible evidence before a required-support message is queued", () => {
     const world = createInitialWorldV3();
-    world.beat = 2;
-    world.actors.DREW.position = "DOOR";
-    const message = makeMessageAction(world, "PLAYER", draft({ recipientId: "MARA", coreContentId: "SHARE_AUTHORIZATION", evidenceId: "DREW_GLANCES" }), 1);
-    const leave = makeInteractAction(world, "DREW", "DOOR", "LEAVE", 1);
-    const next = resolveBeatV3(world, plan(world, "PLAYER", [message]), { npcPlans: { MARA: createEmptyPlan(world, "MARA"), DREW: plan(world, "DREW", [leave]) } });
-    expect(next.lastResolutions.find((item) => item.actionId === message.id)?.status).toBe("INVALIDATED");
+    const result = validateMessageDraft(world, draft({ recipientId: "MARA", coreContentId: "SHARE_AUTHORIZATION", evidenceId: "DREW_GLANCES" }));
+    expect(result.valid).toBe(false);
+    expect(result.componentStatuses.evidenceId).toBe("INCOMPATIBLE");
   });
 
   it("keeps one structured message at one AP regardless of valid additions", () => {

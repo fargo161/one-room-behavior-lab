@@ -102,3 +102,7 @@ No retained expectation was silently deleted or weakened to bypass a defect. One
 - Production build: pass
 - Rendered smoke: 1/1
 - Manual acceptance: see `MANUAL_ACCEPTANCE_v0_3_FOCUSED_REPAIR.md`
+
+## Post-repair audit and continuation
+
+This is a historical focused-repair report. A later read-only audit found narrower semantic contradictions in holder-only `SECURE`, visual envelope placement, evidence value/provenance, degraded message identity, exploit observability, Mara vigilance, player affordance symmetry, event duration/meaning, transient expression expiry, and observer-relative visibility. Those findings are not erased here. Their corrective implementation and exact regressions are documented in `SEMANTIC_CLOSURE_REPORT_v0_3.md` on `v0.3-semantic-closure`.

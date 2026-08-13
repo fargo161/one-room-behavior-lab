@@ -72,7 +72,10 @@ export interface MessageCompatibilityResult {
   requiredMissing: MessageComponentCategory[];
   unavailableComponents: MessageComponentCategory[];
   riskyComponents: MessageComponentCategory[];
+  componentStatuses: Partial<Record<MessageComponentCategory, MessageSemanticStatus>>;
 }
+
+export type MessageSemanticStatus = "RELEVANT" | "SUPPORTED" | "RISKY_UNSUPPORTED" | "UNAVAILABLE" | "INCOMPATIBLE" | "REQUIRED";
 
 export interface PackagingEvidence {
   directness: Directness;
@@ -185,10 +188,19 @@ export interface TemporaryAffordance {
   expiresAfterBeat: number;
 }
 
+export interface TransientExpression {
+  actorId: ActorId;
+  channel: "hands";
+  value: string;
+  sourceEventId: string;
+  expiresAfterBeat: number;
+}
+
 export interface RoomStateV3 {
   doorOpen: boolean;
   envelopeAccessRevealed: boolean;
   temporaryAffordances: TemporaryAffordance[];
+  transientExpressions: TransientExpression[];
 }
 
 interface BaseAction {
@@ -272,10 +284,20 @@ export interface NpcPriorityWeights {
 
 export interface DistractionOutcome {
   success: boolean;
+  visibilityByObserver: Record<NpcId, ObserverVisibility>;
+  attributionByObserver: Record<NpcId, Attribution>;
+}
+
+export interface ObserverVisibility {
   eventVisible: boolean;
   playerActionVisible: boolean;
   causalVisibility: boolean;
-  attributionByObserver: Record<NpcId, Attribution>;
+}
+
+export interface MessageIdentityLineage {
+  plannedMessageId: string;
+  effectiveMessageId: string;
+  degradedFromMessageId: string | null;
 }
 
 export interface ActionResolution {
@@ -292,6 +314,7 @@ export interface ActionResolution {
   receptionIds: string[];
   distraction: DistractionOutcome | null;
   messageCompatibility: MessageCompatibilityResult | null;
+  messageIdentity: MessageIdentityLineage | null;
 }
 
 export interface MutationTraceV3 {

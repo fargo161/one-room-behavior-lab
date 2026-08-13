@@ -1,27 +1,31 @@
-# v0.3 Focused-Repair Test and Acceptance Matrix
+# v0.3 Semantic-Closure Test and Acceptance Matrix
 
 ## Automated suite
 
-The focused-repair branch retains the stabilized v0.2.1 regression coverage and the original v0.3 tests, then adds 34 behavior-level focused-repair tests in `src/v3/focused-repair.test.ts`.
+The semantic-closure branch retains all stabilized, original v0.3, and focused-repair coverage. It adds 18 exact semantic-closure regressions in `src/v3/semantic-closure.test.ts` and 3 interaction-capable component/render tests in `src/v3/dynamic-ui.test.tsx`.
 
 Current expected result:
 
-- **164 Vitest tests** across three test files;
+- **185 Vitest tests** across five test files;
+- **18 focused semantic-closure tests**;
+- **3 dynamic UI/component tests**;
 - **1 rendered-page smoke test**;
-- **165 automated checks total**.
+- **186 distinct automated checks total**.
 
 | Area | Automated evidence |
 | --- | --- |
 | Beat economy | 3 AP accepted; repeated action families accepted; fourth action rejected; invalidation/cancellation retain commitment |
-| Object invariants | held object follows holder; stale position prohibited; enforceable guard blocks; compromised guard opens access; secure/lock rules; actor symmetry |
+| Object invariants | held object follows holder; guard-only `SECURE` cannot steal possession; current holder can secure; compromised guard cannot bypass possession; invariant audit |
+| Dynamic world rendering | take + holder Move re-renders envelope at holder location; table association is absent; locked-away envelope is hidden |
 | Physical movement | physical-only nodes; one-edge movement; derived proximity; actor-targeted movement; natural retarget; departed target invalidation |
 | Message limits | duplicate direct recipient rejected; overhearing does not consume direct allowance; one valid message remains 1 AP |
-| Message identity | structured identity controls mechanics; wording remains downstream |
-| Message compatibility | contextual categories; required support; invalid vs risky; world availability; mid-Beat degrade/invalidate; traceability |
+| Message identity | same payload/same ID; semantic change/new ID; planned/effective degradation lineage; wording remains downstream |
+| Message compatibility | value-level support and relevance; signed-note, Drew-observation, and actual-Mara-statement provenance; exit evidence; risky vs incompatible |
 | Delivery and reception | direct/full/partial/noticed/none; plausible delivery; impossible intended hearing; ordinary direct address remains robust |
-| Distraction | observer-relative attribution; progressive vigilance; attributable failure; observed exploit connection; natural events have no player authorship |
-| NPC planning | hard constraints; legal candidates; operative weight changes; deterministic output; player-plan independence; rationale |
-| Room events | all five effect identities; real position/reveal/distraction consequences; deterministic expiry and replay; provenance |
+| Distraction | observer-relative visibility/attribution; exploit requires seeing both stages; different observers can disagree; ordinary UI remains bounded |
+| NPC planning | Mara and Drew vigilance are operative; hard constraints; legal candidates; weights; deterministic output; rationale |
+| Room events | operative light flicker; `durationBeats` one/two-Beat semantics; deterministic expiry; transient expression overlay/removal; provenance |
+| Player object affordance | player `SECURE` appears only for the holder; `LOCK_AWAY` remains Drew-specific; UI/engine rules share one source |
 | Player inference | Scan returns observable channels without trajectory labels; normal history avoids weak hidden attribution labels |
 | Packaging Evidence | grounded control evidence only; no emotion/BASED/Function/motive inference |
 | Object retarget | same-object identity cannot grant free movement |
@@ -36,11 +40,12 @@ Run from repository root:
 npx tsc --noEmit
 npm run lint
 npm test
+npm run test:ui
 npm run build
 npm run test:rendered
 ```
 
-Every command must exit successfully before merge review.
+Every command must exit successfully before final read-only audit. `.github/workflows/merge-readiness.yml` runs the same gates on v0.3 branch pushes and pull requests targeting `main`.
 
 ## Player-view acceptance
 

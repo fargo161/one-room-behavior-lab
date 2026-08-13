@@ -4,6 +4,8 @@ import { useMemo, useState } from "react";
 import { prototypeConfig, roomAnchorLabels } from "../src/v3/config";
 import {
   appendPlayerAction,
+  actorHandsForDisplay,
+  availableInteractionOperations,
   commitPlayerBeat,
   createInitialSessionV3,
   makeDistractAction,
@@ -64,19 +66,20 @@ function ActorTableau({ session, id }: { session: BehaviorLabSessionV3; id: "MAR
     <div className="actor-copy">
       <div className="actor-heading"><h3>{actor.name}</h3><span>Observable evidence</span></div>
       <strong>{actor.active ? roomAnchorLabels[actor.position] : "has left the room"}</strong>
-      <p>{actor.orientation}. {actor.posture}. {actor.hands}.</p>
+      <p>{actor.orientation}. {actor.posture}. {actorHandsForDisplay(session.world, id)}.</p>
     </div>
   </article>;
 }
 
-function RoomTableau({ session }: { session: BehaviorLabSessionV3 }) {
+export function RoomTableau({ session }: { session: BehaviorLabSessionV3 }) {
   const { world } = session;
   return <section className="room-shell" aria-labelledby="room-title">
     <div className="section-heading"><div><span className="eyebrow">Beat-start tableau</span><h2 id="room-title">Read the room before you commit.</h2></div><span className={`noise-pill noise-${world.roomNoise.toLowerCase()}`}>{humanize(world.roomNoise)} room</span></div>
     <div className="room-event"><span className="event-pulse" aria-hidden="true" /><div><strong>{world.currentRoomEvent.title}</strong><p>{world.currentRoomEvent.description} {world.currentRoomEvent.actionableEffect}</p></div></div>
     <div className="room-map" aria-label="Discrete physical room positions">
       <div className="anchor anchor-window"><span>Window</span></div><div className="anchor anchor-door"><span>{world.room.doorOpen ? "Open door" : "Door"}</span></div><div className="anchor anchor-center"><span>Center</span></div><div className="anchor anchor-cabinet"><span>Cabinet</span></div>
-      <div className="anchor anchor-table"><span>Table</span>{world.envelope.visible ? <div className={`envelope envelope-${world.envelope.state.toLowerCase()}`} aria-label={`Envelope ${world.envelope.state.toLowerCase()}`}><i /><b>{humanize(world.envelope.state)}</b></div> : null}</div>
+      <div className="anchor anchor-table"><span>Table</span></div>
+      {world.envelope.visible ? <div className={`envelope envelope-world envelope-${world.envelope.state.toLowerCase()} at-${world.envelope.position.toLowerCase()}`} aria-label={`Envelope ${world.envelope.state.toLowerCase()} ${roomAnchorLabels[world.envelope.position]}${world.envelope.holderId ? ` held by ${actorLabel(world.envelope.holderId)}` : ""}`}><i /><b>{humanize(world.envelope.state)}</b>{world.envelope.holderId ? <small>{actorLabel(world.envelope.holderId)}</small> : null}</div> : null}
       {(["PLAYER", "MARA", "DREW"] as ActorId[]).map((actorId) => {
         const actor = world.actors[actorId];
         return actor.active ? <div key={actorId} className={`room-person person-${actorId.toLowerCase()} at-${actor.position.toLowerCase()}`}><span>{actorLabel(actorId)}</span><small>{humanize(actor.position)}</small></div> : null;
@@ -147,19 +150,21 @@ function MessageComposer({ session, onAdd }: { session: BehaviorLabSessionV3; on
   </div>;
 }
 
-function ActionComposer({ session, onAdd }: { session: BehaviorLabSessionV3; onAdd: (action: PlannedAction) => void }) {
-  const [kind, setKind] = useState<ActionKind>("MOVE");
+export function ActionComposer({ session, onAdd, initialKind = "MOVE" }: { session: BehaviorLabSessionV3; onAdd: (action: PlannedAction) => void; initialKind?: ActionKind }) {
+  const [kind, setKind] = useState<ActionKind>(initialKind);
   const [moveTarget, setMoveTarget] = useState<RoomAnchor | ActorId>("DREW");
   const [scanType, setScanType] = useState<ScanAction["targetType"]>("ACTOR");
   const [scanTarget, setScanTarget] = useState<ScanAction["targetId"]>("DREW");
   const [interaction, setInteraction] = useState<InteractAction["operation"]>("TAKE");
   const [distraction, setDistraction] = useState<DistractionMode>("VISIBLE_CALL");
   const [distractTarget, setDistractTarget] = useState<"MARA" | "DREW">("DREW");
+  const interactionOptions = availableInteractionOperations(session.world, "PLAYER");
+  const effectiveInteraction = interactionOptions.includes(interaction) ? interaction : interactionOptions[0] ?? interaction;
   const ordinal = session.playerPlan.actions.length + 1;
   const add = () => {
     if (kind === "MOVE") onAdd(makeMoveAction(session.world, "PLAYER", moveTarget, ordinal));
     if (kind === "SCAN") onAdd(makeScanAction(session.world, "PLAYER", scanType, scanTarget, ordinal));
-    if (kind === "INTERACT") onAdd(makeInteractAction(session.world, "PLAYER", interaction === "LEAVE" ? "DOOR" : "ENVELOPE", interaction, ordinal));
+    if (kind === "INTERACT") onAdd(makeInteractAction(session.world, "PLAYER", effectiveInteraction === "LEAVE" ? "DOOR" : "ENVELOPE", effectiveInteraction, ordinal));
     if (kind === "DISTRACT") onAdd(makeDistractAction(session.world, distractTarget, distraction, ordinal));
   };
   if (kind === "MESSAGE") return <MessageComposer session={session} onAdd={onAdd} />;
@@ -169,11 +174,11 @@ function ActionComposer({ session, onAdd }: { session: BehaviorLabSessionV3; onA
     <div className="compact-fields">
       {kind === "MOVE" ? <Select label="Move toward" value={moveTarget} onChange={setMoveTarget} options={["MARA", "DREW", ...Object.keys(roomAnchorLabels)] as Array<RoomAnchor | ActorId>} format={(value) => value === "MARA" || value === "DREW" ? actorLabel(value) : roomAnchorLabels[value as RoomAnchor]} /> : null}
       {kind === "SCAN" ? <><Select label="Scan type" value={scanType} onChange={(value) => { setScanType(value); setScanTarget(value === "ROOM" ? "ROOM" : value === "OBJECT" ? "ENVELOPE" : "DREW"); }} options={["ACTOR", "ROOM", "OBJECT"]} />{scanType === "ACTOR" ? <Select label="Actor" value={scanTarget as ActorId} onChange={(value) => setScanTarget(value)} options={["MARA", "DREW"] as ActorId[]} format={actorLabel} /> : null}</> : null}
-      {kind === "INTERACT" ? <Select label="Affordance" value={interaction} onChange={setInteraction} options={["TAKE", "PLACE_ON_TABLE", "INSPECT", "GUARD", "LEAVE"]} /> : null}
+      {kind === "INTERACT" ? interactionOptions.length ? <Select label="Affordance" value={effectiveInteraction} onChange={setInteraction} options={interactionOptions} /> : <p>No interaction is currently plausible.</p> : null}
       {kind === "DISTRACT" ? <><Select label="Target" value={distractTarget} onChange={setDistractTarget} options={["MARA", "DREW"]} format={actorLabel} /><Select label="Method" value={distraction} onChange={setDistraction} options={["VISIBLE_CALL", "COVERT_WINDOW_RATTLE"]} /></> : null}
     </div>
     <p className="action-help">{kind === "MOVE" ? "Choose a physical location or an actor. Actor-targeted movement preserves that identity if they move first." : kind === "SCAN" ? "Scan reveals richer observable evidence, never hidden trajectories or meters." : kind === "INTERACT" ? "Object and door affordances are rechecked when this action resolves." : "Attention success and each observer's attribution resolve separately."}</p>
-    <button className="add-action" type="button" onClick={add}>Add {humanize(kind)} to plan</button>
+    <button className="add-action" type="button" disabled={kind === "INTERACT" && interactionOptions.length === 0} onClick={add}>Add {humanize(kind)} to plan</button>
   </div>;
 }
 
@@ -214,7 +219,7 @@ export default function BehaviorLab() {
   const validation = useMemo(() => validatePlan(session.world, session.playerPlan), [session]);
   const addAction = (action: PlannedAction) => { setSession((current) => appendPlayerAction(current, action)); setComposerKey((current) => current + 1); };
   return <main>
-    <header className="site-header"><div className="brand-mark"><span>OR</span><span>BL</span></div><div><span className="eyebrow">Executable social-tactics prototype · v0.3 focused repair</span><h1>One-Room Behavior Lab</h1><p>Observe. Plan three actions. Let them collide. Read the room again.</p></div><div className="beat-display"><span>Current Beat</span><strong>{String(session.world.beat).padStart(2, "0")}</strong><small>{validation.apRemaining} AP open</small></div></header>
+    <header className="site-header"><div className="brand-mark"><span>OR</span><span>BL</span></div><div><span className="eyebrow">Executable social-tactics prototype · v0.3 semantic closure</span><h1>One-Room Behavior Lab</h1><p>Observe. Plan three actions. Let them collide. Read the room again.</p></div><div className="beat-display"><span>Current Beat</span><strong>{String(session.world.beat).padStart(2, "0")}</strong><small>{validation.apRemaining} AP open</small></div></header>
     {session.world.terminal ? <section className="terminal-banner"><span>{humanize(session.world.terminal.kind)}</span><h2>The room reached a terminal state.</h2><p>{session.world.terminal.explanation}</p><button type="button" onClick={() => setSession(createInitialSessionV3(session.world.seed))}>Restart same seed</button></section> : null}
     <div className="primary-layout"><RoomTableau session={session} /><ActionQueue session={session} setSession={setSession} /></div>
     <section className="planning-shell" aria-labelledby="planning-title"><div className="section-heading planning-heading"><div><span className="eyebrow">Action queue</span><h2 id="planning-title">What do you do next?</h2></div><p>Every normal action costs 1 AP. Repeated action types are legal.</p></div><ActionComposer key={composerKey} session={session} onAdd={addAction} /></section>

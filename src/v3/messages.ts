@@ -7,6 +7,7 @@ import type {
   MessageCompatibilityResult,
   MessageComponentCategory,
   MessageDraftV3,
+  MessageSemanticStatus,
   OfferId,
   PackagingEvidence,
   PromiseId,
@@ -129,19 +130,51 @@ const componentActive = (draft: MessageDraftV3, category: MessageComponentCatego
 const worldAvailability = (world: WorldStateV3, draft: MessageDraftV3, category: MessageComponentCategory): string | null => {
   if (!componentActive(draft, category)) return null;
   if (category === "evidenceId" && draft.evidenceId === "OPEN_DOOR" && !world.room.doorOpen) return "The door is not currently open.";
-  if (category === "evidenceId" && draft.evidenceId === "MARA_STATEMENT" && !world.actors.MARA.active) return "Mara is no longer present to verify the statement.";
-  if (category === "evidenceId" && draft.evidenceId === "DREW_GLANCES" && !world.actors.DREW.active) return "Drew is no longer present for the cited behavior to be checked.";
   if (category === "conditionId" && draft.conditionId === "IF_DOOR_STAYS_OPEN" && !world.room.doorOpen) return "The door is not currently open.";
   if (category === "conditionId" && draft.conditionId === "IF_DREW_STEPS_AWAY" && !world.actors.DREW.active) return "Drew is no longer in the room.";
   return null;
 };
 
-const risky = (world: WorldStateV3, draft: MessageDraftV3, category: MessageComponentCategory): boolean => {
-  if (category === "evidenceId" && draft.evidenceId === "SIGNED_NOTE") return !world.actors.PLAYER.observations.some((item) => item.evidence.some((line) => line.toLowerCase().includes("signed note")));
-  if (category === "evidenceId" && draft.evidenceId === "MARA_STATEMENT") return !world.messages.some((item) => item.senderId === "MARA");
-  if (category === "promiseId" && draft.promiseId === "RETURN_ENVELOPE") return world.envelope.state === "LOCKED_AWAY" || world.envelope.holderId !== "PLAYER";
-  if (category === "offerId" && draft.offerId === "SHOW_AUTHORIZATION") return draft.evidenceId !== "SIGNED_NOTE";
-  return false;
+const playerObserved = (world: WorldStateV3, target: string, pattern: RegExp): boolean => world.actors.PLAYER.observations.some((item) => item.target === target && item.evidence.some((line) => pattern.test(line)));
+
+const relevantMaraStatementCores: Record<CoreContentId, CoreContentId[]> = {
+  ASK_FOR_ENVELOPE: ["ASK_FOR_ENVELOPE", "SHARE_AUTHORIZATION"],
+  ASK_INTENTIONS: [],
+  OFFER_HELP: [],
+  SHARE_AUTHORIZATION: ["SHARE_AUTHORIZATION"],
+  REQUEST_PRIVACY: [],
+  WARN_ABOUT_EXIT: ["WARN_ABOUT_EXIT", "REPORT_DANGER"],
+  REPORT_DANGER: ["REPORT_DANGER", "WARN_ABOUT_EXIT"],
+};
+
+const evidenceRelevant = (draft: MessageDraftV3): boolean => {
+  if (draft.evidenceId === "NONE") return true;
+  if (draft.evidenceId === "SIGNED_NOTE") return ["ASK_FOR_ENVELOPE", "SHARE_AUTHORIZATION"].includes(draft.coreContentId);
+  if (draft.evidenceId === "OPEN_DOOR") return ["WARN_ABOUT_EXIT", "REPORT_DANGER"].includes(draft.coreContentId);
+  if (draft.evidenceId === "DREW_GLANCES") return ["ASK_FOR_ENVELOPE", "REPORT_DANGER"].includes(draft.coreContentId);
+  return relevantMaraStatementCores[draft.coreContentId].length > 0;
+};
+
+const evidenceGrounded = (world: WorldStateV3, draft: MessageDraftV3): boolean => {
+  if (draft.evidenceId === "SIGNED_NOTE") return playerObserved(world, "ENVELOPE", /signed note/i);
+  if (draft.evidenceId === "OPEN_DOOR") return world.room.doorOpen;
+  if (draft.evidenceId === "DREW_GLANCES") return playerObserved(world, "DREW", /(envelope|checking|glance)/i);
+  if (draft.evidenceId === "MARA_STATEMENT") return world.messages.some((item) => item.senderId === "MARA" && relevantMaraStatementCores[draft.coreContentId].includes(item.coreContentId));
+  return true;
+};
+
+const semanticStatus = (world: WorldStateV3, draft: MessageDraftV3, category: MessageComponentCategory): MessageSemanticStatus => {
+  const rule = messageCompatibilityRules[draft.coreContentId];
+  if (!componentActive(draft, category)) return rule.required.includes(category) ? "REQUIRED" : "RELEVANT";
+  if (!rule.allowed.includes(category)) return "INCOMPATIBLE";
+  if (worldAvailability(world, draft, category)) return "UNAVAILABLE";
+  if (category === "evidenceId") {
+    if (!evidenceRelevant(draft)) return "INCOMPATIBLE";
+    return evidenceGrounded(world, draft) ? "SUPPORTED" : "RISKY_UNSUPPORTED";
+  }
+  if (category === "promiseId" && draft.promiseId === "RETURN_ENVELOPE" && (world.envelope.state === "LOCKED_AWAY" || world.envelope.holderId !== "PLAYER")) return "RISKY_UNSUPPORTED";
+  if (category === "offerId" && draft.offerId === "SHOW_AUTHORIZATION" && !(draft.evidenceId === "SIGNED_NOTE" && evidenceGrounded(world, draft))) return "RISKY_UNSUPPORTED";
+  return "RELEVANT";
 };
 
 export function validateMessageDraft(world: WorldStateV3, draft: MessageDraftV3): MessageCompatibilityResult {
@@ -149,26 +182,30 @@ export function validateMessageDraft(world: WorldStateV3, draft: MessageDraftV3)
   const invalidReasons: string[] = [];
   const unavailableComponents: MessageComponentCategory[] = [];
   const riskyComponents: MessageComponentCategory[] = [];
+  const componentStatuses: Partial<Record<MessageComponentCategory, MessageSemanticStatus>> = {};
   for (const category of Object.keys(messageComponentLabels) as MessageComponentCategory[]) {
+    const status = semanticStatus(world, draft, category);
+    componentStatuses[category] = status;
     if (!componentActive(draft, category)) continue;
-    if (!rule.allowed.includes(category)) invalidReasons.push(`${messageComponentLabels[category]} is not relevant to ${draft.coreContentId}.`);
-    const unavailable = worldAvailability(world, draft, category);
-    if (unavailable) {
+    if (status === "INCOMPATIBLE") invalidReasons.push(`${messageComponentLabels[category]} value ${String(componentValue(draft, category))} is incompatible with ${draft.coreContentId}.`);
+    if (status === "UNAVAILABLE") {
       unavailableComponents.push(category);
-      invalidReasons.push(`${messageComponentLabels[category]} is unavailable: ${unavailable}`);
+      invalidReasons.push(`${messageComponentLabels[category]} is unavailable: ${worldAvailability(world, draft, category)}`);
     }
-    if (risky(world, draft, category)) riskyComponents.push(category);
+    if (status === "RISKY_UNSUPPORTED") riskyComponents.push(category);
   }
-  const requiredMissing = rule.required.filter((category) => !componentActive(draft, category) || unavailableComponents.includes(category));
+  const requiredMissing = rule.required.filter((category) => !componentActive(draft, category) || ["UNAVAILABLE", "INCOMPATIBLE"].includes(componentStatuses[category] ?? "REQUIRED"));
   for (const category of requiredMissing) invalidReasons.push(`${messageComponentLabels[category]} is required for ${draft.coreContentId}.`);
-  return { valid: invalidReasons.length === 0, invalidReasons, requiredMissing, unavailableComponents, riskyComponents };
+  return { valid: invalidReasons.length === 0, invalidReasons, requiredMissing, unavailableComponents, riskyComponents, componentStatuses };
 }
 
-export function getMessageOptionState(world: WorldStateV3, draft: MessageDraftV3, category: MessageComponentCategory, value: string | boolean): { enabled: boolean; reason: string | null; risky: boolean } {
-  if (!messageCompatibilityRules[draft.coreContentId].allowed.includes(category)) return { enabled: false, reason: "Not relevant to this core message.", risky: false };
+export function getMessageOptionState(world: WorldStateV3, draft: MessageDraftV3, category: MessageComponentCategory, value: string | boolean): { enabled: boolean; reason: string | null; risky: boolean; status: MessageSemanticStatus } {
+  if (!messageCompatibilityRules[draft.coreContentId].allowed.includes(category)) return { enabled: false, reason: "Not relevant to this core message.", risky: false, status: "INCOMPATIBLE" };
   const candidate = { ...draft, [category]: value } as MessageDraftV3;
-  const unavailable = worldAvailability(world, candidate, category);
-  return { enabled: !unavailable, reason: unavailable, risky: risky(world, candidate, category) };
+  const status = semanticStatus(world, candidate, category);
+  const enabled = !["UNAVAILABLE", "INCOMPATIBLE"].includes(status);
+  const reason = status === "INCOMPATIBLE" ? `${String(value)} does not support ${draft.coreContentId}.` : worldAvailability(world, candidate, category);
+  return { enabled, reason, risky: status === "RISKY_UNSUPPORTED", status };
 }
 
 export const contextualMessageCategories = (coreContentId: CoreContentId): MessageComponentCategory[] => [...messageCompatibilityRules[coreContentId].allowed];

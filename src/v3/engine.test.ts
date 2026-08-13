@@ -323,7 +323,9 @@ describe("v0.3 ordered collisions and revalidation", () => {
     const result = next.lastResolutions.find((item) => item.actionId === whisper.id);
     expect(result?.status).toBe("DEGRADED");
     expect(result?.sourceTraceRefs.length).toBeGreaterThan(0);
-    expect(next.receptions.find((item) => item.messageId === whisper.message.id && item.actorId === "MARA")?.deliveryResolvedAs).toBe("LOW_VOICE");
+    const effectiveId = result?.messageIdentity?.effectiveMessageId;
+    expect(effectiveId).not.toBe(whisper.message.id);
+    expect(next.receptions.find((item) => item.messageId === effectiveId && item.actorId === "MARA")?.deliveryResolvedAs).toBe("LOW_VOICE");
   });
 });
 
@@ -451,7 +453,8 @@ describe("v0.3 documented end-to-end acceptance Beat", () => {
       },
     });
     expect(next.lastResolutions.find((item) => item.actionId === playerWhisper.id)?.status).toBe("DEGRADED");
-    expect(next.receptions.find((item) => item.messageId === playerWhisper.message.id && item.actorId === "DREW")).toMatchObject({ kind: "OVERHEARD_FULL" });
+    const effectiveId = next.lastResolutions.find((item) => item.actionId === playerWhisper.id)?.messageIdentity?.effectiveMessageId;
+    expect(next.receptions.find((item) => item.messageId === effectiveId && item.actorId === "DREW")).toMatchObject({ kind: "OVERHEARD_FULL" });
     expect(next.actors.MARA.position).toBe("DOOR");
     expect(next.actors.DREW.position).toBe("TABLE");
     expect(next.envelope).toMatchObject({ state: "GUARDED", guardedBy: "DREW" });

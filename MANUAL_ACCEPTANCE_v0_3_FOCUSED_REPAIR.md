@@ -2,6 +2,8 @@
 
 Status: **PROVISIONAL / PROTOTYPE-LOCAL**
 
+Historical note: this walkthrough originated with the focused repair. The semantic-closure branch preserves it and adds the closure checks below; earlier focused-repair claims should be read alongside `SEMANTIC_CLOSURE_REPORT_v0_3.md`.
+
 This walkthrough checks the repaired systems as a player-facing composition rather than as isolated data fields. Matching automated cases live in `src/v3/focused-repair.test.ts`.
 
 ## 1. Initial evidence and natural opportunity
@@ -113,3 +115,13 @@ Expected debug evidence:
 ## Acceptance result
 
 Pass when the ordinary UI satisfies the evidence/inference requirements, debug satisfies the audit requirements, and the full validation stack passes. Do not merge as part of this walkthrough.
+
+## 8. Semantic-closure additions
+
+- After the player takes and moves with the envelope, the room map places it at the player's current anchor and labels the held state; it is not left on the table.
+- Player `SECURE` appears only while the player physically holds the envelope. Player `LOCK_AWAY` never appears.
+- Authorization evidence options disable semantically irrelevant values such as `OPEN_DOOR`; unsupported but coherent evidence is labeled risky.
+- Debug resolutions distinguish planned and effective message IDs after degradation and TRACE records their lineage.
+- Debug distraction output stores separate Mara/Drew visibility records; causal exploitation appears only for an observer who saw both stages.
+- Mara vigilance changes later planner rationale and directs her first action toward watching the player.
+- Light flicker creates an actual guard opening, its temporary hand pose disappears on expiry, and later persistent hand/object state remains intact.

@@ -27,6 +27,7 @@ import type {
   MessageCompatibilityResult,
   MessageComponentCategory,
   MessageDraftV3,
+  MessageIdentityLineage,
   MoveAction,
   MoveTarget,
   NpcId,
@@ -164,16 +165,23 @@ function incrementActorMetric(world: WorldStateV3, recorder: MutationRecorderV3,
 }
 
 const addTemporaryAffordance = (world: WorldStateV3, recorder: MutationRecorderV3, id: WorldStateV3["room"]["temporaryAffordances"][number]["id"], event: RoomEventState, context: MutationContext, refs: string[]) => {
-  const next = [...world.room.temporaryAffordances.filter((item) => item.id !== id), { id, sourceEventId: event.id, expiresAfterBeat: world.beat }];
-  refs.push(recorder.record("room.temporaryAffordances", world.room.temporaryAffordances, next, "RULE_ROOM_EVENT_TEMPORARY_AFFORDANCE", "The scenario-authored event creates an explicit Beat-scoped affordance.", { ...context, sourceTraceRefs: refs }, () => { world.room.temporaryAffordances = next; }));
+  const expiresAfterBeat = world.beat + Math.max(1, event.durationBeats ?? 1) - 1;
+  const next = [...world.room.temporaryAffordances.filter((item) => item.id !== id), { id, sourceEventId: event.id, expiresAfterBeat }];
+  refs.push(recorder.record("room.temporaryAffordances", world.room.temporaryAffordances, next, "RULE_ROOM_EVENT_TEMPORARY_AFFORDANCE", `The authored duration keeps this affordance active through Beat ${expiresAfterBeat}.`, { ...context, sourceTraceRefs: refs }, () => { world.room.temporaryAffordances = next; }));
 };
 
-function prepareRoomEvent(world: WorldStateV3, recorder: MutationRecorderV3): void {
-  const event = eventFor(world.seed, world.beat);
+export const actorHandsForDisplay = (world: WorldStateV3, actorId: ActorId): string => world.room.transientExpressions.find((item) => item.actorId === actorId && item.channel === "hands" && item.expiresAfterBeat >= world.beat)?.value ?? world.actors[actorId].hands;
+
+function prepareRoomEvent(world: WorldStateV3, recorder: MutationRecorderV3, eventOverride?: RoomEventState): void {
+  const event = eventOverride ? clone(eventOverride) : eventFor(world.seed, world.beat);
   const context: MutationContext = { beat: world.beat, slot: 0, actorId: null, actionId: event.id, sourceEventId: event.id, status: "NORMAL" };
   const unexpired = world.room.temporaryAffordances.filter((item) => item.expiresAfterBeat >= world.beat);
   if (unexpired.length !== world.room.temporaryAffordances.length) {
     recorder.record("room.temporaryAffordances", world.room.temporaryAffordances, unexpired, "RULE_ROOM_EVENT_AFFORDANCE_EXPIRY", "Beat-scoped affordances expire deterministically before the next event.", context, () => { world.room.temporaryAffordances = unexpired; });
+  }
+  const activeExpressions = world.room.transientExpressions.filter((item) => item.expiresAfterBeat >= world.beat);
+  if (activeExpressions.length !== world.room.transientExpressions.length) {
+    recorder.record("room.transientExpressions", world.room.transientExpressions, activeExpressions, "RULE_TRANSIENT_EXPRESSION_EXPIRY", "Expired expressive overlays are removed without overwriting newer persistent actor state.", context, () => { world.room.transientExpressions = activeExpressions; });
   }
   if (world.room.envelopeAccessRevealed && !unexpired.some((item) => item.id === "ENVELOPE_REVEALED")) {
     recorder.record("room.envelopeAccessRevealed", true, false, "RULE_ROOM_EVENT_AFFORDANCE_EXPIRY", "The temporary exposed-seal affordance expired.", context, () => { world.room.envelopeAccessRevealed = false; });
@@ -194,13 +202,17 @@ function prepareRoomEvent(world: WorldStateV3, recorder: MutationRecorderV3): vo
   }
   if (event.effectId === "NATURAL_PHONE_DISTRACTION") {
     addTemporaryAffordance(world, recorder, "DREW_NATURALLY_DISTRACTED", event, context, refs);
-    const compromised = setActorField(world, recorder, "DREW", "guardCompromisedUntilBeat", world.beat, "RULE_NATURAL_DISTRACTION_GUARD_OPENING", "A causally independent room event compromises Drew's guard without player attribution.", { ...context, sourceTraceRefs: refs });
+    const expiresAfterBeat = world.beat + Math.max(1, event.durationBeats ?? 1) - 1;
+    const compromised = setActorField(world, recorder, "DREW", "guardCompromisedUntilBeat", expiresAfterBeat, "RULE_NATURAL_DISTRACTION_GUARD_OPENING", "A causally independent room event compromises Drew's guard for its authored duration without player attribution.", { ...context, sourceTraceRefs: refs });
     if (compromised) refs.push(compromised);
   }
   if (event.effectId === "LIGHT_OCCUPATION") {
     addTemporaryAffordance(world, recorder, "LIGHT_FLICKER_OPENING", event, context, refs);
-    const hands = setActorField(world, recorder, "DREW", "hands", "raised briefly against the flickering light", "RULE_OCCUPATION_CHANGES_TABLEAU", "The occupation event visibly changes Drew's hand posture.", { ...context, sourceTraceRefs: refs });
-    if (hands) refs.push(hands);
+    const expiresAfterBeat = world.beat + Math.max(1, event.durationBeats ?? 1) - 1;
+    const expressions = [...world.room.transientExpressions.filter((item) => !(item.actorId === "DREW" && item.channel === "hands")), { actorId: "DREW" as const, channel: "hands" as const, value: "raised briefly against the flickering light", sourceEventId: event.id, expiresAfterBeat }];
+    refs.push(recorder.record("room.transientExpressions", world.room.transientExpressions, expressions, "RULE_OCCUPATION_TRANSIENT_TABLEAU", "The light flicker adds a duration-bound hand-pose overlay rather than mutating persistent object posture.", { ...context, sourceTraceRefs: refs }, () => { world.room.transientExpressions = expressions; }));
+    const compromised = setActorField(world, recorder, "DREW", "guardCompromisedUntilBeat", expiresAfterBeat, "RULE_LIGHT_FLICKER_GUARD_OPENING", "The visible occupation creates a small operative opening by compromising Drew's guard for the authored duration.", { ...context, sourceTraceRefs: refs });
+    if (compromised) refs.push(compromised);
   }
   if (event.effectId === "HALLWAY_INTERRUPTION") {
     const pressure = incrementActorMetric(world, recorder, "MARA", "maraExitPressure", 1, "RULE_INTERRUPTION_EXIT_SALIENCE", "The hallway interruption makes the exit more salient to Mara.", { ...context, sourceTraceRefs: refs });
@@ -224,7 +236,7 @@ export function createInitialWorldV3(seed: number = prototypeConfig.defaultSeed)
     maxBeats: prototypeConfig.maxBeats,
     actors: { PLAYER: initialActor("PLAYER"), MARA: initialActor("MARA"), DREW: initialActor("DREW") },
     envelope: { id: "ENVELOPE", state: "AVAILABLE", position: "TABLE", holderId: null, guardedBy: null, visible: true },
-    room: { doorOpen: false, envelopeAccessRevealed: false, temporaryAffordances: [] },
+    room: { doorOpen: false, envelopeAccessRevealed: false, temporaryAffordances: [], transientExpressions: [] },
     roomNoise: "QUIET",
     currentRoomEvent: placeholderEvent(),
     roomEvents: [],
@@ -456,7 +468,7 @@ const isGuardEnforceable = (world: WorldStateV3, takerId: ActorId): boolean => {
   const guardId = world.envelope.guardedBy;
   if (!guardId || guardId === takerId) return false;
   const guard = world.actors[guardId];
-  return guard.active && guard.position === world.envelope.position && guard.guardCompromisedUntilBeat !== world.beat;
+  return guard.active && guard.position === world.envelope.position && (guard.guardCompromisedUntilBeat === null || guard.guardCompromisedUntilBeat < world.beat);
 };
 
 function resolveMove(world: WorldStateV3, action: MoveAction, recorder: MutationRecorderV3, slot: number): ActionResolution {
@@ -514,7 +526,7 @@ function resolveMessage(world: WorldStateV3, action: MessageAction, recorder: Mu
 
   const plannedDraft = messageToDraft(action.message);
   const compatibility = validateMessageDraft(world, plannedDraft);
-  if (compatibility.requiredMissing.length || compatibility.invalidReasons.some((reason) => reason.includes("not relevant"))) {
+  if (compatibility.requiredMissing.length || compatibility.invalidReasons.some((reason) => reason.includes("incompatible"))) {
     recorder.history(world.beat, action.actorId, action.id, `${actorName(action.actorId)}'s committed message could no longer retain its essential meaning.`, []);
     return resolution(action, slot, "INVALIDATED", "Essential message support became unavailable.", [], [], null, compatibility);
   }
@@ -531,8 +543,12 @@ function resolveMessage(world: WorldStateV3, action: MessageAction, recorder: Mu
   if (delivery === "WHISPER" && distance > prototypeConfig.reception.whisperDirectMaxDistance) { delivery = distance > 2 ? "NORMAL" : "LOW_VOICE"; status = "DEGRADED"; }
   else if (delivery === "LOW_VOICE" && distance > prototypeConfig.reception.lowVoiceDirectMaxDistance) { delivery = "NORMAL"; status = "DEGRADED"; }
   effectiveDraft.deliveryMode = delivery;
-  const effectiveMessage = { ...createStructuredMessage(action.actorId, world.beat, effectiveDraft), id: action.message.id, packagingEvidence: derivePackagingEvidence(effectiveDraft), surfaceText: renderMessage(effectiveDraft) };
+  const effectiveMessage = { ...createStructuredMessage(action.actorId, world.beat, effectiveDraft), packagingEvidence: derivePackagingEvidence(effectiveDraft), surfaceText: renderMessage(effectiveDraft) };
+  const messageIdentity: MessageIdentityLineage = { plannedMessageId: action.message.id, effectiveMessageId: effectiveMessage.id, degradedFromMessageId: effectiveMessage.id === action.message.id ? null : action.message.id };
   const context = { ...base, status, sourceTraceRefs: revalidationRefs };
+  if (messageIdentity.degradedFromMessageId) {
+    revalidationRefs.push(recorder.record<unknown>(`messageLineage.${action.message.id}`, { plannedMessageId: action.message.id }, messageIdentity, "RULE_MESSAGE_IDENTITY_LINEAGE", "A changed effective semantic payload receives its own fingerprint while preserving explicit lineage to the planned identity.", context, () => {}));
+  }
   const messageTrace = recorder.record(`messages.${effectiveMessage.id}`, null, effectiveMessage, "RULE_STRUCTURED_MESSAGE_EVENT", "Planned identity and any explicit resolution degradation remain inspectable.", context, () => world.messages.push(effectiveMessage));
   const receptions: ReceptionRecord[] = [];
   for (const actorId of actorIds) {
@@ -579,12 +595,12 @@ function resolveMessage(world: WorldStateV3, action: MessageAction, recorder: Mu
     const evidence = heard.kind === "OVERHEARD_PARTIAL" ? heard.fragment : heard.kind === "NOTICED_ONLY" ? "the communication, but not its content" : heard.content;
     recorder.history(world.beat, heard.actorId, action.id, `${actorName(heard.actorId)} ${heard.kind === "NOTICED_ONLY" ? "noticed" : "overheard"} ${evidence ?? "the exchange"}.`, heard.sourceTraceRefs);
   }
-  return resolution(action, slot, status, direct?.kind === "NONE" ? "The message was spoken but could not reach its intended recipient." : status === "DEGRADED" ? "Message resolved with explicit degradation." : "Message resolved through actor-specific reception.", refs, receptions.map((item) => item.id), null, compatibility);
+  return resolution(action, slot, status, direct?.kind === "NONE" ? "The message was spoken but could not reach its intended recipient." : status === "DEGRADED" ? "Message resolved with explicit degradation." : "Message resolved through actor-specific reception.", refs, receptions.map((item) => item.id), null, compatibility, messageIdentity);
 }
 
 const observationEvidence = (world: WorldStateV3, action: ScanAction): string[] => {
   if (action.targetType === "ROOM") return [`Mara is ${roomAnchorLabels[world.actors.MARA.position]}; Drew is ${roomAnchorLabels[world.actors.DREW.position]}.`, `${world.currentRoomEvent.title} currently shapes the room.`, world.room.doorOpen ? "The door stands open to the hall." : "The door remains mostly closed."];
-  if (action.targetType === "OBJECT") return [`The envelope is ${world.envelope.state.toLowerCase().replaceAll("_", " ")} ${roomAnchorLabels[world.envelope.position]}.`, world.envelope.holderId ? `${actorName(world.envelope.holderId)} has it in hand.` : world.envelope.guardedBy ? `${actorName(world.envelope.guardedBy)} keeps a hand close to it.` : "No one is holding it.", world.room.envelopeAccessRevealed ? "Its exposed seal can be read without closing the full distance." : "Papers partly obscure its seal."];
+  if (action.targetType === "OBJECT") return [`The envelope is ${world.envelope.state.toLowerCase().replaceAll("_", " ")} ${roomAnchorLabels[world.envelope.position]}.`, world.envelope.holderId ? `${actorName(world.envelope.holderId)} has it in hand.` : world.envelope.guardedBy ? `${actorName(world.envelope.guardedBy)} keeps a hand close to it.` : "No one is holding it.", world.room.envelopeAccessRevealed ? "A signed note authorizing envelope handling is visible beneath the exposed seal." : "Papers partly obscure its seal."];
   const target = world.actors[action.targetId as ActorId];
   return [`${target.name} is ${roomAnchorLabels[target.position]}, looking toward ${target.gaze}.`, `${target.posture}; ${target.hands}.`, `${target.orientation}; their face appears ${target.face.toLowerCase()}.`];
 };
@@ -616,9 +632,13 @@ function applyObservedExploit(world: WorldStateV3, recorder: MutationRecorderV3,
     const actor = world.actors[observerId];
     const index = actor.distractionBeliefs.findIndex((belief) => belief.beat === world.beat && belief.success && !belief.exploited && ["DIRECT", "LIKELY"].includes(belief.attribution));
     if (index < 0) continue;
+    const distance = roomDistance(actor.position, world.actors.PLAYER.position);
+    const attendingExploit = (actor.attention.kind === "ACTOR" && actor.attention.id === "PLAYER") || (actor.attention.kind === "OBJECT" && actor.attention.id === "ENVELOPE");
+    const exploitVisible = actor.active && world.envelope.visible && distance <= 1 && (distance === 0 || attendingExploit);
+    if (!exploitVisible) continue;
     const nextBeliefs = clone(actor.distractionBeliefs);
     nextBeliefs[index].exploited = true;
-    const beliefTrace = setActorField(world, recorder, observerId, "distractionBeliefs", nextBeliefs, "RULE_OBSERVED_DISTRACTION_EXPLOIT", "The observer connects an attributable distraction with the player's visible exploitation.", { ...context, attribution: nextBeliefs[index].attribution, sourceTraceRefs: refs });
+    const beliefTrace = setActorField(world, recorder, observerId, "distractionBeliefs", nextBeliefs, "RULE_OBSERVED_DISTRACTION_EXPLOIT", "The observer connects an attributable distraction with exploitation only after independently seeing the later TAKE.", { ...context, visibility: `observer:${observerId};exploit:true`, attribution: nextBeliefs[index].attribution, sourceTraceRefs: refs });
     if (beliefTrace) refs.push(beliefTrace);
     const attention = setActorField(world, recorder, observerId, "attention", { kind: "ACTOR", id: "PLAYER" }, "RULE_OBSERVED_EXPLOIT_VIGILANCE", "Observed exploitation focuses later attention on the player.", { ...context, attribution: nextBeliefs[index].attribution, sourceTraceRefs: refs });
     if (attention) refs.push(attention);
@@ -692,9 +712,9 @@ function resolveInteract(world: WorldStateV3, action: InteractAction, recorder: 
     return resolution(action, slot, "NORMAL", "The envelope is actively guarded.", refs);
   }
   if (action.operation === "SECURE") {
-    const controls = world.envelope.guardedBy === action.actorId || world.envelope.holderId === action.actorId;
-    if (!withinReach || !controls) return unavailable(`${actorName(action.actorId)} cannot secure the envelope without controlling it.`);
-    const refs = transitionEnvelope(world, recorder, { ...world.envelope, state: "SECURED", holderId: action.actorId, guardedBy: world.envelope.guardedBy === action.actorId ? null : world.envelope.guardedBy }, "RULE_OBJECT_SECURE", "A controlling actor converts ordinary control into secured possession.", context);
+    const physicallyHolds = world.envelope.holderId === action.actorId;
+    if (!withinReach || !physicallyHolds) return unavailable(`${actorName(action.actorId)} cannot secure an envelope they do not physically hold.`);
+    const refs = transitionEnvelope(world, recorder, { ...world.envelope, state: "SECURED", holderId: action.actorId }, "RULE_OBJECT_SECURE", "Only the current physical holder can strengthen possession into a secured state; guarding alone never transfers possession.", context);
     const hands = setActorField(world, recorder, action.actorId, "hands", "holding the envelope tight against their body", "RULE_OBJECT_TABLEAU", "Secured possession is directly observable.", { ...context, sourceTraceRefs: refs });
     if (hands) refs.push(hands);
     recorder.history(world.beat, action.actorId, action.id, `${actorName(action.actorId)} secured the envelope against their body.`, refs);
@@ -728,6 +748,12 @@ function attributionForObserver(world: WorldStateV3, observerId: NpcId, action: 
   return "NONE";
 }
 
+const distractionVisibilityForObserver = (observerId: NpcId, action: DistractAction, success: boolean, attribution: Attribution) => ({
+  eventVisible: success && (observerId === action.targetActorId || attribution !== "NONE"),
+  playerActionVisible: attribution !== "NONE",
+  causalVisibility: success && ["DIRECT", "LIKELY"].includes(attribution),
+});
+
 function resolveDistract(world: WorldStateV3, action: DistractAction, recorder: MutationRecorderV3, slot: number): ActionResolution {
   const target = world.actors[action.targetActorId];
   const context: MutationContext = { beat: world.beat, slot, actorId: "PLAYER", actionId: action.id, sourceEventId: action.id, status: "NORMAL" };
@@ -735,9 +761,10 @@ function resolveDistract(world: WorldStateV3, action: DistractAction, recorder: 
   const success = action.mode === "VISIBLE_CALL" || world.actors.PLAYER.position === prototypeConfig.distraction.covertRequiredAnchor;
   const attributionByObserver = Object.fromEntries((["MARA", "DREW"] as NpcId[]).map((id) => [id, attributionForObserver(world, id, action, success)])) as Record<NpcId, Attribution>;
   const targetAttribution = attributionByObserver[action.targetActorId];
-  const outcome: DistractionOutcome = { success, eventVisible: success, playerActionVisible: targetAttribution !== "NONE", causalVisibility: ["DIRECT", "LIKELY"].includes(targetAttribution), attributionByObserver };
+  const visibilityByObserver = Object.fromEntries((["MARA", "DREW"] as NpcId[]).map((id) => [id, distractionVisibilityForObserver(id, action, success, attributionByObserver[id])])) as DistractionOutcome["visibilityByObserver"];
+  const outcome: DistractionOutcome = { success, visibilityByObserver, attributionByObserver };
   const status: ResolutionStatus = success ? "NORMAL" : "INVALIDATED";
-  const visibility = `event:${outcome.eventVisible};action:${outcome.playerActionVisible};cause:${outcome.causalVisibility}`;
+  const visibility = `observer:${action.targetActorId};${JSON.stringify(visibilityByObserver[action.targetActorId])}`;
   const refs: string[] = [];
   if (success) {
     const attention = setActorField(world, recorder, action.targetActorId, "attention", action.mode === "VISIBLE_CALL" ? { kind: "ACTOR", id: "PLAYER" } : { kind: "LOCATION", id: "WINDOW" }, "RULE_DISTRACTION_ATTENTION_EFFECT", "Distraction success changes attention independently from attribution.", { ...context, status, visibility, attribution: targetAttribution });
@@ -750,14 +777,15 @@ function resolveDistract(world: WorldStateV3, action: DistractAction, recorder: 
   for (const observerId of ["MARA", "DREW"] as NpcId[]) {
     const attribution = attributionByObserver[observerId];
     if (attribution === "NONE") continue;
+    const observerVisibility = `observer:${observerId};${JSON.stringify(visibilityByObserver[observerId])}`;
     const belief: DistractionBelief = { actionId: action.id, beat: world.beat, targetActorId: action.targetActorId, success, attribution, exploited: false };
-    const beliefs = setActorField(world, recorder, observerId, "distractionBeliefs", [...world.actors[observerId].distractionBeliefs, belief], "RULE_OBSERVER_RELATIVE_ATTRIBUTION", "Each observer independently attributes the player-caused event from available evidence.", { ...context, status, visibility, attribution, sourceTraceRefs: refs });
+    const beliefs = setActorField(world, recorder, observerId, "distractionBeliefs", [...world.actors[observerId].distractionBeliefs, belief], "RULE_OBSERVER_RELATIVE_ATTRIBUTION", "Each observer independently attributes the player-caused event from their own visibility record.", { ...context, status, visibility: observerVisibility, attribution, sourceTraceRefs: refs });
     if (beliefs) refs.push(beliefs);
     const vigilanceAmount = attribution === "DIRECT" ? prototypeConfig.impacts.directManipulationVigilance : attribution === "LIKELY" ? prototypeConfig.impacts.likelyManipulationVigilance : prototypeConfig.impacts.possibleManipulationVigilance;
-    const vigilance = incrementActorMetric(world, recorder, observerId, "vigilance", vigilanceAmount, "RULE_ATTRIBUTION_FUTURE_VIGILANCE", "Attributable manipulation changes later attention and planning without becoming a generic punishment meter.", { ...context, status, visibility, attribution, sourceTraceRefs: refs });
+    const vigilance = incrementActorMetric(world, recorder, observerId, "vigilance", vigilanceAmount, "RULE_ATTRIBUTION_FUTURE_VIGILANCE", "Attributable manipulation changes later attention and planning without becoming a generic punishment meter.", { ...context, status, visibility: observerVisibility, attribution, sourceTraceRefs: refs });
     if (vigilance) refs.push(vigilance);
     if (observerId === "DREW" && ["DIRECT", "LIKELY"].includes(attribution)) {
-      const concern = incrementActorMetric(world, recorder, "DREW", "drewConcern", 1, "RULE_ATTRIBUTABLE_MANIPULATION_CONCERN", "Drew treats attributable manipulation as scenario-relevant.", { ...context, status, visibility, attribution, sourceTraceRefs: refs });
+      const concern = incrementActorMetric(world, recorder, "DREW", "drewConcern", 1, "RULE_ATTRIBUTABLE_MANIPULATION_CONCERN", "Drew treats attributable manipulation as scenario-relevant.", { ...context, status, visibility: observerVisibility, attribution, sourceTraceRefs: refs });
       if (concern) refs.push(concern);
       refs.push(...updateDrewTrajectory(world, recorder, "ATTRIBUTABLE_DISTRACTION", { ...context, status, sourceTraceRefs: refs }));
     }
@@ -767,8 +795,8 @@ function resolveDistract(world: WorldStateV3, action: DistractAction, recorder: 
   return resolution(action, slot, status, text, refs, [], outcome);
 }
 
-function resolution(action: PlannedAction, slot: number, status: ResolutionStatus, summary: string, sourceTraceRefs: string[] = [], receptionIds: string[] = [], distraction: DistractionOutcome | null = null, messageCompatibility: MessageCompatibilityResult | null = null): ActionResolution {
-  return { id: `RESOLUTION_${action.id}`, beat: action.beat, slot, actorId: action.actorId, actionId: action.id, actionKind: action.kind, status, summary, apSpent: 1, sourceTraceRefs, receptionIds, distraction, messageCompatibility };
+function resolution(action: PlannedAction, slot: number, status: ResolutionStatus, summary: string, sourceTraceRefs: string[] = [], receptionIds: string[] = [], distraction: DistractionOutcome | null = null, messageCompatibility: MessageCompatibilityResult | null = null, messageIdentity: MessageIdentityLineage | null = null): ActionResolution {
+  return { id: `RESOLUTION_${action.id}`, beat: action.beat, slot, actorId: action.actorId, actionId: action.id, actionKind: action.kind, status, summary, apSpent: 1, sourceTraceRefs, receptionIds, distraction, messageCompatibility, messageIdentity };
 }
 
 function resolveAction(world: WorldStateV3, action: PlannedAction, recorder: MutationRecorderV3, slot: number): ActionResolution {
@@ -788,7 +816,7 @@ interface PlannerCandidate {
   make: (ordinal: number) => PlannedAction;
 }
 
-function actionCurrentlyLegal(world: WorldStateV3, action: PlannedAction): boolean {
+export function actionCurrentlyLegal(world: WorldStateV3, action: PlannedAction): boolean {
   if (!world.actors[action.actorId].active) return false;
   if (action.kind === "MOVE") {
     const target = action.target.kind === "LOCATION" ? action.target.id : world.actors[action.target.id].active ? world.actors[action.target.id].position : null;
@@ -801,11 +829,17 @@ function actionCurrentlyLegal(world: WorldStateV3, action: PlannedAction): boole
     if (action.operation === "INSPECT") return world.envelope.visible && distance <= (world.room.envelopeAccessRevealed ? 2 : 1);
     if (action.operation === "TAKE") return distance === 0 && !world.envelope.holderId && !["SECURED", "LOCKED_AWAY"].includes(world.envelope.state) && !isGuardEnforceable(world, action.actorId);
     if (action.operation === "GUARD") return distance === 0 && world.envelope.state !== "LOCKED_AWAY";
-    if (action.operation === "SECURE") return distance === 0 && (world.envelope.holderId === action.actorId || world.envelope.guardedBy === action.actorId);
+    if (action.operation === "SECURE") return distance === 0 && world.envelope.holderId === action.actorId;
     if (action.operation === "LOCK_AWAY") return action.actorId === "DREW" && world.envelope.state === "SECURED" && world.envelope.holderId === "DREW" && roomDistance(world.actors.DREW.position, "CABINET") <= 1;
     return world.envelope.holderId === action.actorId;
   }
   return true;
+}
+
+export function availableInteractionOperations(world: WorldStateV3, actorId: ActorId): InteractAction["operation"][] {
+  const operations: InteractAction["operation"][] = ["TAKE", "PLACE_ON_TABLE", "INSPECT", "GUARD", "SECURE", "LEAVE"];
+  if (actorId === "DREW") operations.splice(5, 0, "LOCK_AWAY");
+  return operations.filter((operation) => actionCurrentlyLegal(world, makeInteractAction(world, actorId, operation === "LEAVE" ? "DOOR" : "ENVELOPE", operation, 1)));
 }
 
 export function planNpcFromBeatStart(world: WorldStateV3, actorId: NpcId, weightOverrides: Partial<NpcPriorityWeights> = {}): ActorPlan {
@@ -817,16 +851,18 @@ export function planNpcFromBeatStart(world: WorldStateV3, actorId: NpcId, weight
   if (actorId === "MARA") {
     const mara = world.actors.MARA;
     const exitAction = (ordinal: number) => mara.position === "DOOR" && ["READY_TO_LEAVE", "FLEE"].includes(mara.maraTrajectory ?? "") ? makeInteractAction(world, "MARA", "DOOR", "LEAVE", ordinal) : makeMoveAction(world, "MARA", "DOOR", ordinal);
-    if (["NEAR_EXIT", "READY_TO_LEAVE", "FLEE"].includes(mara.maraTrajectory ?? "ENGAGED")) hardConstraint = { label: "preserve access to exit", goal: "preserveExit", reason: "Mara's current trajectory makes the exit mandatory.", make: exitAction };
+    const vigilantScan = (ordinal: number) => makeScanAction(world, "MARA", "ACTOR", "PLAYER", ordinal);
+    if (mara.vigilance > 0) hardConstraint = { label: "watch the player", goal: "seekInformation", reason: "Mara's observer-relative vigilance makes checking the player her first deterministic priority.", make: vigilantScan };
+    else if (["NEAR_EXIT", "READY_TO_LEAVE", "FLEE"].includes(mara.maraTrajectory ?? "ENGAGED")) hardConstraint = { label: "preserve access to exit", goal: "preserveExit", reason: "Mara's current trajectory makes the exit mandatory.", make: exitAction };
     candidates.push(
       { label: "preserve access to exit", goal: "preserveExit", reason: "Keep a viable route to the door.", make: exitAction },
-      { label: "read Drew", goal: "seekInformation", reason: "Observe Drew's directly visible behavior.", make: (ordinal) => makeScanAction(world, "MARA", "ACTOR", "DREW", ordinal) },
+      { label: mara.vigilance > 0 ? "watch the player" : "read Drew", goal: "seekInformation", reason: mara.vigilance > 0 ? "Prior attributable manipulation redirects Mara's observation toward the player." : "Observe Drew's directly visible behavior.", make: mara.vigilance > 0 ? vigilantScan : (ordinal) => makeScanAction(world, "MARA", "ACTOR", "DREW", ordinal) },
       { label: "ask player intentions", goal: "communicateConcern", reason: "Seek an explicit account from the player.", make: (ordinal) => makeMessageAction(world, "MARA", npcDraft("PLAYER", "ASK_INTENTIONS", "LOW_VOICE"), ordinal) },
-      { label: "approach player", goal: "approachOrAvoid", reason: "Adjust social distance from the player.", make: (ordinal) => makeMoveAction(world, "MARA", "PLAYER", ordinal) },
+      { label: "approach player", goal: "approachOrAvoid", reason: mara.vigilance > 0 ? "Vigilance makes closer approach ineligible this Beat." : "Adjust social distance from the player.", make: (ordinal) => makeMoveAction(world, "MARA", "PLAYER", ordinal) },
     );
   } else {
     const drew = world.actors.DREW;
-    const protect = (ordinal: number): PlannedAction => world.envelope.state === "SECURED" ? makeInteractAction(world, "DREW", "ENVELOPE", "LOCK_AWAY", ordinal) : roomDistance(drew.position, world.envelope.position) > 0 ? makeMoveAction(world, "DREW", world.envelope.position, ordinal) : makeInteractAction(world, "DREW", "ENVELOPE", world.envelope.state === "GUARDED" || world.envelope.holderId === "DREW" ? "SECURE" : "GUARD", ordinal);
+    const protect = (ordinal: number): PlannedAction => world.envelope.state === "SECURED" && world.envelope.holderId === "DREW" ? makeInteractAction(world, "DREW", "ENVELOPE", "LOCK_AWAY", ordinal) : roomDistance(drew.position, world.envelope.position) > 0 ? makeMoveAction(world, "DREW", world.envelope.position, ordinal) : world.envelope.holderId === "DREW" ? makeInteractAction(world, "DREW", "ENVELOPE", "SECURE", ordinal) : world.envelope.holderId ? makeScanAction(world, "DREW", "ACTOR", world.envelope.holderId, ordinal) : makeInteractAction(world, "DREW", "ENVELOPE", "GUARD", ordinal);
     if (["SECURING", "LOCKDOWN", "EJECT"].includes(drew.drewTrajectory ?? "NORMAL")) hardConstraint = { label: "protect the envelope", goal: "protectEnvelope", reason: "Drew's current trajectory mandates object protection.", make: protect };
     candidates.push(
       { label: "protect the envelope", goal: "protectEnvelope", reason: "Maintain physical control of the envelope.", make: protect },
@@ -842,13 +878,14 @@ export function planNpcFromBeatStart(world: WorldStateV3, actorId: NpcId, weight
   for (const candidate of ranked) {
     if (chosen.length >= prototypeConfig.apPerActor || chosen.some((item) => item.label === candidate.label)) continue;
     const action = candidate.make(chosen.length + 1);
+    if (actorId === "MARA" && world.actors.MARA.vigilance > 0 && candidate.label === "approach player") continue;
     if (!actionCurrentlyLegal(world, action)) continue;
     if (action.kind === "MESSAGE" && chosen.some((item) => { const other = item.make(1); return other.kind === "MESSAGE" && other.message.intendedRecipients[0] === action.message.intendedRecipients[0]; })) continue;
     chosen.push(candidate);
   }
   const actions = chosen.map((candidate, index) => candidate.make(index + 1));
   for (const candidate of candidates) {
-    const legal = actionCurrentlyLegal(world, candidate.make(1));
+    const legal = !(actorId === "MARA" && world.actors.MARA.vigilance > 0 && candidate.label === "approach player") && actionCurrentlyLegal(world, candidate.make(1));
     rationale.push({ label: candidate.label, goal: candidate.goal, weight: weights[candidate.goal], legal, selected: chosen.some((item) => item.label === candidate.label), reason: candidate.reason });
   }
   const next: ActorPlan = { ...plan, actions, rationale: { actorId, hardConstraint: hardConstraint?.reason ?? null, candidates: rationale } };
@@ -883,7 +920,7 @@ const cancelByTerminal = (world: WorldStateV3, recorder: MutationRecorderV3, act
   return result;
 };
 
-export interface ResolveBeatOptions { npcPlans?: Partial<Record<NpcId, ActorPlan>>; }
+export interface ResolveBeatOptions { npcPlans?: Partial<Record<NpcId, ActorPlan>>; nextRoomEvent?: RoomEventState; }
 
 export function resolveBeatV3(input: WorldStateV3, playerPlan: ActorPlan, options: ResolveBeatOptions = {}): WorldStateV3 {
   if (input.terminal) return clone(input);
@@ -918,7 +955,7 @@ export function resolveBeatV3(input: WorldStateV3, playerPlan: ActorPlan, option
     const context: MutationContext = { beat: priorBeat, slot: 4, actorId: null, actionId: `ADVANCE_B${priorBeat}`, sourceEventId: `ADVANCE_B${priorBeat}`, status: "NORMAL" };
     recorder.record("beat", priorBeat, priorBeat + 1, "RULE_ADVANCE_SHARED_BEAT", "All committed slots resolved before the next tableau.", context, () => { world.beat = priorBeat + 1; });
     for (const actorId of actorIds) world.actors[actorId].apCommitted = 0;
-    prepareRoomEvent(world, recorder);
+    prepareRoomEvent(world, recorder, options.nextRoomEvent);
   }
   const invariantIssues = objectInvariantIssues(world);
   if (invariantIssues.length) throw new Error(`Object invariant violation: ${invariantIssues.join(" ")}`);
