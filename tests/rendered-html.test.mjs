@@ -17,10 +17,10 @@ test("server-renders the completed behavior lab", async () => {
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
   const html = await response.text();
-  assert.match(html, /<title>One Room Behavior Lab · v0\.2\.1<\/title>/i);
-  assert.match(html, /Build one direct message/);
-  assert.match(html, /END BEAT &amp; OBSERVE/);
-  assert.match(html, /Player/);
-  assert.match(html, /Designer/);
+  assert.match(html, /<title>One-Room Behavior Lab · v0\.3\.0<\/title>/i);
+  assert.match(html, /Three actions\. One shared Beat\./);
+  assert.match(html, /Read the room before you commit\./);
+  assert.match(html, /What do you do next\?/);
+  assert.doesNotMatch(html, /Function selector|BASED Vibe|emotion-label/i);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|Your site is taking shape/i);
 });

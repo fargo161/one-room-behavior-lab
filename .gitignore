@@ -38,3 +38,6 @@ yarn-error.log*
 /.wrangler/
 /outputs/
 /work/
+
+# generated TypeScript incremental state
+*.tsbuildinfo
