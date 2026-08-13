@@ -1,94 +1,229 @@
-﻿"use client";
+"use client";
 
-import { useEffect, useMemo, useState } from "react";
-import type { CharacterId, FacePose, GameSession, MessageDraft, PerformancePlan, ResolvedBeat } from "@/src/core/types";
-import { assertValidScenario } from "@/src/core/validation";
-import { enabledVibes } from "@/src/data/based";
-import { consequences, functions, offeredValues, reasons, recipients, subjects, compatiblePropositions, renderMessage, validateDraft } from "@/src/data/messageGrammar";
-import { neutralFace } from "@/src/data/performance";
-import { scenario } from "@/src/data/scenario";
-import { createInitialSession, endBeat, queueDraft, removeQueuedMessage, updateDraft } from "@/src/simulation/engine";
+import { useMemo, useState } from "react";
+import { prototypeConfig, roomAnchorLabels } from "../src/v3/config";
+import {
+  appendPlayerAction,
+  actorHandsForDisplay,
+  availableInteractionOperations,
+  commitPlayerBeat,
+  createInitialSessionV3,
+  makeDistractAction,
+  makeInteractAction,
+  makeMessageAction,
+  makeMoveAction,
+  makeScanAction,
+  plausibleDeliveryModes,
+  removePlayerAction,
+  reorderPlayerAction,
+  validatePlan,
+} from "../src/v3/engine";
+import {
+  clearIncompatibleMessageComponents,
+  contextualMessageCategories,
+  defaultPlayerMessageDraft,
+  getMessageOptionState,
+  messageComponentLabels,
+  messageOptions,
+  renderMessage,
+  validateMessageDraft,
+} from "../src/v3/messages";
+import type {
+  ActionKind,
+  ActorId,
+  BehaviorLabSessionV3,
+  DistractionMode,
+  InteractAction,
+  MessageComponentCategory,
+  MessageDraftV3,
+  PlannedAction,
+  RoomAnchor,
+  ScanAction,
+} from "../src/v3/types";
 
-assertValidScenario(scenario);
-type ViewMode = "PLAYER" | "DESIGNER";
-const locationLabels = { CHAIR: "waiting chair", TABLE: "table", EXIT: "exit" } as const;
-const title = (value: string) => value.replaceAll("_", " ").toLowerCase();
+const actorLabel = (id: ActorId) => id === "PLAYER" ? "You" : id === "MARA" ? "Mara" : "Drew";
+const humanize = (value: string) => value.toLowerCase().replaceAll("_", " ").replace(/^\w/, (letter) => letter.toUpperCase());
+const faceParts: Record<string, { mouth: string; eyes: string; brow: string }> = {
+  COMPOSED: { mouth: "—", eyes: "•  •", brow: "—  —" },
+  ATTENTIVE: { mouth: "⌣", eyes: "●  ●", brow: "⌒  ⌒" },
+  UNEASY: { mouth: "⌁", eyes: "•  ●", brow: "⌁  —" },
+  TENSE: { mouth: "―", eyes: "●  ●", brow: "╲  ╱" },
+  RESOLVED: { mouth: "⌒", eyes: "•  •", brow: "—  —" },
+  CLOSED: { mouth: "━", eyes: "▪  ▪", brow: "╲  ╱" },
+};
 
-function CharacterFace({ name, pose }: { name: string; pose: FacePose }) {
-  const pupilX = (pose.gazeX - 0.5) * 9, pupilY = (pose.gazeY - 0.5) * 6, browRotate = (pose.browAngle - 0.5) * 24;
-  return <div className="face" aria-label={`${name} facial performance, tension ${Math.round(pose.overallTension * 100)} percent`}>
-    <i className="brow left" style={{ transform: `translateY(${(0.5 - pose.browOuterHeight) * 8}px) rotate(${browRotate}deg)` }} /><i className="brow right" style={{ transform: `translateY(${(0.5 - pose.browOuterHeight) * 8}px) rotate(${-browRotate}deg)` }} />
-    <i className="eye left" style={{ height: `${8 + pose.eyeOpennessLeft * 10}px` }}><b style={{ transform: `translate(${pupilX}px, ${pupilY}px)` }} /></i><i className="eye right" style={{ height: `${8 + pose.eyeOpennessRight * 10}px` }}><b style={{ transform: `translate(${pupilX}px, ${pupilY}px)` }} /></i>
-    <i className="nose" /><i className="mouth" style={{ width: `${25 + pose.mouthWidth * 25}px`, height: `${3 + pose.mouthOpenness * 15}px`, transform: `translateX(-50%) rotate(${(pose.asymmetry - 0.1) * 8}deg)` }} />
+function Face({ state, name }: { state: string; name: string }) {
+  const parts = faceParts[state] ?? faceParts.COMPOSED;
+  return <div className={`face face-${state.toLowerCase()}`} aria-label={`${name}'s face appears ${state.toLowerCase()}`}>
+    <span className="brow">{parts.brow}</span><span className="eyes">{parts.eyes}</span><span className="mouth">{parts.mouth}</span>
   </div>;
 }
 
-function PerformedLine({ plan, fallback }: { plan?: PerformancePlan; fallback: string }) {
-  const [visible, setVisible] = useState(0);
-  useEffect(() => {
-    if (!plan?.line) return;
-    let tick = 0;
-    const start = window.setTimeout(() => { let index = 0; tick = window.setInterval(() => { index += 1; setVisible(index); if (index >= plan.line.length) window.clearInterval(tick); }, plan.textPlan.revealIntervalMs); }, plan.textPlan.initialDelayMs);
-    return () => { window.clearTimeout(start); window.clearInterval(tick); };
-  }, [fallback, plan]);
-  const line = plan?.line ?? fallback;
-  if (!line) return <span className="silence">No line. The action carries the Beat.</span>;
-  const shown = plan?.line ? visible : line.length;
-  return <span data-delay={plan?.textPlan.initialDelayMs ?? 0} data-tempo={plan?.textPlan.tempo ?? "NORMAL"} data-completion={plan?.textPlan.completion ?? "FULL"}>{line.slice(0, shown).split(" ").map((word, index) => <span key={`${index}-${word}`} className={plan?.textPlan.emphasisRanges.some((range) => index >= range.start && index <= range.end) ? "emphasis" : ""}>{word}{plan?.textPlan.pausePositions.includes(index) ? <i className="performed-pause">  /  </i> : " "}</span>)}</span>;
-}
-
-function CharacterCard({ session, id }: { session: GameSession; id: CharacterId }) {
-  const character = session.world.characters[id], performance = session.world.history.at(-1)?.performances[id], pose = performance?.facePose ?? neutralFace;
-  return <article className={`character-card ${id.toLowerCase()}`}><div className="character-head"><div><span className="eyebrow">{character.role}</span><h3>{character.name}</h3></div><span className="chip">{locationLabels[character.location]}</span></div><div className="portrait"><CharacterFace name={character.name} pose={pose} /><div className="visible-facts"><p>{character.visibleAction}</p><span>attention / {title(character.attention.primaryTarget ?? "unfixed")}</span>{character.hasEnvelope && <b>holds envelope</b>}</div></div><p className={`dialogue volume-${performance?.textPlan.volume.toLowerCase() ?? "normal"}`}><PerformedLine key={performance?.id ?? "initial"} plan={performance} fallback={character.visibleLine} /></p>{performance?.behaviorId === "FEIGN_COMPLIANCE" && <small className="leakage">Words yield; gaze remains on the envelope.</small>}</article>;
-}
-
-function Room({ session }: { session: GameSession }) {
-  const world = session.world;
-  return <section className="room-shell"><header><div><span className="eyebrow">observable room</span><h2>One room. No privileged narrator.</h2></div><span className="beat-stamp">BEAT {Math.min(world.beat, world.maxBeats)} / {world.maxBeats}</span></header><div className="room-map" aria-label="One room with a chair, table, envelope, and exit"><div className="node chair"><b>01</b> CHAIR</div><div className="node table"><b>02</b> TABLE</div><div className="node exit"><b>03</b> EXIT <i>{world.exitAccessible ? "OPEN" : "BLOCKED"}</i></div>{world.envelope.location === "TABLE" && <div className="envelope">SEALED<br /><b>ENVELOPE</b></div>}{world.envelope.holder && <div className={`envelope held ${world.envelope.holder.toLowerCase()}`}>{world.envelope.visible ? "VISIBLE" : "CONCEALED"}<br /><b>ENVELOPE</b></div>}{(["MARA", "DREW"] as CharacterId[]).map((id) => <div key={id} className={`person ${id.toLowerCase()} at-${world.characters[id].location.toLowerCase()}`}>{id[0]}</div>)}</div><div className="character-grid"><CharacterCard session={session} id="MARA" /><CharacterCard session={session} id="DREW" /></div></section>;
-}
-
-function SelectField({ label, value, onChange, children, help }: { label: string; value: string; onChange: (value: string) => void; children: React.ReactNode; help?: string }) {
-  return <label className="field"><span>{label}</span><select value={value} onChange={(event) => onChange(event.target.value)}><option value="">Choose...</option>{children}</select>{help && <small>{help}</small>}</label>;
-}
-
-function MessageBuilder({ session, setSession }: { session: GameSession; setSession: (session: GameSession) => void }) {
-  const draft = session.draft, validation = validateDraft(draft), propositionOptions = compatiblePropositions(draft), change = (patch: Partial<MessageDraft>) => setSession(updateDraft(session, patch)), terminal = Boolean(session.world.terminalState);
-  const selectedFunction = functions.find((item) => item.id === draft.functionId);
-  return <section className="builder-shell"><header><div><span className="eyebrow">structured intervention</span><h2>Build one direct message</h2></div><p>Queueing edits the pending action. Only <b>End Beat &amp; Observe</b> advances time.</p></header>
-    <fieldset disabled={terminal}><legend>Address</legend><div className="field-grid">
-      <SelectField label="Recipient" value={draft.recipientId ?? ""} onChange={(value) => change({ recipientId: value as MessageDraft["recipientId"] })}>{recipients.map((item) => <option key={item.id} value={item.id}>{item.label}</option>)}</SelectField>
-      <SelectField label="Subject  /  semantic metadata" value={draft.subjectId ?? ""} onChange={(value) => change({ subjectId: value as MessageDraft["subjectId"] })} help="Validation context only; no independent numeric modifier in v0.2.1.">{subjects.map((item) => <option key={item.id} value={item.id}>{item.label}</option>)}</SelectField>
-      <SelectField label="Visibility" value={draft.visibility ?? ""} onChange={(value) => change({ visibility: value as MessageDraft["visibility"] })} help="Private can reveal contact, never content, to an attentive nonrecipient."><option value="PRIVATE">Private</option><option value="PUBLIC">Public</option></SelectField>
-    </div></fieldset>
-    <fieldset disabled={terminal}><legend>Social structure</legend><div className="field-grid">
-      <SelectField label="DPA" value={draft.dpa ?? ""} onChange={(value) => change({ dpa: value as MessageDraft["dpa"], askPayload: value === "ASK" ? {} : undefined, dealPayload: value === "DEAL" ? { offeredValueId: null } : undefined, pressurePayload: value === "PRESSURE" ? { consequenceId: null } : undefined })}><option value="ASK">Ask</option><option value="DEAL">Deal</option><option value="PRESSURE">Pressure</option></SelectField>
-      <SelectField label="One primary Function" value={draft.functionId ?? ""} onChange={(value) => change({ functionId: value as MessageDraft["functionId"] })} help={selectedFunction ? `${selectedFunction.operationalStatus}: ${selectedFunction.help}` : "Operational status is shown in every option."}>{functions.map((item) => <option key={item.id} value={item.id}>{item.label}  /  {item.operationalStatus.toLowerCase()}</option>)}</SelectField>
-      <SelectField label="Delivery Vibe  /  prototype" value={draft.deliveryVibe ?? ""} onChange={(value) => change({ deliveryVibe: value as MessageDraft["deliveryVibe"] })} help="Canonical name first; room alias second. First Cue dominates. 62:38 is prototype-local.">{enabledVibes().map((item) => <option key={item.code} value={item.code}>{item.code}  /  {item.canonicalName}  -  {item.scenarioAlias}</option>)}</SelectField>
+function ActorTableau({ session, id }: { session: BehaviorLabSessionV3; id: "MARA" | "DREW" }) {
+  const actor = session.world.actors[id];
+  return <article className={`actor-tableau ${id.toLowerCase()} ${!actor.active ? "departed" : ""}`}>
+    <div className="actor-portrait"><Face state={actor.face} name={actor.name} /><span className="gaze-line">Gaze → {actor.gaze}</span></div>
+    <div className="actor-copy">
+      <div className="actor-heading"><h3>{actor.name}</h3><span>Observable evidence</span></div>
+      <strong>{actor.active ? roomAnchorLabels[actor.position] : "has left the room"}</strong>
+      <p>{actor.orientation}. {actor.posture}. {actorHandsForDisplay(session.world, id)}.</p>
     </div>
-    {draft.dpa === "ASK" && <SelectField label="Optional reason  /  wording only" value={draft.askPayload?.reasonId ?? ""} onChange={(value) => change({ askPayload: { reasonId: value || null } })} help="Changes generated wording and provenance; no independent mechanical modifier in v0.2.1.">{reasons.map((item) => <option key={item.id} value={item.id}>{item.label}</option>)}</SelectField>}
-    {draft.dpa === "DEAL" && <SelectField label="Offered value  /  required" value={draft.dealPayload?.offeredValueId ?? ""} onChange={(value) => change({ dealPayload: { offeredValueId: value || null } })}>{offeredValues.map((item) => <option key={item.id} value={item.id}>{item.label}</option>)}</SelectField>}
-    {draft.dpa === "PRESSURE" && <SelectField label="Consequence  /  required" value={draft.pressurePayload?.consequenceId ?? ""} onChange={(value) => change({ pressurePayload: { consequenceId: value || null } })}>{consequences.map((item) => <option key={item.id} value={item.id}>{item.label}</option>)}</SelectField>}
-    </fieldset>
-    <fieldset disabled={terminal}><legend>Proposition</legend><div className="proposition-grid">{propositionOptions.map(({ proposition, enabled, reasons: disabledReasons }) => <button type="button" key={proposition.id} disabled={!enabled} className={draft.propositionId === proposition.id ? "chosen" : ""} onClick={() => change({ propositionId: proposition.id })} title={disabledReasons.join(" ")}><b>{proposition.label}</b><span>{title(proposition.kind)}</span><small>{enabled ? proposition.boundaryNotes[0] : disabledReasons.join(" ")}</small></button>)}</div></fieldset>
-    <div className={`message-preview ${validation.valid ? "valid" : "invalid"}`}><span>generated line</span><p>&quot;{renderMessage(draft)}&quot;</p><small>{validation.valid ? "Valid bounded message. Wording is generated presentation; mechanics use the structured fields." : validation.issues.map((issue) => issue.explanation).join(" ")}</small></div>
-    <div className="queue-row"><button className="queue" disabled={!validation.valid || terminal} onClick={() => setSession(queueDraft(session))}>{session.queuedMessage ? "Update queued message" : "Queue message"}</button>{session.queuedMessage && <button className="remove" onClick={() => setSession(removeQueuedMessage(session))}>Remove</button>}<span>{session.queueNotice}</span></div>
-    {session.queuedMessage && <div className="queued"><span>QUEUED  /  BEAT HAS NOT ADVANCED</span><b>{session.queuedMessage.visibility} -&gt; {session.queuedMessage.recipientId}</b><p>{session.queuedMessage.surfaceText}</p></div>}
+  </article>;
+}
+
+export function RoomTableau({ session }: { session: BehaviorLabSessionV3 }) {
+  const { world } = session;
+  return <section className="room-shell" aria-labelledby="room-title">
+    <div className="section-heading"><div><span className="eyebrow">Beat-start tableau</span><h2 id="room-title">Read the room before you commit.</h2></div><span className={`noise-pill noise-${world.roomNoise.toLowerCase()}`}>{humanize(world.roomNoise)} room</span></div>
+    <div className="room-event"><span className="event-pulse" aria-hidden="true" /><div><strong>{world.currentRoomEvent.title}</strong><p>{world.currentRoomEvent.description} {world.currentRoomEvent.actionableEffect}</p></div></div>
+    <div className="room-map" aria-label="Discrete physical room positions">
+      <div className="anchor anchor-window"><span>Window</span></div><div className="anchor anchor-door"><span>{world.room.doorOpen ? "Open door" : "Door"}</span></div><div className="anchor anchor-center"><span>Center</span></div><div className="anchor anchor-cabinet"><span>Cabinet</span></div>
+      <div className="anchor anchor-table"><span>Table</span></div>
+      {world.envelope.visible ? <div className={`envelope envelope-world envelope-${world.envelope.state.toLowerCase()} at-${world.envelope.position.toLowerCase()}`} aria-label={`Envelope ${world.envelope.state.toLowerCase()} ${roomAnchorLabels[world.envelope.position]}${world.envelope.holderId ? ` held by ${actorLabel(world.envelope.holderId)}` : ""}`}><i /><b>{humanize(world.envelope.state)}</b>{world.envelope.holderId ? <small>{actorLabel(world.envelope.holderId)}</small> : null}</div> : null}
+      {(["PLAYER", "MARA", "DREW"] as ActorId[]).map((actorId) => {
+        const actor = world.actors[actorId];
+        return actor.active ? <div key={actorId} className={`room-person person-${actorId.toLowerCase()} at-${actor.position.toLowerCase()}`}><span>{actorLabel(actorId)}</span><small>{humanize(actor.position)}</small></div> : null;
+      })}
+    </div>
+    <div className="tableau-grid"><ActorTableau session={session} id="MARA" /><ActorTableau session={session} id="DREW" /></div>
   </section>;
 }
 
-const JSONBlock = ({ value }: { value: unknown }) => <pre>{JSON.stringify(value, null, 2)}</pre>;
-function Panel({ number, title: panelTitle, children }: { number: number; title: string; children: React.ReactNode }) { return <section className="trace-panel"><header><span>{String(number).padStart(2, "0")}</span><h3>{panelTitle}</h3></header>{children}</section>; }
-function Designer({ session }: { session: GameSession }) {
-  const [index, setIndex] = useState(-1), selectedIndex = index < 0 ? session.world.history.length - 1 : Math.min(index, session.world.history.length - 1);
-  const beat: ResolvedBeat | undefined = session.world.history[selectedIndex]; if (!beat) return <section className="designer-empty"><span>NO RESOLVED BEAT</span><h2>The causal instrument is ready.</h2><p>Resolve a Beat in Player View. Every panel reads the stored record; nothing is recomputed for display.</p></section>;
-  const char = (id: CharacterId) => session.world.characters[id];
-  return <div className="designer-shell"><nav className="history-nav"><b>Beat history</b>{session.world.history.map((item, itemIndex) => <button key={item.beat} className={itemIndex === selectedIndex ? "active" : ""} onClick={() => setIndex(itemIndex)}>B{item.beat}</button>)}</nav><div className="trace-grid">
-    <Panel number={1} title="Beat frame"><p>Beat {beat.beat}; one queued message or Wait. Both intentions used one post-interpretation, pre-action snapshot.</p></Panel><Panel number={2} title="Message & builder field integrity"><JSONBlock value={{ message: beat.queuedMessage ?? { action: "WAIT", explanation: "Empty queue" }, fields: beat.builderFieldIntegrity }} /></Panel><Panel number={3} title="Communication event"><JSONBlock value={beat.communicationEvent ?? { event: null }} /></Panel><Panel number={4} title="Perception & privacy"><JSONBlock value={beat.perceptions} /></Panel><Panel number={5} title="Interpretation"><JSONBlock value={beat.interpretations} /></Panel><Panel number={6} title="Belief changes"><JSONBlock value={beat.beliefChanges} /></Panel><Panel number={7} title="Functional applications"><JSONBlock value={beat.functionalApplications} /></Panel><Panel number={8} title="Functional pressures"><JSONBlock value={beat.functionalPressures} /></Panel><Panel number={9} title="Candidate scores"><JSONBlock value={beat.candidates} /></Panel><Panel number={10} title="Selected intentions"><JSONBlock value={beat.selectedIntents} /></Panel><Panel number={11} title="Joint resolution"><JSONBlock value={beat.jointActions} /></Panel><Panel number={12} title="Performance plans"><JSONBlock value={beat.performances} /></Panel><Panel number={13} title="State diffs"><JSONBlock value={beat.diffs} /></Panel><Panel number={14} title="Mutation-time causal trace"><JSONBlock value={beat.trace} /></Panel><Panel number={15} title="Current epistemic & social state"><JSONBlock value={{ beliefs: { MARA: char("MARA").beliefs, DREW: char("DREW").beliefs }, inferences: { MARA: char("MARA").inferences, DREW: char("DREW").inferences }, social: session.world.social, boundary: "Reported claims are not objective truth. Private nonrecipients never receive content." }} /></Panel>
-  </div></div>;
+function Select<T extends string>({ label, value, onChange, options, format = humanize }: { label: string; value: T; onChange: (value: T) => void; options: readonly T[]; format?: (value: T) => string }) {
+  return <label className="field"><span>{label}</span><select value={value} onChange={(event) => onChange(event.target.value as T)}>{options.map((option) => <option key={option} value={option}>{format(option)}</option>)}</select></label>;
+}
+const messageKeys = <T extends Record<string, string>>(record: T) => Object.keys(record) as Array<keyof T & string>;
+
+function MessageAddition({ category, draft, setDraft, session }: { category: MessageComponentCategory; draft: MessageDraftV3; setDraft: React.Dispatch<React.SetStateAction<MessageDraftV3>>; session: BehaviorLabSessionV3 }) {
+  const set = (value: string | boolean) => setDraft((current) => ({ ...current, [category]: value } as MessageDraftV3));
+  if (category === "refusalSpace") return <label className="check-field contextual-field"><input type="checkbox" checked={draft.refusalSpace} onChange={(event) => set(event.target.checked)} /><span>Leave explicit room to refuse</span></label>;
+  const records = {
+    reasonId: messageOptions.reasons,
+    evidenceId: messageOptions.evidence,
+    acknowledgmentId: messageOptions.acknowledgments,
+    promiseId: messageOptions.promises,
+    offerId: messageOptions.offers,
+    qualificationId: messageOptions.qualifications,
+    conditionId: messageOptions.conditions,
+    warningId: messageOptions.warnings,
+  } as const;
+  const record = records[category];
+  const options = Object.keys(record);
+  return <label className="field contextual-field"><span>{messageComponentLabels[category]}</span><select value={draft[category]} onChange={(event) => set(event.target.value)}>
+    {options.map((option) => {
+      const state = getMessageOptionState(session.world, draft, category, option);
+      return <option key={option} value={option} disabled={!state.enabled} title={state.reason ?? undefined}>{humanize(option)}{state.risky ? " — risky" : ""}</option>;
+    })}
+  </select></label>;
+}
+
+function MessageComposer({ session, onAdd }: { session: BehaviorLabSessionV3; onAdd: (action: PlannedAction) => void }) {
+  const [draft, setDraft] = useState<MessageDraftV3>(() => defaultPlayerMessageDraft());
+  const [openAdditions, setOpenAdditions] = useState<MessageComponentCategory[]>([]);
+  const set = <K extends keyof MessageDraftV3>(key: K, value: MessageDraftV3[K]) => setDraft((current) => ({ ...current, [key]: value }));
+  const changeCore = (coreContentId: MessageDraftV3["coreContentId"]) => {
+    setDraft((current) => clearIncompatibleMessageComponents({ ...current, coreContentId }));
+    setOpenAdditions([]);
+  };
+  const changeRecipient = (recipientId: ActorId) => {
+    const plausible = plausibleDeliveryModes(session.world, "PLAYER", recipientId);
+    setDraft((current) => ({ ...current, recipientId, deliveryMode: plausible.includes(current.deliveryMode) ? current.deliveryMode : "NORMAL" }));
+  };
+  const deliveryModes = plausibleDeliveryModes(session.world, "PLAYER", draft.recipientId);
+  const categories = contextualMessageCategories(draft.coreContentId);
+  const compatibility = validateMessageDraft(session.world, draft);
+  const toggle = (category: MessageComponentCategory) => setOpenAdditions((current) => current.includes(category) ? current.filter((item) => item !== category) : [...current, category]);
+  return <div className="composer message-composer">
+    <div className="composer-intro"><div><span className="eyebrow">Construct communication</span><h3>Say what matters; add support only when it helps.</h3></div><span className="cost-chip">1 AP</span></div>
+    <div className="builder-grid builder-core">
+      <Select label="Recipient" value={draft.recipientId} onChange={changeRecipient} options={["MARA", "DREW"] as ActorId[]} format={actorLabel} />
+      <Select label="Core content" value={draft.coreContentId} onChange={changeCore} options={messageKeys(messageOptions.coreText)} />
+      <Select label="Directness" value={draft.directness} onChange={(value) => set("directness", value)} options={["GENTLE", "PLAIN", "BLUNT"]} />
+      <Select label="Plausible delivery" value={draft.deliveryMode} onChange={(value) => set("deliveryMode", value)} options={deliveryModes} />
+    </div>
+    <div className="message-additions"><span>Optional additions</span><div>{categories.map((category) => <button key={category} type="button" className={openAdditions.includes(category) ? "active" : ""} onClick={() => toggle(category)}>+ {messageComponentLabels[category]}</button>)}</div></div>
+    {openAdditions.length ? <div className="contextual-grid">{openAdditions.filter((category) => categories.includes(category)).map((category) => <MessageAddition key={category} category={category} draft={draft} setDraft={setDraft} session={session} />)}</div> : null}
+    <div className="assembled-message"><span>Message preview · wording follows structured identity</span><blockquote>“{renderMessage(draft)}”</blockquote></div>
+    {compatibility.riskyComponents.length ? <p className="compatibility-note">Risky support is allowed: {compatibility.riskyComponents.map((item) => messageComponentLabels[item]).join(", ")}.</p> : null}
+    {!compatibility.valid ? <p className="compatibility-note invalid" role="alert">{compatibility.invalidReasons[0]}</p> : null}
+    <button className="add-action" type="button" disabled={!compatibility.valid} onClick={() => onAdd(makeMessageAction(session.world, "PLAYER", draft, session.playerPlan.actions.length + 1))}>Add Message to plan</button>
+  </div>;
+}
+
+export function ActionComposer({ session, onAdd, initialKind = "MOVE" }: { session: BehaviorLabSessionV3; onAdd: (action: PlannedAction) => void; initialKind?: ActionKind }) {
+  const [kind, setKind] = useState<ActionKind>(initialKind);
+  const [moveTarget, setMoveTarget] = useState<RoomAnchor | ActorId>("DREW");
+  const [scanType, setScanType] = useState<ScanAction["targetType"]>("ACTOR");
+  const [scanTarget, setScanTarget] = useState<ScanAction["targetId"]>("DREW");
+  const [interaction, setInteraction] = useState<InteractAction["operation"]>("TAKE");
+  const [distraction, setDistraction] = useState<DistractionMode>("VISIBLE_CALL");
+  const [distractTarget, setDistractTarget] = useState<"MARA" | "DREW">("DREW");
+  const interactionOptions = availableInteractionOperations(session.world, "PLAYER");
+  const effectiveInteraction = interactionOptions.includes(interaction) ? interaction : interactionOptions[0] ?? interaction;
+  const ordinal = session.playerPlan.actions.length + 1;
+  const add = () => {
+    if (kind === "MOVE") onAdd(makeMoveAction(session.world, "PLAYER", moveTarget, ordinal));
+    if (kind === "SCAN") onAdd(makeScanAction(session.world, "PLAYER", scanType, scanTarget, ordinal));
+    if (kind === "INTERACT") onAdd(makeInteractAction(session.world, "PLAYER", effectiveInteraction === "LEAVE" ? "DOOR" : "ENVELOPE", effectiveInteraction, ordinal));
+    if (kind === "DISTRACT") onAdd(makeDistractAction(session.world, distractTarget, distraction, ordinal));
+  };
+  if (kind === "MESSAGE") return <MessageComposer session={session} onAdd={onAdd} />;
+  return <div className="composer">
+    <div className="composer-intro"><div><span className="eyebrow">Choose action</span><h3>Spend one AP to change the room.</h3></div><span className="cost-chip">1 AP</span></div>
+    <div className="action-tabs" role="tablist" aria-label="Action type">{(["MOVE", "MESSAGE", "SCAN", "INTERACT", "DISTRACT"] as ActionKind[]).map((actionKind) => <button type="button" role="tab" aria-selected={kind === actionKind} className={kind === actionKind ? "active" : ""} onClick={() => setKind(actionKind)} key={actionKind}>{humanize(actionKind)}</button>)}</div>
+    <div className="compact-fields">
+      {kind === "MOVE" ? <Select label="Move toward" value={moveTarget} onChange={setMoveTarget} options={["MARA", "DREW", ...Object.keys(roomAnchorLabels)] as Array<RoomAnchor | ActorId>} format={(value) => value === "MARA" || value === "DREW" ? actorLabel(value) : roomAnchorLabels[value as RoomAnchor]} /> : null}
+      {kind === "SCAN" ? <><Select label="Scan type" value={scanType} onChange={(value) => { setScanType(value); setScanTarget(value === "ROOM" ? "ROOM" : value === "OBJECT" ? "ENVELOPE" : "DREW"); }} options={["ACTOR", "ROOM", "OBJECT"]} />{scanType === "ACTOR" ? <Select label="Actor" value={scanTarget as ActorId} onChange={(value) => setScanTarget(value)} options={["MARA", "DREW"] as ActorId[]} format={actorLabel} /> : null}</> : null}
+      {kind === "INTERACT" ? interactionOptions.length ? <Select label="Affordance" value={effectiveInteraction} onChange={setInteraction} options={interactionOptions} /> : <p>No interaction is currently plausible.</p> : null}
+      {kind === "DISTRACT" ? <><Select label="Target" value={distractTarget} onChange={setDistractTarget} options={["MARA", "DREW"]} format={actorLabel} /><Select label="Method" value={distraction} onChange={setDistraction} options={["VISIBLE_CALL", "COVERT_WINDOW_RATTLE"]} /></> : null}
+    </div>
+    <p className="action-help">{kind === "MOVE" ? "Choose a physical location or an actor. Actor-targeted movement preserves that identity if they move first." : kind === "SCAN" ? "Scan reveals richer observable evidence, never hidden trajectories or meters." : kind === "INTERACT" ? "Object and door affordances are rechecked when this action resolves." : "Attention success and each observer's attribution resolve separately."}</p>
+    <button className="add-action" type="button" disabled={kind === "INTERACT" && interactionOptions.length === 0} onClick={add}>Add {humanize(kind)} to plan</button>
+  </div>;
+}
+
+function actionSummary(action: PlannedAction): string {
+  if (action.kind === "MOVE") return action.target.kind === "ACTOR" ? `Move toward ${actorLabel(action.target.id)}` : `Move toward ${roomAnchorLabels[action.target.id]}`;
+  if (action.kind === "MESSAGE") return `${humanize(action.message.deliveryMode)} message to ${actorLabel(action.message.intendedRecipients[0])}: “${action.message.surfaceText}”`;
+  if (action.kind === "SCAN") return `Scan ${action.targetType === "ROOM" ? "the room" : action.targetId === "ENVELOPE" ? "the envelope" : actorLabel(action.targetId as ActorId)}`;
+  if (action.kind === "INTERACT") return `${humanize(action.operation)} ${action.targetId === "DOOR" ? "at the door" : "the envelope"}`;
+  return `${humanize(action.mode)} aimed at ${actorLabel(action.targetActorId)}`;
+}
+
+function ActionQueue({ session, setSession }: { session: BehaviorLabSessionV3; setSession: (session: BehaviorLabSessionV3) => void }) {
+  const validation = validatePlan(session.world, session.playerPlan);
+  return <aside className="queue-shell" aria-labelledby="queue-title">
+    <div className="section-heading"><div><span className="eyebrow">Your plan</span><h2 id="queue-title">Three actions. One shared Beat.</h2></div><div className="ap-meter" aria-label={`${validation.apRemaining} action points remaining`}>{[0,1,2].map((index) => <span key={index} className={index < validation.apCommitted ? "spent" : "available"}>{index < validation.apCommitted ? "×" : "1"}</span>)}</div></div>
+    <ol className="action-queue">{[0,1,2].map((index) => {
+      const action = session.playerPlan.actions[index];
+      return <li key={action?.id ?? `empty-${index}`} className={action ? "filled" : "empty"}><span className="slot-number">{index + 1}</span>{action ? <><div><strong>{action.kind}</strong><p>{actionSummary(action)}</p></div><div className="queue-controls"><button type="button" disabled={index === 0} onClick={() => setSession(reorderPlayerAction(session, index, index - 1))} aria-label="Move action earlier">↑</button><button type="button" disabled={index === session.playerPlan.actions.length - 1} onClick={() => setSession(reorderPlayerAction(session, index, index + 1))} aria-label="Move action later">↓</button><button type="button" onClick={() => setSession(removePlayerAction(session, index))} aria-label="Remove action">×</button></div></> : <p>Open action slot</p>}</li>;
+    })}</ol>
+    {session.queueNotice ? <p className="queue-notice" role="status">{session.queueNotice}</p> : null}
+    <button className="commit-beat" type="button" disabled={!validation.legal || Boolean(session.world.terminal)} onClick={() => setSession(commitPlayerBeat(session))}>{session.world.terminal ? "Scenario complete" : `Commit Beat ${session.world.beat}`}</button>
+    <p className="commit-note">Mara and Drew plan independently from this tableau. Their choices remain hidden until resolution.</p>
+  </aside>;
+}
+
+function CausalHistory({ session }: { session: BehaviorLabSessionV3 }) {
+  const visible = session.world.history.filter((event) => event.playerVisible);
+  return <section className="history-shell" aria-labelledby="history-title"><div className="section-heading"><div><span className="eyebrow">What changed, in order</span><h2 id="history-title">Cause and effect</h2></div><span className="trace-count">{session.world.traces.length} sourced changes</span></div><div className="history-list">{visible.slice(-12).reverse().map((event) => <article key={event.id}><span>B{event.beat}</span><p>{event.text}</p></article>)}</div></section>;
+}
+
+function DebugDrawer({ session, setSession }: { session: BehaviorLabSessionV3; setSession: (session: BehaviorLabSessionV3) => void }) {
+  return <section className="debug-shell"><button className="debug-toggle" type="button" aria-expanded={session.debugVisible} onClick={() => setSession({ ...session, debugVisible: !session.debugVisible })}>{session.debugVisible ? "Hide" : "Show"} prototype trace</button>{session.debugVisible ? <div className="debug-grid"><div><h3>Hidden actor state</h3><pre>{JSON.stringify(session.world.actors, null, 2)}</pre></div><div><h3>Plans and planner rationale</h3><pre>{JSON.stringify(session.world.lastPlans, null, 2)}</pre></div><div><h3>Resolutions and compatibility</h3><pre>{JSON.stringify(session.world.lastResolutions, null, 2)}</pre></div><div><h3>Actor-specific reception</h3><pre>{JSON.stringify(session.world.receptions.slice(-12), null, 2)}</pre></div><div><h3>Mutation-time provenance</h3><pre>{JSON.stringify(session.world.traces.slice(-20), null, 2)}</pre></div></div> : null}</section>;
 }
 
 export default function BehaviorLab() {
-  const [session, setSession] = useState<GameSession>(() => createInitialSession()), [view, setView] = useState<ViewMode>("PLAYER");
-  const last = session.world.history.at(-1), status = useMemo(() => session.world.terminalState?.title ?? (session.queuedMessage ? "message queued" : "awaiting intervention"), [session]);
-  return <main><header className="app-header"><div><span className="edition">ORBL / v0.2.1</span><h1>One Room Behavior Lab</h1><p>Author a condition. Observe two situated decisions.</p></div><div className="view-switch"><button className={view === "PLAYER" ? "active" : ""} onClick={() => setView("PLAYER")}>Player</button><button className={view === "DESIGNER" ? "active" : ""} onClick={() => setView("DESIGNER")}>Designer</button></div></header><div className="status-strip"><span><i /> {status}</span><b>Beat {Math.min(session.world.beat, session.world.maxBeats)} / {session.world.maxBeats}</b><span>{last ? `${title(last.selectedIntents.MARA)} + ${title(last.selectedIntents.DREW)}` : "room initialized"}</span></div>{view === "PLAYER" ? <div className="player-layout"><Room session={session} /><MessageBuilder session={session} setSession={setSession} /><section className="observable-log"><span className="eyebrow">observable record</span><ol>{session.world.eventLog.map((entry, index) => <li key={`${index}-${entry}`}><b>{String(index).padStart(2, "0")}</b>{entry}</li>)}</ol></section></div> : <Designer session={session} />}<div className="end-dock"><div><span>{session.queuedMessage ? "Resolve the queued message" : "Empty queue = Wait"}</span><small>Queue, edit, and remove do not advance the Beat.</small></div><button disabled={Boolean(session.world.terminalState)} onClick={() => setSession(endBeat(session))}>END BEAT &amp; OBSERVE <b>-&gt;</b></button>{session.world.terminalState && <button className="restart" onClick={() => setSession(createInitialSession())}>Restart lab</button>}</div></main>;
+  const [session, setSession] = useState<BehaviorLabSessionV3>(() => createInitialSessionV3());
+  const [composerKey, setComposerKey] = useState(0);
+  const validation = useMemo(() => validatePlan(session.world, session.playerPlan), [session]);
+  const addAction = (action: PlannedAction) => { setSession((current) => appendPlayerAction(current, action)); setComposerKey((current) => current + 1); };
+  return <main>
+    <header className="site-header"><div className="brand-mark"><span>OR</span><span>BL</span></div><div><span className="eyebrow">Executable social-tactics prototype · v0.3 semantic closure</span><h1>One-Room Behavior Lab</h1><p>Observe. Plan three actions. Let them collide. Read the room again.</p></div><div className="beat-display"><span>Current Beat</span><strong>{String(session.world.beat).padStart(2, "0")}</strong><small>{validation.apRemaining} AP open</small></div></header>
+    {session.world.terminal ? <section className="terminal-banner"><span>{humanize(session.world.terminal.kind)}</span><h2>The room reached a terminal state.</h2><p>{session.world.terminal.explanation}</p><button type="button" onClick={() => setSession(createInitialSessionV3(session.world.seed))}>Restart same seed</button></section> : null}
+    <div className="primary-layout"><RoomTableau session={session} /><ActionQueue session={session} setSession={setSession} /></div>
+    <section className="planning-shell" aria-labelledby="planning-title"><div className="section-heading planning-heading"><div><span className="eyebrow">Action queue</span><h2 id="planning-title">What do you do next?</h2></div><p>Every normal action costs 1 AP. Repeated action types are legal.</p></div><ActionComposer key={composerKey} session={session} onAdd={addAction} /></section>
+    <CausalHistory session={session} /><DebugDrawer session={session} setSession={setSession} />
+    <footer><p><strong>Prototype boundary.</strong> This bounded implementation tests social-interaction mechanics. It does not redefine the canonical Social Interaction Master or PSG.</p><p>{prototypeConfig.status}: initiative, room graph, hearing, event selection, planner priorities, and fail thresholds.</p></footer>
+  </main>;
 }

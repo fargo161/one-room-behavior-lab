@@ -1,57 +1,86 @@
-# One Room Behavior Lab v0.2.1
+# One-Room Behavior Lab
 
-One Room Behavior Lab is a standalone deterministic browser prototype about indirect social influence. The player constructs at most one bounded message per Beat, then explicitly chooses **End Beat & Observe**. Mara and Drew perceive communication, update beliefs or bounded inferences, interpret its social structure, select autonomous behavior from the same snapshot, and perform the result.
+This repository contains a bounded, deterministic social-tactics prototype. It tests how observation, simultaneous planning, message construction, movement, attention, object control, and action collision produce legible consequences inside one room.
 
-v0.2.1 is intended to be frozen as an **executable behavioral reference and validation harness**. It is evidence for a design direction, not the canonical PSG or BASED implementation. There is zero code-level PSG integration in this version. Its gameplay, simulation, tests, and interface may remain durable; its local semantic-definition scaffolding is expected to be replaced or adapted to PSG-native structures in a later phase.
+The canonical social-interaction architecture remains in [`fargo161/social-interaction-system`](https://github.com/fargo161/social-interaction-system), and the generic PSG parent grammar remains in [`fargo161/periodic-semantic-grammar`](https://github.com/fargo161/periodic-semantic-grammar). This prototype does not vendor, modify, or supersede either project.
 
-There is no runtime LLM, backend, free-form parser, random seed, or player-facing environmental intervention.
+## Current semantic-closure branch
 
-## Run and validate
+`v0.3-semantic-closure` preserves the focused-repair architecture and closes the post-repair audit contradictions in place:
 
-Node.js 22.13 or later is required.
-
-```powershell
-npm install
-npm run dev
+```text
+OBSERVE
+→ PLAN THREE ACTIONS
+→ COMMIT
+→ ACTIONS COLLIDE
+→ SEE CONSEQUENCE
+→ REINTERPRET
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Every active actor receives three prototype-local AP. The player can queue `MOVE`, `MESSAGE`, `SCAN`, `INTERACT`, and `DISTRACT`; Mara and Drew use the same underlying action grammar except for explicit scenario affordances. Everyone plans from the same Beat-start tableau, and NPCs never inspect the player's queued plan.
+
+## Focused repairs and semantic closure
+
+- Envelope possession, guarding, securing, placement, and lock-away transitions enforce coherent invariants. `SECURE` is holder-only; guarding never transfers possession.
+- The ordinary room map renders the envelope from `world.envelope.position` and labels its holder when held.
+- Held objects follow their holders; guards remain only as reachable, intentional contest relations.
+- Permanent room nodes are physical: `CENTER`, `TABLE`, `DOOR`, `WINDOW`, and `CABINET`.
+- `MOVE` may target a physical location or an actor. If an actor moves first, the original target identity can resolve as `NATURAL_RETARGET` without strategic replanning.
+- Distraction visibility and attribution are observer-relative. Exploitation is linked only for an observer who saw both the opening and the later object access; Mara and Drew both consume vigilance in deterministic planning.
+- The ordinary message builder exposes only recipient, core content, directness, and plausible delivery before contextual additions.
+- Scenario-authored compatibility data distinguishes value-level relevance, support, required support, current availability, incompatibility, and risky-but-playable unsupported claims from actual observation/message provenance.
+- Planned and effective message identities remain distinct after degradation, with explicit lineage in resolution and TRACE.
+- NPC priorities are operative in a deterministic legal-candidate ranking under hard trajectory constraints, with rationale available in debug mode.
+- Every active room-event family has a real, deterministic, traceable world effect; authored `durationBeats` drives expiry and transient expression overlays expire without overwriting newer persistent state.
+- Normal play exposes observable evidence rather than internal trajectory labels or counters.
+- Terminal states receive mutation-time provenance, and every later committed action gets an explicit `CANCELLED_BY_TERMINAL` resolution while retaining its AP commitment.
+
+## Communication
+
+Structured message identity remains mechanically authoritative; generated wording is downstream. Contextual optional components can include reasons, evidence, acknowledgments, promises, offers, qualifications, conditions, warnings, or explicit refusal space when relevant.
+
+One valid message costs one AP regardless of its number of components. Free-text semantic parsing is not implemented. Packaging Evidence describes only grounded controls such as directness, delivery, qualification, acknowledgment, refusal space, and explanation density; it does not infer emotion, BASED Cue/Vibe, Function, motive, or truth.
+
+Actor-specific reception remains:
+
+```text
+DIRECT
+OVERHEARD_FULL
+OVERHEARD_PARTIAL
+NOTICED_ONLY
+NONE
+```
+
+Direct address strongly supports reception but does not override impossible audibility. Overhearing never consumes a direct-recipient allowance.
+
+## Cause, evidence, and debug
+
+Normal play presents physical positions, gaze, orientation, posture, hands, face, object state, room events, and observable causal history. `SCAN` returns richer evidence without revealing internal trajectory labels.
+
+Debug mode exposes exact hidden actor state, planner candidates and weights, plans, action resolutions, message compatibility, reception, observer attribution beliefs, and mutation-time provenance.
+
+## Prototype boundary
+
+AP, initiative, topology, hearing thresholds, message compatibility, event definitions, planner weights, guard rules, and fail thresholds remain **PROVISIONAL / PROTOTYPE-LOCAL**. `MISHEARD`, group messages, canonical Function mapping, final BASED ratios, full Textual Paralanguage, runtime LLM planning, stochastic planning, free-text interpretation, Design Mode, and a Scenario Builder remain unresolved or out of scope.
+
+See:
+
+- [`PROTOTYPE_ASSUMPTIONS_v0_3.md`](PROTOTYPE_ASSUMPTIONS_v0_3.md)
+- [`FOCUSED_REPAIR_REPORT_v0_3.md`](FOCUSED_REPAIR_REPORT_v0_3.md)
+- [`SEMANTIC_CLOSURE_REPORT_v0_3.md`](SEMANTIC_CLOSURE_REPORT_v0_3.md)
+- [`TEST_ACCEPTANCE_v0_3.md`](TEST_ACCEPTANCE_v0_3.md)
+- [`MANUAL_ACCEPTANCE_v0_3_FOCUSED_REPAIR.md`](MANUAL_ACCEPTANCE_v0_3_FOCUSED_REPAIR.md)
+- [`REWORK_v0_2_1_to_v0_3.md`](REWORK_v0_2_1_to_v0_3.md)
+
+## Validation
 
 ```powershell
 npx tsc --noEmit
 npm run lint
 npm test
+npm run test:ui
 npm run build
 npm run test:rendered
 ```
 
-## Builder integrity
-
-| Field | v0.2.1 role |
-|---|---|
-| Recipient | Mechanical: full-content access, acceptance authority, reception profile. |
-| Subject | Semantic metadata and validation context; no independent numeric modifier. |
-| DPA | Mechanical, provisional Ask/Deal/Pressure interpretation. |
-| Function | Operational or partial scenario-local Functional Application; status is shown in Player View. |
-| Visibility | Mechanical event salience, content access, and bounded inference. |
-| Delivery Vibe | Mechanical provisional reception plus presentation; canonical name and room alias are separate. |
-| Proposition | Mechanical semantic request/claim, requested action, belief, and commitment specificity. |
-| Ask reason | Wording and provenance only. |
-| Deal offer | Mechanical exchange value. |
-| Pressure consequence | Mechanical severity and enforceability. |
-
-Generated wording never controls mechanics. Each complete normalized payload receives a stable 64-bit-style dual fingerprint for provenance; message identity never controls behavior.
-
-## Beat and privacy contracts
-
-Queueing, editing, removing, and switching views do not advance time. **End Beat & Observe** is the only clock; an empty queue resolves a true Wait Beat.
-
-Private recipients receive full content. An attentive nonrecipient may notice contact without receiving subject, proposition, DPA, Function, Vibe, or wording, and may form only a bounded inference. Public content remains directly addressed to one recipient.
-
-## Transfer and causality contracts
-
-An accepted Deal is not automatically a transfer Deal. `OFFER_TRANSFER` requires an active accepted commitment whose explicit `requestedAction` is `OFFER_TRANSFER`. Later ownership changes only when Mara's `ACCEPT_TRANSFER` and Drew's `COMPLETE_TRANSFER` match in one joint-resolution frame. Completion wording is generated after that match.
-
-Every final state diff is linked to mutation-time rule and source provenance. Observation-driven opportunity changes remain observation effects; later taking effects remain taking effects.
-
-See `MANUAL_ACCEPTANCE_v0_2_1.md`, `STABILIZATION_REPORT_v0_2_1.md`, and `TEST_MATRIX.md` for the freeze evidence.
+The immutable stabilized baseline remains at tag `v0.2.1`. The pre-repair proof remains on `v0.3-prototype-rework`, and the audited focused repair remains on `v0.3-focused-repair`. Semantic closure remains isolated on `v0.3-semantic-closure` until a final read-only audit and separate integration authorization.

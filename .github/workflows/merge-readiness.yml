@@ -1,0 +1,39 @@
+name: Merge readiness
+
+on:
+  push:
+    branches:
+      - "v0.3-*"
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Typecheck
+        run: npx tsc --noEmit
+      - name: Lint
+        run: npm run lint
+      - name: Unit and semantic regression tests
+        run: npm test
+      - name: Dynamic UI test
+        run: npm run test:ui
+      - name: Production build
+        run: npm run build
+      - name: Rendered HTML smoke test
+        run: npm run test:rendered
