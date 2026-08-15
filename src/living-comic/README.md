@@ -1,6 +1,6 @@
 # Living Comic Engine v0.1 foundation
 
-This directory is the additive, framework-independent Living Comic semantic core. At the Phase 3 checkpoint it deliberately contains contracts, portable content, deterministic situation generation, and validation only. It does not yet contain action resolution, interpretation, message realization, or a player UI.
+This directory is the additive, framework-independent Living Comic semantic core. At the Phase 6 checkpoint it contains contracts, portable content, deterministic situation generation, shared action/Deal semantics, deterministic Beat resolution, attention, perception, interpretation, and belief revision. It deliberately does not yet contain BASED/message realization or a player UI.
 
 ## Dependency boundary
 
@@ -36,5 +36,17 @@ The repository-root `content/` directory contains individual JSON definition poo
 `generation/generator.ts` independently selects reusable atoms, instantiates role-relative Proposition templates, constructs real obstacle facts, grounds Reasons and relationships in a two-to-four event history, creates differing beliefs, and emits two or three player Goal/Reason options. Every candidate passes through `generation/validator.ts`.
 
 Invalid candidates are rejected with explicit check results. The generator advances to a deterministically derived attempt seed and retries; it never silently rewrites incompatible facts or forces incompatible content to fit. `generation/report.ts` provides a human-readable checkpoint serialization without changing authoritative runtime data.
+
+## Phase 4–6 engine
+
+`actions/` owns the shared player/NPC action factories, causal Function routing, truth-free NPC decision views, weighted candidate scoring, and Deal lifecycle. `engine/` owns commitment, priority ordering, action results, Scene Pressure, history promotion, and termination. `cognition/` owns ordered attention, perceptual channel access, finite interpretations, and belief revision. `fixtures/phase6Demonstration.ts` executes the deterministic five-Beat checkpoint fixture.
+
+Portable predicate cardinality is data-driven in `content/semantic/predicate-semantics.json` and documented in `docs/PREDICATE_SEMANTICS.md`. Language-neutral Phase 4–6 contracts and forbidden data access are documented in `docs/PHASE_4_6_ENGINE_CONTRACTS.md`.
+
+Still out of scope until approval:
+
+- Phase 7 BASED and controlled wording realization
+- Living Comic Play/Debug UI
+- presentation adapters and comic rendering
 
 Stable IDs are lowercase snake case. Definition IDs remain independent of labels, while runtime IDs derive from semantic role, input seed, and deterministic ordinal—not random UUIDs or display text.

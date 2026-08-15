@@ -28,6 +28,8 @@ export type Proposition = z.infer<typeof propositionSchema>;
 export const certaintySchema = z.enum(["CERTAIN", "UNCERTAIN"]);
 export const functionIdSchema = z.enum(["ESCAPE", "ATTENTION", "ACCESS", "SENSORY"]);
 export const channelSchema = z.enum(["VISUAL", "AUDITORY", "COMMUNICATION_CONTENT"]);
+export type FunctionId = z.infer<typeof functionIdSchema>;
+export type Channel = z.infer<typeof channelSchema>;
 
 export const templateRefSchema = z.enum([
   "SELF",

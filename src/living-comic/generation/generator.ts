@@ -392,6 +392,7 @@ const buildAttempt = (
   const snapshot: RuntimeSnapshot = {
     version: "living_comic_runtime_v0_1",
     sceneId,
+    stateId: stableRuntimeId("state", sceneLabel, "beat", 0),
     seed,
     beat: 0,
     phase: "PLAYER_MOTIVATION_SELECTION",
@@ -409,6 +410,12 @@ const buildAttempt = (
     deals: [],
     dealTerms: [],
     obligations: [],
+    messages: [],
+    attentionStates: actorIds.map((actorId) => ({
+      actorId,
+      primaryFocusId: "primary_object",
+      ambientChannels: ["VISUAL", "AUDITORY"],
+    })),
     scenePressure: {
       id: stableRuntimeId("pressure", sceneLabel),
       definitionId: pressureDefinition.id,

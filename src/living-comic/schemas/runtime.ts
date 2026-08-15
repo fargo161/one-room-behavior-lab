@@ -101,7 +101,7 @@ export const historicalEventSchema = z.object({
 export const scenePressureSchema = z.object({
   id: stableIdSchema,
   definitionId: stableIdSchema,
-  beatsRemaining: z.number().int().min(1),
+  beatsRemaining: z.number().int().min(0),
   active: z.boolean(),
   targetEntityIds: z.array(stableIdSchema).min(1),
 });
@@ -130,6 +130,34 @@ export const obligationSchema = z.object({
   status: z.enum(["OPEN", "FULFILLED", "BROKEN"]),
 });
 
+export const messageClaimSchema = z.object({
+  id: stableIdSchema,
+  kind: z.enum(["CLAIM", "REQUESTED_CHANGE", "THREATENED_CONSEQUENCE", "OFFERED_CHANGE"]),
+  proposition: propositionSchema,
+});
+
+export const semanticMessageSchema = z.object({
+  id: stableIdSchema,
+  senderId: stableIdSchema,
+  recipientId: stableIdSchema,
+  tactic: z.enum(["ASK", "PRESSURE", "DEAL"]),
+  desiredStateChange: propositionSchema,
+  speechAct: z.enum(["STATEMENT", "QUESTION", "REQUEST", "COMMAND", "PROMISE", "WARNING"]),
+  claims: z.array(messageClaimSchema).min(1),
+  disclosure: z.enum(["CONCEAL", "PARTIAL", "DIRECT"]),
+  claimedReasonId: stableIdSchema.nullable(),
+  basedVibeId: stableIdSchema,
+  paralanguageCueIds: z.array(stableIdSchema),
+  delivery: z.enum(["OPEN", "PRIVATE"]),
+  dealId: stableIdSchema.nullable(),
+});
+
+export const attentionStateSchema = z.object({
+  actorId: stableIdSchema,
+  primaryFocusId: stableIdSchema.nullable(),
+  ambientChannels: z.array(channelSchema).min(1),
+});
+
 const actionBaseSchema = z.object({
   id: stableIdSchema,
   actorId: stableIdSchema,
@@ -141,6 +169,9 @@ export const directActionSchema = actionBaseSchema.extend({
   family: z.literal("DIRECT"),
   operationId: stableIdSchema,
   targetId: stableIdSchema,
+  objectId: stableIdSchema.nullable(),
+  recipientId: stableIdSchema.nullable(),
+  destinationZoneId: stableIdSchema.nullable(),
 });
 
 export const socialActionSchema = actionBaseSchema.extend({
@@ -148,6 +179,7 @@ export const socialActionSchema = actionBaseSchema.extend({
   tactic: z.enum(["ASK", "PRESSURE", "DEAL"]),
   targetActorId: stableIdSchema,
   messageId: stableIdSchema.nullable(),
+  dealId: stableIdSchema.nullable(),
 });
 
 export const dealResponseActionSchema = actionBaseSchema.extend({
@@ -177,6 +209,15 @@ export const committedActionSchema = z.object({
   committedAtBeat: z.number().int().min(1),
   priority: z.number().int().min(1).max(5),
   stableActorOrder: z.number().int().min(0),
+  commitSnapshotId: stableIdSchema,
+});
+
+export const actionResolutionSchema = z.object({
+  actionId: stableIdSchema,
+  status: z.enum(["SUCCESS", "FAILED", "INVALIDATED"]),
+  reasonCode: stableIdSchema,
+  resultPropositions: z.array(propositionSchema),
+  observableEventIds: z.array(stableIdSchema).min(1),
 });
 
 export const observableEventSchema = z.object({
@@ -187,6 +228,9 @@ export const observableEventSchema = z.object({
   resultPropositions: z.array(propositionSchema),
   channels: z.array(channelSchema).min(1),
   contentPropositionIds: z.array(stableIdSchema),
+  targetEntityIds: z.array(stableIdSchema),
+  observableCueIds: z.array(stableIdSchema),
+  messageId: stableIdSchema.nullable(),
   salient: z.boolean(),
 });
 
@@ -196,6 +240,17 @@ export const perceptionSchema = z.object({
   eventId: stableIdSchema,
   channelsReceived: z.array(channelSchema).min(1),
   registeredPropositions: z.array(propositionSchema),
+  noticedActorId: stableIdSchema.nullable(),
+  noticedTargetIds: z.array(stableIdSchema),
+});
+
+export const interpretationCandidateSchema = z.object({
+  id: stableIdSchema,
+  inferredIntention: z.array(propositionSchema),
+  inferredFunctionIds: z.array(functionIdSchema),
+  inferredGoal: propositionSchema.nullable(),
+  score: z.number().int(),
+  evidenceRefs: z.array(stableIdSchema),
 });
 
 export const interpretationSchema = z.object({
@@ -208,6 +263,7 @@ export const interpretationSchema = z.object({
   inferredReasonId: stableIdSchema.nullable(),
   certainty: certaintySchema,
   evidenceRefs: z.array(stableIdSchema).min(1),
+  candidateScores: z.array(interpretationCandidateSchema).min(1),
 });
 
 export const beliefUpdateSchema = z.object({
@@ -215,7 +271,40 @@ export const beliefUpdateSchema = z.object({
   actorId: stableIdSchema,
   priorBeliefId: stableIdSchema.nullable(),
   nextBelief: beliefSchema,
-  sourceInterpretationId: stableIdSchema,
+  updateKind: z.enum(["CREATED", "CONFIRMED", "WEAKENED", "REVISED"]),
+  sourceInterpretationId: stableIdSchema.nullable(),
+  sourcePerceptionIds: z.array(stableIdSchema),
+});
+
+export const scoreComponentSchema = z.object({
+  componentId: stableIdSchema,
+  score: z.number().int(),
+  explanation: z.string().min(1),
+});
+
+export const npcCandidateScoreSchema = z.object({
+  actionId: stableIdSchema,
+  family: z.enum(["DIRECT", "SOCIAL", "DEAL_RESPONSE", "WAIT"]),
+  allowedByBeliefs: z.boolean(),
+  totalScore: z.number().int(),
+  components: z.array(scoreComponentSchema),
+});
+
+export const npcDecisionTraceSchema = z.object({
+  actorId: stableIdSchema,
+  decisionSnapshotId: stableIdSchema,
+  observedBeliefIds: z.array(stableIdSchema),
+  candidateScores: z.array(npcCandidateScoreSchema).min(1),
+  selectedActionId: stableIdSchema,
+  tieBreakRule: z.literal("TOTAL_DESC_THEN_SEMANTIC_ACTION_ID_ASC"),
+});
+
+export const dealLifecycleChangeSchema = z.object({
+  dealId: stableIdSchema,
+  priorStatus: z.enum(["NONE", "PROPOSED", "ACCEPTED", "REJECTED", "SUPERSEDED", "FULFILLED", "BROKEN"]),
+  nextStatus: z.enum(["PROPOSED", "ACCEPTED", "REJECTED", "SUPERSEDED", "FULFILLED", "BROKEN"]),
+  obligationIds: z.array(stableIdSchema),
+  causeActionId: stableIdSchema.nullable(),
 });
 
 export const validationTraceEntrySchema = z.object({
@@ -242,6 +331,7 @@ export const playerGoalReasonOptionSchema = z.object({
 export const runtimeSnapshotSchema = z.object({
   version: z.literal("living_comic_runtime_v0_1"),
   sceneId: stableIdSchema,
+  stateId: stableIdSchema,
   seed: z.number().int(),
   beat: z.number().int().min(0),
   phase: z.enum(["PLAYER_MOTIVATION_SELECTION", "PLAYER_DRAFT", "TERMINAL"]),
@@ -259,20 +349,31 @@ export const runtimeSnapshotSchema = z.object({
   deals: z.array(dealSchema),
   dealTerms: z.array(dealTermSchema),
   obligations: z.array(obligationSchema),
+  messages: z.array(semanticMessageSchema),
+  attentionStates: z.array(attentionStateSchema).length(3),
   scenePressure: scenePressureSchema,
-  history: z.array(historicalEventSchema).min(2).max(4),
+  history: z.array(historicalEventSchema).min(2),
   stableActorOrder: z.array(stableIdSchema).length(3),
   terminalReason: z.string().nullable(),
 });
 
 export const beatResolutionReportSchema = z.object({
   beat: z.number().int().min(1),
+  preBeatSnapshotId: stableIdSchema,
+  postBeatSnapshotId: stableIdSchema,
   committedActions: z.array(committedActionSchema),
+  npcDecisions: z.array(npcDecisionTraceSchema).length(2),
+  resolutionOrder: z.array(stableIdSchema).length(3),
+  actionResolutions: z.array(actionResolutionSchema).length(3),
   stateChanges: z.array(propositionSchema),
   observableEvents: z.array(observableEventSchema),
   perceptions: z.array(perceptionSchema),
   interpretations: z.array(interpretationSchema),
   beliefUpdates: z.array(beliefUpdateSchema),
+  attentionAfter: z.array(attentionStateSchema).length(3),
+  dealLifecycleChanges: z.array(dealLifecycleChangeSchema),
+  goalSatisfiedIds: z.array(stableIdSchema),
+  scenePressureEventIds: z.array(stableIdSchema),
   historyPromotionIds: z.array(stableIdSchema),
   terminalReason: z.string().nullable(),
 });
@@ -312,8 +413,12 @@ export type ScenePressure = z.infer<typeof scenePressureSchema>;
 export type Deal = z.infer<typeof dealSchema>;
 export type DealTerm = z.infer<typeof dealTermSchema>;
 export type Obligation = z.infer<typeof obligationSchema>;
+export type MessageClaim = z.infer<typeof messageClaimSchema>;
+export type SemanticMessage = z.infer<typeof semanticMessageSchema>;
+export type AttentionState = z.infer<typeof attentionStateSchema>;
 export type ActionDraft = z.infer<typeof actionDraftSchema>;
 export type CommittedAction = z.infer<typeof committedActionSchema>;
+export type ActionResolution = z.infer<typeof actionResolutionSchema>;
 export type DirectAction = z.infer<typeof directActionSchema>;
 export type SocialAction = z.infer<typeof socialActionSchema>;
 export type DealResponseAction = z.infer<typeof dealResponseActionSchema>;
@@ -321,7 +426,12 @@ export type WaitAction = z.infer<typeof waitActionSchema>;
 export type ObservableEvent = z.infer<typeof observableEventSchema>;
 export type Perception = z.infer<typeof perceptionSchema>;
 export type Interpretation = z.infer<typeof interpretationSchema>;
+export type InterpretationCandidate = z.infer<typeof interpretationCandidateSchema>;
 export type BeliefUpdate = z.infer<typeof beliefUpdateSchema>;
+export type ScoreComponent = z.infer<typeof scoreComponentSchema>;
+export type NpcCandidateScore = z.infer<typeof npcCandidateScoreSchema>;
+export type NpcDecisionTrace = z.infer<typeof npcDecisionTraceSchema>;
+export type DealLifecycleChange = z.infer<typeof dealLifecycleChangeSchema>;
 export type RuntimeSnapshot = z.infer<typeof runtimeSnapshotSchema>;
 export type BeatResolutionReport = z.infer<typeof beatResolutionReportSchema>;
 export type PresentationViewModel = z.infer<typeof presentationViewModelSchema>;

@@ -1,12 +1,5 @@
 import type { Proposition } from "../schemas";
-
-const functionalObjectPredicates = new Set([
-  "CONTROLLED_BY",
-  "HELD_BY",
-  "LOCATED_AT",
-  "LOCATED_IN",
-  "OWNED_BY",
-]);
+import { propositionCardinality } from "./predicateSemantics";
 
 /**
  * A key identifies the semantic slot whose values may conflict. Functional
@@ -17,7 +10,7 @@ const functionalObjectPredicates = new Set([
 export const propositionKey = (value: Proposition): string => [
   value.subjectId,
   value.predicate,
-  value.objectId && !functionalObjectPredicates.has(value.predicate) ? value.objectId : undefined,
+  value.objectId && propositionCardinality(value) === "MULTI_VALUED" ? value.objectId : undefined,
 ].filter(Boolean).join("|");
 
 export const propositionIdentity = (value: Proposition): string => [
