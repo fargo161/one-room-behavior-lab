@@ -1,0 +1,7 @@
+[
+  { "id": "character_rowan", "displayName": "Rowan", "description": "A meticulous custodian who notices changes in access and possession.", "baselineVibeId": "vibe_eb", "tags": ["methodical", "protective"] },
+  { "id": "character_imani", "displayName": "Imani", "description": "A quick-thinking intermediary who balances disclosure against exposure.", "baselineVibeId": "vibe_sd", "tags": ["adaptive", "social"] },
+  { "id": "character_celeste", "displayName": "Celeste", "description": "A direct advocate who treats unclear control as a problem to resolve.", "baselineVibeId": "vibe_as", "tags": ["direct", "decisive"] },
+  { "id": "character_theo", "displayName": "Theo", "description": "A cautious observer whose choices are strongly shaped by incomplete evidence.", "baselineVibeId": "vibe_se", "tags": ["cautious", "observant"] },
+  { "id": "character_nia", "displayName": "Nia", "description": "An urgent problem-solver who moves quickly when external pressure rises.", "baselineVibeId": "vibe_ad", "tags": ["urgent", "resourceful"] }
+]

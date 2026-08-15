@@ -1,0 +1,8 @@
+[
+  { "id": "object_category_container", "label": "Container", "affordances": ["openable", "concealable"] },
+  { "id": "object_category_access_control_item", "label": "Access / Control Item", "affordances": ["access_granting", "controllable"] },
+  { "id": "object_category_communication_item", "label": "Communication Item", "affordances": ["communicative", "content_bearing"] },
+  { "id": "object_category_evidence_information_item", "label": "Evidence / Information Item", "affordances": ["evidentiary", "content_bearing"] },
+  { "id": "object_category_resource_valuable", "label": "Resource / Valuable", "affordances": ["transferable", "valuable"] },
+  { "id": "object_category_personal_sensitive_item", "label": "Personal / Sensitive Item", "affordances": ["sensitive", "ownership_relevant"] }
+]

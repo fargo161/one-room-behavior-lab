@@ -1,0 +1,6 @@
+[
+  { "id": "secondary_goal_avoid_exposure", "label": "Avoid personal exposure", "targetTemplate": { "subjectRef": "SELF", "predicate": "EXPOSED", "value": false } },
+  { "id": "secondary_goal_preserve_ownership", "label": "Preserve ownership of the central object", "targetTemplate": { "subjectRef": "PRIMARY_OBJECT", "predicate": "OWNED_BY", "objectRef": "SELF" } },
+  { "id": "secondary_goal_preserve_exit", "label": "Keep an exit option available", "targetTemplate": { "subjectRef": "ROOM", "predicate": "EXIT_AVAILABLE", "value": true } },
+  { "id": "secondary_goal_honor_obligations", "label": "Avoid breaking accepted obligations", "targetTemplate": { "subjectRef": "SELF", "predicate": "OBLIGATIONS_BROKEN", "value": false } }
+]

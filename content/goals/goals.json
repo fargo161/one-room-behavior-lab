@@ -1,0 +1,82 @@
+[
+  {
+    "id": "goal_possess_primary_object",
+    "label": "Gain possession of the central object",
+    "compatibleSkeletonIds": ["skeleton_control", "skeleton_access"],
+    "targetTemplate": { "subjectRef": "PRIMARY_OBJECT", "predicate": "HELD_BY", "objectRef": "SELF" },
+    "obstacleTemplate": { "subjectRef": "PRIMARY_OBJECT", "predicate": "HELD_BY", "objectRef": "COUNTERPART" },
+    "compatibleObjectCategoryIds": ["object_category_access_control_item", "object_category_resource_valuable", "object_category_personal_sensitive_item"]
+  },
+  {
+    "id": "goal_transfer_primary_object",
+    "label": "Place the central object in another actor's possession",
+    "compatibleSkeletonIds": ["skeleton_control", "skeleton_access"],
+    "targetTemplate": { "subjectRef": "PRIMARY_OBJECT", "predicate": "HELD_BY", "objectRef": "COUNTERPART" },
+    "obstacleTemplate": { "subjectRef": "PRIMARY_OBJECT", "predicate": "HELD_BY", "objectRef": "THIRD_PARTY" },
+    "compatibleObjectCategoryIds": ["object_category_access_control_item", "object_category_resource_valuable", "object_category_personal_sensitive_item"]
+  },
+  {
+    "id": "goal_conceal_primary_object",
+    "label": "Keep the central object from view",
+    "compatibleSkeletonIds": ["skeleton_concealment"],
+    "targetTemplate": { "subjectRef": "PRIMARY_OBJECT", "predicate": "VISIBLE", "value": false },
+    "obstacleTemplate": { "subjectRef": "PRIMARY_OBJECT", "predicate": "VISIBLE", "value": true },
+    "compatibleObjectCategoryIds": ["object_category_container", "object_category_evidence_information_item", "object_category_personal_sensitive_item"]
+  },
+  {
+    "id": "goal_disclose_primary_object",
+    "label": "Disclose the central object's information to another actor",
+    "compatibleSkeletonIds": ["skeleton_disclosure"],
+    "targetTemplate": { "subjectRef": "PRIMARY_OBJECT", "predicate": "DISCLOSED_TO", "objectRef": "COUNTERPART" },
+    "obstacleTemplate": { "subjectRef": "PRIMARY_OBJECT", "predicate": "SEALED", "value": true },
+    "compatibleObjectCategoryIds": ["object_category_communication_item", "object_category_evidence_information_item"]
+  },
+  {
+    "id": "goal_gain_access",
+    "label": "Gain access to the room's controlled resource",
+    "compatibleSkeletonIds": ["skeleton_access"],
+    "targetTemplate": { "subjectRef": "ROOM", "predicate": "ACCESSIBLE_TO", "objectRef": "SELF" },
+    "obstacleTemplate": { "subjectRef": "ROOM", "predicate": "ACCESS_DENIED_TO", "objectRef": "SELF" },
+    "compatibleObjectCategoryIds": ["object_category_access_control_item"]
+  },
+  {
+    "id": "goal_deny_access",
+    "label": "Deny another actor access",
+    "compatibleSkeletonIds": ["skeleton_access", "skeleton_control"],
+    "targetTemplate": { "subjectRef": "ROOM", "predicate": "ACCESS_DENIED_TO", "objectRef": "COUNTERPART" },
+    "obstacleTemplate": { "subjectRef": "ROOM", "predicate": "ACCESSIBLE_TO", "objectRef": "COUNTERPART" },
+    "compatibleObjectCategoryIds": ["object_category_access_control_item"]
+  },
+  {
+    "id": "goal_leave_room",
+    "label": "Reach the exit",
+    "compatibleSkeletonIds": ["skeleton_exit"],
+    "targetTemplate": { "subjectRef": "SELF", "predicate": "LOCATED_AT", "objectRef": "EXIT_ZONE" },
+    "obstacleTemplate": { "subjectRef": "SELF", "predicate": "LOCATED_IN", "objectRef": "ROOM" },
+    "compatibleObjectCategoryIds": []
+  },
+  {
+    "id": "goal_prevent_exit",
+    "label": "Prevent another actor from leaving",
+    "compatibleSkeletonIds": ["skeleton_exit", "skeleton_control"],
+    "targetTemplate": { "subjectRef": "COUNTERPART", "predicate": "EXIT_BLOCKED", "value": true },
+    "obstacleTemplate": { "subjectRef": "ROOM", "predicate": "EXIT_AVAILABLE", "value": true },
+    "compatibleObjectCategoryIds": []
+  },
+  {
+    "id": "goal_expose_information",
+    "label": "Make concealed information visible",
+    "compatibleSkeletonIds": ["skeleton_disclosure"],
+    "targetTemplate": { "subjectRef": "PRIMARY_OBJECT", "predicate": "VISIBLE", "value": true },
+    "obstacleTemplate": { "subjectRef": "PRIMARY_OBJECT", "predicate": "VISIBLE", "value": false },
+    "compatibleObjectCategoryIds": ["object_category_evidence_information_item", "object_category_communication_item"]
+  },
+  {
+    "id": "goal_protect_counterpart",
+    "label": "Protect another actor from exposure",
+    "compatibleSkeletonIds": ["skeleton_control", "skeleton_concealment"],
+    "targetTemplate": { "subjectRef": "COUNTERPART", "predicate": "PROTECTED", "value": true },
+    "obstacleTemplate": { "subjectRef": "COUNTERPART", "predicate": "EXPOSED", "value": true },
+    "compatibleObjectCategoryIds": ["object_category_personal_sensitive_item", "object_category_evidence_information_item"]
+  }
+]
