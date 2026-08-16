@@ -10,7 +10,7 @@ The canonical social-interaction architecture remains in [`fargo161/social-inter
 
 The official future designer-facing implementation path is **Unity + Adventure Creator**, connected to the Social Simulation Core through a narrow bridge. Unity and Adventure Creator will provide scene construction, interaction authoring, dialogue and audiovisual presentation, and conventional adventure-game orchestration. The Social Simulation Core will remain the authoritative source of truth for social state and resolution. The bridge is future work; no Unity or Adventure Creator implementation is present in this repository today.
 
-See [`ADVENTURE_CREATOR_DESIGN_PATH.md`](ADVENTURE_CREATOR_DESIGN_PATH.md) for the responsibility boundary, non-goals, and staged migration direction.
+See [`ADVENTURE_CREATOR_DESIGN_PATH.md`](../history/one-room/ADVENTURE_CREATOR_DESIGN_PATH.md) for the responsibility boundary, non-goals, and staged migration direction.
 
 ## Stable v0.3.1 reference implementation
 
@@ -73,13 +73,13 @@ AP, initiative, topology, hearing thresholds, message compatibility, event defin
 
 See:
 
-- [`ADVENTURE_CREATOR_DESIGN_PATH.md`](ADVENTURE_CREATOR_DESIGN_PATH.md)
-- [`PROTOTYPE_ASSUMPTIONS_v0_3.md`](PROTOTYPE_ASSUMPTIONS_v0_3.md)
-- [`FOCUSED_REPAIR_REPORT_v0_3.md`](FOCUSED_REPAIR_REPORT_v0_3.md)
-- [`SEMANTIC_CLOSURE_REPORT_v0_3.md`](SEMANTIC_CLOSURE_REPORT_v0_3.md)
-- [`TEST_ACCEPTANCE_v0_3.md`](TEST_ACCEPTANCE_v0_3.md)
-- [`MANUAL_ACCEPTANCE_v0_3_FOCUSED_REPAIR.md`](MANUAL_ACCEPTANCE_v0_3_FOCUSED_REPAIR.md)
-- [`REWORK_v0_2_1_to_v0_3.md`](REWORK_v0_2_1_to_v0_3.md)
+- [`ADVENTURE_CREATOR_DESIGN_PATH.md`](../history/one-room/ADVENTURE_CREATOR_DESIGN_PATH.md)
+- [`PROTOTYPE_ASSUMPTIONS_v0_3.md`](../history/one-room/PROTOTYPE_ASSUMPTIONS_v0_3.md)
+- [`FOCUSED_REPAIR_REPORT_v0_3.md`](../history/one-room/FOCUSED_REPAIR_REPORT_v0_3.md)
+- [`SEMANTIC_CLOSURE_REPORT_v0_3.md`](../history/one-room/SEMANTIC_CLOSURE_REPORT_v0_3.md)
+- [`TEST_ACCEPTANCE_v0_3.md`](../history/one-room/TEST_ACCEPTANCE_v0_3.md)
+- [`MANUAL_ACCEPTANCE_v0_3_FOCUSED_REPAIR.md`](../history/one-room/MANUAL_ACCEPTANCE_v0_3_FOCUSED_REPAIR.md)
+- [`REWORK_v0_2_1_to_v0_3.md`](../history/one-room/REWORK_v0_2_1_to_v0_3.md)
 
 ## Validation
 
