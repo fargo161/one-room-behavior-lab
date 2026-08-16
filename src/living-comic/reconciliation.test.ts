@@ -55,18 +55,25 @@ describe("Living Comic v0.1 reconciliation invariants", () => {
   it("rejects grounded asymmetry that is not relevant to a Goal or obstacle", () => {
     const generated = structuredClone(generateScene(314159, content));
     const sourceIds = generated.snapshot.history.slice(0, 2).map(({ id }) => id);
+    const unrelatedTruth: Proposition = { subjectId: "scene_room", predicate: "AMBIENT_SIGNAL_ACTIVE", value: true };
+    generated.snapshot.worldFacts.push({
+      id: "fact_unrelated_ambient_signal",
+      proposition: unrelatedTruth,
+      truth: true,
+      sourceHistoryEventIds: [sourceIds[0]!],
+    });
     generated.snapshot.beliefs = [
       {
         id: "belief_unrelated_truth",
         actorId: "actor_counterpart",
-        proposition: { subjectId: "scene_room", predicate: "EXIT_AVAILABLE", value: true },
+        proposition: unrelatedTruth,
         certainty: "CERTAIN",
         sourceEventIds: [sourceIds[0]!],
       },
       {
         id: "belief_unrelated_false",
         actorId: "actor_third_party",
-        proposition: { subjectId: "scene_room", predicate: "EXIT_AVAILABLE", value: false },
+        proposition: { ...unrelatedTruth, value: false },
         certainty: "UNCERTAIN",
         sourceEventIds: [sourceIds[1]!],
       },
@@ -101,8 +108,12 @@ describe("Living Comic v0.1 reconciliation invariants", () => {
     const state = readyState();
     const observerId = "actor_counterpart";
     const view = buildObserverInterpretationView(state.snapshot, observerId);
-    const heldGoalDefinition = content.goals.find(({ targetTemplate }) => targetTemplate.predicate === "HELD_BY")!;
-    const reasonDefinition = content.reasons.find(({ compatibleGoalIds }) => compatibleGoalIds.includes(heldGoalDefinition.id))!;
+    const heldGoalDefinitionIds = content.goals
+      .filter(({ targetTemplate }) => targetTemplate.predicate === "HELD_BY")
+      .map(({ id }) => id);
+    const reasonDefinition = content.reasons.find(({ compatibleGoalIds }) =>
+      compatibleGoalIds.some((goalId) => heldGoalDefinitionIds.includes(goalId)),
+    )!;
     const historyActionId = reasonDefinition.groundingHistoryActionIds[0]!;
     const knownEvent: HistoricalEvent = {
       id: "history_event_known_sender",
@@ -141,10 +152,17 @@ describe("Living Comic v0.1 reconciliation invariants", () => {
       noticedActorId: "actor_player",
       noticedTargetIds: [observerId],
     };
+    const withoutKnownHistory = interpretPerception({ ...view, knownHistory: [] }, perception, event, content);
+    const withoutHistoryAccessCandidate = withoutKnownHistory.candidateScores.find(({ inferredGoal }) => inferredGoal?.predicate === "HELD_BY")!;
+    expect(withoutHistoryAccessCandidate.inferredReasonId).toBeNull();
+
     const interpretation = interpretPerception(view, perception, event, content);
     const accessCandidate = interpretation.candidateScores.find(({ inferredGoal }) => inferredGoal?.predicate === "HELD_BY")!;
     expect(accessCandidate.evidenceRefs).toContain(knownEvent.id);
-    expect(accessCandidate.inferredReasonId).toBe(reasonDefinition.id);
+    const inferredReason = content.reasons.find(({ id }) => id === accessCandidate.inferredReasonId);
+    expect(inferredReason).toBeDefined();
+    expect(inferredReason!.compatibleGoalIds.some((goalId) => heldGoalDefinitionIds.includes(goalId))).toBe(true);
+    expect(inferredReason!.groundingHistoryActionIds).toContain(historyActionId);
     const sender = state.snapshot.characters.find(({ id }) => id === "actor_player")!;
     expect(accessCandidate.evidenceRefs).not.toContain(sender.reasonId ?? "no_private_reason");
   });
