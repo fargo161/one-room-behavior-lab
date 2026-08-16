@@ -69,18 +69,20 @@ HELD_BY ≠ OWNED_BY
 
 ## Documentation
 
-- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — package boundaries and causal flow.
-- [`docs/CONTENT_AUTHORING.md`](docs/CONTENT_AUTHORING.md) — portable definitions and validation rules.
-- [`docs/SEMANTIC_INVARIANTS.md`](docs/SEMANTIC_INVARIANTS.md) — non-negotiable meaning boundaries.
-- [`docs/ENGINE_CONTRACTS.md`](docs/ENGINE_CONTRACTS.md) — deterministic runtime/replay contracts.
-- [`docs/UNITY_ADVENTURE_CREATOR_HANDOFF.md`](docs/UNITY_ADVENTURE_CREATOR_HANDOFF.md) — future Unity/Adventure Creator ownership boundary.
+Start with [`docs/README.md`](docs/README.md) for the documentation authority map.
+
+- [`docs/current/ARCHITECTURE.md`](docs/current/ARCHITECTURE.md) — package boundaries and causal flow.
+- [`docs/current/CONTENT_AUTHORING.md`](docs/current/CONTENT_AUTHORING.md) — portable definitions and validation rules.
+- [`docs/current/SEMANTIC_INVARIANTS.md`](docs/current/SEMANTIC_INVARIANTS.md) — non-negotiable meaning boundaries.
+- [`docs/current/ENGINE_CONTRACTS.md`](docs/current/ENGINE_CONTRACTS.md) — deterministic runtime/replay contracts.
+- [`docs/current/UNITY_ADVENTURE_CREATOR_HANDOFF.md`](docs/current/UNITY_ADVENTURE_CREATOR_HANDOFF.md) — future Unity/Adventure Creator ownership boundary.
 - [`content/manifest.json`](content/manifest.json) — machine-readable portable content manifest.
 - [`src/living-comic/README.md`](src/living-comic/README.md) — implementation checkpoint orientation.
 
 ## Preserved One-Room reference
 
-One-Room Behavior Lab v0.3.1 remains intact as the earlier bounded executable reference. Its original root orientation is preserved verbatim at [`docs/ONE_ROOM_BEHAVIOR_LAB_V0_3_1_REFERENCE.md`](docs/ONE_ROOM_BEHAVIOR_LAB_V0_3_1_REFERENCE.md), along with its existing reports, tests, branches, and `v0.3.1` tag.
+One-Room Behavior Lab v0.3.1 remains intact as the earlier bounded executable reference. Its original root orientation is preserved verbatim at [`docs/reference/ONE_ROOM_BEHAVIOR_LAB_V0_3_1_REFERENCE.md`](docs/reference/ONE_ROOM_BEHAVIOR_LAB_V0_3_1_REFERENCE.md), along with its existing reports, tests, branches, and `v0.3.1` tag.
 
-The earlier [`ADVENTURE_CREATOR_DESIGN_PATH.md`](ADVENTURE_CREATOR_DESIGN_PATH.md) is preserved as a historical precursor. The current portability/handoff contract is [`docs/UNITY_ADVENTURE_CREATOR_HANDOFF.md`](docs/UNITY_ADVENTURE_CREATOR_HANDOFF.md).
+The earlier [`ADVENTURE_CREATOR_DESIGN_PATH.md`](docs/history/one-room/ADVENTURE_CREATOR_DESIGN_PATH.md) is preserved as a historical precursor. The current portability/handoff contract is [`docs/current/UNITY_ADVENTURE_CREATOR_HANDOFF.md`](docs/current/UNITY_ADVENTURE_CREATOR_HANDOFF.md).
 
 The repository and npm package names intentionally remain unchanged during the v0.1 reconciliation pass so repository history, hosting, and deployment identity are not rewritten as an unrelated migration.

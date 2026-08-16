@@ -4,7 +4,7 @@
 
 No Unity port or Adventure Creator bridge is implemented in v0.1. This document defines the semantic ownership boundary a future implementation must preserve.
 
-The earlier `ADVENTURE_CREATOR_DESIGN_PATH.md` is retained as historical architecture context. This handoff is the current Living Comic v0.1 portability contract.
+The earlier [`ADVENTURE_CREATOR_DESIGN_PATH.md`](../history/one-room/ADVENTURE_CREATOR_DESIGN_PATH.md) is retained as historical architecture context. This handoff is the current Living Comic v0.1 portability contract.
 
 ## What transfers
 
