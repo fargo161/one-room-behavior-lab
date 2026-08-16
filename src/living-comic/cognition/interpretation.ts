@@ -74,6 +74,11 @@ const candidate = (
   if (view.goal && proposition.predicate === view.goal.target.predicate) score += 15;
   if (view.relationships.some(({ actorIds }) => actorIds.includes(event.actorId))) score += 5;
   if (view.scenePressure.beatsRemaining <= 2 && routing.compatibleFunctionIds.includes("ESCAPE")) score += 10;
+  const cues = new Set(event.observableCueIds);
+  if (routing.compatibleFunctionIds.includes("ACCESS") && ["cue_control", "cue_authority", "cue_boundary", "cue_claimed_leverage"].some((cue) => cues.has(cue))) score += 18;
+  if (routing.compatibleFunctionIds.includes("ATTENTION") && ["cue_invitation", "cue_care", "cue_urgency", "cue_pressure"].some((cue) => cues.has(cue))) score += 18;
+  if (routing.compatibleFunctionIds.includes("SENSORY") && ["cue_concealment", "cue_ambiguity", "cue_safety"].some((cue) => cues.has(cue))) score += 18;
+  if (routing.compatibleFunctionIds.includes("ESCAPE") && ["cue_urgency", "cue_pressure"].some((cue) => cues.has(cue))) score += 18;
   return {
     id: stableRuntimeId("interpretation_candidate", view.sceneId, view.beat + 1, view.observer.id, event.id, ordinal),
     inferredIntention: [proposition],

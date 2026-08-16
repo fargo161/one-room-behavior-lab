@@ -21,6 +21,7 @@ import {
 import { routeIntention } from "./functionRouting";
 import {
   buildActorDecisionView,
+  defaultNpcScoringProfile,
   decisionViewContainsHiddenWorldTruth,
   selectNpcAction,
 } from "./npcSelection";
@@ -44,6 +45,27 @@ describe("Phase 4 Function routing and shared action grammar", () => {
     expect(routeIntention([escape], content).compatibleFunctionIds).toEqual(["ESCAPE"]);
     expect(routeIntention([escape], content).candidateOperationIds).toContain("action_leave");
     expect(routeIntention([escape], content).candidateOperationIds).not.toContain("action_take");
+  });
+
+  it("rejects unknown and protection-context predicates instead of laundering them through ATTENTION", () => {
+    const context = actionBuildContext(testState().snapshot);
+    const unknown: Proposition = { subjectId: "actor_player", predicate: "UNSUPPORTED_DESIRE", value: true };
+    const protectionContext: Proposition = { subjectId: "actor_counterpart", predicate: "PROTECTED", value: true };
+    expect(routeIntention([unknown], content)).toMatchObject({
+      status: "UNSUPPORTED",
+      compatibleFunctionIds: [],
+      candidateOperationIds: [],
+      unsupportedPredicates: ["UNSUPPORTED_DESIRE"],
+    });
+    expect(routeIntention([protectionContext], content)).toMatchObject({
+      status: "UNSUPPORTED",
+      compatibleFunctionIds: [],
+      candidateOperationIds: [],
+      unsupportedPredicates: ["PROTECTED"],
+    });
+    expect(() => makeAskPackage(context, content, "actor_player", "actor_counterpart", unknown)).toThrow(
+      "Unsupported immediate intention predicate(s): UNSUPPORTED_DESIRE",
+    );
   });
 
   it("builds Direct, Ask, Pressure, Deal, Deal Response, and Wait from shared contracts", () => {
@@ -77,6 +99,13 @@ describe("Phase 4 Function routing and shared action grammar", () => {
     expect(first.trace.tieBreakRule).toBe("TOTAL_DESC_THEN_SEMANTIC_ACTION_ID_ASC");
     expect(first.trace.candidateScores.every(({ components }) => components.some(({ componentId }) => componentId === "primary_goal_progress"))).toBe(true);
     expect(first.trace.observedBeliefIds).toEqual(view.beliefs.map(({ id }) => id).sort());
+  });
+
+  it("accepts an explicit scoring-profile seam without changing the candidate model", () => {
+    const state = testState();
+    const view = buildActorDecisionView(state.snapshot, "actor_counterpart");
+    const tuned = selectNpcAction(view, content, { ...defaultNpcScoringProfile, causalFunctionFit: 37 });
+    expect(tuned.trace.candidateScores.some(({ components }) => components.some(({ componentId, score }) => componentId === "function_fit" && score === 37))).toBe(true);
   });
 
   it("changes an NPC's later action when corrected belief makes TAKE possible", () => {
@@ -162,7 +191,7 @@ describe("Phase 4 Deal lifecycle", () => {
     const state = testState();
     const snapshot = state.snapshot;
     const context = actionBuildContext(snapshot);
-    const requested: Proposition = { subjectId: "actor_counterpart", predicate: "PROTECTED", value: true };
+    const requested: Proposition = { subjectId: "scene_room", predicate: "ACCESSIBLE_TO", objectId: "actor_counterpart" };
     const offered: Proposition = { subjectId: "primary_object", predicate: "HELD_BY", objectId: "actor_player" };
     const proposal = makeDealPackage(context, content, "actor_player", "actor_counterpart", requested, offered);
     registerDealProposal(snapshot, proposal);

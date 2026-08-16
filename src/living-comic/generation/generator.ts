@@ -411,6 +411,7 @@ const buildAttempt = (
     dealTerms: [],
     obligations: [],
     messages: [],
+    realizedMessages: [],
     attentionStates: actorIds.map((actorId) => ({
       actorId,
       primaryFocusId: "primary_object",

@@ -12,15 +12,15 @@ async function render() {
   );
 }
 
-test("server-renders the completed behavior lab", async () => {
+test("server-renders the Living Comic setup without exposing Debug semantics", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
   const html = await response.text();
-  assert.match(html, /<title>One-Room Behavior Lab · v0\.3\.0<\/title>/i);
-  assert.match(html, /Three actions\. One shared Beat\./);
-  assert.match(html, /Read the room before you commit\./);
-  assert.match(html, /What do you do next\?/);
-  assert.doesNotMatch(html, /Function selector|BASED Vibe|emotion-label/i);
+  assert.match(html, /<title>Living Comic Engine v0\.1<\/title>/i);
+  assert.match(html, /Three people enter/i);
+  assert.match(html, /Your Goal &amp; Reason/);
+  assert.match(html, /Enter this story/);
+  assert.doesNotMatch(html, /conflict_skeleton|BASED Vibe|npcDecisions|candidateScores/i);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|Your site is taking shape/i);
 });

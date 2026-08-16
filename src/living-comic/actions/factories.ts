@@ -93,8 +93,14 @@ const makeSocialPackage = (
   deal?: { deal: Deal; terms: DealTerm[] },
 ): ActionPackage => {
   const routing = routeIntention([desiredStateChange], content);
+  if (routing.status === "UNSUPPORTED") {
+    throw new Error(`Unsupported immediate intention predicate(s): ${routing.unsupportedPredicates.join(", ")}`);
+  }
   const id = actionId(context, actorId, "social", tactic.toLowerCase());
-  const messageId = stableRuntimeId("message", id);
+  const basedVibeId = options.basedVibeId ?? context.baselineVibeByActorId[actorId] ?? "vibe_as";
+  const disclosure = options.disclosure ?? "DIRECT";
+  const delivery = options.delivery ?? "OPEN";
+  const messageId = stableRuntimeId("message", id, basedVibeId, disclosure, delivery);
   const message: SemanticMessage = {
     id: messageId,
     senderId: actorId,
@@ -102,12 +108,12 @@ const makeSocialPackage = (
     tactic,
     desiredStateChange,
     speechAct,
-    claims,
-    disclosure: options.disclosure ?? "DIRECT",
+    claims: claims.map((item, index) => ({ ...item, id: stableRuntimeId("message_claim", messageId, index + 1) })),
+    disclosure,
     claimedReasonId: options.claimedReasonId ?? null,
-    basedVibeId: options.basedVibeId ?? context.baselineVibeByActorId[actorId] ?? "vibe_as",
+    basedVibeId,
     paralanguageCueIds: options.paralanguageCueIds ?? [],
-    delivery: options.delivery ?? "OPEN",
+    delivery,
     dealId: deal?.deal.id ?? null,
   };
   const action: SocialAction = {

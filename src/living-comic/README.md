@@ -1,6 +1,6 @@
-# Living Comic Engine v0.1 foundation
+# Living Comic Engine v0.1
 
-This directory is the additive, framework-independent Living Comic semantic core. At the Phase 6 checkpoint it contains contracts, portable content, deterministic situation generation, shared action/Deal semantics, deterministic Beat resolution, attention, perception, interpretation, and belief revision. It deliberately does not yet contain BASED/message realization or a player UI.
+This directory contains the additive Living Comic semantic core, deterministic BASED/message realization, player-safe presentation adapter, Debug adapter, and Phase 8 browser surface. The legacy One-Room Behavior Lab remains isolated in its original modules and tests.
 
 ## Dependency boundary
 
@@ -43,10 +43,13 @@ Invalid candidates are rejected with explicit check results. The generator advan
 
 Portable predicate cardinality is data-driven in `content/semantic/predicate-semantics.json` and documented in `docs/PREDICATE_SEMANTICS.md`. Language-neutral Phase 4–6 contracts and forbidden data access are documented in `docs/PHASE_4_6_ENGINE_CONTRACTS.md`.
 
-Still out of scope until approval:
+## Phase 7–8 realization and presentation
 
-- Phase 7 BASED and controlled wording realization
-- Living Comic Play/Debug UI
-- presentation adapters and comic rendering
+`realization/` converts semantic Messages into deterministic wording plus structured paralanguage, pose, face, balloon, and interpretation cues. `presentation/` owns the hard Play/Debug data boundary. `web/` renders scene setup, Goal/Reason selection, What I Know, What I Noticed, Deal state, the shared action builder, preview, comic results, and the read-only causal inspector.
+
+Still out of scope until the Phase 8 checkpoint is approved:
+
+- Phase 9 final acceptance fixture expansion
+- final documentation and Unity/Adventure Creator handoff pass
 
 Stable IDs are lowercase snake case. Definition IDs remain independent of labels, while runtime IDs derive from semantic role, input seed, and deterministic ordinal—not random UUIDs or display text.

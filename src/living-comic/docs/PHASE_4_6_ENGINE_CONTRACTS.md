@@ -15,8 +15,10 @@ Routing happens before behavior creation. Functions are never attached after can
 - exit/departure intentions → `ESCAPE`
 - possession/control/access intentions → `ACCESS`
 - exposure/visibility/open intentions → `SENSORY`
-- focus/protection/exposure-of-actor intentions → `ATTENTION`
+- focus/exposure-of-actor intentions → `ATTENTION`
 - ordinary non-exit movement → `ACCESS` and `ATTENTION`
+
+Unknown predicates and context-only concepts such as `PROTECTED` resolve to an explicit `UNSUPPORTED` diagnostic with no compatible Function and no candidate operations. They are rejected before Action construction. `UNRESOLVED`/unsupported is not a playable fifth Function. Protection belongs in Goal/Reason context; the immediate desired change must independently route through `ESCAPE`, `ACCESS`, `SENSORY`, or `ATTENTION`.
 
 The returned Direct Action definitions must independently declare at least one routed Function as compatible.
 

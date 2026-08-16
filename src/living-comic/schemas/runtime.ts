@@ -152,6 +152,20 @@ export const semanticMessageSchema = z.object({
   dealId: stableIdSchema.nullable(),
 });
 
+export const realizedMessageSchema = z.object({
+  id: stableIdSchema,
+  messageId: stableIdSchema,
+  variantIndex: z.number().int().min(0),
+  wording: z.string().min(1),
+  deliveryLabel: z.string().min(1),
+  basedVibeId: stableIdSchema,
+  paralanguageCueIds: z.array(stableIdSchema),
+  poseId: stableIdSchema,
+  faceId: stableIdSchema,
+  balloonId: stableIdSchema,
+  interpretationCueIds: z.array(stableIdSchema).min(1),
+});
+
 export const attentionStateSchema = z.object({
   actorId: stableIdSchema,
   primaryFocusId: stableIdSchema.nullable(),
@@ -350,6 +364,7 @@ export const runtimeSnapshotSchema = z.object({
   dealTerms: z.array(dealTermSchema),
   obligations: z.array(obligationSchema),
   messages: z.array(semanticMessageSchema),
+  realizedMessages: z.array(realizedMessageSchema),
   attentionStates: z.array(attentionStateSchema).length(3),
   scenePressure: scenePressureSchema,
   history: z.array(historicalEventSchema).min(2),
@@ -374,6 +389,7 @@ export const beatResolutionReportSchema = z.object({
   dealLifecycleChanges: z.array(dealLifecycleChangeSchema),
   goalSatisfiedIds: z.array(stableIdSchema),
   scenePressureEventIds: z.array(stableIdSchema),
+  realizedMessageIds: z.array(stableIdSchema),
   historyPromotionIds: z.array(stableIdSchema),
   terminalReason: z.string().nullable(),
 });
@@ -388,6 +404,20 @@ export const presentationViewModelSchema = z.object({
   openDealIds: z.array(stableIdSchema),
   resultPanelIds: z.array(stableIdSchema),
   terminalSummary: z.string().nullable(),
+  playerGoal: z.object({ id: stableIdSchema, label: z.string().min(1), target: propositionSchema }),
+  playerReason: z.object({ id: stableIdSchema, label: z.string().min(1) }),
+  characters: z.array(z.object({ id: stableIdSchema, label: z.string().min(1), roleLabel: z.string().min(1), zoneId: stableIdSchema })),
+  objects: z.array(z.object({ id: stableIdSchema, label: z.string().min(1), zoneId: stableIdSchema, holderLabel: z.string().nullable(), visible: z.boolean() })),
+  whatIKnow: z.array(z.object({ id: stableIdSchema, label: z.string().min(1), certainty: certaintySchema.nullable(), sourceKind: z.enum(["BELIEF", "PERCEPTION", "RELATIONSHIP", "HISTORY", "OBLIGATION"]) })),
+  whatINoticed: z.array(z.object({ id: stableIdSchema, eventId: stableIdSchema, label: z.string().min(1) })),
+  openDeals: z.array(z.object({ id: stableIdSchema, status: z.string().min(1), summary: z.string().min(1) })),
+  resultPanels: z.array(z.object({
+    id: stableIdSchema,
+    eventId: stableIdSchema,
+    actorLabel: z.string().min(1),
+    body: z.string().min(1),
+    message: z.object({ wording: z.string().min(1), deliveryLabel: z.string().min(1), poseLabel: z.string().min(1), faceLabel: z.string().min(1), balloonLabel: z.string().min(1) }).nullable(),
+  })),
 });
 
 export const generatedSceneSchema = z.object({
@@ -415,6 +445,7 @@ export type DealTerm = z.infer<typeof dealTermSchema>;
 export type Obligation = z.infer<typeof obligationSchema>;
 export type MessageClaim = z.infer<typeof messageClaimSchema>;
 export type SemanticMessage = z.infer<typeof semanticMessageSchema>;
+export type RealizedMessage = z.infer<typeof realizedMessageSchema>;
 export type AttentionState = z.infer<typeof attentionStateSchema>;
 export type ActionDraft = z.infer<typeof actionDraftSchema>;
 export type CommittedAction = z.infer<typeof committedActionSchema>;

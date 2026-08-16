@@ -26,6 +26,28 @@ interface ScoredPackage {
   dealResponseBias?: number;
 }
 
+export interface NpcScoringProfile {
+  primaryGoalProgress: number;
+  activeObstacleRelevance: number;
+  secondaryGoalPreservation: number;
+  secondaryGoalViolation: number;
+  acceptedDealFulfillment: number;
+  acceptedDealViolation: number;
+  urgentScenePressureResponse: number;
+  causalFunctionFit: number;
+}
+
+export const defaultNpcScoringProfile: Readonly<NpcScoringProfile> = Object.freeze({
+  primaryGoalProgress: 100,
+  activeObstacleRelevance: 40,
+  secondaryGoalPreservation: 25,
+  secondaryGoalViolation: -25,
+  acceptedDealFulfillment: 20,
+  acceptedDealViolation: -40,
+  urgentScenePressureResponse: 15,
+  causalFunctionFit: 10,
+});
+
 export function buildActorDecisionView(snapshot: RuntimeSnapshot, actorId: string): ActorDecisionView {
   const actor = snapshot.characters.find(({ id }) => id === actorId);
   if (!actor || actor.role === "PLAYER_ROLE") throw new Error(`NPC decision view requires an active NPC: ${actorId}`);
@@ -196,19 +218,19 @@ export function buildNpcCandidates(view: ActorDecisionView, content: ContentMani
   return candidates;
 }
 
-const scorePackage = (view: ActorDecisionView, candidate: ScoredPackage): NpcCandidateScore => {
+const scorePackage = (view: ActorDecisionView, candidate: ScoredPackage, profile: NpcScoringProfile): NpcCandidateScore => {
   const { action } = candidate.package;
   const components: ScoreComponent[] = [];
   const add = (componentId: string, score: number, explanation: string) => components.push({ componentId, score, explanation });
 
   const primaryProgress = action.intention.some((intention) => propositionsEqual(intention, view.primaryGoal.target));
-  add("primary_goal_progress", primaryProgress ? 100 : 0, primaryProgress ? "Immediate intention matches the primary Goal target." : "No direct primary Goal progress.");
-  add("active_obstacle_relevance", candidate.directObstacleFit ? 40 : 0, candidate.directObstacleFit ? "Candidate directly addresses the current obstacle/target predicate." : "Candidate does not directly change the obstacle predicate.");
+  add("primary_goal_progress", primaryProgress ? profile.primaryGoalProgress : 0, primaryProgress ? "Immediate intention matches the primary Goal target." : "No direct primary Goal progress.");
+  add("active_obstacle_relevance", candidate.directObstacleFit ? profile.activeObstacleRelevance : 0, candidate.directObstacleFit ? "Candidate directly addresses the current obstacle/target predicate." : "Candidate does not directly change the obstacle predicate.");
   const advancesSecondary = view.secondaryGoals.some((goal) => action.intention.some((item) => propositionsEqual(item, goal.target)));
   const violatesSecondary = view.secondaryGoals.some((goal) => action.intention.some((item) => conflict(item, goal.target)));
   add(
     "secondary_goal_tradeoff",
-    advancesSecondary ? 25 : violatesSecondary ? -25 : 0,
+    advancesSecondary ? profile.secondaryGoalPreservation : violatesSecondary ? profile.secondaryGoalViolation : 0,
     advancesSecondary ? "Candidate advances a secondary Goal." : violatesSecondary ? "Candidate violates a secondary Goal." : "Candidate is neutral to secondary Goals.",
   );
 
@@ -219,7 +241,7 @@ const scorePackage = (view: ActorDecisionView, candidate: ScoredPackage): NpcCan
   });
   const fulfillsObligation = obligationTerms.some(({ term }) => action.intention.some((item) => propositionsEqual(item, term.desiredChange)));
   const violatesObligation = obligationTerms.some(({ term }) => action.intention.some((item) => conflict(item, term.desiredChange)));
-  add("accepted_deal_obligation", fulfillsObligation ? 20 : violatesObligation ? -40 : 0, fulfillsObligation ? "Candidate fulfills an accepted Deal term." : violatesObligation ? "Candidate violates an accepted Deal term." : "Candidate is neutral to open obligations.");
+  add("accepted_deal_obligation", fulfillsObligation ? profile.acceptedDealFulfillment : violatesObligation ? profile.acceptedDealViolation : 0, fulfillsObligation ? "Candidate fulfills an accepted Deal term." : violatesObligation ? "Candidate violates an accepted Deal term." : "Candidate is neutral to open obligations.");
 
   const pressureUrgent = view.scenePressure.active && view.scenePressure.beatsRemaining <= 2;
   const pressureResponsive = pressureUrgent && (
@@ -227,8 +249,8 @@ const scorePackage = (view: ActorDecisionView, candidate: ScoredPackage): NpcCan
     || action.functionIds.includes("SENSORY")
     || (action.family === "SOCIAL" && action.tactic === "PRESSURE")
   );
-  add("scene_pressure_urgency", pressureResponsive ? 15 : 0, pressureResponsive ? "Candidate responds to imminent Scene Pressure." : "No urgency bonus applies.");
-  add("function_fit", action.functionIds.length > 0 ? 10 : 0, action.functionIds.length > 0 ? "Candidate was causally routed through a compatible Function." : "WAIT has no Function fit.");
+  add("scene_pressure_urgency", pressureResponsive ? profile.urgentScenePressureResponse : 0, pressureResponsive ? "Candidate responds to imminent Scene Pressure." : "No urgency bonus applies.");
+  add("function_fit", action.functionIds.length > 0 ? profile.causalFunctionFit : 0, action.functionIds.length > 0 ? "Candidate was causally routed through a compatible Function." : "WAIT has no Function fit.");
   if (candidate.dealResponseBias !== undefined) add("deal_response_fit", candidate.dealResponseBias, "Deal response is scored from offered benefit and requested conflict.");
 
   return {
@@ -240,9 +262,13 @@ const scorePackage = (view: ActorDecisionView, candidate: ScoredPackage): NpcCan
   };
 };
 
-export function selectNpcAction(view: ActorDecisionView, content: ContentManifest): SelectedNpcAction {
+export function selectNpcAction(
+  view: ActorDecisionView,
+  content: ContentManifest,
+  profile: NpcScoringProfile = defaultNpcScoringProfile,
+): SelectedNpcAction {
   const candidates = buildNpcCandidates(view, content);
-  const scored = candidates.map((candidate) => ({ candidate, score: scorePackage(view, candidate) }));
+  const scored = candidates.map((candidate) => ({ candidate, score: scorePackage(view, candidate, profile) }));
   const allowed = scored.filter(({ score }) => score.allowedByBeliefs);
   const ranked = (allowed.length > 0 ? allowed : scored).sort((left, right) => (
     right.score.totalScore - left.score.totalScore

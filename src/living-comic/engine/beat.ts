@@ -19,6 +19,7 @@ import {
 } from "../schemas";
 import { actionPriority, resolveActionPackage } from "./resolution";
 import { advanceScenePressure } from "./scenePressure";
+import { realizeActionPackage } from "../realization";
 
 export function startScene(
   generated: { snapshot: RuntimeSnapshot; playerOptions: Array<{ id: string; goal: RuntimeSnapshot["goals"][number]; reason: RuntimeSnapshot["reasons"][number] }> },
@@ -105,7 +106,10 @@ export function resolveBeat(
     .map(({ id }) => selectNpcAction(buildActorDecisionView(preBeat, id), content));
   if (npcSelections.length !== 2) throw new Error("Living Comic v0.1 requires two active NPC choices per Beat");
 
-  const packages = [playerPackage, ...npcSelections.map((selection) => selection.package)];
+  const packages = [playerPackage, ...npcSelections.map((selection) => selection.package)]
+    .map((actionPackage, index) => actionPackage.realizedMessage
+      ? actionPackage
+      : realizeActionPackage(actionPackage, content, preBeat.seed, index));
   const packageByActionId = new Map(packages.map((actionPackage) => [actionPackage.action.id, actionPackage]));
   const committedActions: CommittedAction[] = packages.map(({ action }) => ({
     action: structuredClone(action),
@@ -179,6 +183,7 @@ export function resolveBeat(
     dealLifecycleChanges,
     goalSatisfiedIds,
     scenePressureEventIds: pressure.event ? [pressure.event.id] : [],
+    realizedMessageIds: packages.flatMap(({ realizedMessage }) => realizedMessage ? [realizedMessage.id] : []),
     historyPromotionIds,
     terminalReason,
   });

@@ -93,6 +93,7 @@ const eventFor = (
       ? [action.targetActorId]
       : [];
   const social = action.family === "SOCIAL";
+  const realization = actionPackage.realizedMessage;
   return {
     id: stableRuntimeId("event", snapshot.sceneId, "beat", snapshot.beat + 1, ordinal, action.id),
     beat: snapshot.beat + 1,
@@ -104,7 +105,17 @@ const eventFor = (
     targetEntityIds,
     observableCueIds: status === "SUCCESS"
       ? social
-        ? ["ambiguous_social_occurrence", "communication_occurred"]
+        ? [
+          "ambiguous_social_occurrence",
+          "communication_occurred",
+          ...(realization ? [
+            ...realization.paralanguageCueIds,
+            realization.poseId,
+            realization.faceId,
+            realization.balloonId,
+            ...realization.interpretationCueIds,
+          ] : []),
+        ]
         : action.family === "DIRECT" ? [action.operationId] : ["principal_action_completed"]
       : ["failed_attempt", status === "INVALIDATED" ? "commitment_invalidated" : "prerequisite_failed"],
     messageId: message?.id ?? null,
@@ -188,6 +199,9 @@ export function resolveActionPackage(
       reasonCode = "message_missing";
     } else {
       if (!current.messages.some(({ id }) => id === actionPackage.message!.id)) current.messages.push(structuredClone(actionPackage.message));
+      if (actionPackage.realizedMessage && !current.realizedMessages.some(({ id }) => id === actionPackage.realizedMessage!.id)) {
+        current.realizedMessages.push(structuredClone(actionPackage.realizedMessage));
+      }
       resultPropositions.push({ subjectId: action.actorId, predicate: "COMMUNICATED_WITH", objectId: action.targetActorId });
       if (action.functionIds.includes("ATTENTION")) {
         resultPropositions.push({ subjectId: action.targetActorId, predicate: "ATTENDING_TO", objectId: action.actorId });

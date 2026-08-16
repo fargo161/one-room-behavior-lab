@@ -9,6 +9,7 @@ import type {
   Obligation,
   Obstacle,
   Reason,
+  RealizedMessage,
   RuntimeSnapshot,
   ScenePressure,
   SemanticMessage,
@@ -17,6 +18,7 @@ import type {
 export interface ActionPackage {
   action: ActionDraft;
   message?: SemanticMessage;
+  realizedMessage?: RealizedMessage;
   proposedDeal?: Deal;
   dealTerms?: DealTerm[];
 }
@@ -31,6 +33,8 @@ export interface FunctionRoutingDecision {
   intention: ActionDraft["intention"];
   compatibleFunctionIds: ActionDraft["functionIds"];
   candidateOperationIds: string[];
+  status: "RESOLVED" | "UNSUPPORTED";
+  unsupportedPredicates: string[];
   ruleId: "route_intention_by_predicate_semantics";
 }
 
