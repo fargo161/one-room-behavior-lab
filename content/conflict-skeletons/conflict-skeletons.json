@@ -1,0 +1,67 @@
+[
+  {
+    "id": "skeleton_control",
+    "kind": "CONTROL",
+    "label": "Contested control",
+    "requiredActorRoles": ["PLAYER_ROLE", "COUNTERPART_ROLE", "THIRD_PARTY_ROLE"],
+    "requiredNarrativeRoles": ["primary_object", "controlled_room"],
+    "compatibleGoalIds": ["goal_possess_primary_object", "goal_transfer_primary_object", "goal_deny_access", "goal_prevent_exit", "goal_protect_counterpart"],
+    "compatibleObstaclePredicates": ["HELD_BY", "ACCESSIBLE_TO", "EXIT_AVAILABLE", "EXPOSED"],
+    "requiredObjectCategoryIds": ["object_category_resource_valuable", "object_category_access_control_item"],
+    "compatibleRoomCategoryIds": ["room_category_private_controlled", "room_category_shared_conditional"],
+    "informationAsymmetryRequired": true,
+    "terminalPredicateTemplates": [{ "subjectRef": "PRIMARY_OBJECT", "predicate": "CONTROLLED_BY", "objectRef": "SELF" }]
+  },
+  {
+    "id": "skeleton_concealment",
+    "kind": "CONCEALMENT",
+    "label": "Contested concealment",
+    "requiredActorRoles": ["PLAYER_ROLE", "COUNTERPART_ROLE", "THIRD_PARTY_ROLE"],
+    "requiredNarrativeRoles": ["primary_object", "hidden_information"],
+    "compatibleGoalIds": ["goal_conceal_primary_object", "goal_protect_counterpart"],
+    "compatibleObstaclePredicates": ["VISIBLE", "EXPOSED"],
+    "requiredObjectCategoryIds": ["object_category_container", "object_category_evidence_information_item", "object_category_personal_sensitive_item"],
+    "compatibleRoomCategoryIds": ["room_category_private_controlled", "room_category_shared_conditional"],
+    "informationAsymmetryRequired": true,
+    "terminalPredicateTemplates": [{ "subjectRef": "PRIMARY_OBJECT", "predicate": "CONCEALED", "value": true }]
+  },
+  {
+    "id": "skeleton_access",
+    "kind": "ACCESS",
+    "label": "Contested access",
+    "requiredActorRoles": ["PLAYER_ROLE", "COUNTERPART_ROLE", "THIRD_PARTY_ROLE"],
+    "requiredNarrativeRoles": ["controlled_room", "access_item"],
+    "compatibleGoalIds": ["goal_possess_primary_object", "goal_transfer_primary_object", "goal_gain_access", "goal_deny_access"],
+    "compatibleObstaclePredicates": ["HELD_BY", "ACCESS_DENIED_TO", "ACCESSIBLE_TO"],
+    "requiredObjectCategoryIds": ["object_category_access_control_item"],
+    "compatibleRoomCategoryIds": ["room_category_shared_conditional", "room_category_threshold_transit"],
+    "informationAsymmetryRequired": true,
+    "terminalPredicateTemplates": [{ "subjectRef": "ROOM", "predicate": "ACCESSIBLE_TO", "objectRef": "SELF" }]
+  },
+  {
+    "id": "skeleton_disclosure",
+    "kind": "DISCLOSURE",
+    "label": "Contested disclosure",
+    "requiredActorRoles": ["PLAYER_ROLE", "COUNTERPART_ROLE", "THIRD_PARTY_ROLE"],
+    "requiredNarrativeRoles": ["primary_object", "information_holder"],
+    "compatibleGoalIds": ["goal_disclose_primary_object", "goal_expose_information"],
+    "compatibleObstaclePredicates": ["SEALED", "VISIBLE"],
+    "requiredObjectCategoryIds": ["object_category_evidence_information_item", "object_category_communication_item"],
+    "compatibleRoomCategoryIds": ["room_category_private_controlled", "room_category_shared_conditional"],
+    "informationAsymmetryRequired": true,
+    "terminalPredicateTemplates": [{ "subjectRef": "PRIMARY_OBJECT", "predicate": "DISCLOSED_TO", "objectRef": "COUNTERPART" }]
+  },
+  {
+    "id": "skeleton_exit",
+    "kind": "EXIT",
+    "label": "Contested exit",
+    "requiredActorRoles": ["PLAYER_ROLE", "COUNTERPART_ROLE", "THIRD_PARTY_ROLE"],
+    "requiredNarrativeRoles": ["exit_zone", "departure_pressure"],
+    "compatibleGoalIds": ["goal_leave_room", "goal_prevent_exit"],
+    "compatibleObstaclePredicates": ["LOCATED_IN", "EXIT_AVAILABLE"],
+    "requiredObjectCategoryIds": [],
+    "compatibleRoomCategoryIds": ["room_category_shared_conditional", "room_category_threshold_transit"],
+    "informationAsymmetryRequired": true,
+    "terminalPredicateTemplates": [{ "subjectRef": "SELF", "predicate": "LOCATED_AT", "objectRef": "EXIT_ZONE" }]
+  }
+]

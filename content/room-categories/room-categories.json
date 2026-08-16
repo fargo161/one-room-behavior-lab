@@ -1,0 +1,5 @@
+[
+  { "id": "room_category_private_controlled", "label": "Private / Controlled Space", "affordances": ["privacy", "ownership_control", "restricted_entry", "concealment"] },
+  { "id": "room_category_shared_conditional", "label": "Shared / Conditional Space", "affordances": ["multiple_occupants", "differentiated_permissions", "contested_control"] },
+  { "id": "room_category_threshold_transit", "label": "Threshold / Transit Space", "affordances": ["arrival_departure", "outsider_exposure", "exit_urgency"] }
+]

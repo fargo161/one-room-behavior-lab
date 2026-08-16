@@ -1,0 +1,32 @@
+{
+  "faces": [
+    { "id": "face_neutral", "label": "Neutral" },
+    { "id": "face_warm", "label": "Warm" },
+    { "id": "face_tense", "label": "Tense" },
+    { "id": "face_angry", "label": "Angry" },
+    { "id": "face_guarded", "label": "Guarded" },
+    { "id": "face_alarmed", "label": "Alarmed" }
+  ],
+  "poses": [
+    { "id": "pose_neutral", "label": "Neutral" },
+    { "id": "pose_approach", "label": "Approach" },
+    { "id": "pose_withdraw", "label": "Withdraw" },
+    { "id": "pose_guarded", "label": "Guarded" },
+    { "id": "pose_reaching", "label": "Reaching" },
+    { "id": "pose_assertive", "label": "Assertive" }
+  ],
+  "balloons": [
+    { "id": "balloon_normal", "label": "Normal" },
+    { "id": "balloon_quiet", "label": "Quiet" },
+    { "id": "balloon_loud", "label": "Loud" },
+    { "id": "balloon_interrupted", "label": "Interrupted" },
+    { "id": "balloon_private", "label": "Private" }
+  ],
+  "paralanguage": [
+    { "id": "paralanguage_pause", "label": "Pause" },
+    { "id": "paralanguage_emphasis", "label": "Emphasis" },
+    { "id": "paralanguage_interruption", "label": "Interruption" },
+    { "id": "paralanguage_repetition", "label": "Repetition" },
+    { "id": "paralanguage_volume", "label": "Volume" }
+  ]
+}

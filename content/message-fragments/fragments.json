@@ -1,0 +1,5 @@
+[
+  { "id": "fragments_ask", "tactic": "ASK", "fragments": ["Will you {change}?", "I am asking you to {change}.", "Could you {change}?", "Please {change}."] },
+  { "id": "fragments_pressure", "tactic": "PRESSURE", "fragments": ["If you do not {change}, {consequence}.", "You need to {change} before {consequence}.", "Refuse to {change}, and {consequence}."] },
+  { "id": "fragments_deal", "tactic": "DEAL", "fragments": ["If you {change}, I will {offer}.", "You {change}; I will {offer}.", "I can {offer}, provided you {change}."] }
+]

@@ -1,0 +1,10 @@
+[
+  { "id": "object_sealed_packet", "label": "Sealed packet", "categoryIds": ["object_category_container", "object_category_evidence_information_item", "object_category_personal_sensitive_item"], "portableAssetId": "asset_object_sealed_packet", "tags": ["paper", "sealed"] },
+  { "id": "object_storage_key", "label": "Storage key", "categoryIds": ["object_category_access_control_item", "object_category_resource_valuable"], "portableAssetId": "asset_object_storage_key", "tags": ["metal", "access"] },
+  { "id": "object_recording_device", "label": "Recording device", "categoryIds": ["object_category_communication_item", "object_category_evidence_information_item", "object_category_personal_sensitive_item"], "portableAssetId": "asset_object_recording_device", "tags": ["electronic", "recording"] },
+  { "id": "object_account_ledger", "label": "Account ledger", "categoryIds": ["object_category_evidence_information_item", "object_category_personal_sensitive_item"], "portableAssetId": "asset_object_account_ledger", "tags": ["paper", "records"] },
+  { "id": "object_medicine_case", "label": "Medicine case", "categoryIds": ["object_category_container", "object_category_resource_valuable", "object_category_personal_sensitive_item"], "portableAssetId": "asset_object_medicine_case", "tags": ["medical", "urgent"] },
+  { "id": "object_access_badge", "label": "Access badge", "categoryIds": ["object_category_access_control_item", "object_category_personal_sensitive_item"], "portableAssetId": "asset_object_access_badge", "tags": ["identity", "access"] },
+  { "id": "object_mobile_terminal", "label": "Mobile terminal", "categoryIds": ["object_category_communication_item", "object_category_access_control_item"], "portableAssetId": "asset_object_mobile_terminal", "tags": ["electronic", "access"] },
+  { "id": "object_cash_box", "label": "Cash box", "categoryIds": ["object_category_container", "object_category_resource_valuable"], "portableAssetId": "asset_object_cash_box", "tags": ["locked", "valuable"] }
+]

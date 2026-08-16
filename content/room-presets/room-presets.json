@@ -1,0 +1,5 @@
+[
+  { "id": "room_preset_back_office", "label": "Back office", "categoryId": "room_category_private_controlled", "zones": ["zone_entry", "zone_center", "zone_table", "zone_storage", "zone_exit"], "portableAssetId": "asset_room_back_office" },
+  { "id": "room_preset_shared_studio", "label": "Shared studio", "categoryId": "room_category_shared_conditional", "zones": ["zone_entry", "zone_center", "zone_table", "zone_storage", "zone_exit"], "portableAssetId": "asset_room_shared_studio" },
+  { "id": "room_preset_station_lobby", "label": "Station lobby", "categoryId": "room_category_threshold_transit", "zones": ["zone_entry", "zone_center", "zone_table", "zone_storage", "zone_exit"], "portableAssetId": "asset_room_station_lobby" }
+]

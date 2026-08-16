@@ -1,5 +1,5 @@
-import BehaviorLab from "./BehaviorLab";
+import LivingComicApp from "../src/living-comic/web/LivingComicApp";
 
 export default function Home() {
-  return <BehaviorLab />;
+  return <LivingComicApp />;
 }

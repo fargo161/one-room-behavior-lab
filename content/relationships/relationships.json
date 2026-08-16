@@ -1,0 +1,8 @@
+[
+  { "id": "relationship_strangers", "label": "Strangers", "compatibleHistoryActionIds": ["history_action_said", "history_action_entered", "history_action_found"] },
+  { "id": "relationship_friends", "label": "Friends", "compatibleHistoryActionIds": ["history_action_promised", "history_action_transferred", "history_action_found"] },
+  { "id": "relationship_siblings", "label": "Siblings", "compatibleHistoryActionIds": ["history_action_promised", "history_action_took", "history_action_hid"] },
+  { "id": "relationship_former_partners", "label": "Former partners", "compatibleHistoryActionIds": ["history_action_broke_deal", "history_action_promised", "history_action_left"] },
+  { "id": "relationship_coworkers", "label": "Coworkers", "compatibleHistoryActionIds": ["history_action_opened", "history_action_closed", "history_action_transferred"] },
+  { "id": "relationship_employer_employee", "label": "Employer / Employee", "compatibleHistoryActionIds": ["history_action_promised", "history_action_said", "history_action_transferred"] }
+]

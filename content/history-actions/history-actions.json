@@ -1,0 +1,110 @@
+[
+  {
+    "id": "history_action_took",
+    "label": "Took",
+    "requiresTarget": true,
+    "supportsLocation": true
+  },
+  {
+    "id": "history_action_transferred",
+    "label": "Transferred",
+    "requiresTarget": true,
+    "supportsLocation": true
+  },
+  {
+    "id": "history_action_hid",
+    "label": "Hid",
+    "requiresTarget": true,
+    "supportsLocation": true
+  },
+  {
+    "id": "history_action_found",
+    "label": "Found",
+    "requiresTarget": true,
+    "supportsLocation": true
+  },
+  {
+    "id": "history_action_lost",
+    "label": "Lost",
+    "requiresTarget": true,
+    "supportsLocation": true
+  },
+  {
+    "id": "history_action_opened",
+    "label": "Opened",
+    "requiresTarget": true,
+    "supportsLocation": true
+  },
+  {
+    "id": "history_action_closed",
+    "label": "Closed",
+    "requiresTarget": true,
+    "supportsLocation": true
+  },
+  {
+    "id": "history_action_said",
+    "label": "Said",
+    "requiresTarget": true,
+    "supportsLocation": true
+  },
+  {
+    "id": "history_action_promised",
+    "label": "Promised",
+    "requiresTarget": true,
+    "supportsLocation": true
+  },
+  {
+    "id": "history_action_accepted_deal",
+    "label": "Accepted Deal",
+    "requiresTarget": true,
+    "supportsLocation": true
+  },
+  {
+    "id": "history_action_broke_deal",
+    "label": "Broke Deal",
+    "requiresTarget": true,
+    "supportsLocation": true
+  },
+  {
+    "id": "history_action_left",
+    "label": "Left",
+    "requiresTarget": false,
+    "supportsLocation": true
+  },
+  {
+    "id": "history_action_entered",
+    "label": "Entered",
+    "requiresTarget": false,
+    "supportsLocation": true
+  },
+  {
+    "id": "history_action_offered",
+    "label": "Offered",
+    "requiresTarget": true,
+    "supportsLocation": true
+  },
+  {
+    "id": "history_action_showed",
+    "label": "Showed",
+    "requiresTarget": true,
+    "supportsLocation": true
+  },
+  {
+    "id": "history_action_approached",
+    "label": "Approached",
+    "requiresTarget": true,
+    "supportsLocation": true
+  },
+  {
+    "id": "history_action_withdrew",
+    "label": "Withdrew",
+    "requiresTarget": true,
+    "supportsLocation": true
+  },
+  {
+    "id": "history_action_fulfilled_deal",
+    "label": "Fulfilled Deal",
+    "requiresTarget": true,
+    "supportsLocation": true
+  }
+]

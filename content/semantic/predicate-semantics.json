@@ -1,0 +1,18 @@
+{
+  "version": "predicate_semantics_v0_1",
+  "defaultObjectCardinality": "MULTI_VALUED",
+  "predicates": [
+    { "predicate": "HELD_BY", "objectCardinality": "FUNCTIONAL", "meaning": "One physical holder at a time." },
+    { "predicate": "OWNED_BY", "objectCardinality": "FUNCTIONAL", "meaning": "One authoritative owner in the v0.1 model; ownership never follows possession implicitly." },
+    { "predicate": "LOCATED_AT", "objectCardinality": "FUNCTIONAL", "meaning": "One coarse zone location at a time." },
+    { "predicate": "LOCATED_IN", "objectCardinality": "FUNCTIONAL", "meaning": "One containing room at a time." },
+    { "predicate": "CONTROLLED_BY", "objectCardinality": "FUNCTIONAL", "meaning": "One controlling actor for this v0.1 proposition slot." },
+    { "predicate": "ATTENDING_TO", "objectCardinality": "FUNCTIONAL", "meaning": "One primary focus; ambient awareness is represented separately." },
+    { "predicate": "ACCESSIBLE_TO", "objectCardinality": "MULTI_VALUED", "meaning": "A room or object may be accessible to several actors." },
+    { "predicate": "ACCESS_DENIED_TO", "objectCardinality": "MULTI_VALUED", "meaning": "Access may independently be denied to several actors." },
+    { "predicate": "DISCLOSED_TO", "objectCardinality": "MULTI_VALUED", "meaning": "Information may be disclosed to several actors." },
+    { "predicate": "VISIBLE_TO", "objectCardinality": "MULTI_VALUED", "meaning": "An entity may be visible to several actors." },
+    { "predicate": "OFFERED_TO", "objectCardinality": "MULTI_VALUED", "meaning": "An object may have outstanding offers to actors; no holder transfer is implied." },
+    { "predicate": "AVAILABLE_TO", "objectCardinality": "MULTI_VALUED", "meaning": "Availability may hold for several actors and does not imply acceptance." }
+  ]
+}
