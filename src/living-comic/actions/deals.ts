@@ -71,11 +71,18 @@ export function evaluateAcceptedDeals(
   const changes: DealLifecycleChange[] = [];
   for (const deal of snapshot.deals.filter(({ status }) => status === "ACCEPTED")) {
     const obligations = snapshot.obligations.filter(({ dealId }) => dealId === deal.id);
+    let brokenByActionId: string | null = null;
+    const fulfilledByActionIds = new Set<string>();
     for (const obligation of obligations.filter(({ status }) => status === "OPEN")) {
       const term = snapshot.dealTerms.find(({ id }) => id === obligation.termId);
       if (!term) continue;
       if (worldHas(snapshot, term.desiredChange)) {
         obligation.status = "FULFILLED";
+        const fulfillmentResolution = resolutions.find((resolution) => (
+          resolution.status === "SUCCESS"
+          && resolution.resultPropositions.some((result) => propositionsEqual(result, term.desiredChange))
+        ));
+        if (fulfillmentResolution) fulfilledByActionIds.add(fulfillmentResolution.actionId);
         continue;
       }
       const violatingResolution = resolutions.find((resolution) => (
@@ -86,7 +93,10 @@ export function evaluateAcceptedDeals(
           && !propositionsEqual(result, term.desiredChange)
         ))
       ));
-      if (violatingResolution) obligation.status = "BROKEN";
+      if (violatingResolution) {
+        obligation.status = "BROKEN";
+        brokenByActionId ??= violatingResolution.actionId;
+      }
     }
     if (obligations.some(({ status }) => status === "BROKEN")) {
       deal.status = "BROKEN";
@@ -95,7 +105,7 @@ export function evaluateAcceptedDeals(
         priorStatus: "ACCEPTED",
         nextStatus: "BROKEN",
         obligationIds: obligations.filter(({ status }) => status === "BROKEN").map(({ id }) => id),
-        causeActionId: resolutions.find((resolution) => resolution.status === "SUCCESS")?.actionId ?? null,
+        causeActionId: brokenByActionId,
       });
     } else if (obligations.length > 0 && obligations.every(({ status }) => status === "FULFILLED")) {
       deal.status = "FULFILLED";
@@ -104,12 +114,7 @@ export function evaluateAcceptedDeals(
         priorStatus: "ACCEPTED",
         nextStatus: "FULFILLED",
         obligationIds: obligations.map(({ id }) => id),
-        causeActionId: resolutions.find((resolution) => resolution.resultPropositions.some((result) => (
-          obligations.some((obligation) => {
-            const term = snapshot.dealTerms.find(({ id }) => id === obligation.termId);
-            return term ? propositionsEqual(result, term.desiredChange) : false;
-          })
-        )))?.actionId ?? null,
+        causeActionId: [...fulfilledByActionIds].sort()[0] ?? null,
       });
     }
   }

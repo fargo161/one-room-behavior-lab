@@ -74,14 +74,17 @@ const hashText = (value: string): number => {
 const sentenceForVibe = (base: string, vibeId: string): string => {
   const lower = `${base.charAt(0).toLowerCase()}${base.slice(1)}`;
   switch (vibeId) {
-    case "vibe_ab": return `Listen carefully. ${base}`;
-    case "vibe_as": return base.replace(/^Will you /, "You will ").replace(/^Could you /, "You need to ");
-    case "vibe_sd": return `Maybe we can make this easy. ${base}`;
-    case "vibe_se": return `I know this is difficult. ${base}`;
-    case "vibe_eb": return `I am being calm, but firm. ${base}`;
-    case "vibe_ad": return `We do not have time—${lower}`;
-    case "vibe_db": return `You know how this ends. ${base}`;
-    case "vibe_de": return `I am only trying to help. ${base}`;
+    // Wording realization may alter cadence, emphasis, politeness, and
+    // discourse markers, but it must not invent a new claim, motive, threat,
+    // or promise that is absent from the authoritative SemanticMessage.
+    case "vibe_ab": return base.replace(/[.?]\s*$/, "!");
+    case "vibe_as": return base.replace(/^Could you /, "Please ").replace(/^Will you /, "Please ");
+    case "vibe_sd": return `Maybe—${lower}`;
+    case "vibe_se": return `Please—${lower}`;
+    case "vibe_eb": return `Still: ${lower}`;
+    case "vibe_ad": return `Now—${lower}`;
+    case "vibe_db": return `So: ${lower}`;
+    case "vibe_de": return `Well... ${lower}`;
     default: return base;
   }
 };

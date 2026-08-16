@@ -162,12 +162,17 @@ export function validateSceneCandidate(
     const key = propositionKey(belief.proposition);
     beliefsByKey.set(key, [...(beliefsByKey.get(key) ?? []), belief]);
   }
+  const goalRelevantBeliefKeys = new Set([
+    ...uniqueGoals.map(({ target }) => propositionKey(target)),
+    ...snapshot.obstacles.map(({ blockingCondition }) => propositionKey(blockingCondition)),
+  ]);
   const asymmetricBeliefs = [...beliefsByKey.entries()].some(([key, beliefs]) => {
     const actors = new Set(beliefs.map(({ actorId }) => actorId));
     const identities = new Set(beliefs.map(({ proposition }) => propositionIdentity(proposition)));
     const trueWorldValue = worldByKey.get(key);
     return actors.size >= 2
       && identities.size >= 2
+      && goalRelevantBeliefKeys.has(key)
       && Boolean(trueWorldValue)
       && beliefs.some(({ proposition }) => propositionIdentity(proposition) === propositionIdentity(trueWorldValue!))
       && beliefs.some(({ proposition }) => propositionIdentity(proposition) !== propositionIdentity(trueWorldValue!));
@@ -175,7 +180,7 @@ export function validateSceneCandidate(
   record(
     "check_information_asymmetry",
     asymmetricBeliefs,
-    asymmetricBeliefs ? "At least two actors hold different beliefs and one belief matches reality." : "No grounded asymmetric belief set exists.",
+    asymmetricBeliefs ? "At least two actors hold different beliefs about a Goal/Obstacle-relevant truth and one belief matches reality." : "No grounded Goal/Obstacle-relevant asymmetric belief set exists.",
     snapshot.beliefs.map(({ id }) => id),
   );
 

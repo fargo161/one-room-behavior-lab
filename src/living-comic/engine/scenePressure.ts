@@ -1,19 +1,12 @@
 import { stableRuntimeId } from "../core/ids";
 import { assertWorldFact } from "../core/worldFacts";
+import { narrativeRoleRefs } from "../core/roles";
 import type { ContentManifest, ObservableEvent, Proposition, RuntimeSnapshot } from "../schemas";
 
 const pressureTerminalProposition = (snapshot: RuntimeSnapshot, content: ContentManifest): Proposition | null => {
   const definition = content.scenePressures.find(({ id }) => id === snapshot.scenePressure.definitionId);
   if (!definition) return null;
-  const actors = snapshot.stableActorOrder;
-  const refs: Record<string, string> = {
-    SELF: actors[0]!,
-    COUNTERPART: actors[1]!,
-    THIRD_PARTY: actors[2]!,
-    PRIMARY_OBJECT: snapshot.objects[0]!.id,
-    ROOM: snapshot.room.id,
-    EXIT_ZONE: snapshot.room.zoneIds.find((id) => id.includes("exit")) ?? snapshot.room.zoneIds.at(-1)!,
-  };
+  const refs = narrativeRoleRefs(snapshot);
   const template = definition.terminalPredicateTemplate;
   return template.objectRef
     ? { subjectId: refs[template.subjectRef]!, predicate: template.predicate, objectId: refs[template.objectRef]! }
@@ -46,6 +39,7 @@ export function advanceScenePressure(
     id: stableRuntimeId("event", snapshot.sceneId, "beat", snapshot.beat + 1, ordinal, "scene_pressure"),
     beat: snapshot.beat + 1,
     sourceActionId: stableRuntimeId("action", snapshot.sceneId, snapshot.beat + 1, "scene_pressure"),
+    historyActionId: null,
     actorId: snapshot.room.id,
     resultPropositions,
     channels: ["VISUAL", "AUDITORY"],

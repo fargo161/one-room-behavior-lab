@@ -1,5 +1,6 @@
 import { stableRuntimeId } from "../core/ids";
 import { worldHas } from "../core/worldFacts";
+import { narrativeRoleRefs } from "../core/roles";
 import { actionBuildContext } from "../actions/factories";
 import { evaluateAcceptedDeals } from "../actions/deals";
 import { buildActorDecisionView, selectNpcAction } from "../actions/npcSelection";
@@ -36,20 +37,23 @@ export function startScene(
   });
   snapshot.phase = "PLAYER_DRAFT";
   snapshot.stateId = stableRuntimeId("state", snapshot.sceneId, "beat", snapshot.beat, "ready");
-  return { snapshot, reports: [] };
+  return {
+    snapshot,
+    reports: [],
+    replay: {
+      version: "living_comic_replay_v0_1",
+      seed: snapshot.seed,
+      playerOptionId,
+      initialSnapshot: structuredClone(snapshot),
+      playerPackages: [],
+    },
+  };
 }
 
 const resolveSkeletonTerminal = (snapshot: RuntimeSnapshot, content: ContentManifest): Proposition[] => {
   const skeleton = content.conflictSkeletons.find(({ id }) => id === snapshot.skeletonDefinitionId);
   if (!skeleton) return [];
-  const refs: Record<string, string> = {
-    SELF: snapshot.stableActorOrder[0]!,
-    COUNTERPART: snapshot.stableActorOrder[1]!,
-    THIRD_PARTY: snapshot.stableActorOrder[2]!,
-    PRIMARY_OBJECT: snapshot.objects[0]!.id,
-    ROOM: snapshot.room.id,
-    EXIT_ZONE: snapshot.room.zoneIds.find((id) => id.includes("exit")) ?? snapshot.room.zoneIds.at(-1)!,
-  };
+  const refs = narrativeRoleRefs(snapshot);
   return skeleton.terminalPredicateTemplates.map((template) => template.objectRef
     ? { subjectId: refs[template.subjectRef]!, predicate: template.predicate, objectId: refs[template.objectRef]! }
     : { subjectId: refs[template.subjectRef]!, predicate: template.predicate, value: template.value! });
@@ -63,6 +67,35 @@ const centralConflictIsImpossible = (snapshot: RuntimeSnapshot): boolean => {
     || !snapshot.room.zoneIds.includes(primaryObject.zoneId);
 };
 
+const lifecycleEvents = (
+  snapshot: RuntimeSnapshot,
+  changes: DealLifecycleChange[],
+  priorEvents: ObservableEvent[],
+): ObservableEvent[] => changes.flatMap((change, index) => {
+  if (!['FULFILLED', 'BROKEN'].includes(change.nextStatus)) return [];
+  const deal = snapshot.deals.find(({ id }) => id === change.dealId);
+  if (!deal) return [];
+  const cause = change.causeActionId
+    ? priorEvents.find(({ sourceActionId }) => sourceActionId === change.causeActionId)
+    : undefined;
+  const actorId = cause?.actorId ?? deal.proposerId;
+  const channels = cause?.channels.filter((channel) => channel !== 'COMMUNICATION_CONTENT') ?? ['VISUAL'];
+  return [{
+    id: stableRuntimeId('event', snapshot.sceneId, 'beat', snapshot.beat + 1, 'deal_lifecycle', index + 1, change.dealId),
+    beat: snapshot.beat + 1,
+    sourceActionId: change.causeActionId ?? stableRuntimeId('action', snapshot.sceneId, snapshot.beat + 1, 'deal_lifecycle', change.dealId),
+    historyActionId: change.nextStatus === 'BROKEN' ? 'history_action_broke_deal' : 'history_action_fulfilled_deal',
+    actorId,
+    resultPropositions: [{ subjectId: change.dealId, predicate: 'DEAL_STATUS', value: change.nextStatus }],
+    channels: channels.length > 0 ? channels : ['VISUAL'],
+    contentPropositionIds: [],
+    targetEntityIds: [deal.proposerId, deal.recipientId],
+    observableCueIds: [change.nextStatus === 'BROKEN' ? 'deal_broken' : 'deal_fulfilled'],
+    messageId: null,
+    salient: true,
+  }];
+});
+
 const promoteHistory = (snapshot: RuntimeSnapshot, events: ObservableEvent[], goalPredicates: Set<string>): string[] => {
   const meaningful = events.filter((event) => event.salient || event.resultPropositions.some(({ predicate }) => (
     goalPredicates.has(predicate)
@@ -70,21 +103,22 @@ const promoteHistory = (snapshot: RuntimeSnapshot, events: ObservableEvent[], go
   )));
   const promoted: string[] = [];
   for (const event of meaningful) {
-    const result = event.resultPropositions[0];
-    if (!result) continue;
-    const id = stableRuntimeId("history_event", snapshot.sceneId, "beat", snapshot.beat + 1, event.id);
-    if (snapshot.history.some((historyEvent) => historyEvent.id === id)) continue;
-    const historyEvent: HistoricalEvent = {
-      id,
-      actionId: stableRuntimeId("runtime", event.observableCueIds[0] ?? "event"),
-      actorId: event.actorId,
-      targetId: event.targetEntityIds[0] ?? null,
-      locationId: snapshot.room.id,
-      result,
-      secondaryParticipantIds: snapshot.characters.map(({ id: actorId }) => actorId).filter((actorId) => actorId !== event.actorId),
-    };
-    snapshot.history.push(historyEvent);
-    promoted.push(id);
+    if (!event.historyActionId) continue;
+    event.resultPropositions.forEach((result, resultIndex) => {
+      const id = stableRuntimeId("history_event", snapshot.sceneId, "beat", snapshot.beat + 1, event.id, resultIndex + 1);
+      if (snapshot.history.some((historyEvent) => historyEvent.id === id)) return;
+      const historyEvent: HistoricalEvent = {
+        id,
+        actionId: event.historyActionId!,
+        actorId: event.actorId,
+        targetId: event.targetEntityIds[0] ?? null,
+        locationId: snapshot.room.id,
+        result,
+        secondaryParticipantIds: snapshot.characters.map(({ id: actorId }) => actorId).filter((actorId) => actorId !== event.actorId),
+      };
+      snapshot.history.push(historyEvent);
+      promoted.push(id);
+    });
   }
   return promoted;
 };
@@ -141,7 +175,9 @@ export function resolveBeat(
   const pressure = advanceScenePressure(current, content, events.length + 1);
   if (pressure.event) events.push(pressure.event);
   stateChanges.push(...pressure.stateChanges);
-  dealLifecycleChanges.push(...evaluateAcceptedDeals(current, actionResolutions, committedActions.map(({ action }) => action)));
+  const evaluatedDealChanges = evaluateAcceptedDeals(current, actionResolutions, committedActions.map(({ action }) => action));
+  dealLifecycleChanges.push(...evaluatedDealChanges);
+  events.push(...lifecycleEvents(current, evaluatedDealChanges, events));
 
   const goalSatisfiedIds = current.goals.filter(({ target }) => worldHas(current, target)).map(({ id }) => id);
   const perceptionResult = buildPerceptions(current, events);
@@ -187,7 +223,14 @@ export function resolveBeat(
     historyPromotionIds,
     terminalReason,
   });
-  return { snapshot: current, reports: [...state.reports, report] };
+  return {
+    snapshot: current,
+    reports: [...state.reports, report],
+    replay: {
+      ...state.replay,
+      playerPackages: [...state.replay.playerPackages, structuredClone(playerPackage)],
+    },
+  };
 }
 
 export const playerActionContext = (state: LivingComicEngineState) => actionBuildContext(state.snapshot);

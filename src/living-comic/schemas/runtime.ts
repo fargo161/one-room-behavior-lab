@@ -238,6 +238,7 @@ export const observableEventSchema = z.object({
   id: stableIdSchema,
   beat: z.number().int().min(1),
   sourceActionId: stableIdSchema,
+  historyActionId: stableIdSchema.nullable(),
   actorId: stableIdSchema,
   resultPropositions: z.array(propositionSchema),
   channels: z.array(channelSchema).min(1),
@@ -263,6 +264,7 @@ export const interpretationCandidateSchema = z.object({
   inferredIntention: z.array(propositionSchema),
   inferredFunctionIds: z.array(functionIdSchema),
   inferredGoal: propositionSchema.nullable(),
+  inferredReasonId: stableIdSchema.nullable(),
   score: z.number().int(),
   evidenceRefs: z.array(stableIdSchema),
 });

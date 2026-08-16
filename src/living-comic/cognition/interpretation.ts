@@ -6,11 +6,13 @@ import type {
   Character,
   ContentManifest,
   Goal,
+  HistoricalEvent,
   Interpretation,
   InterpretationCandidate,
   ObservableEvent,
   Perception,
   Proposition,
+  Reason,
   Relationship,
   ScenePressure,
 } from "../schemas";
@@ -21,7 +23,9 @@ export interface ObserverInterpretationView {
   observer: Character;
   beliefs: Belief[];
   goal: Goal | null;
+  reason: Reason | null;
   relationships: Relationship[];
+  knownHistory: HistoricalEvent[];
   scenePressure: ScenePressure;
   primaryObjectId: string;
 }
@@ -33,7 +37,9 @@ export function buildObserverInterpretationView(
     characters: Character[];
     beliefs: Belief[];
     goals: Goal[];
+    reasons: Reason[];
     relationships: Relationship[];
+    history: HistoricalEvent[];
     scenePressure: ScenePressure;
     objects: Array<{ id: string }>;
   },
@@ -41,13 +47,21 @@ export function buildObserverInterpretationView(
 ): ObserverInterpretationView {
   const observer = snapshot.characters.find(({ id }) => id === observerId);
   if (!observer) throw new Error(`Unknown interpretation observer: ${observerId}`);
+  const relationships = snapshot.relationships.filter(({ actorIds }) => actorIds.includes(observerId));
+  const reason = snapshot.reasons.find(({ id }) => id === observer.reasonId) ?? null;
+  const knownHistoryIds = new Set([
+    ...relationships.flatMap(({ sharedHistoryEventIds }) => sharedHistoryEventIds),
+    ...(reason?.groundingHistoryEventIds ?? []),
+  ]);
   return {
     sceneId: snapshot.sceneId,
     beat: snapshot.beat,
     observer: structuredClone(observer),
     beliefs: structuredClone(snapshot.beliefs.filter(({ actorId }) => actorId === observerId)),
     goal: structuredClone(snapshot.goals.find(({ id }) => id === observer.primaryGoalId) ?? null),
-    relationships: structuredClone(snapshot.relationships.filter(({ actorIds }) => actorIds.includes(observerId))),
+    reason: structuredClone(reason),
+    relationships: structuredClone(relationships),
+    knownHistory: structuredClone(snapshot.history.filter(({ id }) => knownHistoryIds.has(id))),
     scenePressure: structuredClone(snapshot.scenePressure),
     primaryObjectId: snapshot.objects[0]?.id ?? "primary_object",
   };
@@ -71,8 +85,42 @@ const candidate = (
 ): InterpretationCandidate => {
   const routing = routeIntention([proposition], content);
   let score = baseScore + priorBeliefScore(view, proposition);
-  if (view.goal && proposition.predicate === view.goal.target.predicate) score += 15;
-  if (view.relationships.some(({ actorIds }) => actorIds.includes(event.actorId))) score += 5;
+  const augmentedEvidence = [...evidenceRefs];
+  if (view.goal && proposition.predicate === view.goal.target.predicate) {
+    score += 15;
+    augmentedEvidence.push(view.goal.id);
+    if (view.reason) {
+      score += 5;
+      augmentedEvidence.push(view.reason.id, ...view.reason.groundingHistoryEventIds);
+    }
+  }
+  const relationship = view.relationships.find(({ actorIds }) => actorIds.includes(event.actorId));
+  if (relationship) {
+    score += 5;
+    augmentedEvidence.push(relationship.id, ...relationship.sharedHistoryEventIds);
+  }
+  const senderHistory = view.knownHistory.filter((historyEvent) => (
+    historyEvent.actorId === event.actorId || historyEvent.secondaryParticipantIds.includes(event.actorId)
+  ));
+  if (senderHistory.length > 0) {
+    score += 6;
+    augmentedEvidence.push(...senderHistory.map(({ id }) => id));
+  }
+  const candidateGoalDefinitionIds = content.goals
+    .filter(({ targetTemplate }) => targetTemplate.predicate === proposition.predicate)
+    .map(({ id }) => id);
+  const senderHistoryActions = new Set(senderHistory.map(({ actionId }) => actionId));
+  const inferredReasonId = content.reasons
+    .filter((reasonDefinition) => (
+      reasonDefinition.compatibleGoalIds.some((goalId) => candidateGoalDefinitionIds.includes(goalId))
+      && reasonDefinition.groundingHistoryActionIds.some((actionId) => senderHistoryActions.has(actionId))
+    ))
+    .map(({ id }) => id)
+    .sort()[0] ?? null;
+  if (inferredReasonId) {
+    score += 10;
+    augmentedEvidence.push(inferredReasonId);
+  }
   if (view.scenePressure.beatsRemaining <= 2 && routing.compatibleFunctionIds.includes("ESCAPE")) score += 10;
   const cues = new Set(event.observableCueIds);
   if (routing.compatibleFunctionIds.includes("ACCESS") && ["cue_control", "cue_authority", "cue_boundary", "cue_claimed_leverage"].some((cue) => cues.has(cue))) score += 18;
@@ -84,8 +132,9 @@ const candidate = (
     inferredIntention: [proposition],
     inferredFunctionIds: routing.compatibleFunctionIds,
     inferredGoal: proposition,
+    inferredReasonId,
     score,
-    evidenceRefs,
+    evidenceRefs: [...new Set(augmentedEvidence)],
   };
 };
 
@@ -137,7 +186,7 @@ export function interpretPerception(
     inferredIntention: selected.inferredIntention,
     inferredFunctionIds: selected.inferredFunctionIds,
     inferredGoal: selected.inferredGoal,
-    inferredReasonId: null,
+    inferredReasonId: selected.inferredReasonId,
     certainty: selected.score >= 70 ? "CERTAIN" : "UNCERTAIN",
     evidenceRefs: selected.evidenceRefs,
     candidateScores: candidates,

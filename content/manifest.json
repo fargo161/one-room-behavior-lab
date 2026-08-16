@@ -1,0 +1,30 @@
+{
+  "version": "living_comic_content_v0_1",
+  "format": "portable_definition_pools",
+  "completeScenarioBundles": false,
+  "files": {
+    "characters": "characters/characters.json",
+    "goals": "goals/goals.json",
+    "secondaryGoals": "secondary-goals/secondary-goals.json",
+    "reasons": "reasons/reasons.json",
+    "conflictSkeletons": "conflict-skeletons/conflict-skeletons.json",
+    "objectCategories": "object-categories/object-categories.json",
+    "objects": "object-instances/object-instances.json",
+    "roomCategories": "room-categories/room-categories.json",
+    "roomPresets": "room-presets/room-presets.json",
+    "relationshipTypes": "relationships/relationships.json",
+    "historyActions": "history-actions/history-actions.json",
+    "scenePressures": "scene-pressures/scene-pressures.json",
+    "basedVibes": "based/vibes.json",
+    "presentation": "presentation/cues.json",
+    "directActions": "direct-actions/direct-actions.json",
+    "messageFragments": "message-fragments/fragments.json",
+    "predicateSemantics": "semantic/predicate-semantics.json"
+  },
+  "runtimeEntry": "src/living-comic/content/index.ts",
+  "validation": {
+    "schema": "src/living-comic/schemas/content.ts",
+    "references": "src/living-comic/content/index.ts",
+    "narrativePlayability": "src/living-comic/generation/validator.ts"
+  }
+}

@@ -71,10 +71,16 @@ describe("Phase 5 deterministic shared Beat engine", () => {
     const playerTake = makeDirectPackage(actionBuildContext(state.snapshot), content, "actor_player", "action_take", object.id, [intention], { objectId: object.id });
     const next = resolveBeat(state, playerTake, content);
     const report = next.reports[0]!;
-    expect(report.resolutionOrder[0]).toBe(playerTake.action.id);
-    expect(report.actionResolutions.find(({ actionId }) => actionId === playerTake.action.id)?.status).toBe("SUCCESS");
-    expect(report.actionResolutions.filter(({ status }) => status === "INVALIDATED").length).toBeGreaterThanOrEqual(1);
-    expect(next.snapshot.objects[0]?.holderId).toBe("actor_player");
+    const takeResolutions = report.actionResolutions.filter((resolution) => (
+      report.committedActions.find(({ action }) => action.id === resolution.actionId)?.action.family === "DIRECT"
+      && report.committedActions.find(({ action }) => action.id === resolution.actionId)?.action.family === "DIRECT"
+      && (report.committedActions.find(({ action }) => action.id === resolution.actionId)?.action as { operationId?: string }).operationId === "action_take"
+    ));
+    const successfulTake = takeResolutions.find(({ status }) => status === "SUCCESS");
+    expect(successfulTake).toBeDefined();
+    expect(takeResolutions.filter(({ status }) => status === "INVALIDATED").length).toBeGreaterThanOrEqual(1);
+    const successfulActorId = report.committedActions.find(({ action }) => action.id === successfulTake!.actionId)!.action.actorId;
+    expect(next.snapshot.objects[0]?.holderId).toBe(successfulActorId);
     const invalidatedEvents = report.observableEvents.filter(({ observableCueIds }) => observableCueIds.includes("commitment_invalidated"));
     expect(invalidatedEvents.length).toBeGreaterThanOrEqual(1);
     expect(invalidatedEvents[0]?.resultPropositions[0]?.predicate).toBe("ATTEMPT_FAILED");

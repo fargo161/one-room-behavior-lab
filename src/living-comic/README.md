@@ -1,55 +1,56 @@
 # Living Comic Engine v0.1
 
-This directory contains the additive Living Comic semantic core, deterministic BASED/message realization, player-safe presentation adapter, Debug adapter, and Phase 8 browser surface. The legacy One-Room Behavior Lab remains isolated in its original modules and tests.
+This directory is the additive Living Comic semantic engine, deterministic realization layer, player-safe presentation boundary, browser vertical slice, and canonical acceptance fixture. The One-Room Behavior Lab v0.3.1 implementation remains isolated in its existing modules/tests as a preserved regression reference.
 
 ## Dependency boundary
 
 ```text
-future web / presentation -> living-comic simulation core
-living-comic simulation core -X-> React / web
+web / presentation → living-comic semantic core
+living-comic semantic core -X→ React / DOM
 ```
 
-All runtime and content structures are plain serializable data. Schema contracts use Zod at load and assembly boundaries. The generator receives an integer seed, owns its local xorshift32 stream, and returns a complete `GeneratedScene`; it has no module-global mutable state.
+All authoritative runtime/content structures are serializable data. Zod schemas protect load/runtime boundaries. Generation and replay are explicitly seeded and contain no hidden global mutable simulation state.
 
-## Phase 1 contracts
+## Contracts and content
 
-`schemas/primitives.ts` defines stable semantic IDs, Propositions, channels, and template references. `schemas/content.ts` defines reusable content atoms. `schemas/runtime.ts` defines world truth, beliefs, motivations, history, actions, events, perceptions, interpretations, deals, runtime snapshots, resolution reports, presentation views, and generation/validation traces.
+- `schemas/` separates WorldFact, Belief, Goal, Reason, Obstacle, Action, Result/Event, Perception, Interpretation, Deal, History, RuntimeSnapshot, reports, and presentation records.
+- `content/` loads repository-root reusable definition pools and validates cross-references.
+- `generation/` composes conflict skeleton, actors, Goals/Reasons, history, Obstacles, Goal-relevant asymmetry, relationships, objects, room, and Scene Pressure, then runs explicit playability validation.
+- `core/roles.ts` keeps narrative role bindings separate from independently seeded equal-priority actor order.
 
-Important pairs are represented separately rather than inferred from each other:
+## Simulation
 
-- `Goal` and `Reason`
-- `WorldFact` and `Belief`
-- action drafts and result/event contracts
-- events, perceptions, and interpretations
-- physical `HELD_BY` and social/legal `OWNED_BY`
+`actions/` owns the shared player/NPC action grammar, four-Function routing, transparent NPC scoring, and Deal lifecycle. `engine/` owns commitment, ordered resolution, Scene Pressure, grounded history promotion, termination, and replay. `cognition/` owns attention, perceptual channels, finite interpretation, and belief revision.
 
-`OFFER_OBJECT` declares an availability attempt only. Its content contract requires acceptance before possession transfer and an independent explicit rule before ownership transfer.
+One principal action per active actor per Beat is the locked v0.1 rule. All actors choose from pre-resolution state. `End Beat & Observe` is the only Play control that advances simulation.
 
-## Phase 2 portable content
+## Realization and presentation
 
-The repository-root `content/` directory contains individual JSON definition pools for the five conflict skeletons, six object categories, three room categories, eight BASED Vibes, characters, objects, Goals, Reasons, relationships, history actions, pressures, direct actions, presentation cues, and small message-fragment pools. There is intentionally no scene, encounter, or adventure bundle.
+`realization/` applies the eight-vibe v0.1 BASED slice to wording cadence, paralanguage, pose, face, balloon, and interpretation cues without inventing unrepresented semantic claims. `presentation/` provides separate player-safe Play and privileged read-only Debug models.
 
-`content/index.ts` parses the manifest and validates every cross-reference before generation.
+The browser surface supports deterministic scene generation, Goal/Reason choice, clickable characters/objects/zones, state-valid Direct drafting, semantic Ask/Pressure/Deal/Counter terms, Open/Private content delivery, BASED delivery selection, preview, comic results, Play/Debug, canonical RuntimeSnapshot save/restore, and replay export.
 
-## Phase 3 composition
+## Phase 9 acceptance
 
-`generation/generator.ts` independently selects reusable atoms, instantiates role-relative Proposition templates, constructs real obstacle facts, grounds Reasons and relationships in a two-to-four event history, creates differing beliefs, and emits two or three player Goal/Reason options. Every candidate passes through `generation/validator.ts`.
+`fixtures/phase9Acceptance.ts` is the final canonical deterministic v0.1 fixture. The same fixture can be loaded from the setup screen and played manually through the normal Action Builder.
 
-Invalid candidates are rejected with explicit check results. The generator advances to a deterministically derived attempt seed and retries; it never silently rewrites incompatible facts or forces incompatible content to fit. `generation/report.ts` provides a human-readable checkpoint serialization without changing authoritative runtime data.
+The nine-Beat script demonstrates:
 
-## Phase 4–6 engine
+- private communication occurrence without third-party content leakage;
+- attention diversion;
+- Ask;
+- Deal proposal and rejection;
+- later Deal acceptance and obligations;
+- Direct physical movement;
+- Pressure;
+- a false certain belief weakened and revised by later direct evidence;
+- different NPC interpretations of the same events;
+- grounded history promotion;
+- skeleton terminal resolution;
+- replay equality from the exact canonical initial RuntimeSnapshot plus player packages.
 
-`actions/` owns the shared player/NPC action factories, causal Function routing, truth-free NPC decision views, weighted candidate scoring, and Deal lifecycle. `engine/` owns commitment, priority ordering, action results, Scene Pressure, history promotion, and termination. `cognition/` owns ordered attention, perceptual channel access, finite interpretations, and belief revision. `fixtures/phase6Demonstration.ts` executes the deterministic five-Beat checkpoint fixture.
+## Reconciliation repairs
 
-Portable predicate cardinality is data-driven in `content/semantic/predicate-semantics.json` and documented in `docs/PREDICATE_SEMANTICS.md`. Language-neutral Phase 4–6 contracts and forbidden data access are documented in `docs/PHASE_4_6_ENGINE_CONTRACTS.md`.
+The v0.1 closure also separates narrative roles from seeded initiative, requires Goal/Obstacle-relevant generated asymmetry, adds legitimate observer Reason/history evidence to interpretation, grounds runtime history in controlled history-action IDs, fixes Deal violation provenance, emits meaningful Deal lifecycle events, prevents BASED realization from adding hidden claims, filters holder knowledge in Play, exposes all active objects to Direct drafting, and translates context-level `PROTECTED true` Goals to executable `EXPOSED false` immediate intentions without inventing a new Function.
 
-## Phase 7–8 realization and presentation
-
-`realization/` converts semantic Messages into deterministic wording plus structured paralanguage, pose, face, balloon, and interpretation cues. `presentation/` owns the hard Play/Debug data boundary. `web/` renders scene setup, Goal/Reason selection, What I Know, What I Noticed, Deal state, the shared action builder, preview, comic results, and the read-only causal inspector.
-
-Still out of scope until the Phase 8 checkpoint is approved:
-
-- Phase 9 final acceptance fixture expansion
-- final documentation and Unity/Adventure Creator handoff pass
-
-Stable IDs are lowercase snake case. Definition IDs remain independent of labels, while runtime IDs derive from semantic role, input seed, and deterministic ordinal—not random UUIDs or display text.
+Repository-level documentation now lives under `docs/`, with a machine-readable content map at `content/manifest.json`.

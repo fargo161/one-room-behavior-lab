@@ -137,6 +137,28 @@ const directParameters = (view: ActorDecisionView, operationId: string, targetAc
   }
 };
 
+const actionablePrimaryIntention = (view: ActorDecisionView): Proposition => {
+  const target = view.primaryGoal.target;
+  // PROTECTED is intentionally a context-level Goal predicate rather than a
+  // directly executable world operation. Translate it into the observable
+  // condition an actor can actually try to change without inventing a fifth
+  // Function or making PROTECTED itself mechanically routable.
+  if (target.predicate === "PROTECTED" && target.value === true) {
+    return { subjectId: target.subjectId, predicate: "EXPOSED", value: false };
+  }
+  return target;
+};
+
+const advancesPrimaryGoal = (view: ActorDecisionView, proposition: Proposition): boolean => {
+  if (propositionsEqual(proposition, view.primaryGoal.target)) return true;
+  const target = view.primaryGoal.target;
+  return target.predicate === "PROTECTED"
+    && target.value === true
+    && proposition.subjectId === target.subjectId
+    && proposition.predicate === "EXPOSED"
+    && proposition.value === false;
+};
+
 const responseCandidates = (view: ActorDecisionView, content: ContentManifest): ScoredPackage[] => {
   const deal = view.relevantDeals.find(({ recipientId, status }) => recipientId === view.actor.id && status === "PROPOSED");
   if (!deal) return [];
@@ -180,7 +202,8 @@ export function buildNpcCandidates(view: ActorDecisionView, content: ContentMani
   const responses = responseCandidates(view, content);
   if (responses.length > 0) return [...responses, { package: makeWaitPackage(view.actionBuildContext, view.actor.id), allowedByBeliefs: true, directObstacleFit: false }];
 
-  const routing = routeIntention([view.primaryGoal.target], content);
+  const primaryIntention = actionablePrimaryIntention(view);
+  const routing = routeIntention([primaryIntention], content);
   const targetActorId = selectTargetActor(view);
   const candidates: ScoredPackage[] = [];
   for (const operationId of routing.candidateOperationIds) {
@@ -193,7 +216,7 @@ export function buildNpcCandidates(view: ActorDecisionView, content: ContentMani
         view.actor.id,
         operationId,
         parameters.targetId,
-        [view.primaryGoal.target],
+        [primaryIntention],
         parameters,
       );
       candidates.push({
@@ -210,9 +233,9 @@ export function buildNpcCandidates(view: ActorDecisionView, content: ContentMani
   const threat: Proposition = { subjectId: targetActorId, predicate: "EXPOSED", value: true };
   const reciprocal: Proposition = { subjectId: targetActorId, predicate: "PROTECTED", value: true };
   candidates.push(
-    { package: makeAskPackage(view.actionBuildContext, content, view.actor.id, targetActorId, view.primaryGoal.target), allowedByBeliefs: true, directObstacleFit: false },
-    { package: makePressurePackage(view.actionBuildContext, content, view.actor.id, targetActorId, view.primaryGoal.target, threat), allowedByBeliefs: true, directObstacleFit: true },
-    { package: makeDealPackage(view.actionBuildContext, content, view.actor.id, targetActorId, view.primaryGoal.target, reciprocal), allowedByBeliefs: true, directObstacleFit: false },
+    { package: makeAskPackage(view.actionBuildContext, content, view.actor.id, targetActorId, primaryIntention), allowedByBeliefs: true, directObstacleFit: false },
+    { package: makePressurePackage(view.actionBuildContext, content, view.actor.id, targetActorId, primaryIntention, threat), allowedByBeliefs: true, directObstacleFit: true },
+    { package: makeDealPackage(view.actionBuildContext, content, view.actor.id, targetActorId, primaryIntention, reciprocal), allowedByBeliefs: true, directObstacleFit: false },
     { package: makeWaitPackage(view.actionBuildContext, view.actor.id), allowedByBeliefs: true, directObstacleFit: false },
   );
   return candidates;
@@ -223,7 +246,7 @@ const scorePackage = (view: ActorDecisionView, candidate: ScoredPackage, profile
   const components: ScoreComponent[] = [];
   const add = (componentId: string, score: number, explanation: string) => components.push({ componentId, score, explanation });
 
-  const primaryProgress = action.intention.some((intention) => propositionsEqual(intention, view.primaryGoal.target));
+  const primaryProgress = action.intention.some((intention) => advancesPrimaryGoal(view, intention));
   add("primary_goal_progress", primaryProgress ? profile.primaryGoalProgress : 0, primaryProgress ? "Immediate intention matches the primary Goal target." : "No direct primary Goal progress.");
   add("active_obstacle_relevance", candidate.directObstacleFit ? profile.activeObstacleRelevance : 0, candidate.directObstacleFit ? "Candidate directly addresses the current obstacle/target predicate." : "Candidate does not directly change the obstacle predicate.");
   const advancesSecondary = view.secondaryGoals.some((goal) => action.intention.some((item) => propositionsEqual(item, goal.target)));

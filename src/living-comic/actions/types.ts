@@ -68,7 +68,17 @@ export interface SelectedNpcAction {
   trace: NpcDecisionTrace;
 }
 
+export interface ReplaySpecV01 {
+  version: "living_comic_replay_v0_1";
+  seed: number;
+  playerOptionId: string;
+  /** Canonical post-selection, pre-Beat state. Replays never depend on a later generator/content revision. */
+  initialSnapshot: RuntimeSnapshot;
+  playerPackages: ActionPackage[];
+}
+
 export interface LivingComicEngineState {
   snapshot: RuntimeSnapshot;
   reports: import("../schemas").BeatResolutionReport[];
+  replay: ReplaySpecV01;
 }

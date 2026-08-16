@@ -1,6 +1,7 @@
 import { SeededRng } from "../core/rng";
 import { stableRuntimeId, unsignedSeedLabel } from "../core/ids";
 import { containsProposition, propositionIdentity, propositionKey } from "../core/propositions";
+import { propositionCardinality } from "../core/predicateSemantics";
 import { loadDefaultContent } from "../content";
 import {
   generatedSceneSchema,
@@ -43,6 +44,24 @@ interface CandidateBuild {
   candidate: SceneCandidate;
   selectedDefinitionIds: string[];
 }
+
+const contradictoryAlternative = (
+  proposition: Proposition,
+  actorIds: readonly string[],
+  zoneIds: readonly string[],
+): Proposition | null => {
+  if (typeof proposition.value === "boolean") {
+    return { ...proposition, value: !proposition.value };
+  }
+  if (!proposition.objectId || propositionCardinality(proposition) !== "FUNCTIONAL") return null;
+  const candidates = proposition.predicate === "LOCATED_AT"
+    ? zoneIds
+    : proposition.predicate === "LOCATED_IN"
+      ? []
+      : actorIds;
+  const alternative = candidates.find((id) => id !== proposition.objectId);
+  return alternative ? { ...proposition, objectId: alternative } : null;
+};
 
 const ATTEMPT_INCREMENT = 0x9e3779b9;
 const MAX_ATTEMPTS = 64;
@@ -368,25 +387,36 @@ const buildAttempt = (
     ...zoneEntities,
   ];
 
-  const trueHolderBelief: Proposition = { subjectId: "primary_object", predicate: "HELD_BY", objectId: actorIds[1] };
-  const mistakenHolderBelief: Proposition = { subjectId: "primary_object", predicate: "HELD_BY", objectId: actorIds[0] };
+  const asymmetryCandidates = planned.flatMap((motivation) => {
+    const truth = motivation.obstacle.blockingCondition;
+    const mistaken = contradictoryAlternative(truth, actorIds, roomDefinition.zones);
+    return mistaken ? [{ motivation, truth, mistaken }] : [];
+  });
+  if (asymmetryCandidates.length === 0) {
+    throw new Error("No Goal-relevant proposition can support grounded information asymmetry");
+  }
+  const asymmetry = rng.pick(asymmetryCandidates);
   const beliefs: Belief[] = [
     {
-      id: stableRuntimeId("belief", sceneLabel, "holder_correct"),
+      id: stableRuntimeId("belief", sceneLabel, "asymmetry_correct"),
       actorId: actorIds[1],
-      proposition: trueHolderBelief,
+      proposition: asymmetry.truth,
       certainty: "CERTAIN",
       sourceEventIds: [history[0]!.id],
     },
     {
-      id: stableRuntimeId("belief", sceneLabel, "holder_mistaken"),
+      id: stableRuntimeId("belief", sceneLabel, "asymmetry_mistaken"),
       actorId: actorIds[2],
-      proposition: mistakenHolderBelief,
+      proposition: asymmetry.mistaken,
       certainty: "UNCERTAIN",
       sourceEventIds: [history[1]!.id],
     },
   ];
-  traceStep("belief_asymmetry", beliefs.map(({ id }) => id), "Assigned evidence-linked, conflicting beliefs about one mechanically true proposition.");
+  traceStep(
+    "belief_asymmetry",
+    [asymmetry.motivation.goal.id, ...beliefs.map(({ id }) => id)],
+    "Assigned evidence-linked conflicting beliefs about a proposition that directly grounds an active Goal obstacle.",
+  );
   traceStep("possession_ownership", [objects[0]!.holderId!, objects[0]!.ownerId!], "Assigned physical holder and legal/social owner to different actors; neither relation implies the other.");
 
   const snapshot: RuntimeSnapshot = {
@@ -425,7 +455,7 @@ const buildAttempt = (
       targetEntityIds: [skeleton.kind === "EXIT" ? "scene_room" : "primary_object"],
     },
     history,
-    stableActorOrder: [...actorIds],
+    stableActorOrder: rng.shuffle([...actorIds]),
     terminalReason: null,
   };
 

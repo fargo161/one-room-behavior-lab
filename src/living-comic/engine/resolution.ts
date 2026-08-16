@@ -30,6 +30,27 @@ interface PrerequisiteResult {
   reasonCode: string;
 }
 
+const historyActionFor = (action: ActionDraft, status: ActionResolution["status"]): string | null => {
+  if (status !== "SUCCESS") return null;
+  if (action.family === "SOCIAL") return "history_action_said";
+  if (action.family === "DEAL_RESPONSE") {
+    return action.response === "ACCEPT" ? "history_action_accepted_deal" : "history_action_said";
+  }
+  if (action.family === "WAIT") return null;
+  const directHistory: Record<string, string> = {
+    action_take: "history_action_took",
+    action_offer_object: "history_action_offered",
+    action_show: "history_action_showed",
+    action_hide: "history_action_hid",
+    action_open: "history_action_opened",
+    action_close: "history_action_closed",
+    action_approach: "history_action_approached",
+    action_withdraw: "history_action_withdrew",
+    action_leave: "history_action_left",
+  };
+  return directHistory[action.operationId] ?? null;
+};
+
 const directPrerequisite = (snapshot: RuntimeSnapshot, action: DirectAction): PrerequisiteResult => {
   const actor = snapshot.characters.find(({ id }) => id === action.actorId);
   if (!actor?.active) return { valid: false, reasonCode: "actor_inactive" };
@@ -98,6 +119,7 @@ const eventFor = (
     id: stableRuntimeId("event", snapshot.sceneId, "beat", snapshot.beat + 1, ordinal, action.id),
     beat: snapshot.beat + 1,
     sourceActionId: action.id,
+    historyActionId: historyActionFor(action, status),
     actorId: action.actorId,
     resultPropositions,
     channels: social ? ["VISUAL", "AUDITORY", "COMMUNICATION_CONTENT"] : ["VISUAL"],

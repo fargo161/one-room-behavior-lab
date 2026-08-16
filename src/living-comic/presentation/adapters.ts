@@ -67,6 +67,16 @@ export function buildPlayerSafeView(
   const relationshipHistoryIds = new Set(relationshipKnowledge.flatMap(({ sharedHistoryEventIds }) => sharedHistoryEventIds));
   const knownHistory = snapshot.history.filter(({ id }) => relationshipHistoryIds.has(id));
   const playerObligations = snapshot.obligations.filter(({ actorId }) => actorId === player.id);
+  const playerKnownPropositions = uniqueBy(
+    [...beliefKnowledge.map(({ proposition }) => proposition), ...perceptualKnowledge.map(({ proposition }) => proposition)],
+    propositionIdentity,
+  );
+  const knownHolderFor = (objectId: string): string | null => {
+    const known = playerKnownPropositions.find((proposition) => (
+      proposition.subjectId === objectId && proposition.predicate === "HELD_BY" && proposition.objectId
+    ));
+    return known?.objectId ?? null;
+  };
 
   const resultPanels = latestPerceptions.map((perception) => {
     const event = latest!.observableEvents.find(({ id }) => id === perception.eventId)!;
@@ -102,15 +112,23 @@ export function buildPlayerSafeView(
       ...snapshot.characters.filter(({ active }) => active).map(({ id }) => id),
       ...snapshot.objects.filter(({ visible }) => visible).map(({ id }) => id),
     ],
-    knownPropositions: uniqueBy([...beliefKnowledge.map(({ proposition }) => proposition), ...perceptualKnowledge.map(({ proposition }) => proposition)], propositionIdentity),
+    knownPropositions: playerKnownPropositions,
     noticedEventIds: latestPerceptions.map(({ eventId }) => eventId),
     openDealIds: openDeals.map(({ id }) => id),
     resultPanelIds: resultPanels.map(({ id }) => id),
     terminalSummary: snapshot.terminalReason ? `The scene ended: ${snapshot.terminalReason.replaceAll("_", " ")}.` : null,
     playerGoal: { id: goal.id, label: content.goals.find(({ id }) => id === goal.definitionId)?.label ?? "Your goal", target: goal.target },
     playerReason: { id: reason.id, label: content.reasons.find(({ id }) => id === reason.definitionId)?.label ?? "Your reason" },
+    // v0.1's single-room stage treats active characters and visible objects as
+    // directly observable tableau state. Non-visual relations (for example
+    // HELD_BY) are exposed only when the player has actually acquired that
+    // proposition through belief/perception, never by copying private world
+    // truth into the Play model.
     characters: snapshot.characters.filter(({ active }) => active).map((character) => ({ id: character.id, label: label(character.id), roleLabel: character.role === "PLAYER_ROLE" ? "You" : "In the room", zoneId: character.zoneId })),
-    objects: snapshot.objects.filter(({ visible }) => visible).map((object) => ({ id: object.id, label: label(object.id), zoneId: object.zoneId, holderLabel: object.holderId ? label(object.holderId) : null, visible: object.visible })),
+    objects: snapshot.objects.filter(({ visible }) => visible).map((object) => {
+      const knownHolderId = knownHolderFor(object.id);
+      return { id: object.id, label: label(object.id), zoneId: object.zoneId, holderLabel: knownHolderId ? label(knownHolderId) : null, visible: true };
+    }),
     whatIKnow: [
       ...beliefKnowledge.map((belief) => ({ id: belief.id, label: propositionLabel(belief.proposition, label), certainty: belief.certainty, sourceKind: "BELIEF" as const })),
       ...perceptualKnowledge.map(({ perception, proposition }) => ({ id: stableRuntimeId("known", perception.id, propositionIdentity(proposition)), label: propositionLabel(proposition, label), certainty: null, sourceKind: "PERCEPTION" as const })),
