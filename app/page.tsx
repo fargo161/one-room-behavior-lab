@@ -1,5 +1,5 @@
-import LivingComicApp from "../src/living-comic/web/LivingComicApp";
+import SceneMakerApp from "../src/scene-maker/SceneMakerApp";
 
 export default function Home() {
-  return <LivingComicApp />;
+  return <SceneMakerApp />;
 }
