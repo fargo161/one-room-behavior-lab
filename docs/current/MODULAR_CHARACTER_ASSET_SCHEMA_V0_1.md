@@ -90,24 +90,23 @@ character assembly
 
 Visual metadata is presentation data, not evidence of private semantic truth. Player-facing IDs, labels, filenames, tags, alt text, and diagnostics must preserve the player-safe presentation boundary.
 
-Existing `RealizedMessage.faceId` remains an abstract Living Comic presentation-cue reference. It is not a visual recipe ID or component-asset ID, and this schema does not rename that runtime field. Conceptually, resolution is:
+Existing `RealizedMessage.faceId` remains an abstract Living Comic presentation-cue reference. It is not a visual recipe ID or component-asset ID, and this schema does not rename that runtime field.
+
+One possible future mapping is shown below as **FUTURE / NON-NORMATIVE**:
 
 ```text
-existing faceId / abstract face cue
-+ character visual-library identity
-+ orientation
-+ explicit deterministic variant context
+realized public face cue
         ↓
-visual expression recipe identity
+future character-specific visual resolution
         ↓
-exact component-asset identities
+recipe and component selection
 ```
 
-These identity kinds are non-interchangeable and must be reference-validated. The exact namespace and mapping-record syntax remains **OPEN**. The rule against emotional wording in stable visual asset and recipe identities does not retroactively redefine existing abstract cue IDs such as `face_guarded`.
+These identity kinds are non-interchangeable and must be reference-validated. The exact resolver inputs, outputs, namespace, mapping records, bindings, manifest context, and selection process remain **OPEN**. The rule against emotional wording in stable visual asset identities does not retroactively redefine existing abstract cue IDs such as `face_guarded`. Recipe identities are stable and independent of editable display wording; exact recipe-ID syntax remains **OPEN**.
 
-A future visual resolver may consume only an already-realized public face cue, character visual-library identity, orientation, approved bindings, pinned manifest/schema context, and explicit deterministic variant context. It must not inspect private Goals, Reasons, beliefs, tactics, Functions, intentions, NPC Interpretations, world truth, or the player's uncommitted draft. Play receives a filtered render-ready assembly rather than raw authoring metadata.
+Any future visual resolution remains downstream from realization and must not inspect private Goals, Reasons, beliefs, tactics, Functions, intentions, NPC Interpretations, world truth, or the player's uncommitted draft. This downstream/no-private-state boundary is normative; the resolver pipeline itself is not yet specified.
 
-The semantic Message remains authoritative. Component metadata and recipe identity are not semantic truth. Once an approved public cue is emitted through the existing realization and Observable Event path, its visible result may serve as bounded evidence for interpretation; the asset resolver itself never creates Perceptions, Interpretations, beliefs, or history.
+The semantic Message remains authoritative. Component metadata, recipe identity, and rendered pixels are not semantic truth. Rendered pixels do not independently create semantic or cognition evidence. Any cognition-relevant visual meaning must continue through the existing authored realization, interpretation-cue, and Observable Event path. A future asset resolver must not create Perceptions, Interpretations, beliefs, or history.
 
 ## Core combinatorial model
 
@@ -165,13 +164,13 @@ This is a mathematical candidate space, not a claim that every result is visuall
 
 ## Global modular asset record
 
-The following table defines required information. It does not lock exact property names or serialization shape unless noted.
+The following table defines locked requirements and proposed context as indicated. It does not lock exact property names or serialization shape unless noted.
 
 | Record area | Required information | Status |
 | --- | --- | --- |
 | Identity | Stable machine identity independent of editable wording | **LOCKED** constraint; exact syntax **OPEN** |
 | Human label | `<slot>__<short_visual_description>` | **LOCKED** |
-| Library context | The character-specific visual library to which the asset belongs | **LOCKED** concept; exact field **OPEN** |
+| Library context | Character-specific raster ownership or context; no formal visual-library entity or field is required in v0.1 | Character-specific ownership follows the reuse model; a formal library-record mechanism is **PROPOSED / OPEN** |
 | Placement | Exactly one primary face or future body slot | **LOCKED** |
 | Anatomical side | `left` and `right` mean the character's sides | **LOCKED** |
 | Orientation | Active v0.1 value is `primary` | **LOCKED** |
@@ -224,7 +223,7 @@ face_overlay__sweat
 
 Visual descriptions may be revised without changing stable machine identity.
 
-Display names, recipe names, visual-reading tags, confidence, review notes, and diagnostics are authoring/debug metadata by default. They must not automatically become factual player-facing copy. Player-visible text should prefer literal appearance unless the existing player-safe presentation adapter explicitly selects an approved cue label.
+Display names, recipe names, visual-reading tags, confidence, review notes, and diagnostics are authoring/debug metadata by default. They must not automatically become factual player-facing copy. Any player-facing use continues through the existing player-safe presentation path.
 
 ## Anatomical side convention
 
@@ -439,7 +438,7 @@ The base records whether it is:
 | Base type | Meaning |
 | --- | --- |
 | `feature_complete` | Already contains ordinary brows, open eyes, lower face, and related base artwork. |
-| `feature_reduced` | Intentionally prepared to receive modular replacements. |
+| `feature_reduced` | Simplifies or removes feature detail while remaining a visually valid standalone face. |
 
 The base also records whether it is neutral or contains a baked expression. Neutrality must not be assumed.
 
@@ -447,7 +446,9 @@ The base also records whether it is neutral or contains a baked expression. Neut
 
 An empty optional slot reveals the corresponding artwork already painted into the active base head. Empty never means erase.
 
-A feature-reduced base may not visually provide every region needed by a base-only recipe. The locked fallback rule remains unchanged, while a future capability mechanism such as `provided_regions` or `required_fill_slots` is **PROPOSED / OPEN**, not owner-approved.
+Every admitted v0.1 `base_head`, including `feature_reduced`, must render as a visually valid standalone face. A feature-reduced base may simplify ordinary features, but it cannot require optional layers merely to become a valid face.
+
+A base that requires fill slots is a future or experimental asset and cannot be admitted as a v0.1 `base_head`. A future capability mechanism such as `provided_regions` or `required_fill_slots` remains **PROPOSED / OPEN**, not owner-approved.
 
 ## Brow contract
 
@@ -509,7 +510,7 @@ Regardless of the eventual z-band vocabulary, a Production Mode assembly must re
 
 ## Illustrative asset records
 
-These examples demonstrate the locked distinctions. Their record shape, machine IDs, composition labels, confidence spelling, and source identifiers are **PROPOSED / NON-NORMATIVE**. The snippets include the required record areas but do not lock their serialization names.
+These examples demonstrate the locked distinctions. Their record shape, machine IDs, composition labels, confidence spelling, source identifiers, and `visual_library` placeholders are **PROPOSED / NON-NORMATIVE**. The snippets illustrate record areas but do not lock their serialization names or establish a formal visual-library entity.
 
 ### Atomic brow
 
@@ -636,7 +637,7 @@ Null optional slots use the active base-head artwork; they do not erase it.
 
 ### Required recipe examples
 
-All IDs and revisions below are **PROPOSED / NON-NORMATIVE** placeholders containing only structural information. These selection examples remain `untested` until human review approves the exact visual combinations.
+All IDs and revisions below are **PROPOSED / NON-NORMATIVE** neutral placeholders. Exact recipe-ID syntax remains **OPEN**. These selection examples remain `untested` until human review approves the exact visual combinations.
 
 | Display example | `recipe_id` | Revision | `base_head` | `brow_left` | `brow_right` | `eye_pair` | `eye_left_closed` | `eye_right_closed` | `lower_face` | `face_overlay` |
 | --- | --- | ---: | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -648,7 +649,7 @@ All IDs and revisions below are **PROPOSED / NON-NORMATIVE** placeholders contai
 | Lower-face replacement | `visual_recipe_0006` | 1 | `asset_base_0001` | null | null | null | null | null | `asset_lower_face_0001` | null |
 | Overlay reaction | `visual_recipe_0007` | 1 | `asset_base_0001` | `asset_brow_left_0001` | `asset_brow_right_0001` | `asset_eye_pair_0001` | null | null | `asset_lower_face_0001` | `asset_face_overlay_0001` |
 
-The base-only example assumes a `feature_complete` base. A feature-reduced base may need nonempty slots; that validation mechanism remains **OPEN**.
+The base-only example is valid for every admitted v0.1 `base_head`. A feature-reduced base that requires nonempty slots is future or experimental and is not eligible for v0.1 admission.
 
 ## Approved substitutes
 
@@ -704,7 +705,7 @@ A recipe is structurally valid only when:
 2. it uses only active v0.1 slots and respects every cardinality;
 3. every asset and approved-substitute reference resolves;
 4. every referenced asset's primary slot matches the recipe field;
-5. selected assets use a compatible character library and `primary` orientation;
+5. selected assets belong to the intended character context and use `primary` orientation; any proposed visual-library references, if present, are mutually compatible;
 6. approved substitutes occupy the same slot as their primary selection;
 7. all `conditional` requirements are satisfied;
 8. any otherwise incompatible relationship has an explicit owner-approved recipe-local exception; and
@@ -843,7 +844,7 @@ The following remain **OPEN**:
 - exact compatibility-rule record mechanics;
 - exact solo-safety evidence and reviewer record;
 - exact promotion evidence for `conditional` and `proven`;
-- feature-reduced base capability and required-fill validation;
+- future or experimental required-fill capability outside the admitted v0.1 base-head grammar;
 - whether recipes may inherit from other recipes;
 - exact deterministic selection rules for approved substitutes;
 - exact face-to-body coordinate system;
