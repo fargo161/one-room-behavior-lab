@@ -37,3 +37,23 @@ test("server-renders Quick Scene Maker at its dedicated route", async () => {
   assert.match(html, /Export PNG/);
   assert.doesNotMatch(html, /Three people enter/i);
 });
+
+test("server-renders the bounded NPC encounter at its dedicated route", async () => {
+  const response = await render("/npc-encounter");
+  assert.equal(response.status, 200);
+  assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
+  const html = await response.text();
+  assert.match(html, /<title>Trapstar NPC Encounter v0\.1\.1<\/title>/i);
+  assert.match(html, /APARTMENT 305/);
+  assert.match(html, /11:42 PM/);
+  assert.match(html, /The shipment came up short\./);
+  assert.match(html, /Marcus “Broker” Hill \$1,200/);
+  assert.match(html, /You brought \$900\./);
+  assert.match(html, /Marcus needs reliable partners, but he cannot afford to look lenient\./);
+  assert.match(html, /Keep the relationship alive—or end it tonight\./);
+  assert.match(html, />ENTER</);
+  assert.doesNotMatch(html, /You’re late\. We said twelve\. You got twelve\?|MAKE GOOD|Show Designer View/i);
+  assert.doesNotMatch(html, /Current expression|Round 1|Latest state effect|candidateScores|npcDecisions/i);
+  assert.doesNotMatch(html, /CAPSTONE REFERENCE|Deterministic scripted reference encounter/i);
+  assert.doesNotMatch(html, /Three people enter|Quick Scene Maker/i);
+});
