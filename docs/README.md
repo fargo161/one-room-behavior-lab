@@ -18,6 +18,7 @@ Use these documents when implementing or reviewing Living Comic v0.1:
 - [`current/SEMANTIC_INVARIANTS.md`](current/SEMANTIC_INVARIANTS.md)
 - [`current/CONTENT_AUTHORING.md`](current/CONTENT_AUTHORING.md)
 - [`current/UNITY_ADVENTURE_CREATOR_HANDOFF.md`](current/UNITY_ADVENTURE_CREATOR_HANDOFF.md)
+- [`current/QUICK_SCENE_MAKER_V0_1.md`](current/QUICK_SCENE_MAKER_V0_1.md) — adjacent visual-authoring tool contract
 
 ## Reference
 

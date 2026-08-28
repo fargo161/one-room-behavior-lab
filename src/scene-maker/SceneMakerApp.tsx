@@ -10,9 +10,9 @@ import { applyPreset, presets } from "./placement/presets";
 import { clampOffset, findZone, zones } from "./placement/zones";
 import { exportScenePng } from "./rendering/exportImage";
 import { orderedLayers } from "./rendering/layerOrdering";
+import { SCENE_CANVAS, scaledEnvironmentSize } from "./rendering/renderMetrics";
 
 const SLOT_LABEL: Record<SlotId, string> = { slot_a: "A", slot_b: "B", slot_c: "C" };
-const CANVAS = { width: 1448, height: 1086 };
 
 export default function SceneMakerApp() {
   const [scene, setScene] = useState<SceneState>(createDefaultScene);
@@ -53,7 +53,7 @@ export default function SceneMakerApp() {
   const updateDrag = (event: React.PointerEvent<HTMLButtonElement>, actor: ActorPlacement) => {
     if (!drag.current || drag.current.slotId !== actor.slotId) return;
     const box = event.currentTarget.parentElement!.getBoundingClientRect();
-    const bounded = clampOffset(actor.zoneId, scene.view, drag.current.offsetX + (event.clientX - drag.current.x) * CANVAS.width / box.width, drag.current.offsetY + (event.clientY - drag.current.y) * CANVAS.height / box.height);
+    const bounded = clampOffset(actor.zoneId, scene.view, drag.current.offsetX + (event.clientX - drag.current.x) * SCENE_CANVAS.width / box.width, drag.current.offsetY + (event.clientY - drag.current.y) * SCENE_CANVAS.height / box.height);
     setActor(actor.slotId, { offsetX: Math.round(bounded.x), offsetY: Math.round(bounded.y) });
   };
 
@@ -81,9 +81,12 @@ export default function SceneMakerApp() {
           <div className="scene-canvas" aria-label="Apt. 305 scene canvas" onPointerDown={event => { if (event.currentTarget === event.target) setSelected(null); }}>
             <img className="room-plate" src={background.file} alt={`${background.label}, Apt. 305 ${scene.view.toUpperCase()}`} draggable={false}/>
             {layers.map(item => {
-              if (item.kind === "environment") return <img key={item.id} className="environment-layer" src={item.layer.file} alt="" draggable={false} style={{ left: `${item.layer.x / CANVAS.width * 100}%`, top: `${item.layer.y / CANVAS.height * 100}%`, width: `${item.layer.scale * 42}%`, zIndex: item.depth }}/>;
+              if (item.kind === "environment") {
+                const size = scaledEnvironmentSize(item.layer);
+                return <img key={item.id} className="environment-layer" src={item.layer.file} alt="" draggable={false} style={{ left: `${item.layer.x / SCENE_CANVAS.width * 100}%`, top: `${item.layer.y / SCENE_CANVAS.height * 100}%`, width: `${size.width / SCENE_CANVAS.width * 100}%`, zIndex: item.depth }}/>;
+              }
               const actor = item.actor; const pose = findPose(actor.characterId, scene.view, actor.poseId); const zone = findZone(actor.zoneId)?.views[scene.view]; if (!pose || !zone) return null;
-              const left = (zone.x + actor.offsetX) / CANVAS.width * 100; const top = (zone.y + actor.offsetY) / CANVAS.height * 100; const width = pose.width * pose.defaultScale / CANVAS.width * 100;
+              const left = (zone.x + actor.offsetX) / SCENE_CANVAS.width * 100; const top = (zone.y + actor.offsetY) / SCENE_CANVAS.height * 100; const width = pose.width * pose.defaultScale / SCENE_CANVAS.width * 100;
               return <button key={actor.slotId} className={`canvas-actor ${selected === actor.slotId ? "selected" : ""}`} style={{ left: `${left}%`, top: `${top}%`, width: `${width}%`, zIndex: actor.depth, transform: `translate(${-pose.pivotX / pose.width * 100}%, ${-pose.pivotY / pose.height * 100}%)` }} aria-label={`Select Slot ${SLOT_LABEL[actor.slotId]}, ${findCharacter(actor.characterId)?.label}`} onPointerDown={event => startDrag(event, actor)} onPointerMove={event => updateDrag(event, actor)} onPointerUp={() => { drag.current = null; }}>
                 <img src={pose.file} alt="" draggable={false}/><span>{SLOT_LABEL[actor.slotId]}</span>
               </button>;

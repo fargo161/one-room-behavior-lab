@@ -39,8 +39,8 @@ export const assetManifest: AssetManifest = {
   backgrounds: [
     { id: "apt305_iso_bare", label: "Bare Room", roomId: "apt_305", view: "iso", file: "/scene-maker/backgrounds/apt-305-iso.png", layers: [] },
     { id: "apt305_iso_furnished", label: "Furnished", roomId: "apt_305", view: "iso", file: "/scene-maker/backgrounds/apt-305-iso.png", layers: [
-      { id: "deal_table", file: "/scene-maker/furniture/iso/deal_table_empty_generated.png", x: 735, y: 610, scale: .52, depth: 45 },
-      { id: "couch", file: "/scene-maker/furniture/iso/couch_empty_generated.png", x: 925, y: 460, scale: .42, depth: 20 },
+      { id: "deal_table", file: "/scene-maker/furniture/iso/deal_table_empty_generated.png", width: 1313, height: 1004, x: 735, y: 610, scale: .52, depth: 45 },
+      { id: "couch", file: "/scene-maker/furniture/iso/couch_empty_generated.png", width: 1518, height: 1024, x: 925, y: 460, scale: .42, depth: 20 },
     ] },
     { id: "apt305_2d_bare", label: "Bare Room", roomId: "apt_305", view: "2d", file: "/scene-maker/backgrounds/apt-305-2d.png", layers: [] },
   ],

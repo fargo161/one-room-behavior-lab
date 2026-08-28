@@ -7,6 +7,7 @@ import { replaceCharacter, switchView, validateScene } from "./model/validation"
 import { applyPreset } from "./placement/presets";
 import { clampOffset } from "./placement/zones";
 import { orderedLayers } from "./rendering/layerOrdering";
+import { scaledEnvironmentSize } from "./rendering/renderMetrics";
 
 describe("Trapstar Quick Scene Maker", () => {
   it("has unique canonical IDs and eight poses per character and view", () => {
@@ -49,6 +50,24 @@ describe("Trapstar Quick Scene Maker", () => {
     expect(result.warnings).toEqual([]); expect(result.scene).toEqual(fixture as SceneState);
   });
 
+  it("round-trips an explicit empty slot without restoring a fallback character", () => {
+    const scene = createDefaultScene();
+    scene.actors[0] = { ...scene.actors[0], characterId: null, poseId: null };
+    const result = validateScene(JSON.parse(JSON.stringify(scene)));
+    expect(result.warnings).toEqual([]);
+    expect(result.scene.actors[0].characterId).toBeNull();
+    expect(result.scene.actors[0].poseId).toBeNull();
+  });
+
+  it("round-trips depth zero while retaining finite depth clamping", () => {
+    const scene = createDefaultScene();
+    scene.actors[0] = { ...scene.actors[0], depth: 0 };
+    scene.actors[1] = { ...scene.actors[1], depth: -10 };
+    const result = validateScene(JSON.parse(JSON.stringify(scene)));
+    expect(result.scene.actors[0].depth).toBe(0);
+    expect(result.scene.actors[1].depth).toBe(0);
+  });
+
   it("recovers invalid assets and clamps unsafe data", () => {
     const broken = { ...createDefaultScene(), view: "2d", backgroundId: "missing", actors: [{ ...createDefaultScene().actors[0], poseId: "missing", zoneId: "void", offsetX: 9999, depth: 1000 }] };
     const result = validateScene(broken);
@@ -65,8 +84,16 @@ describe("Trapstar Quick Scene Maker", () => {
   });
 
   it("orders export layers deterministically by depth", () => {
-    const scene = createDefaultScene(); const layers = orderedLayers(scene.actors, [{ id: "table", file: "table.png", x: 0, y: 0, scale: 1, depth: 35 }]);
+    const scene = createDefaultScene(); const layers = orderedLayers(scene.actors, [{ id: "table", file: "table.png", width: 100, height: 50, x: 0, y: 0, scale: 1, depth: 35 }]);
     expect(layers.map(layer => layer.depth)).toEqual([...layers.map(layer => layer.depth)].sort((a, b) => a - b));
     expect(layers.map(layer => layer.id)).toContain("env_table");
+  });
+
+  it("uses intrinsic furniture dimensions and one shared scale rule", () => {
+    const furnished = assetManifest.backgrounds.find(background => background.id === "apt305_iso_furnished")!;
+    const table = scaledEnvironmentSize(furnished.layers.find(layer => layer.id === "deal_table")!);
+    const couch = scaledEnvironmentSize(furnished.layers.find(layer => layer.id === "couch")!);
+    expect(table.width).toBeCloseTo(682.76); expect(table.height).toBeCloseTo(522.08);
+    expect(couch.width).toBeCloseTo(637.56); expect(couch.height).toBeCloseTo(430.08);
   });
 });

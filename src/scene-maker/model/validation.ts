@@ -32,12 +32,15 @@ export function validateScene(input: unknown): { scene: SceneState; warnings: st
   const bySlot = new Map((Array.isArray(raw.actors) ? raw.actors : []).map(a => [a.slotId, a]));
   const actors: ActorPlacement[] = slots.map((slotId, index) => {
     const source = bySlot.get(slotId) as Partial<ActorPlacement> | undefined; const safe = fallback.actors[index];
-    const characterId = (findCharacter(source?.characterId ?? null) ? source?.characterId : safe.characterId) as CharacterId;
-    const poseId = findPose(characterId, view, source?.poseId ?? null)?.id ?? findCharacter(characterId)?.representations[view][0]?.id ?? null;
+    const requestedCharacterId = source?.characterId;
+    const characterId: CharacterId | null = requestedCharacterId === null ? null : findCharacter(requestedCharacterId ?? null)?.id ?? safe.characterId;
+    const poseId = characterId === null ? null : findPose(characterId, view, source?.poseId ?? null)?.id ?? findCharacter(characterId)?.representations[view][0]?.id ?? null;
     if (poseId !== source?.poseId) warnings.push(`${slotId}: missing pose replaced with a safe fallback.`);
     const zoneId = findZone(source?.zoneId ?? "")?.views[view] ? source!.zoneId! : safe.zoneId;
     const bounded = clampOffset(zoneId, view, Number(source?.offsetX) || 0, Number(source?.offsetY) || 0);
-    return { slotId, visible: source?.visible !== false, characterId, poseId, zoneId, offsetX: bounded.x, offsetY: bounded.y, depth: Math.max(0, Math.min(99, Number(source?.depth) || safe.depth)) };
+    const requestedDepth: unknown = source?.depth;
+    const depth = typeof requestedDepth === "number" && Number.isFinite(requestedDepth) ? Math.max(0, Math.min(99, requestedDepth)) : safe.depth;
+    return { slotId, visible: source?.visible !== false, characterId, poseId, zoneId, offsetX: bounded.x, offsetY: bounded.y, depth };
   });
   return { scene: { version: fallback.version, roomId: "apt_305", view, backgroundId: validBackground.id, presetId: typeof raw.presetId === "string" ? raw.presetId : null, actors }, warnings };
 }

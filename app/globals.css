@@ -1,6 +1,5 @@
 @import "tailwindcss";
 @import "./living-comic.css";
-@import "./scene-maker.css";
 
 :root{--ink:#18201c;--muted:#687069;--paper:#f4f0e7;--paper-deep:#e9e1d1;--panel:#fffdf7;--line:#cfc5b2;--green:#1f513f;--amber:#d88935;--rust:#9f3c2d;--blue:#366b72;--shadow:0 18px 50px rgba(45,42,33,.10)}
 *{box-sizing:border-box}html{background:var(--paper);color:var(--ink)}body{margin:0;min-height:100vh;background:linear-gradient(rgba(31,81,63,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(31,81,63,.025) 1px,transparent 1px),radial-gradient(circle at 18% 0%,rgba(216,137,53,.12),transparent 34rem),var(--paper);background-size:28px 28px,28px 28px,auto,auto;font-family:Arial,Helvetica,sans-serif}button,select,input{font:inherit}button{color:inherit}main{width:min(1480px,calc(100% - 32px));margin:0 auto;padding:26px 0 48px}

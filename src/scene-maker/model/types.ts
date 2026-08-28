@@ -25,6 +25,8 @@ export interface CharacterDefinition {
 export interface EnvironmentLayer {
   id: string;
   file: string;
+  width: number;
+  height: number;
   x: number;
   y: number;
   scale: number;
