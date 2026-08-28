@@ -17,6 +17,7 @@ Use these documents when implementing or reviewing Living Comic v0.1:
 - [`current/ENGINE_CONTRACTS.md`](current/ENGINE_CONTRACTS.md)
 - [`current/SEMANTIC_INVARIANTS.md`](current/SEMANTIC_INVARIANTS.md)
 - [`current/CONTENT_AUTHORING.md`](current/CONTENT_AUTHORING.md)
+- [`current/MODULAR_CHARACTER_ASSET_SCHEMA_V0_1.md`](current/MODULAR_CHARACTER_ASSET_SCHEMA_V0_1.md) — authoritative reusable visual-asset and face-slot compatibility/recipe grammar
 - [`current/UNITY_ADVENTURE_CREATOR_HANDOFF.md`](current/UNITY_ADVENTURE_CREATOR_HANDOFF.md)
 - [`current/QUICK_SCENE_MAKER_V0_1.md`](current/QUICK_SCENE_MAKER_V0_1.md) — adjacent visual-authoring tool contract
 

@@ -73,6 +73,7 @@ Start with [`docs/README.md`](docs/README.md) for the documentation authority ma
 
 - [`docs/current/ARCHITECTURE.md`](docs/current/ARCHITECTURE.md) — package boundaries and causal flow.
 - [`docs/current/CONTENT_AUTHORING.md`](docs/current/CONTENT_AUTHORING.md) — portable definitions and validation rules.
+- [`docs/current/MODULAR_CHARACTER_ASSET_SCHEMA_V0_1.md`](docs/current/MODULAR_CHARACTER_ASSET_SCHEMA_V0_1.md) — authoritative reusable visual-asset and face-slot compatibility/recipe grammar.
 - [`docs/current/SEMANTIC_INVARIANTS.md`](docs/current/SEMANTIC_INVARIANTS.md) — non-negotiable meaning boundaries.
 - [`docs/current/ENGINE_CONTRACTS.md`](docs/current/ENGINE_CONTRACTS.md) — deterministic runtime/replay contracts.
 - [`docs/current/UNITY_ADVENTURE_CREATOR_HANDOFF.md`](docs/current/UNITY_ADVENTURE_CREATOR_HANDOFF.md) — future Unity/Adventure Creator ownership boundary.
