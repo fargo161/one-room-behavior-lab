@@ -30,6 +30,10 @@ One principal action per active actor per Beat is the locked v0.1 rule. All acto
 
 The browser surface supports deterministic scene generation, Goal/Reason choice, clickable characters/objects/zones, state-valid Direct drafting, semantic Ask/Pressure/Deal/Counter terms, Open/Private content delivery, BASED delivery selection, preview, comic results, Play/Debug, canonical RuntimeSnapshot save/restore, and replay export.
 
+## Bounded Trapstar NPC encounter
+
+`encounters/` adds a narrowly scoped one-NPC disputed-payment demonstrator at `/npc-encounter`. Its validated serializable definition, pure Trust/Tension transition rules, player-safe projection, and read-only Designer View remain separate from the browser component. This adjacent capstone fixture does not alter the canonical three-actor RuntimeSnapshot or Beat engine, and its scripted `DEAL REACHED` outcome is not the canonical Deal/obligation lifecycle. See `encounters/README.md` for behavior, launch instructions, limitations, and the future Unity/C# reference boundary.
+
 ## Phase 9 acceptance
 
 `fixtures/phase9Acceptance.ts` is the final canonical deterministic v0.1 fixture. The same fixture can be loaded from the setup screen and played manually through the normal Action Builder.
