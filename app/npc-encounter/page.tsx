@@ -3,8 +3,8 @@ import "../npc-encounter.css";
 import NpcEncounterApp from "../../src/living-comic/web/NpcEncounterApp";
 
 export const metadata: Metadata = {
-  title: "Trapstar NPC Encounter v0.1",
-  description: "A bounded, deterministic disputed-payment negotiation prototype.",
+  title: "Trapstar NPC Encounter v0.1.1",
+  description: "A late-night negotiation in Apartment 305.",
   icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
 };
 

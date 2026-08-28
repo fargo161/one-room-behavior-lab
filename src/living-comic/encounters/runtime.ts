@@ -1,6 +1,8 @@
 import { stableRuntimeId } from "../core/ids";
 import {
   encounterStateSchema,
+  type ChoiceId,
+  type EncounterChoice,
   type EncounterCondition,
   type EncounterDefinition,
   type EncounterDialogueVariant,
@@ -63,6 +65,19 @@ export function currentEncounterEnding(
   return ending;
 }
 
+export function selectedEncounterChoices(
+  definition: EncounterDefinition,
+  state: EncounterState,
+): EncounterChoice[] {
+  return state.selectedChoiceIds.map((choiceId, roundIndex) => {
+    const choice = definition.rounds[roundIndex]?.choices.find(({ id }) => id === choiceId);
+    if (!choice) {
+      throw new Error(`Choice ${choiceId} is not valid for prior round ${roundIndex + 1}.`);
+    }
+    return choice;
+  });
+}
+
 function selectEnding(definition: EncounterDefinition, values: EncounterValues): EncounterEnding {
   const ending = definition.endings.find((candidate) => conditionsMatch(values, candidate.when));
   if (!ending) throw new Error(`Encounter ${definition.id} has no matching ending fallback.`);
@@ -76,8 +91,14 @@ function makeStateId(
   const nodeId = state.status === "ACTIVE"
     ? definition.rounds[state.roundIndex]?.id ?? "missing_round"
     : state.endingId ?? "missing_ending";
+  const pathSegments = state.selectedChoiceIds.flatMap((choiceId, index) => [
+    `choice_${index + 1}`,
+    choiceId,
+  ]);
+
   return stableRuntimeId(
     "npc_state",
+    "v0_1_1",
     definition.id,
     state.status,
     nodeId,
@@ -85,7 +106,9 @@ function makeStateId(
     signedValueId(state.trust),
     "tension",
     signedValueId(state.tension),
-    state.latestEffect?.choiceId ?? "initial",
+    "path_length",
+    state.selectedChoiceIds.length,
+    ...pathSegments,
   );
 }
 
@@ -94,7 +117,7 @@ function finalizeState(
   state: Omit<EncounterState, "stateId" | "version" | "encounterId">,
 ): EncounterState {
   return encounterStateSchema.parse({
-    version: "trapstar_npc_state_v0_1",
+    version: "trapstar_npc_state_v0_1_1",
     encounterId: definition.id,
     ...state,
     stateId: makeStateId(definition, state),
@@ -111,38 +134,42 @@ export function createInitialEncounterState(definition: EncounterDefinition): En
     status: "ACTIVE",
     endingId: null,
     latestEffect: null,
+    selectedChoiceIds: [],
   });
 }
 
 export function applyEncounterChoice(
   definition: EncounterDefinition,
   state: EncounterState,
-  choiceId: string,
+  choiceId: ChoiceId,
 ): EncounterState {
-  if (state.encounterId !== definition.id) throw new Error("Encounter state belongs to another definition.");
-  if (state.status !== "ACTIVE") throw new Error("Restart the encounter before applying another choice.");
+  const currentState = encounterStateSchema.parse(state);
+  if (currentState.encounterId !== definition.id) throw new Error("Encounter state belongs to another definition.");
+  if (currentState.status !== "ACTIVE") throw new Error("Restart the encounter before applying another choice.");
 
-  const round = currentEncounterRound(definition, state);
-  if (!round) throw new Error(`Encounter round index ${state.roundIndex} is invalid.`);
+  selectedEncounterChoices(definition, currentState);
+  const round = currentEncounterRound(definition, currentState);
+  if (!round) throw new Error(`Encounter round index ${currentState.roundIndex} is invalid.`);
   const choice = round.choices.find(({ id }) => id === choiceId);
   if (!choice) throw new Error(`Choice ${choiceId} is not valid for ${round.id}.`);
 
   const trust = clamp(
-    state.trust + choice.effect.trust,
+    currentState.trust + choice.effect.trust,
     definition.bounds.trust.min,
     definition.bounds.trust.max,
   );
   const tension = clamp(
-    state.tension + choice.effect.tension,
+    currentState.tension + choice.effect.tension,
     definition.bounds.tension.min,
     definition.bounds.tension.max,
   );
   const latestEffect: EncounterEffectResult = {
     choiceId: choice.id,
     authored: { ...choice.effect },
-    applied: { trust: trust - state.trust, tension: tension - state.tension },
+    applied: { trust: trust - currentState.trust, tension: tension - currentState.tension },
   };
-  const roundIndex = state.roundIndex + 1;
+  const roundIndex = currentState.roundIndex + 1;
+  const selectedChoiceIds = [...currentState.selectedChoiceIds, choice.id];
 
   if (roundIndex === definition.rounds.length) {
     const ending = selectEnding(definition, { trust, tension });
@@ -154,6 +181,7 @@ export function applyEncounterChoice(
       status: "COMPLETE",
       endingId: ending.id,
       latestEffect,
+      selectedChoiceIds,
     });
   }
 
@@ -165,5 +193,6 @@ export function applyEncounterChoice(
     status: "ACTIVE",
     endingId: null,
     latestEffect,
+    selectedChoiceIds,
   });
 }
