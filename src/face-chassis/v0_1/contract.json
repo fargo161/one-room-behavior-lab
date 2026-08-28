@@ -1,0 +1,407 @@
+{
+  "schemaVersion": "0.1",
+  "chassisId": "MALE_FACE_CHASSIS_V0_1",
+  "realityStatus": "DESIGNED_SCHEMA_ONLY",
+  "authority": {
+    "publicContractIsNormative": true,
+    "observedPixelsMayRedefineContract": false,
+    "marcusPxzSha256": "D184F0512A11E8B3D92278E5A089AAEB16BDA20CC3A9A6CA6C87A94E84183CE7",
+    "derivativeZipIsAuthoritative": false
+  },
+  "faceSpace": {
+    "width": 1187,
+    "height": 1484,
+    "unit": "pixel",
+    "origin": "top-left",
+    "xPositive": "right-on-image",
+    "yPositive": "down",
+    "rectangleConvention": "half-open-pixel-edge",
+    "anchorPixelConvention": "pixel-center",
+    "normalizedPointFormula": "x/(width-1),y/(height-1)",
+    "normalizedTolerance": 1e-9,
+    "sourceDocumentTransform": {
+      "documentWidth": 3264,
+      "documentHeight": 2448,
+      "offsetX": 1019,
+      "offsetY": 499
+    },
+    "sideConvention": {
+      "meaning": "anatomical",
+      "supportedView": "unmirrored-front",
+      "anatomicalLeftAppearsOnImage": "right",
+      "mirroringRenamesStoredSides": false
+    }
+  },
+  "compositor": {
+    "ordinarySlotCardinality": "EXACTLY_ONE",
+    "macroCardinality": "ZERO_OR_ONE",
+    "drawOrder": [
+      "BASE_HEAD",
+      "MIDFACE",
+      "LOWER_FACE",
+      "EYE_R",
+      "EYE_L",
+      "GAZE_R",
+      "GAZE_L",
+      "BROW_R",
+      "BROW_L",
+      "MACRO_OVERRIDE"
+    ],
+    "blendMode": "NORMAL_STRAIGHT_ALPHA",
+    "baseFallbackPolicy": "COHERENT_NEUTRAL_UNDERPAINT_WITH_DECLARED_REPLACEMENT_FIELDS",
+    "replacementRegionGeometry": "BOUNDING_ENVELOPES_MAY_OVERLAP_ASSET_MASKS_DEFINE_PAINTED_COVERAGE",
+    "suppressedSelectionPolicy": "PRESERVE_REQUESTED_AND_EMIT_DIAGNOSTIC",
+    "unknownStatePolicy": "REJECT",
+    "missingRenderableAssetPolicy": "REJECT",
+    "glabellaPartition": {
+      "mode": "ANATOMICAL_MIDLINE_CLIP",
+      "splitX": 593,
+      "imageLeftOwner": "BROW_R",
+      "imageRightOwner": "BROW_L"
+    },
+    "allowedOrdinaryOverlaps": [
+      { "under": "EYE_R", "over": "GAZE_R", "policy": "CLIP_TO_EYE_APERTURE" },
+      { "under": "EYE_L", "over": "GAZE_L", "policy": "CLIP_TO_EYE_APERTURE" }
+    ]
+  },
+  "slots": [
+    {
+      "id": "BASE_HEAD",
+      "side": null,
+      "role": "BASE",
+      "cardinality": { "min": 1, "max": 1 },
+      "zIndex": 0,
+      "slotRect": { "x": 0, "y": 0, "width": 1187, "height": 1484 },
+      "replacementRegionIds": [],
+      "requiredAnchorIds": ["FACE_CENTER", "FOREHEAD_CENTER", "NOSE_BRIDGE_CENTER", "NOSE_TIP", "CHIN_CENTER"]
+    },
+    {
+      "id": "BROW_L",
+      "side": "LEFT",
+      "role": "RASTER_REPLACEMENT",
+      "cardinality": { "min": 1, "max": 1 },
+      "zIndex": 51,
+      "slotRect": { "x": 312, "y": 229, "width": 631, "height": 448 },
+      "replacementRegionIds": ["BROW_L_FIELD"],
+      "requiredAnchorIds": ["BROW_L_INNER", "BROW_L_CENTER", "BROW_L_OUTER"]
+    },
+    {
+      "id": "BROW_R",
+      "side": "RIGHT",
+      "role": "RASTER_REPLACEMENT",
+      "cardinality": { "min": 1, "max": 1 },
+      "zIndex": 50,
+      "slotRect": { "x": 244, "y": 229, "width": 631, "height": 448 },
+      "replacementRegionIds": ["BROW_R_FIELD"],
+      "requiredAnchorIds": ["BROW_R_INNER", "BROW_R_CENTER", "BROW_R_OUTER"]
+    },
+    {
+      "id": "EYE_L",
+      "side": "LEFT",
+      "role": "RASTER_REPLACEMENT",
+      "cardinality": { "min": 1, "max": 1 },
+      "zIndex": 31,
+      "slotRect": { "x": 525, "y": 356, "width": 382, "height": 343 },
+      "replacementRegionIds": ["EYE_L_FIELD"],
+      "requiredAnchorIds": ["EYE_L_INNER_CANTHUS", "EYE_L_CENTER", "EYE_L_OUTER_CANTHUS"]
+    },
+    {
+      "id": "EYE_R",
+      "side": "RIGHT",
+      "role": "RASTER_REPLACEMENT",
+      "cardinality": { "min": 1, "max": 1 },
+      "zIndex": 30,
+      "slotRect": { "x": 280, "y": 356, "width": 382, "height": 343 },
+      "replacementRegionIds": ["EYE_R_FIELD"],
+      "requiredAnchorIds": ["EYE_R_INNER_CANTHUS", "EYE_R_CENTER", "EYE_R_OUTER_CANTHUS"]
+    },
+    {
+      "id": "GAZE_L",
+      "side": "LEFT",
+      "role": "TRANSFORM_OVERLAY",
+      "cardinality": { "min": 1, "max": 1 },
+      "zIndex": 41,
+      "slotRect": { "x": 525, "y": 356, "width": 382, "height": 343 },
+      "replacementRegionIds": ["GAZE_L_APERTURE"],
+      "requiredAnchorIds": ["PUPIL_L_NEUTRAL_CENTER"]
+    },
+    {
+      "id": "GAZE_R",
+      "side": "RIGHT",
+      "role": "TRANSFORM_OVERLAY",
+      "cardinality": { "min": 1, "max": 1 },
+      "zIndex": 40,
+      "slotRect": { "x": 280, "y": 356, "width": 382, "height": 343 },
+      "replacementRegionIds": ["GAZE_R_APERTURE"],
+      "requiredAnchorIds": ["PUPIL_R_NEUTRAL_CENTER"]
+    },
+    {
+      "id": "MIDFACE",
+      "side": null,
+      "role": "RASTER_REPLACEMENT",
+      "cardinality": { "min": 1, "max": 1 },
+      "zIndex": 10,
+      "slotRect": { "x": 330, "y": 460, "width": 527, "height": 430 },
+      "replacementRegionIds": ["MIDFACE_FIELD"],
+      "requiredAnchorIds": ["NOSE_BRIDGE_CENTER", "NOSE_TIP", "NOSTRIL_L", "NOSTRIL_R", "CHEEK_L_REFERENCE", "CHEEK_R_REFERENCE"]
+    },
+    {
+      "id": "LOWER_FACE",
+      "side": null,
+      "role": "RASTER_REPLACEMENT",
+      "cardinality": { "min": 1, "max": 1 },
+      "zIndex": 20,
+      "slotRect": { "x": 330, "y": 650, "width": 527, "height": 500 },
+      "replacementRegionIds": ["LOWER_FACE_FIELD"],
+      "requiredAnchorIds": ["MOUTH_L_CORNER", "MOUTH_CENTER", "MOUTH_R_CORNER", "UPPER_LIP_CENTER", "LOWER_LIP_CENTER", "JAW_L_REFERENCE", "JAW_R_REFERENCE", "CHIN_CENTER"]
+    },
+    {
+      "id": "MACRO_OVERRIDE",
+      "side": null,
+      "role": "MACRO",
+      "cardinality": { "min": 0, "max": 1 },
+      "zIndex": 100,
+      "slotRect": { "x": 0, "y": 0, "width": 1187, "height": 1484 },
+      "replacementRegionIds": ["MACRO_FACE_FIELD"],
+      "requiredAnchorIds": ["FACE_CENTER", "NOSE_TIP", "MOUTH_CENTER"]
+    }
+  ],
+  "replacementRegions": [
+    {
+      "id": "BROW_L_FIELD",
+      "rect": { "x": 593, "y": 229, "width": 350, "height": 448 },
+      "primaryOwner": "BROW_L",
+      "baseFallbackOwner": "BASE_HEAD",
+      "policy": "ANATOMICAL_MIDLINE_CLIP"
+    },
+    {
+      "id": "BROW_R_FIELD",
+      "rect": { "x": 244, "y": 229, "width": 349, "height": 448 },
+      "primaryOwner": "BROW_R",
+      "baseFallbackOwner": "BASE_HEAD",
+      "policy": "ANATOMICAL_MIDLINE_CLIP"
+    },
+    {
+      "id": "EYE_L_FIELD",
+      "rect": { "x": 617, "y": 440, "width": 260, "height": 210 },
+      "primaryOwner": "EYE_L",
+      "baseFallbackOwner": "BASE_HEAD",
+      "policy": "MASKED_REPLACEMENT"
+    },
+    {
+      "id": "EYE_R_FIELD",
+      "rect": { "x": 310, "y": 440, "width": 260, "height": 210 },
+      "primaryOwner": "EYE_R",
+      "baseFallbackOwner": "BASE_HEAD",
+      "policy": "MASKED_REPLACEMENT"
+    },
+    {
+      "id": "GAZE_L_APERTURE",
+      "rect": { "x": 672, "y": 500, "width": 165, "height": 100 },
+      "primaryOwner": "GAZE_L",
+      "baseFallbackOwner": "BASE_HEAD",
+      "policy": "EYE_APERTURE_CLIP"
+    },
+    {
+      "id": "GAZE_R_APERTURE",
+      "rect": { "x": 350, "y": 500, "width": 165, "height": 100 },
+      "primaryOwner": "GAZE_R",
+      "baseFallbackOwner": "BASE_HEAD",
+      "policy": "EYE_APERTURE_CLIP"
+    },
+    {
+      "id": "MIDFACE_FIELD",
+      "rect": { "x": 380, "y": 500, "width": 427, "height": 390 },
+      "primaryOwner": "MIDFACE",
+      "baseFallbackOwner": "BASE_HEAD",
+      "policy": "MASKED_REPLACEMENT"
+    },
+    {
+      "id": "LOWER_FACE_FIELD",
+      "rect": { "x": 350, "y": 700, "width": 487, "height": 430 },
+      "primaryOwner": "LOWER_FACE",
+      "baseFallbackOwner": "BASE_HEAD",
+      "policy": "MASKED_REPLACEMENT"
+    },
+    {
+      "id": "MACRO_FACE_FIELD",
+      "rect": { "x": 0, "y": 0, "width": 1187, "height": 1484 },
+      "primaryOwner": "MACRO_OVERRIDE",
+      "baseFallbackOwner": "BASE_HEAD",
+      "policy": "MACRO_REPLACEMENT"
+    }
+  ],
+  "anchors": [
+    { "id": "FACE_CENTER", "pixel": { "x": 593, "y": 741.5 }, "normalized": { "x": 0.5, "y": 0.5 } },
+    { "id": "FOREHEAD_CENTER", "pixel": { "x": 593, "y": 300 }, "normalized": { "x": 0.5, "y": 0.202292650034 } },
+    { "id": "NOSE_BRIDGE_CENTER", "pixel": { "x": 593, "y": 520 }, "normalized": { "x": 0.5, "y": 0.350640593392 } },
+    { "id": "NOSE_TIP", "pixel": { "x": 593, "y": 735 }, "normalized": { "x": 0.5, "y": 0.495616992583 } },
+    { "id": "CHIN_CENTER", "pixel": { "x": 593, "y": 1110 }, "normalized": { "x": 0.5, "y": 0.748482805125 } },
+    { "id": "BROW_L_INNER", "pixel": { "x": 650, "y": 420 }, "normalized": { "x": 0.548060708263, "y": 0.283209710047 } },
+    { "id": "BROW_L_CENTER", "pixel": { "x": 750, "y": 395 }, "normalized": { "x": 0.632377740304, "y": 0.266351989211 } },
+    { "id": "BROW_L_OUTER", "pixel": { "x": 845, "y": 415 }, "normalized": { "x": 0.712478920742, "y": 0.27983816588 } },
+    { "id": "EYE_L_INNER_CANTHUS", "pixel": { "x": 650, "y": 545 }, "normalized": { "x": 0.548060708263, "y": 0.367498314228 } },
+    { "id": "EYE_L_CENTER", "pixel": { "x": 755, "y": 550 }, "normalized": { "x": 0.636593591906, "y": 0.370869858395 } },
+    { "id": "EYE_L_OUTER_CANTHUS", "pixel": { "x": 855, "y": 545 }, "normalized": { "x": 0.720910623946, "y": 0.367498314228 } },
+    { "id": "PUPIL_L_NEUTRAL_CENTER", "pixel": { "x": 755, "y": 550 }, "normalized": { "x": 0.636593591906, "y": 0.370869858395 } },
+    { "id": "BROW_R_INNER", "pixel": { "x": 536, "y": 420 }, "normalized": { "x": 0.451939291737, "y": 0.283209710047 } },
+    { "id": "BROW_R_CENTER", "pixel": { "x": 436, "y": 395 }, "normalized": { "x": 0.367622259696, "y": 0.266351989211 } },
+    { "id": "BROW_R_OUTER", "pixel": { "x": 341, "y": 415 }, "normalized": { "x": 0.287521079258, "y": 0.27983816588 } },
+    { "id": "EYE_R_INNER_CANTHUS", "pixel": { "x": 536, "y": 545 }, "normalized": { "x": 0.451939291737, "y": 0.367498314228 } },
+    { "id": "EYE_R_CENTER", "pixel": { "x": 431, "y": 550 }, "normalized": { "x": 0.363406408094, "y": 0.370869858395 } },
+    { "id": "EYE_R_OUTER_CANTHUS", "pixel": { "x": 331, "y": 545 }, "normalized": { "x": 0.279089376054, "y": 0.367498314228 } },
+    { "id": "PUPIL_R_NEUTRAL_CENTER", "pixel": { "x": 431, "y": 550 }, "normalized": { "x": 0.363406408094, "y": 0.370869858395 } },
+    { "id": "NOSTRIL_L", "pixel": { "x": 632, "y": 755 }, "normalized": { "x": 0.532883642496, "y": 0.509103169252 } },
+    { "id": "NOSTRIL_R", "pixel": { "x": 554, "y": 755 }, "normalized": { "x": 0.467116357504, "y": 0.509103169252 } },
+    { "id": "CHEEK_L_REFERENCE", "pixel": { "x": 755, "y": 780 }, "normalized": { "x": 0.636593591906, "y": 0.525960890088 } },
+    { "id": "CHEEK_R_REFERENCE", "pixel": { "x": 431, "y": 780 }, "normalized": { "x": 0.363406408094, "y": 0.525960890088 } },
+    { "id": "MOUTH_L_CORNER", "pixel": { "x": 670, "y": 910 }, "normalized": { "x": 0.564924114671, "y": 0.613621038436 } },
+    { "id": "MOUTH_CENTER", "pixel": { "x": 593, "y": 920 }, "normalized": { "x": 0.5, "y": 0.62036412677 } },
+    { "id": "MOUTH_R_CORNER", "pixel": { "x": 516, "y": 910 }, "normalized": { "x": 0.435075885329, "y": 0.613621038436 } },
+    { "id": "UPPER_LIP_CENTER", "pixel": { "x": 593, "y": 910 }, "normalized": { "x": 0.5, "y": 0.613621038436 } },
+    { "id": "LOWER_LIP_CENTER", "pixel": { "x": 593, "y": 935 }, "normalized": { "x": 0.5, "y": 0.630478759272 } },
+    { "id": "JAW_L_REFERENCE", "pixel": { "x": 800, "y": 1035 }, "normalized": { "x": 0.674536256324, "y": 0.697909642616 } },
+    { "id": "JAW_R_REFERENCE", "pixel": { "x": 386, "y": 1035 }, "normalized": { "x": 0.325463743676, "y": 0.697909642616 } }
+  ],
+  "stateCatalog": {
+    "BASE_HEAD": [
+      { "recordId": "BASE_HEAD__NEUTRAL", "assetBindingId": "BASE_HEAD__NEUTRAL", "semanticState": "NEUTRAL", "implementationKind": "RASTER" }
+    ],
+    "BROW_L": [
+      { "recordId": "BROW_L__NEUTRAL", "assetBindingId": "BROW_L__NEUTRAL", "semanticState": "NEUTRAL", "implementationKind": "RASTER" },
+      { "recordId": "BROW_L__LOW_FLAT", "assetBindingId": "BROW_L__LOW_FLAT", "semanticState": "LOW_FLAT", "implementationKind": "RASTER" },
+      { "recordId": "BROW_L__LOW_HEAVY", "assetBindingId": "BROW_L__LOW_HEAVY", "semanticState": "LOW_HEAVY", "implementationKind": "RASTER" },
+      { "recordId": "BROW_L__FURROW_CENTER_DEEP", "assetBindingId": "BROW_L__FURROW_CENTER_DEEP", "semanticState": "FURROW_CENTER_DEEP", "implementationKind": "RASTER" },
+      { "recordId": "BROW_L__ANGRY_ARCHED", "assetBindingId": "BROW_L__ANGRY_ARCHED", "semanticState": "ANGRY_ARCHED", "implementationKind": "RASTER" },
+      { "recordId": "BROW_L__ARCHED_TALL", "assetBindingId": "BROW_L__ARCHED_TALL", "semanticState": "ARCHED_TALL", "implementationKind": "RASTER" }
+    ],
+    "BROW_R": [
+      { "recordId": "BROW_R__NEUTRAL", "assetBindingId": "BROW_R__NEUTRAL", "semanticState": "NEUTRAL", "implementationKind": "RASTER" },
+      { "recordId": "BROW_R__LOW_FLAT", "assetBindingId": "BROW_R__LOW_FLAT", "semanticState": "LOW_FLAT", "implementationKind": "RASTER" },
+      { "recordId": "BROW_R__LOW_HEAVY", "assetBindingId": "BROW_R__LOW_HEAVY", "semanticState": "LOW_HEAVY", "implementationKind": "RASTER" },
+      { "recordId": "BROW_R__FURROW_CENTER_DEEP", "assetBindingId": "BROW_R__FURROW_CENTER_DEEP", "semanticState": "FURROW_CENTER_DEEP", "implementationKind": "RASTER" },
+      { "recordId": "BROW_R__ANGRY_ARCHED", "assetBindingId": "BROW_R__ANGRY_ARCHED", "semanticState": "ANGRY_ARCHED", "implementationKind": "RASTER" },
+      { "recordId": "BROW_R__ARCHED_TALL", "assetBindingId": "BROW_R__ARCHED_TALL", "semanticState": "ARCHED_TALL", "implementationKind": "RASTER" }
+    ],
+    "EYE_L": [
+      { "recordId": "EYE_L__OPEN_NEUTRAL", "assetBindingId": "EYE_L__OPEN_NEUTRAL", "semanticState": "OPEN_NEUTRAL", "implementationKind": "RASTER" },
+      { "recordId": "EYE_L__HALF_LID", "assetBindingId": "EYE_L__HALF_LID", "semanticState": "HALF_LID", "implementationKind": "RASTER" },
+      { "recordId": "EYE_L__SQUINT_TIGHT", "assetBindingId": "EYE_L__SQUINT_TIGHT", "semanticState": "SQUINT_TIGHT", "implementationKind": "RASTER" },
+      { "recordId": "EYE_L__WIDE_OPEN_ALERT", "assetBindingId": "EYE_L__WIDE_OPEN_ALERT", "semanticState": "WIDE_OPEN_ALERT", "implementationKind": "RASTER" },
+      { "recordId": "EYE_L__CLOSED_TIGHT", "assetBindingId": "EYE_L__CLOSED_TIGHT", "semanticState": "CLOSED_TIGHT", "implementationKind": "RASTER" }
+    ],
+    "EYE_R": [
+      { "recordId": "EYE_R__OPEN_NEUTRAL", "assetBindingId": "EYE_R__OPEN_NEUTRAL", "semanticState": "OPEN_NEUTRAL", "implementationKind": "RASTER" },
+      { "recordId": "EYE_R__HALF_LID", "assetBindingId": "EYE_R__HALF_LID", "semanticState": "HALF_LID", "implementationKind": "RASTER" },
+      { "recordId": "EYE_R__SQUINT_TIGHT", "assetBindingId": "EYE_R__SQUINT_TIGHT", "semanticState": "SQUINT_TIGHT", "implementationKind": "RASTER" },
+      { "recordId": "EYE_R__WIDE_OPEN_ALERT", "assetBindingId": "EYE_R__WIDE_OPEN_ALERT", "semanticState": "WIDE_OPEN_ALERT", "implementationKind": "RASTER" },
+      { "recordId": "EYE_R__CLOSED_TIGHT", "assetBindingId": "EYE_R__CLOSED_TIGHT", "semanticState": "CLOSED_TIGHT", "implementationKind": "RASTER" }
+    ],
+    "GAZE_L": [
+      { "recordId": "GAZE_L__CENTER", "gazeRigBindingId": "GAZE_L__RIG", "semanticState": "CENTER", "implementationKind": "GAZE_TRANSFORM", "normalizedIrisOffset": { "x": 0, "y": 0 }, "pupilScale": 1 },
+      { "recordId": "GAZE_L__LOOK_ANATOMICAL_LEFT", "gazeRigBindingId": "GAZE_L__RIG", "semanticState": "LOOK_ANATOMICAL_LEFT", "implementationKind": "GAZE_TRANSFORM", "normalizedIrisOffset": { "x": 0.72, "y": 0 }, "pupilScale": 1 },
+      { "recordId": "GAZE_L__LOOK_ANATOMICAL_RIGHT", "gazeRigBindingId": "GAZE_L__RIG", "semanticState": "LOOK_ANATOMICAL_RIGHT", "implementationKind": "GAZE_TRANSFORM", "normalizedIrisOffset": { "x": -0.72, "y": 0 }, "pupilScale": 1 },
+      { "recordId": "GAZE_L__LOOK_UP", "gazeRigBindingId": "GAZE_L__RIG", "semanticState": "LOOK_UP", "implementationKind": "GAZE_TRANSFORM", "normalizedIrisOffset": { "x": 0, "y": -0.62 }, "pupilScale": 0.98 },
+      { "recordId": "GAZE_L__LOOK_DOWN", "gazeRigBindingId": "GAZE_L__RIG", "semanticState": "LOOK_DOWN", "implementationKind": "GAZE_TRANSFORM", "normalizedIrisOffset": { "x": 0, "y": 0.52 }, "pupilScale": 1.02 }
+    ],
+    "GAZE_R": [
+      { "recordId": "GAZE_R__CENTER", "gazeRigBindingId": "GAZE_R__RIG", "semanticState": "CENTER", "implementationKind": "GAZE_TRANSFORM", "normalizedIrisOffset": { "x": 0, "y": 0 }, "pupilScale": 1 },
+      { "recordId": "GAZE_R__LOOK_ANATOMICAL_LEFT", "gazeRigBindingId": "GAZE_R__RIG", "semanticState": "LOOK_ANATOMICAL_LEFT", "implementationKind": "GAZE_TRANSFORM", "normalizedIrisOffset": { "x": 0.72, "y": 0 }, "pupilScale": 1 },
+      { "recordId": "GAZE_R__LOOK_ANATOMICAL_RIGHT", "gazeRigBindingId": "GAZE_R__RIG", "semanticState": "LOOK_ANATOMICAL_RIGHT", "implementationKind": "GAZE_TRANSFORM", "normalizedIrisOffset": { "x": -0.72, "y": 0 }, "pupilScale": 1 },
+      { "recordId": "GAZE_R__LOOK_UP", "gazeRigBindingId": "GAZE_R__RIG", "semanticState": "LOOK_UP", "implementationKind": "GAZE_TRANSFORM", "normalizedIrisOffset": { "x": 0, "y": -0.62 }, "pupilScale": 0.98 },
+      { "recordId": "GAZE_R__LOOK_DOWN", "gazeRigBindingId": "GAZE_R__RIG", "semanticState": "LOOK_DOWN", "implementationKind": "GAZE_TRANSFORM", "normalizedIrisOffset": { "x": 0, "y": 0.52 }, "pupilScale": 1.02 }
+    ],
+    "MIDFACE": [
+      { "recordId": "MIDFACE__NEUTRAL", "assetBindingId": "MIDFACE__NEUTRAL", "semanticState": "NEUTRAL", "implementationKind": "RASTER" },
+      { "recordId": "MIDFACE__CHEEK_RAISE", "assetBindingId": "MIDFACE__CHEEK_RAISE", "semanticState": "CHEEK_RAISE", "implementationKind": "RASTER" },
+      { "recordId": "MIDFACE__NOSE_SCRUNCH", "assetBindingId": "MIDFACE__NOSE_SCRUNCH", "semanticState": "NOSE_SCRUNCH", "implementationKind": "RASTER" },
+      { "recordId": "MIDFACE__MIDFACE_TENSION", "assetBindingId": "MIDFACE__MIDFACE_TENSION", "semanticState": "MIDFACE_TENSION", "implementationKind": "RASTER" }
+    ],
+    "LOWER_FACE": [
+      { "recordId": "LOWER_FACE__NEUTRAL_CLOSED", "assetBindingId": "LOWER_FACE__NEUTRAL_CLOSED", "semanticState": "NEUTRAL_CLOSED", "implementationKind": "RASTER" },
+      { "recordId": "LOWER_FACE__SMILE_CLOSED", "assetBindingId": "LOWER_FACE__SMILE_CLOSED", "semanticState": "SMILE_CLOSED", "implementationKind": "RASTER" },
+      { "recordId": "LOWER_FACE__SMILE_TEETH", "assetBindingId": "LOWER_FACE__SMILE_TEETH", "semanticState": "SMILE_TEETH", "implementationKind": "RASTER" },
+      { "recordId": "LOWER_FACE__FROWN_POUT", "assetBindingId": "LOWER_FACE__FROWN_POUT", "semanticState": "FROWN_POUT", "implementationKind": "RASTER" },
+      { "recordId": "LOWER_FACE__FROWN_TENSE", "assetBindingId": "LOWER_FACE__FROWN_TENSE", "semanticState": "FROWN_TENSE", "implementationKind": "RASTER" },
+      { "recordId": "LOWER_FACE__MOUTH_OPEN_SMALL", "assetBindingId": "LOWER_FACE__MOUTH_OPEN_SMALL", "semanticState": "MOUTH_OPEN_SMALL", "implementationKind": "RASTER" },
+      { "recordId": "LOWER_FACE__MOUTH_OPEN_SOFT", "assetBindingId": "LOWER_FACE__MOUTH_OPEN_SOFT", "semanticState": "MOUTH_OPEN_SOFT", "implementationKind": "RASTER" },
+      { "recordId": "LOWER_FACE__SHOUT_OPEN", "assetBindingId": "LOWER_FACE__SHOUT_OPEN", "semanticState": "SHOUT_OPEN", "implementationKind": "RASTER" },
+      { "recordId": "LOWER_FACE__LAUGH_WIDE_OPEN", "assetBindingId": "LOWER_FACE__LAUGH_WIDE_OPEN", "semanticState": "LAUGH_WIDE_OPEN", "implementationKind": "RASTER" },
+      { "recordId": "LOWER_FACE__GRIMACE_FEAR", "assetBindingId": "LOWER_FACE__GRIMACE_FEAR", "semanticState": "GRIMACE_FEAR", "implementationKind": "RASTER" }
+    ],
+    "MACRO_OVERRIDE": [
+      {
+        "recordId": "MACRO_OVERRIDE__PUFFED_CHEEKS",
+        "assetBindingId": "MACRO_OVERRIDE__PUFFED_CHEEKS",
+        "semanticState": "PUFFED_CHEEKS",
+        "implementationKind": "MACRO",
+        "suppressesSlots": ["BROW_L", "BROW_R", "EYE_L", "EYE_R", "GAZE_L", "GAZE_R", "MIDFACE", "LOWER_FACE"],
+        "allowsSlots": [],
+        "precedence": 1000,
+        "overlapPolicy": "SUPPRESS_THEN_RENDER_LAST"
+      }
+    ]
+  },
+  "defaultSelection": {
+    "BASE_HEAD": "NEUTRAL",
+    "BROW_L": "NEUTRAL",
+    "BROW_R": "NEUTRAL",
+    "EYE_L": "OPEN_NEUTRAL",
+    "EYE_R": "OPEN_NEUTRAL",
+    "GAZE_L": "CENTER",
+    "GAZE_R": "CENTER",
+    "MIDFACE": "NEUTRAL",
+    "LOWER_FACE": "NEUTRAL_CLOSED",
+    "MACRO_OVERRIDE": null
+  },
+  "compatibilityRules": {
+    "closedEyeGaze": {
+      "eyeState": "CLOSED_TIGHT",
+      "behavior": "SUPPRESS_EFFECTIVE_GAZE",
+      "diagnosticCode": "GAZE_SUPPRESSED_BY_CLOSED_EYE"
+    },
+    "squintGaze": {
+      "eyeState": "SQUINT_TIGHT",
+      "behavior": "CLAMP_NORMALIZED_OFFSET",
+      "clampFactor": 0.35
+    },
+    "macroSuppression": {
+      "requestedSelectionIsPreserved": true,
+      "diagnosticCode": "SLOT_SUPPRESSED_BY_MACRO",
+      "listsAreClosedWorld": true
+    }
+  },
+  "identityPackContract": {
+    "recordIdFormat": "<IDENTITY_PACK>::<SLOT>::<SEMANTIC_STATE>",
+    "rasterCanvasSource": "slotRect.width_and_height",
+    "perStateOffsetsAllowed": false,
+    "requiredRasterFields": [
+      "recordId",
+      "slotId",
+      "semanticState",
+      "assetPath",
+      "replacementMaskPath",
+      "anchorAttachments",
+      "assetOrigin",
+      "genericCompatibility",
+      "implementationStatus",
+      "automatedTestStatus",
+      "visualValidationStatus"
+    ],
+    "gazeRigFields": [
+      "irisSpritePath",
+      "pupilSpritePath",
+      "apertureMaskPath",
+      "neutralCenterAnchorId",
+      "maxOffsetPixels"
+    ],
+    "statusAxes": {
+      "assetOrigin": ["REFERENCE", "DERIVED", "AUTHORED", "PLACEHOLDER"],
+      "genericCompatibility": ["GENERIC", "IDENTITY_BOUND", "REFERENCE_ONLY"],
+      "implementationStatus": ["DESIGNED", "PLACEHOLDER", "IMPLEMENTED"],
+      "automatedTestStatus": ["NOT_RUN", "PASSED", "FAILED"],
+      "visualValidationStatus": ["NOT_REVIEWED", "PASSED", "FAILED", "NOT_APPLICABLE"]
+    },
+    "forbiddenGenericContent": ["HAIR", "BEARD", "MUSTACHE", "JEWELRY", "CLOTHING", "BAKED_GAZE_DIRECTION"]
+  }
+}

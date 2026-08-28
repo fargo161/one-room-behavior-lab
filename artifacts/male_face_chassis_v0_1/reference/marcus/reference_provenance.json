@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "0.1",
+  "referenceIdentity": "MARCUS",
+  "authority": {
+    "fileName": "trapface_slot_labeled_anatomical_eye_split.pxz",
+    "sha256": "D184F0512A11E8B3D92278E5A089AAEB16BDA20CC3A9A6CA6C87A94E84183CE7",
+    "byteLength": 12813916,
+    "entryCount": 65,
+    "layerCount": 62,
+    "document": { "width": 3264, "height": 2448 },
+    "faceRect": { "x": 1019, "y": 499, "width": 1187, "height": 1484 },
+    "role": "AUTHORITATIVE_REFERENCE_EVIDENCE"
+  },
+  "companionExport": {
+    "fileName": "trapface_slot_labeled_anatomical_eye_split_layers.zip",
+    "sha256": "FB65AF146631BE0518D4AD36A7BD9438C31D444DED6D9A23A3A574E4407097CF",
+    "byteLength": 10444415,
+    "entryCount": 64,
+    "role": "NON_AUTHORITATIVE_DERIVATIVE",
+    "knownVisibilityMismatches": [
+      "60_EYE_LEFT_SIDE_LOOK_02",
+      "65_EYE_RIGHT_SIDE_LOOK_04",
+      "70_LOWER_FACE_SMILE_CLOSED_03"
+    ]
+  },
+  "mappingPolicy": {
+    "anatomicalSideConvention": "LEFT appears on image-right in an unmirrored front view",
+    "directGenericReuse": "PROHIBITED_FOR_ALL_SOURCE_LAYERS",
+    "closedEyeCanonicalState": "CLOSED_TIGHT",
+    "shutTightDisposition": "REFERENCE_ONLY_FUTURE_CANDIDATE",
+    "gazeImplementation": "TRANSFORM_RIG",
+    "sideLookDisposition": "REFERENCE_ONLY_UNRESOLVED_DIRECTION"
+  },
+  "classificationTotals": {
+    "reference_only": 11,
+    "semantic_exemplar": 33,
+    "semantic_alternate": 10,
+    "future_variant": 8
+  }
+}

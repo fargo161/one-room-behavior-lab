@@ -1,0 +1,511 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "0.1"
+    },
+    "chassisId": {
+      "type": "string",
+      "const": "MALE_FACE_CHASSIS_V0_1"
+    },
+    "identityPackId": {
+      "type": "string",
+      "pattern": "^[A-Z0-9][A-Z0-9_]*$"
+    },
+    "identityBinding": {
+      "type": "string",
+      "const": "GENERIC"
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "type": "string",
+                "const": "RASTER"
+              },
+              "assetId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "bindingId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "slotId": {
+                "type": "string",
+                "enum": [
+                  "BASE_HEAD",
+                  "BROW_L",
+                  "BROW_R",
+                  "EYE_L",
+                  "EYE_R",
+                  "MIDFACE",
+                  "LOWER_FACE",
+                  "MACRO_OVERRIDE"
+                ]
+              },
+              "canvas": {
+                "type": "object",
+                "properties": {
+                  "width": {
+                    "type": "integer",
+                    "exclusiveMinimum": 0,
+                    "maximum": 9007199254740991
+                  },
+                  "height": {
+                    "type": "integer",
+                    "exclusiveMinimum": 0,
+                    "maximum": 9007199254740991
+                  }
+                },
+                "required": [
+                  "width",
+                  "height"
+                ],
+                "additionalProperties": false
+              },
+              "localOrigin": {
+                "type": "object",
+                "properties": {
+                  "x": {
+                    "type": "number",
+                    "const": 0
+                  },
+                  "y": {
+                    "type": "number",
+                    "const": 0
+                  }
+                },
+                "required": [
+                  "x",
+                  "y"
+                ],
+                "additionalProperties": false
+              },
+              "assetPath": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "replacementMaskPath": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "anchorAttachments": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "anchorId": {
+                      "type": "string",
+                      "enum": [
+                        "FACE_CENTER",
+                        "FOREHEAD_CENTER",
+                        "NOSE_BRIDGE_CENTER",
+                        "NOSE_TIP",
+                        "CHIN_CENTER",
+                        "BROW_L_INNER",
+                        "BROW_L_CENTER",
+                        "BROW_L_OUTER",
+                        "EYE_L_INNER_CANTHUS",
+                        "EYE_L_CENTER",
+                        "EYE_L_OUTER_CANTHUS",
+                        "PUPIL_L_NEUTRAL_CENTER",
+                        "BROW_R_INNER",
+                        "BROW_R_CENTER",
+                        "BROW_R_OUTER",
+                        "EYE_R_INNER_CANTHUS",
+                        "EYE_R_CENTER",
+                        "EYE_R_OUTER_CANTHUS",
+                        "PUPIL_R_NEUTRAL_CENTER",
+                        "NOSTRIL_L",
+                        "NOSTRIL_R",
+                        "CHEEK_L_REFERENCE",
+                        "CHEEK_R_REFERENCE",
+                        "MOUTH_L_CORNER",
+                        "MOUTH_CENTER",
+                        "MOUTH_R_CORNER",
+                        "UPPER_LIP_CENTER",
+                        "LOWER_LIP_CENTER",
+                        "JAW_L_REFERENCE",
+                        "JAW_R_REFERENCE"
+                      ]
+                    },
+                    "localPoint": {
+                      "type": "object",
+                      "properties": {
+                        "x": {
+                          "type": "number"
+                        },
+                        "y": {
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "x",
+                        "y"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "anchorId",
+                    "localPoint"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "provenance": {
+                "type": "object",
+                "properties": {
+                  "origin": {
+                    "type": "string",
+                    "enum": [
+                      "REFERENCE",
+                      "DERIVED",
+                      "AUTHORED",
+                      "PLACEHOLDER"
+                    ]
+                  },
+                  "genericCompatibility": {
+                    "type": "string",
+                    "enum": [
+                      "GENERIC",
+                      "IDENTITY_BOUND",
+                      "REFERENCE_ONLY"
+                    ]
+                  },
+                  "sourceSha256": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "pattern": "^[A-F0-9]{64}$"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "sourceLayerIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                },
+                "required": [
+                  "origin",
+                  "genericCompatibility",
+                  "sourceSha256",
+                  "sourceLayerIds"
+                ],
+                "additionalProperties": false
+              },
+              "implementationStatus": {
+                "type": "string",
+                "enum": [
+                  "DESIGNED",
+                  "PLACEHOLDER",
+                  "IMPLEMENTED"
+                ]
+              },
+              "automatedTestStatus": {
+                "type": "string",
+                "enum": [
+                  "NOT_RUN",
+                  "PASSED",
+                  "FAILED"
+                ]
+              },
+              "visualValidationStatus": {
+                "type": "string",
+                "enum": [
+                  "NOT_REVIEWED",
+                  "PASSED",
+                  "FAILED",
+                  "NOT_APPLICABLE"
+                ]
+              }
+            },
+            "required": [
+              "kind",
+              "assetId",
+              "bindingId",
+              "slotId",
+              "canvas",
+              "localOrigin",
+              "assetPath",
+              "replacementMaskPath",
+              "anchorAttachments",
+              "provenance",
+              "implementationStatus",
+              "automatedTestStatus",
+              "visualValidationStatus"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "type": "string",
+                "const": "GAZE_RIG"
+              },
+              "assetId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "bindingId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "slotId": {
+                "type": "string",
+                "enum": [
+                  "GAZE_L",
+                  "GAZE_R"
+                ]
+              },
+              "side": {
+                "type": "string",
+                "enum": [
+                  "LEFT",
+                  "RIGHT"
+                ]
+              },
+              "irisSpritePath": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "pupilSpritePath": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "apertureMaskPath": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "neutralCenterAnchorId": {
+                "type": "string",
+                "enum": [
+                  "PUPIL_L_NEUTRAL_CENTER",
+                  "PUPIL_R_NEUTRAL_CENTER"
+                ]
+              },
+              "maxOffsetPixels": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "x": {
+                        "type": "number",
+                        "exclusiveMinimum": 0
+                      },
+                      "y": {
+                        "type": "number",
+                        "exclusiveMinimum": 0
+                      }
+                    },
+                    "required": [
+                      "x",
+                      "y"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "provenance": {
+                "type": "object",
+                "properties": {
+                  "origin": {
+                    "type": "string",
+                    "enum": [
+                      "REFERENCE",
+                      "DERIVED",
+                      "AUTHORED",
+                      "PLACEHOLDER"
+                    ]
+                  },
+                  "genericCompatibility": {
+                    "type": "string",
+                    "enum": [
+                      "GENERIC",
+                      "IDENTITY_BOUND",
+                      "REFERENCE_ONLY"
+                    ]
+                  },
+                  "sourceSha256": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "pattern": "^[A-F0-9]{64}$"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "sourceLayerIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                },
+                "required": [
+                  "origin",
+                  "genericCompatibility",
+                  "sourceSha256",
+                  "sourceLayerIds"
+                ],
+                "additionalProperties": false
+              },
+              "implementationStatus": {
+                "type": "string",
+                "enum": [
+                  "DESIGNED",
+                  "PLACEHOLDER",
+                  "IMPLEMENTED"
+                ]
+              },
+              "automatedTestStatus": {
+                "type": "string",
+                "enum": [
+                  "NOT_RUN",
+                  "PASSED",
+                  "FAILED"
+                ]
+              },
+              "visualValidationStatus": {
+                "type": "string",
+                "enum": [
+                  "NOT_REVIEWED",
+                  "PASSED",
+                  "FAILED",
+                  "NOT_APPLICABLE"
+                ]
+              }
+            },
+            "required": [
+              "kind",
+              "assetId",
+              "bindingId",
+              "slotId",
+              "side",
+              "irisSpritePath",
+              "pupilSpritePath",
+              "apertureMaskPath",
+              "neutralCenterAnchorId",
+              "maxOffsetPixels",
+              "provenance",
+              "implementationStatus",
+              "automatedTestStatus",
+              "visualValidationStatus"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      }
+    },
+    "bindings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "recordId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "slotId": {
+            "type": "string",
+            "enum": [
+              "BASE_HEAD",
+              "BROW_L",
+              "BROW_R",
+              "EYE_L",
+              "EYE_R",
+              "GAZE_L",
+              "GAZE_R",
+              "MIDFACE",
+              "LOWER_FACE",
+              "MACRO_OVERRIDE"
+            ]
+          },
+          "semanticState": {
+            "type": "string",
+            "minLength": 1
+          },
+          "assetId": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "recordId",
+          "slotId",
+          "semanticState",
+          "assetId"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "chassisId",
+    "identityPackId",
+    "identityBinding",
+    "assets",
+    "bindings"
+  ],
+  "additionalProperties": false,
+  "$id": "https://trapstar.example/schemas/male-face-chassis-identity-pack-v0.1.schema.json",
+  "title": "Male Face Chassis v0.1 identity-pack structural envelope",
+  "description": "Structural JSON Schema envelope for identity-pack assets and bindings. The authoritative coverage, provenance, status, canvas, mask, anchor, reachability, and cross-record invariants require the Zod identityPackManifestSchema parser.",
+  "x-authoritative-validator": "src/face-chassis/v0_1/identityPack.ts#identityPackManifestSchema"
+}

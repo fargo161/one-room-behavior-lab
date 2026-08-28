@@ -1,0 +1,1471 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "0.1"
+    },
+    "chassisId": {
+      "type": "string",
+      "const": "MALE_FACE_CHASSIS_V0_1"
+    },
+    "realityStatus": {
+      "type": "string",
+      "const": "DESIGNED_SCHEMA_ONLY"
+    },
+    "authority": {
+      "type": "object",
+      "properties": {
+        "publicContractIsNormative": {
+          "type": "boolean",
+          "const": true
+        },
+        "observedPixelsMayRedefineContract": {
+          "type": "boolean",
+          "const": false
+        },
+        "marcusPxzSha256": {
+          "type": "string",
+          "const": "D184F0512A11E8B3D92278E5A089AAEB16BDA20CC3A9A6CA6C87A94E84183CE7"
+        },
+        "derivativeZipIsAuthoritative": {
+          "type": "boolean",
+          "const": false
+        }
+      },
+      "required": [
+        "publicContractIsNormative",
+        "observedPixelsMayRedefineContract",
+        "marcusPxzSha256",
+        "derivativeZipIsAuthoritative"
+      ],
+      "additionalProperties": false
+    },
+    "faceSpace": {
+      "type": "object",
+      "properties": {
+        "width": {
+          "type": "number",
+          "const": 1187
+        },
+        "height": {
+          "type": "number",
+          "const": 1484
+        },
+        "unit": {
+          "type": "string",
+          "const": "pixel"
+        },
+        "origin": {
+          "type": "string",
+          "const": "top-left"
+        },
+        "xPositive": {
+          "type": "string",
+          "const": "right-on-image"
+        },
+        "yPositive": {
+          "type": "string",
+          "const": "down"
+        },
+        "rectangleConvention": {
+          "type": "string",
+          "const": "half-open-pixel-edge"
+        },
+        "anchorPixelConvention": {
+          "type": "string",
+          "const": "pixel-center"
+        },
+        "normalizedPointFormula": {
+          "type": "string",
+          "const": "x/(width-1),y/(height-1)"
+        },
+        "normalizedTolerance": {
+          "type": "number",
+          "const": 1e-9
+        },
+        "sourceDocumentTransform": {
+          "type": "object",
+          "properties": {
+            "documentWidth": {
+              "type": "number",
+              "const": 3264
+            },
+            "documentHeight": {
+              "type": "number",
+              "const": 2448
+            },
+            "offsetX": {
+              "type": "number",
+              "const": 1019
+            },
+            "offsetY": {
+              "type": "number",
+              "const": 499
+            }
+          },
+          "required": [
+            "documentWidth",
+            "documentHeight",
+            "offsetX",
+            "offsetY"
+          ],
+          "additionalProperties": false
+        },
+        "sideConvention": {
+          "type": "object",
+          "properties": {
+            "meaning": {
+              "type": "string",
+              "const": "anatomical"
+            },
+            "supportedView": {
+              "type": "string",
+              "const": "unmirrored-front"
+            },
+            "anatomicalLeftAppearsOnImage": {
+              "type": "string",
+              "const": "right"
+            },
+            "mirroringRenamesStoredSides": {
+              "type": "boolean",
+              "const": false
+            }
+          },
+          "required": [
+            "meaning",
+            "supportedView",
+            "anatomicalLeftAppearsOnImage",
+            "mirroringRenamesStoredSides"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "width",
+        "height",
+        "unit",
+        "origin",
+        "xPositive",
+        "yPositive",
+        "rectangleConvention",
+        "anchorPixelConvention",
+        "normalizedPointFormula",
+        "normalizedTolerance",
+        "sourceDocumentTransform",
+        "sideConvention"
+      ],
+      "additionalProperties": false
+    },
+    "compositor": {
+      "type": "object",
+      "properties": {
+        "ordinarySlotCardinality": {
+          "type": "string",
+          "const": "EXACTLY_ONE"
+        },
+        "macroCardinality": {
+          "type": "string",
+          "const": "ZERO_OR_ONE"
+        },
+        "drawOrder": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "BASE_HEAD",
+              "BROW_L",
+              "BROW_R",
+              "EYE_L",
+              "EYE_R",
+              "GAZE_L",
+              "GAZE_R",
+              "MIDFACE",
+              "LOWER_FACE",
+              "MACRO_OVERRIDE"
+            ]
+          }
+        },
+        "blendMode": {
+          "type": "string",
+          "const": "NORMAL_STRAIGHT_ALPHA"
+        },
+        "baseFallbackPolicy": {
+          "type": "string",
+          "const": "COHERENT_NEUTRAL_UNDERPAINT_WITH_DECLARED_REPLACEMENT_FIELDS"
+        },
+        "replacementRegionGeometry": {
+          "type": "string",
+          "const": "BOUNDING_ENVELOPES_MAY_OVERLAP_ASSET_MASKS_DEFINE_PAINTED_COVERAGE"
+        },
+        "suppressedSelectionPolicy": {
+          "type": "string",
+          "const": "PRESERVE_REQUESTED_AND_EMIT_DIAGNOSTIC"
+        },
+        "unknownStatePolicy": {
+          "type": "string",
+          "const": "REJECT"
+        },
+        "missingRenderableAssetPolicy": {
+          "type": "string",
+          "const": "REJECT"
+        },
+        "glabellaPartition": {
+          "type": "object",
+          "properties": {
+            "mode": {
+              "type": "string",
+              "const": "ANATOMICAL_MIDLINE_CLIP"
+            },
+            "splitX": {
+              "type": "number",
+              "const": 593
+            },
+            "imageLeftOwner": {
+              "type": "string",
+              "const": "BROW_R"
+            },
+            "imageRightOwner": {
+              "type": "string",
+              "const": "BROW_L"
+            }
+          },
+          "required": [
+            "mode",
+            "splitX",
+            "imageLeftOwner",
+            "imageRightOwner"
+          ],
+          "additionalProperties": false
+        },
+        "allowedOrdinaryOverlaps": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "under": {
+                "type": "string",
+                "enum": [
+                  "BASE_HEAD",
+                  "BROW_L",
+                  "BROW_R",
+                  "EYE_L",
+                  "EYE_R",
+                  "GAZE_L",
+                  "GAZE_R",
+                  "MIDFACE",
+                  "LOWER_FACE",
+                  "MACRO_OVERRIDE"
+                ]
+              },
+              "over": {
+                "type": "string",
+                "enum": [
+                  "BASE_HEAD",
+                  "BROW_L",
+                  "BROW_R",
+                  "EYE_L",
+                  "EYE_R",
+                  "GAZE_L",
+                  "GAZE_R",
+                  "MIDFACE",
+                  "LOWER_FACE",
+                  "MACRO_OVERRIDE"
+                ]
+              },
+              "policy": {
+                "type": "string",
+                "const": "CLIP_TO_EYE_APERTURE"
+              }
+            },
+            "required": [
+              "under",
+              "over",
+              "policy"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "ordinarySlotCardinality",
+        "macroCardinality",
+        "drawOrder",
+        "blendMode",
+        "baseFallbackPolicy",
+        "replacementRegionGeometry",
+        "suppressedSelectionPolicy",
+        "unknownStatePolicy",
+        "missingRenderableAssetPolicy",
+        "glabellaPartition",
+        "allowedOrdinaryOverlaps"
+      ],
+      "additionalProperties": false
+    },
+    "slots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "enum": [
+              "BASE_HEAD",
+              "BROW_L",
+              "BROW_R",
+              "EYE_L",
+              "EYE_R",
+              "GAZE_L",
+              "GAZE_R",
+              "MIDFACE",
+              "LOWER_FACE",
+              "MACRO_OVERRIDE"
+            ]
+          },
+          "side": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "LEFT",
+                  "RIGHT"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "BASE",
+              "RASTER_REPLACEMENT",
+              "TRANSFORM_OVERLAY",
+              "MACRO"
+            ]
+          },
+          "cardinality": {
+            "type": "object",
+            "properties": {
+              "min": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "max": {
+                "type": "number",
+                "const": 1
+              }
+            },
+            "required": [
+              "min",
+              "max"
+            ],
+            "additionalProperties": false
+          },
+          "zIndex": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "slotRect": {
+            "type": "object",
+            "properties": {
+              "x": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "y": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "width": {
+                "type": "integer",
+                "exclusiveMinimum": 0,
+                "maximum": 9007199254740991
+              },
+              "height": {
+                "type": "integer",
+                "exclusiveMinimum": 0,
+                "maximum": 9007199254740991
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "width",
+              "height"
+            ],
+            "additionalProperties": false
+          },
+          "replacementRegionIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "requiredAnchorIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "FACE_CENTER",
+                "FOREHEAD_CENTER",
+                "NOSE_BRIDGE_CENTER",
+                "NOSE_TIP",
+                "CHIN_CENTER",
+                "BROW_L_INNER",
+                "BROW_L_CENTER",
+                "BROW_L_OUTER",
+                "EYE_L_INNER_CANTHUS",
+                "EYE_L_CENTER",
+                "EYE_L_OUTER_CANTHUS",
+                "PUPIL_L_NEUTRAL_CENTER",
+                "BROW_R_INNER",
+                "BROW_R_CENTER",
+                "BROW_R_OUTER",
+                "EYE_R_INNER_CANTHUS",
+                "EYE_R_CENTER",
+                "EYE_R_OUTER_CANTHUS",
+                "PUPIL_R_NEUTRAL_CENTER",
+                "NOSTRIL_L",
+                "NOSTRIL_R",
+                "CHEEK_L_REFERENCE",
+                "CHEEK_R_REFERENCE",
+                "MOUTH_L_CORNER",
+                "MOUTH_CENTER",
+                "MOUTH_R_CORNER",
+                "UPPER_LIP_CENTER",
+                "LOWER_LIP_CENTER",
+                "JAW_L_REFERENCE",
+                "JAW_R_REFERENCE"
+              ]
+            }
+          }
+        },
+        "required": [
+          "id",
+          "side",
+          "role",
+          "cardinality",
+          "zIndex",
+          "slotRect",
+          "replacementRegionIds",
+          "requiredAnchorIds"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "replacementRegions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "rect": {
+            "type": "object",
+            "properties": {
+              "x": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "y": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "width": {
+                "type": "integer",
+                "exclusiveMinimum": 0,
+                "maximum": 9007199254740991
+              },
+              "height": {
+                "type": "integer",
+                "exclusiveMinimum": 0,
+                "maximum": 9007199254740991
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "width",
+              "height"
+            ],
+            "additionalProperties": false
+          },
+          "primaryOwner": {
+            "type": "string",
+            "enum": [
+              "BASE_HEAD",
+              "BROW_L",
+              "BROW_R",
+              "EYE_L",
+              "EYE_R",
+              "GAZE_L",
+              "GAZE_R",
+              "MIDFACE",
+              "LOWER_FACE",
+              "MACRO_OVERRIDE"
+            ]
+          },
+          "baseFallbackOwner": {
+            "type": "string",
+            "const": "BASE_HEAD"
+          },
+          "policy": {
+            "type": "string",
+            "enum": [
+              "MASKED_REPLACEMENT",
+              "ANATOMICAL_MIDLINE_CLIP",
+              "EYE_APERTURE_CLIP",
+              "MACRO_REPLACEMENT"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "rect",
+          "primaryOwner",
+          "baseFallbackOwner",
+          "policy"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "anchors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "enum": [
+              "FACE_CENTER",
+              "FOREHEAD_CENTER",
+              "NOSE_BRIDGE_CENTER",
+              "NOSE_TIP",
+              "CHIN_CENTER",
+              "BROW_L_INNER",
+              "BROW_L_CENTER",
+              "BROW_L_OUTER",
+              "EYE_L_INNER_CANTHUS",
+              "EYE_L_CENTER",
+              "EYE_L_OUTER_CANTHUS",
+              "PUPIL_L_NEUTRAL_CENTER",
+              "BROW_R_INNER",
+              "BROW_R_CENTER",
+              "BROW_R_OUTER",
+              "EYE_R_INNER_CANTHUS",
+              "EYE_R_CENTER",
+              "EYE_R_OUTER_CANTHUS",
+              "PUPIL_R_NEUTRAL_CENTER",
+              "NOSTRIL_L",
+              "NOSTRIL_R",
+              "CHEEK_L_REFERENCE",
+              "CHEEK_R_REFERENCE",
+              "MOUTH_L_CORNER",
+              "MOUTH_CENTER",
+              "MOUTH_R_CORNER",
+              "UPPER_LIP_CENTER",
+              "LOWER_LIP_CENTER",
+              "JAW_L_REFERENCE",
+              "JAW_R_REFERENCE"
+            ]
+          },
+          "pixel": {
+            "type": "object",
+            "properties": {
+              "x": {
+                "type": "number"
+              },
+              "y": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "x",
+              "y"
+            ],
+            "additionalProperties": false
+          },
+          "normalized": {
+            "type": "object",
+            "properties": {
+              "x": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "y": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            },
+            "required": [
+              "x",
+              "y"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "id",
+          "pixel",
+          "normalized"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "stateCatalog": {
+      "type": "object",
+      "properties": {
+        "BASE_HEAD": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "recordId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "assetBindingId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "semanticState": {
+                "type": "string",
+                "minLength": 1
+              },
+              "implementationKind": {
+                "type": "string",
+                "const": "RASTER"
+              }
+            },
+            "required": [
+              "recordId",
+              "assetBindingId",
+              "semanticState",
+              "implementationKind"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "BROW_L": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "recordId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "assetBindingId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "semanticState": {
+                "type": "string",
+                "minLength": 1
+              },
+              "implementationKind": {
+                "type": "string",
+                "const": "RASTER"
+              }
+            },
+            "required": [
+              "recordId",
+              "assetBindingId",
+              "semanticState",
+              "implementationKind"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "BROW_R": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "recordId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "assetBindingId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "semanticState": {
+                "type": "string",
+                "minLength": 1
+              },
+              "implementationKind": {
+                "type": "string",
+                "const": "RASTER"
+              }
+            },
+            "required": [
+              "recordId",
+              "assetBindingId",
+              "semanticState",
+              "implementationKind"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "EYE_L": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "recordId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "assetBindingId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "semanticState": {
+                "type": "string",
+                "minLength": 1
+              },
+              "implementationKind": {
+                "type": "string",
+                "const": "RASTER"
+              }
+            },
+            "required": [
+              "recordId",
+              "assetBindingId",
+              "semanticState",
+              "implementationKind"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "EYE_R": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "recordId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "assetBindingId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "semanticState": {
+                "type": "string",
+                "minLength": 1
+              },
+              "implementationKind": {
+                "type": "string",
+                "const": "RASTER"
+              }
+            },
+            "required": [
+              "recordId",
+              "assetBindingId",
+              "semanticState",
+              "implementationKind"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "GAZE_L": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "recordId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "gazeRigBindingId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "semanticState": {
+                "type": "string",
+                "enum": [
+                  "CENTER",
+                  "LOOK_ANATOMICAL_LEFT",
+                  "LOOK_ANATOMICAL_RIGHT",
+                  "LOOK_UP",
+                  "LOOK_DOWN"
+                ]
+              },
+              "implementationKind": {
+                "type": "string",
+                "const": "GAZE_TRANSFORM"
+              },
+              "normalizedIrisOffset": {
+                "type": "object",
+                "properties": {
+                  "x": {
+                    "type": "number",
+                    "minimum": -1,
+                    "maximum": 1
+                  },
+                  "y": {
+                    "type": "number",
+                    "minimum": -1,
+                    "maximum": 1
+                  }
+                },
+                "required": [
+                  "x",
+                  "y"
+                ],
+                "additionalProperties": false
+              },
+              "pupilScale": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              }
+            },
+            "required": [
+              "recordId",
+              "gazeRigBindingId",
+              "semanticState",
+              "implementationKind",
+              "normalizedIrisOffset",
+              "pupilScale"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "GAZE_R": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "recordId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "gazeRigBindingId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "semanticState": {
+                "type": "string",
+                "enum": [
+                  "CENTER",
+                  "LOOK_ANATOMICAL_LEFT",
+                  "LOOK_ANATOMICAL_RIGHT",
+                  "LOOK_UP",
+                  "LOOK_DOWN"
+                ]
+              },
+              "implementationKind": {
+                "type": "string",
+                "const": "GAZE_TRANSFORM"
+              },
+              "normalizedIrisOffset": {
+                "type": "object",
+                "properties": {
+                  "x": {
+                    "type": "number",
+                    "minimum": -1,
+                    "maximum": 1
+                  },
+                  "y": {
+                    "type": "number",
+                    "minimum": -1,
+                    "maximum": 1
+                  }
+                },
+                "required": [
+                  "x",
+                  "y"
+                ],
+                "additionalProperties": false
+              },
+              "pupilScale": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              }
+            },
+            "required": [
+              "recordId",
+              "gazeRigBindingId",
+              "semanticState",
+              "implementationKind",
+              "normalizedIrisOffset",
+              "pupilScale"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "MIDFACE": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "recordId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "assetBindingId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "semanticState": {
+                "type": "string",
+                "minLength": 1
+              },
+              "implementationKind": {
+                "type": "string",
+                "const": "RASTER"
+              }
+            },
+            "required": [
+              "recordId",
+              "assetBindingId",
+              "semanticState",
+              "implementationKind"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "LOWER_FACE": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "recordId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "assetBindingId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "semanticState": {
+                "type": "string",
+                "minLength": 1
+              },
+              "implementationKind": {
+                "type": "string",
+                "const": "RASTER"
+              }
+            },
+            "required": [
+              "recordId",
+              "assetBindingId",
+              "semanticState",
+              "implementationKind"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "MACRO_OVERRIDE": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "recordId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "assetBindingId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "semanticState": {
+                "type": "string",
+                "const": "PUFFED_CHEEKS"
+              },
+              "implementationKind": {
+                "type": "string",
+                "const": "MACRO"
+              },
+              "suppressesSlots": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "BASE_HEAD",
+                    "BROW_L",
+                    "BROW_R",
+                    "EYE_L",
+                    "EYE_R",
+                    "GAZE_L",
+                    "GAZE_R",
+                    "MIDFACE",
+                    "LOWER_FACE",
+                    "MACRO_OVERRIDE"
+                  ]
+                }
+              },
+              "allowsSlots": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "BASE_HEAD",
+                    "BROW_L",
+                    "BROW_R",
+                    "EYE_L",
+                    "EYE_R",
+                    "GAZE_L",
+                    "GAZE_R",
+                    "MIDFACE",
+                    "LOWER_FACE",
+                    "MACRO_OVERRIDE"
+                  ]
+                }
+              },
+              "precedence": {
+                "type": "integer",
+                "exclusiveMinimum": 0,
+                "maximum": 9007199254740991
+              },
+              "overlapPolicy": {
+                "type": "string",
+                "const": "SUPPRESS_THEN_RENDER_LAST"
+              }
+            },
+            "required": [
+              "recordId",
+              "assetBindingId",
+              "semanticState",
+              "implementationKind",
+              "suppressesSlots",
+              "allowsSlots",
+              "precedence",
+              "overlapPolicy"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "BASE_HEAD",
+        "BROW_L",
+        "BROW_R",
+        "EYE_L",
+        "EYE_R",
+        "GAZE_L",
+        "GAZE_R",
+        "MIDFACE",
+        "LOWER_FACE",
+        "MACRO_OVERRIDE"
+      ],
+      "additionalProperties": false
+    },
+    "defaultSelection": {
+      "type": "object",
+      "properties": {
+        "BASE_HEAD": {
+          "type": "string",
+          "minLength": 1
+        },
+        "BROW_L": {
+          "type": "string",
+          "minLength": 1
+        },
+        "BROW_R": {
+          "type": "string",
+          "minLength": 1
+        },
+        "EYE_L": {
+          "type": "string",
+          "minLength": 1
+        },
+        "EYE_R": {
+          "type": "string",
+          "minLength": 1
+        },
+        "GAZE_L": {
+          "type": "string",
+          "minLength": 1
+        },
+        "GAZE_R": {
+          "type": "string",
+          "minLength": 1
+        },
+        "MIDFACE": {
+          "type": "string",
+          "minLength": 1
+        },
+        "LOWER_FACE": {
+          "type": "string",
+          "minLength": 1
+        },
+        "MACRO_OVERRIDE": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "BASE_HEAD",
+        "BROW_L",
+        "BROW_R",
+        "EYE_L",
+        "EYE_R",
+        "GAZE_L",
+        "GAZE_R",
+        "MIDFACE",
+        "LOWER_FACE",
+        "MACRO_OVERRIDE"
+      ],
+      "additionalProperties": false
+    },
+    "compatibilityRules": {
+      "type": "object",
+      "properties": {
+        "closedEyeGaze": {
+          "type": "object",
+          "properties": {
+            "eyeState": {
+              "type": "string",
+              "const": "CLOSED_TIGHT"
+            },
+            "behavior": {
+              "type": "string",
+              "const": "SUPPRESS_EFFECTIVE_GAZE"
+            },
+            "diagnosticCode": {
+              "type": "string",
+              "const": "GAZE_SUPPRESSED_BY_CLOSED_EYE"
+            }
+          },
+          "required": [
+            "eyeState",
+            "behavior",
+            "diagnosticCode"
+          ],
+          "additionalProperties": false
+        },
+        "squintGaze": {
+          "type": "object",
+          "properties": {
+            "eyeState": {
+              "type": "string",
+              "const": "SQUINT_TIGHT"
+            },
+            "behavior": {
+              "type": "string",
+              "const": "CLAMP_NORMALIZED_OFFSET"
+            },
+            "clampFactor": {
+              "type": "number",
+              "const": 0.35
+            }
+          },
+          "required": [
+            "eyeState",
+            "behavior",
+            "clampFactor"
+          ],
+          "additionalProperties": false
+        },
+        "macroSuppression": {
+          "type": "object",
+          "properties": {
+            "requestedSelectionIsPreserved": {
+              "type": "boolean",
+              "const": true
+            },
+            "diagnosticCode": {
+              "type": "string",
+              "const": "SLOT_SUPPRESSED_BY_MACRO"
+            },
+            "listsAreClosedWorld": {
+              "type": "boolean",
+              "const": true
+            }
+          },
+          "required": [
+            "requestedSelectionIsPreserved",
+            "diagnosticCode",
+            "listsAreClosedWorld"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "closedEyeGaze",
+        "squintGaze",
+        "macroSuppression"
+      ],
+      "additionalProperties": false
+    },
+    "identityPackContract": {
+      "type": "object",
+      "properties": {
+        "recordIdFormat": {
+          "type": "string",
+          "const": "<IDENTITY_PACK>::<SLOT>::<SEMANTIC_STATE>"
+        },
+        "rasterCanvasSource": {
+          "type": "string",
+          "const": "slotRect.width_and_height"
+        },
+        "perStateOffsetsAllowed": {
+          "type": "boolean",
+          "const": false
+        },
+        "requiredRasterFields": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "string",
+              "const": "recordId"
+            },
+            {
+              "type": "string",
+              "const": "slotId"
+            },
+            {
+              "type": "string",
+              "const": "semanticState"
+            },
+            {
+              "type": "string",
+              "const": "assetPath"
+            },
+            {
+              "type": "string",
+              "const": "replacementMaskPath"
+            },
+            {
+              "type": "string",
+              "const": "anchorAttachments"
+            },
+            {
+              "type": "string",
+              "const": "assetOrigin"
+            },
+            {
+              "type": "string",
+              "const": "genericCompatibility"
+            },
+            {
+              "type": "string",
+              "const": "implementationStatus"
+            },
+            {
+              "type": "string",
+              "const": "automatedTestStatus"
+            },
+            {
+              "type": "string",
+              "const": "visualValidationStatus"
+            }
+          ]
+        },
+        "gazeRigFields": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "string",
+              "const": "irisSpritePath"
+            },
+            {
+              "type": "string",
+              "const": "pupilSpritePath"
+            },
+            {
+              "type": "string",
+              "const": "apertureMaskPath"
+            },
+            {
+              "type": "string",
+              "const": "neutralCenterAnchorId"
+            },
+            {
+              "type": "string",
+              "const": "maxOffsetPixels"
+            }
+          ]
+        },
+        "statusAxes": {
+          "type": "object",
+          "properties": {
+            "assetOrigin": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "type": "string",
+                  "const": "REFERENCE"
+                },
+                {
+                  "type": "string",
+                  "const": "DERIVED"
+                },
+                {
+                  "type": "string",
+                  "const": "AUTHORED"
+                },
+                {
+                  "type": "string",
+                  "const": "PLACEHOLDER"
+                }
+              ]
+            },
+            "genericCompatibility": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "type": "string",
+                  "const": "GENERIC"
+                },
+                {
+                  "type": "string",
+                  "const": "IDENTITY_BOUND"
+                },
+                {
+                  "type": "string",
+                  "const": "REFERENCE_ONLY"
+                }
+              ]
+            },
+            "implementationStatus": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "type": "string",
+                  "const": "DESIGNED"
+                },
+                {
+                  "type": "string",
+                  "const": "PLACEHOLDER"
+                },
+                {
+                  "type": "string",
+                  "const": "IMPLEMENTED"
+                }
+              ]
+            },
+            "automatedTestStatus": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "type": "string",
+                  "const": "NOT_RUN"
+                },
+                {
+                  "type": "string",
+                  "const": "PASSED"
+                },
+                {
+                  "type": "string",
+                  "const": "FAILED"
+                }
+              ]
+            },
+            "visualValidationStatus": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "type": "string",
+                  "const": "NOT_REVIEWED"
+                },
+                {
+                  "type": "string",
+                  "const": "PASSED"
+                },
+                {
+                  "type": "string",
+                  "const": "FAILED"
+                },
+                {
+                  "type": "string",
+                  "const": "NOT_APPLICABLE"
+                }
+              ]
+            }
+          },
+          "required": [
+            "assetOrigin",
+            "genericCompatibility",
+            "implementationStatus",
+            "automatedTestStatus",
+            "visualValidationStatus"
+          ],
+          "additionalProperties": false
+        },
+        "forbiddenGenericContent": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "string",
+              "const": "HAIR"
+            },
+            {
+              "type": "string",
+              "const": "BEARD"
+            },
+            {
+              "type": "string",
+              "const": "MUSTACHE"
+            },
+            {
+              "type": "string",
+              "const": "JEWELRY"
+            },
+            {
+              "type": "string",
+              "const": "CLOTHING"
+            },
+            {
+              "type": "string",
+              "const": "BAKED_GAZE_DIRECTION"
+            }
+          ]
+        }
+      },
+      "required": [
+        "recordIdFormat",
+        "rasterCanvasSource",
+        "perStateOffsetsAllowed",
+        "requiredRasterFields",
+        "gazeRigFields",
+        "statusAxes",
+        "forbiddenGenericContent"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "chassisId",
+    "realityStatus",
+    "authority",
+    "faceSpace",
+    "compositor",
+    "slots",
+    "replacementRegions",
+    "anchors",
+    "stateCatalog",
+    "defaultSelection",
+    "compatibilityRules",
+    "identityPackContract"
+  ],
+  "additionalProperties": false,
+  "$id": "https://trapstar.example/schemas/male-face-chassis-v0.1.schema.json",
+  "title": "Male Face Chassis v0.1 structural envelope",
+  "description": "Structural JSON Schema envelope for the public contract. The authoritative frozen counts, ordering, geometry, side, gaze, anchor, macro, and cross-record invariants require the Zod chassisContractSchema parser.",
+  "x-authoritative-validator": "src/face-chassis/v0_1/schema.ts#chassisContractSchema"
+}
