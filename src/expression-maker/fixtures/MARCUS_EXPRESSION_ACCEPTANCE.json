@@ -1,0 +1,33 @@
+{
+  "schema": "trapstar-expression-library",
+  "version": 1,
+  "assetSource": {
+    "identity": "MARCUS",
+    "manifestSchema": "trapstar-marcus-expression-assets",
+    "manifestVersion": 1,
+    "sourceSha256": "D184F0512A11E8B3D92278E5A089AAEB16BDA20CC3A9A6CA6C87A94E84183CE7"
+  },
+  "groups": [
+    { "id": "neutral-idle", "name": "Neutral / Idle" },
+    { "id": "suspicious", "name": "Suspicious" },
+    { "id": "angry", "name": "Angry" }
+  ],
+  "presets": [
+    {
+      "id": "suspicious-02",
+      "name": "Suspicious 02",
+      "groupId": "suspicious",
+      "layers": [
+        { "id": "acceptance-base", "assetId": "00_BASE_REFERENCE_LOCKED", "visible": true, "locked": true, "x": 0, "y": 0, "scale": 1, "rotation": 0 },
+        { "id": "acceptance-left-eye", "assetId": "60_EYE_LEFT_SIDE_LOOK_02", "visible": true, "locked": false, "x": 0, "y": 0, "scale": 1, "rotation": 0 },
+        { "id": "acceptance-right-eye", "assetId": "65_EYE_RIGHT_SIDE_LOOK_04", "visible": true, "locked": false, "x": 0, "y": 0, "scale": 1, "rotation": 0 },
+        { "id": "acceptance-left-brow", "assetId": "20_UPPER_FACE_LEFT_BROW_FURROW_ANGLED_01", "visible": true, "locked": false, "x": 0, "y": 0, "scale": 1, "rotation": 0 },
+        { "id": "acceptance-right-brow", "assetId": "30_UPPER_FACE_RIGHT_BROW_FURROW_ANGLED_01", "visible": true, "locked": false, "x": 0, "y": 0, "scale": 1, "rotation": 0 },
+        { "id": "acceptance-lower-face", "assetId": "70_LOWER_FACE_SMILE_CLOSED_03", "visible": true, "locked": false, "x": 0, "y": 0, "scale": 1, "rotation": 0 },
+        { "id": "acceptance-macro", "assetId": "10_FULL_FACE_PUFFED_CHEEKS_01", "visible": false, "locked": false, "x": 0, "y": 0, "scale": 1, "rotation": 0 }
+      ],
+      "createdAt": "2026-08-29T00:00:00.000Z",
+      "updatedAt": "2026-08-29T00:00:00.000Z"
+    }
+  ]
+}
