@@ -89,6 +89,32 @@ export function reorderLayer(layers: readonly ExpressionLayer[], layerId: string
   return result;
 }
 
+export type VisibleLayerDropPlacement = "BEFORE" | "AFTER";
+
+/**
+ * Reorders against the front-to-back stack shown in the UI while preserving the
+ * preset's canonical back-to-front array. "BEFORE" means visually above/front
+ * of the target; "AFTER" means visually below/behind it.
+ */
+export function reorderLayerInVisibleStack(
+  layers: readonly ExpressionLayer[],
+  layerId: string,
+  targetLayerId: string,
+  placement: VisibleLayerDropPlacement,
+): ExpressionLayer[] {
+  const result = cloneLayers(layers);
+  const fromIndex = result.findIndex(layer => layer.id === layerId);
+  if (fromIndex < 0 || result[fromIndex].locked || layerId === targetLayerId) return result;
+
+  const [layer] = result.splice(fromIndex, 1);
+  const targetIndex = result.findIndex(candidate => candidate.id === targetLayerId);
+  if (targetIndex < 0) return cloneLayers(layers);
+
+  const insertionIndex = placement === "BEFORE" ? targetIndex + 1 : targetIndex;
+  result.splice(insertionIndex, 0, layer);
+  return result;
+}
+
 export function moveLayer(layers: readonly ExpressionLayer[], layerId: string, movement: LayerMove): ExpressionLayer[] {
   const index = layers.findIndex(layer => layer.id === layerId);
   if (index < 0 || layers[index].locked) return cloneLayers(layers);

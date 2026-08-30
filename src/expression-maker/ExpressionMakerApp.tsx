@@ -1,6 +1,7 @@
 "use client";
 
 /* eslint-disable @next/next/no-img-element -- registered Marcus PNG crops must bypass image optimization */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions -- layer rows use pointer drag; the retained order buttons provide the keyboard path */
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { marcusAssetManifest, marcusAssets, findMarcusAsset } from "./assets/manifest";
@@ -18,12 +19,13 @@ import {
   removeLayer,
   renameGroup,
   renamePreset,
-  reorderLayer,
+  reorderLayerInVisibleStack,
   replaceAssetInSlot,
   saveNewPreset,
   updateLayer,
   updatePreset,
 } from "./model/library";
+import type { VisibleLayerDropPlacement } from "./model/library";
 import type { ExpressionLayer, ExpressionLibraryExport, MarcusSlotId } from "./model/types";
 import { downloadExpressionLibrary, readExpressionLibraryFile } from "./persistence/libraryFiles";
 import { loadLibraryFromStorage, saveLibraryToStorage } from "./persistence/storage";
@@ -33,6 +35,22 @@ const INITIAL_PRESET_ID = "suspicious-02";
 
 function initialPresetLayers(): ExpressionLayer[] {
   return loadPreset(createDefaultLibrary(), INITIAL_PRESET_ID).layers;
+}
+
+interface LayerDragState {
+  sourceLayerId: string;
+  targetLayerId: string | null;
+  placement: VisibleLayerDropPlacement | null;
+}
+
+interface LayerDropTarget {
+  layerId: string;
+  placement: VisibleLayerDropPlacement;
+}
+
+function visibleDropPlacement(clientY: number, row: HTMLElement): VisibleLayerDropPlacement {
+  const bounds = row.getBoundingClientRect();
+  return clientY < bounds.top + bounds.height / 2 ? "BEFORE" : "AFTER";
 }
 
 function NumberControl({
@@ -74,12 +92,12 @@ export default function ExpressionMakerApp() {
   const [groupDraft, setGroupDraft] = useState("Suspicious");
   const [notice, setNotice] = useState("Marcus acceptance fixture loaded. Layer order is stored per expression.");
   const [renderIssues, setRenderIssues] = useState<string[]>([]);
+  const [layerDrag, setLayerDrag] = useState<LayerDragState | null>(null);
   const [hydrated, setHydrated] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const draggedLayerId = useRef<string | null>(null);
   const pointerDraggedLayerId = useRef<string | null>(null);
-  const pointerTargetIndex = useRef<number | null>(null);
+  const pointerDropTarget = useRef<LayerDropTarget | null>(null);
   const renderCycle = useRef(0);
 
   const selectedLayer = layers.find(layer => layer.id === selectedLayerId) ?? null;
@@ -367,24 +385,57 @@ export default function ExpressionMakerApp() {
   });
 
   useEffect(() => {
+    const targetAtPoint = (sourceLayerId: string, clientX: number, clientY: number): LayerDropTarget | null => {
+      const row = document.elementFromPoint(clientX, clientY)?.closest<HTMLElement>("[data-layer-id]");
+      const layerId = row?.dataset.layerId;
+      if (!row || !layerId || layerId === sourceLayerId) return null;
+      return { layerId, placement: visibleDropPlacement(clientY, row) };
+    };
+
     const handleMouseMove = (event: MouseEvent) => {
-      if (!pointerDraggedLayerId.current) return;
-      const target = document.elementFromPoint(event.clientX, event.clientY)?.closest<HTMLElement>("[data-layer-source-index]");
-      const targetIndex = Number(target?.dataset.layerSourceIndex);
-      if (Number.isInteger(targetIndex)) pointerTargetIndex.current = targetIndex;
+      const sourceLayerId = pointerDraggedLayerId.current;
+      if (!sourceLayerId) return;
+      const target = targetAtPoint(sourceLayerId, event.clientX, event.clientY);
+      pointerDropTarget.current = target;
+      setLayerDrag(current => current?.sourceLayerId === sourceLayerId
+        && current.targetLayerId === (target?.layerId ?? null)
+        && current.placement === (target?.placement ?? null)
+        ? current
+        : { sourceLayerId, targetLayerId: target?.layerId ?? null, placement: target?.placement ?? null });
     };
-    const handleMouseUp = () => {
-      const draggedId = pointerDraggedLayerId.current;
-      const targetIndex = pointerTargetIndex.current;
+
+    const clearPointerDrag = () => {
       pointerDraggedLayerId.current = null;
-      pointerTargetIndex.current = null;
-      if (draggedId && targetIndex !== null) setLayers(current => reorderLayer(current, draggedId, targetIndex));
+      pointerDropTarget.current = null;
+      setLayerDrag(null);
     };
+
+    const finishPointerDrag = (event: MouseEvent) => {
+      const sourceLayerId = pointerDraggedLayerId.current;
+      const finalTarget = sourceLayerId
+        ? targetAtPoint(sourceLayerId, event.clientX, event.clientY)
+        : null;
+      clearPointerDrag();
+      if (!sourceLayerId || !finalTarget) return;
+      setLayers(current => reorderLayerInVisibleStack(current, sourceLayerId, finalTarget.layerId, finalTarget.placement));
+      setSelectedLayerId(sourceLayerId);
+      setNotice("Layer moved. Preview and preset order updated.");
+    };
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && pointerDraggedLayerId.current) clearPointerDrag();
+    };
+    const handleBlur = () => clearPointerDrag();
+
     window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("mouseup", handleMouseUp);
+    window.addEventListener("mouseup", finishPointerDrag);
+    window.addEventListener("blur", handleBlur);
+    window.addEventListener("keydown", handleEscape);
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("mouseup", handleMouseUp);
+      window.removeEventListener("mouseup", finishPointerDrag);
+      window.removeEventListener("blur", handleBlur);
+      window.removeEventListener("keydown", handleEscape);
     };
   }, []);
 
@@ -441,34 +492,38 @@ export default function ExpressionMakerApp() {
 
         <aside className="expression-panel layer-panel">
           <div className="panel-heading"><div><span>03 / LAYER STACK</span><h2>Front to back</h2></div><b>{layers.length}</b></div>
-          <p className="stack-rule">Drag unlocked rows. The saved array—not the slot—owns render order.</p>
-          <div className="layer-stack">
-            {[...layers].map((layer, sourceIndex) => ({ layer, sourceIndex })).reverse().map(({ layer, sourceIndex }) => {
+          <p className="stack-rule" id="layer-stack-instructions">Grab any unlocked row and drop above or below the insertion line. The saved array—not the slot—owns render order.</p>
+          <div className="layer-stack" aria-describedby="layer-stack-instructions">
+            {[...layers].reverse().map(layer => {
               const asset = findMarcusAsset(layer.assetId);
               const selected = layer.id === selectedLayerId;
+              const dragging = layerDrag?.sourceLayerId === layer.id;
+              const dropPlacement = layerDrag?.targetLayerId === layer.id ? layerDrag.placement : null;
               return <article
-                className={`layer-row ${selected ? "selected" : ""} ${!asset ? "missing" : ""}`}
+                className={`layer-row ${selected ? "selected" : ""} ${!asset ? "missing" : ""} ${layer.locked ? "locked" : "draggable"} ${dragging ? "dragging" : ""} ${dropPlacement === "BEFORE" ? "drop-before" : dropPlacement === "AFTER" ? "drop-after" : ""}`}
                 key={layer.id}
-                data-layer-source-index={sourceIndex}
-                onDragOver={event => { if (draggedLayerId.current) event.preventDefault(); }}
-                onDrop={event => { event.preventDefault(); if (draggedLayerId.current) setLayers(current => reorderLayer(current, draggedLayerId.current!, sourceIndex)); draggedLayerId.current = null; }}
+                data-layer-id={layer.id}
+                data-drop-position={dropPlacement?.toLowerCase()}
+                onMouseDown={event => {
+                  if (event.button !== 0) return;
+                  const target = event.target instanceof Element ? event.target : null;
+                  const interactive = target?.closest("button, input, label, select, textarea, a");
+                  const dragSurface = target?.closest(".drag-handle, .layer-copy");
+                  const blockedByControl = Boolean(interactive && !dragSurface);
+                  if (layer.locked || blockedByControl) return;
+                  event.preventDefault();
+                  pointerDraggedLayerId.current = layer.id;
+                  pointerDropTarget.current = null;
+                  setSelectedLayerId(layer.id);
+                  setLayerDrag({ sourceLayerId: layer.id, targetLayerId: null, placement: null });
+                }}
               >
                 <button
                   type="button"
                   className="drag-handle"
                   aria-label={`Drag ${asset?.label ?? layer.assetId}`}
                   disabled={layer.locked}
-                  draggable={!layer.locked}
-                  onDragStart={event => { draggedLayerId.current = layer.id; event.dataTransfer.effectAllowed = "move"; }}
-                  onDragEnd={() => { draggedLayerId.current = null; }}
-                  onMouseDown={event => {
-                    if (layer.locked) return;
-                    event.preventDefault();
-                    event.stopPropagation();
-                    pointerDraggedLayerId.current = layer.id;
-                    pointerTargetIndex.current = sourceIndex;
-                    setSelectedLayerId(layer.id);
-                  }}
+                  title={layer.locked ? "Unlock this layer before reordering" : "Drag this row to reorder"}
                 >⋮⋮</button>
                 <span className="layer-thumb">{asset ? <img src={asset.src} alt="" draggable={false}/> : "!"}</span>
                 <button type="button" className="layer-copy" onClick={() => setSelectedLayerId(layer.id)}><strong>{asset?.label ?? layer.assetId}</strong><small>{asset?.slotId ?? "MISSING ASSET"}</small></button>
@@ -485,6 +540,11 @@ export default function ExpressionMakerApp() {
                 </div>
               </article>;
             })}
+            <span className="layer-drag-status" role="status" aria-live="polite">
+              {layerDrag?.targetLayerId && layerDrag.placement
+                ? `Insertion ${layerDrag.placement === "BEFORE" ? "above" : "below"} ${findMarcusAsset(layers.find(layer => layer.id === layerDrag.targetLayerId)?.assetId)?.label ?? "target layer"}`
+                : ""}
+            </span>
           </div>
           <button className="reset-source" onClick={() => { const source = createSourceVisibleLayers(); setLayers(source); setSelectedLayerId(source.at(-1)?.id ?? null); setCurrentPresetId(null); setPresetName("Untitled Expression"); setPresetGroupId(null); setNotice("Source-visible Marcus composition restored"); }}>Reset to PXZ visible state</button>
         </aside>

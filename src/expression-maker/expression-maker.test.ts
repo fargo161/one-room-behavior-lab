@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { createHash } from "node:crypto";
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import acceptanceFixture from "./fixtures/MARCUS_EXPRESSION_ACCEPTANCE.json";
 import { marcusAssetManifest, marcusAssets } from "./assets/manifest";
 import { cloneLayers, createDefaultLibrary, createSourceVisibleLayers } from "./model/defaults";
@@ -17,6 +17,7 @@ import {
   renameGroup,
   renamePreset,
   reorderLayer,
+  reorderLayerInVisibleStack,
   saveNewPreset,
   updateLayer,
   updatePreset,
@@ -24,7 +25,7 @@ import {
 import type { ExpressionLibraryExport } from "./model/types";
 import { parseExpressionLibraryJson, serializeExpressionLibrary, validateExpressionLibrary } from "./model/validation";
 import { EXPRESSION_LIBRARY_STORAGE_KEY, loadLibraryFromStorage, saveLibraryToStorage, type StorageLike } from "./persistence/storage";
-import { buildRenderPlan, sanitizeExpressionFilename } from "./rendering/compositor";
+import { buildRenderPlan, exportExpressionPng, sanitizeExpressionFilename } from "./rendering/compositor";
 
 function pngSize(filePath: string): { width: number; height: number } {
   const data = fs.readFileSync(filePath);
@@ -44,6 +45,8 @@ class MemoryStorage implements StorageLike {
   setItem(key: string, value: string) { this.values.set(key, value); }
   putRaw(key: string, value: string) { this.values.set(key, value); }
 }
+
+afterEach(() => vi.unstubAllGlobals());
 
 describe("Trapstar Expression Maker v0.1", () => {
   it("pins all 62 Marcus assets, slots, face-space, hidden state, and paths", () => {
@@ -111,6 +114,130 @@ describe("Trapstar Expression Maker v0.1", () => {
     expect(second.entries.map(entry => entry.assetId)).toEqual(reordered.filter(layer => layer.visible).map(layer => layer.assetId));
     expect(second.entries.map(entry => entry.assetId)).not.toEqual(first.entries.map(entry => entry.assetId));
     expect(first.entries.some(entry => entry.assetId === "10_FULL_FACE_PUFFED_CHEEKS_01")).toBe(false);
+  });
+
+  it("translates visible above/below drops into the preset's back-to-front array", () => {
+    const source = loadPreset(createDefaultLibrary(), "suspicious-02").layers;
+    const beforeLowerFace = reorderLayerInVisibleStack(source, "acceptance-left-eye", "acceptance-lower-face", "BEFORE");
+    expect(beforeLowerFace.map(layer => layer.id)).toEqual([
+      "acceptance-base",
+      "acceptance-right-eye",
+      "acceptance-left-brow",
+      "acceptance-right-brow",
+      "acceptance-lower-face",
+      "acceptance-left-eye",
+      "acceptance-macro",
+    ]);
+    expect([...beforeLowerFace].reverse().map(layer => layer.id).slice(0, 3)).toEqual([
+      "acceptance-macro",
+      "acceptance-left-eye",
+      "acceptance-lower-face",
+    ]);
+
+    const behindBase = reorderLayerInVisibleStack(source, "acceptance-lower-face", "acceptance-base", "AFTER");
+    expect(behindBase.map(layer => layer.id)).toEqual([
+      "acceptance-lower-face",
+      "acceptance-base",
+      "acceptance-left-eye",
+      "acceptance-right-eye",
+      "acceptance-left-brow",
+      "acceptance-right-brow",
+      "acceptance-macro",
+    ]);
+    expect(reorderLayerInVisibleStack(source, "acceptance-base", "acceptance-lower-face", "BEFORE").map(layer => layer.id))
+      .toEqual(source.map(layer => layer.id));
+    expect(reorderLayerInVisibleStack(source, "acceptance-lower-face", "acceptance-lower-face", "BEFORE").map(layer => layer.id))
+      .toEqual(source.map(layer => layer.id));
+    expect(reorderLayerInVisibleStack(source, "acceptance-lower-face", "missing-target", "AFTER").map(layer => layer.id))
+      .toEqual(source.map(layer => layer.id));
+  });
+
+  it("preserves a dragged order through save/reload and feeds that order to PNG rendering", () => {
+    const storage = new MemoryStorage();
+    const sourceLibrary = createDefaultLibrary();
+    const dragged = reorderLayerInVisibleStack(
+      loadPreset(sourceLibrary, "suspicious-02").layers,
+      "acceptance-lower-face",
+      "acceptance-base",
+      "AFTER",
+    );
+    const savedLibrary = updatePreset(
+      sourceLibrary,
+      "suspicious-02",
+      dragged,
+      "suspicious",
+      "2026-08-30T01:00:00.000Z",
+    );
+    saveLibraryToStorage(storage, savedLibrary);
+
+    const reloaded = loadPreset(loadLibraryFromStorage(storage).library, "suspicious-02").layers;
+    expect(reloaded.map(layer => layer.id)).toEqual(dragged.map(layer => layer.id));
+    expect(buildRenderPlan(reloaded).entries.map(entry => entry.layerId)).toEqual(
+      dragged.filter(layer => layer.visible).map(layer => layer.id),
+    );
+  });
+
+  it("draws exported PNG layers in the dragged preset order", async () => {
+    const dragged = reorderLayerInVisibleStack(
+      loadPreset(createDefaultLibrary(), "suspicious-02").layers,
+      "acceptance-lower-face",
+      "acceptance-base",
+      "AFTER",
+    );
+    const drawnSources: string[] = [];
+    let downloadedFilename = "";
+    const context = {
+      setTransform: vi.fn(),
+      clearRect: vi.fn(),
+      save: vi.fn(),
+      translate: vi.fn(),
+      rotate: vi.fn(),
+      scale: vi.fn(),
+      restore: vi.fn(),
+      drawImage: vi.fn((source: CanvasImageSource) => {
+        const src = (source as unknown as { src?: string }).src;
+        if (src) drawnSources.push(src);
+      }),
+      globalCompositeOperation: "source-over",
+      globalAlpha: 1,
+      imageSmoothingEnabled: true,
+    } as unknown as CanvasRenderingContext2D;
+    const makeCanvas = () => ({
+      width: 0,
+      height: 0,
+      getContext: () => context,
+      toBlob: (callback: BlobCallback) => callback(new Blob(["png"], { type: "image/png" })),
+    }) as unknown as HTMLCanvasElement;
+    const anchor = {
+      href: "",
+      download: "",
+      click: () => { downloadedFilename = anchor.download; },
+      remove: vi.fn(),
+    };
+    class FakeImage {
+      decoding = "auto";
+      onload: (() => void) | null = null;
+      onerror: (() => void) | null = null;
+      private value = "";
+      get src() { return this.value; }
+      set src(value: string) {
+        this.value = value;
+        queueMicrotask(() => this.onload?.());
+      }
+    }
+
+    vi.stubGlobal("Image", FakeImage);
+    vi.stubGlobal("document", {
+      createElement: (tag: string) => tag === "canvas" ? makeCanvas() : anchor,
+      body: { appendChild: vi.fn() },
+    });
+    vi.stubGlobal("URL", { createObjectURL: () => "blob:drag-order", revokeObjectURL: vi.fn() });
+    vi.stubGlobal("window", { setTimeout: (callback: () => void) => { callback(); return 0; } });
+
+    await exportExpressionPng(dragged, "Suspicious", "Drag Order QA");
+
+    expect(drawnSources).toEqual(buildRenderPlan(dragged).entries.map(entry => entry.asset.src));
+    expect(downloadedFilename).toBe("suspicious__drag-order-qa.png");
   });
 
   it("persists registered transforms without sorting or changing stable asset IDs", () => {
