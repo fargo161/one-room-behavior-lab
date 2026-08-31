@@ -1,0 +1,2131 @@
+{
+  "schema": "trapstar-expression-character-pack",
+  "version": 1,
+  "characterPackId": "goose",
+  "identity": "GOOSE",
+  "displayName": "Goose",
+  "assetSetSha256": "1a790f1a997101de5000adc8d3698119c55790d165aec1a2c3512ab8048f333f",
+  "canonicalFaceSpace": {
+    "width": 1187,
+    "height": 1484,
+    "unit": "pixel",
+    "origin": "TOP_LEFT",
+    "xPositive": "RIGHT_ON_IMAGE",
+    "yPositive": "DOWN",
+    "rectangleConvention": "HALF_OPEN_PIXEL_EDGE"
+  },
+  "renderOrderPolicy": "PRESET_LAYER_ARRAY_BACK_TO_FRONT",
+  "baseAssetId": "goose__base_head",
+  "slotDrawOrder": [
+    "LEFT_BROW",
+    "RIGHT_BROW",
+    "LEFT_EYE",
+    "RIGHT_EYE",
+    "LOWER_FACE"
+  ],
+  "slots": [
+    {
+      "id": "LEFT_BROW",
+      "label": "Left Brow",
+      "anatomicalSide": "LEFT",
+      "faceRect": {
+        "x": 577,
+        "y": 405,
+        "width": 331,
+        "height": 171
+      },
+      "mask": {
+        "src": "/expression-maker/goose/masks/left_brow__mask.png",
+        "sha256": "bcbf51ce803e1e3a1856985b7943cab9f4954b5b3607ef2701e25fe98a31785c",
+        "featherPixels": 20
+      }
+    },
+    {
+      "id": "RIGHT_BROW",
+      "label": "Right Brow",
+      "anatomicalSide": "RIGHT",
+      "faceRect": {
+        "x": 280,
+        "y": 405,
+        "width": 331,
+        "height": 171
+      },
+      "mask": {
+        "src": "/expression-maker/goose/masks/right_brow__mask.png",
+        "sha256": "5352935aaea7852af0fd05657adf4fb082a2eb724bd7c233ac518608f482f6ce",
+        "featherPixels": 20
+      }
+    },
+    {
+      "id": "LEFT_EYE",
+      "label": "Left Eye",
+      "anatomicalSide": "LEFT",
+      "faceRect": {
+        "x": 584,
+        "y": 515,
+        "width": 304,
+        "height": 191
+      },
+      "mask": {
+        "src": "/expression-maker/goose/masks/left_eye__mask.png",
+        "sha256": "7948562a31ed20794eb09c6f6ba5401e27a740629ec9278c574f2eb98791383a",
+        "featherPixels": 20
+      }
+    },
+    {
+      "id": "RIGHT_EYE",
+      "label": "Right Eye",
+      "anatomicalSide": "RIGHT",
+      "faceRect": {
+        "x": 300,
+        "y": 515,
+        "width": 304,
+        "height": 191
+      },
+      "mask": {
+        "src": "/expression-maker/goose/masks/right_eye__mask.png",
+        "sha256": "d0343d4a0ee88bfaa0a5365f2b5c8b8269b6d610b8afaaeb89f4018e179a7f08",
+        "featherPixels": 20
+      }
+    },
+    {
+      "id": "LOWER_FACE",
+      "label": "Lower Face",
+      "anatomicalSide": null,
+      "faceRect": {
+        "x": 285,
+        "y": 635,
+        "width": 618,
+        "height": 366
+      },
+      "mask": {
+        "src": "/expression-maker/goose/masks/lower_face__mask.png",
+        "sha256": "81704ed4dca65ac2bf07098e382487c2ab17db8d35073745a0973d5992dd55df",
+        "featherPixels": 24
+      }
+    }
+  ],
+  "assets": [
+    {
+      "id": "goose__base_head",
+      "label": "Neutral Base Head",
+      "role": "BASE",
+      "slotId": null,
+      "sourceStackIndex": 0,
+      "src": "/expression-maker/goose/layers/goose__base_head.png",
+      "sha256": "ab44a82184c7450ebfd130a1a0186521a9e10a1f0a69d2e37b8d8624aab91f12",
+      "faceRect": {
+        "x": 0,
+        "y": 0,
+        "width": 1187,
+        "height": 1484
+      },
+      "defaultVisible": true,
+      "defaultLocked": true,
+      "opacity": 1,
+      "anatomicalSide": null,
+      "semanticState": "neutral_deadpan"
+    },
+    {
+      "id": "goose_expr_01__left_brow",
+      "label": "Hard Laugh · Left Brow",
+      "role": "SLOT",
+      "slotId": "LEFT_BROW",
+      "sourceStackIndex": 1,
+      "src": "/expression-maker/goose/layers/goose_expr_01__left_brow.png",
+      "sha256": "1cfa7692620ff65ff5d77dd1b54bed5a8a5c7b701ccda6a09a9940a3d7c9a701",
+      "faceRect": {
+        "x": 577,
+        "y": 405,
+        "width": 331,
+        "height": 171
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "LEFT",
+      "semanticState": "hard_laugh"
+    },
+    {
+      "id": "goose_expr_01__right_brow",
+      "label": "Hard Laugh · Right Brow",
+      "role": "SLOT",
+      "slotId": "RIGHT_BROW",
+      "sourceStackIndex": 2,
+      "src": "/expression-maker/goose/layers/goose_expr_01__right_brow.png",
+      "sha256": "7eca6d296739a3d1495ac05ed8ab072f298a087f939bbaa14b954e75c48aa9ec",
+      "faceRect": {
+        "x": 280,
+        "y": 405,
+        "width": 331,
+        "height": 171
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "RIGHT",
+      "semanticState": "hard_laugh"
+    },
+    {
+      "id": "goose_expr_01__left_eye",
+      "label": "Hard Laugh · Left Eye",
+      "role": "SLOT",
+      "slotId": "LEFT_EYE",
+      "sourceStackIndex": 3,
+      "src": "/expression-maker/goose/layers/goose_expr_01__left_eye.png",
+      "sha256": "da015c096c31404c7739ff271c902fd7e1f3e0da2b83e9d936c43b3f3be44075",
+      "faceRect": {
+        "x": 584,
+        "y": 515,
+        "width": 304,
+        "height": 191
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "LEFT",
+      "semanticState": "hard_laugh"
+    },
+    {
+      "id": "goose_expr_01__right_eye",
+      "label": "Hard Laugh · Right Eye",
+      "role": "SLOT",
+      "slotId": "RIGHT_EYE",
+      "sourceStackIndex": 4,
+      "src": "/expression-maker/goose/layers/goose_expr_01__right_eye.png",
+      "sha256": "2ad26b4ae6e2161f653e77dac2c5538621dfae4612a65d03380ead614c9367f4",
+      "faceRect": {
+        "x": 300,
+        "y": 515,
+        "width": 304,
+        "height": 191
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "RIGHT",
+      "semanticState": "hard_laugh"
+    },
+    {
+      "id": "goose_expr_01__lower_face",
+      "label": "Hard Laugh · Lower Face",
+      "role": "SLOT",
+      "slotId": "LOWER_FACE",
+      "sourceStackIndex": 5,
+      "src": "/expression-maker/goose/layers/goose_expr_01__lower_face.png",
+      "sha256": "1f06674533cf61711da8bdb514f4f4c8c03a973ad9ca99171101a5e956b533fb",
+      "faceRect": {
+        "x": 285,
+        "y": 635,
+        "width": 618,
+        "height": 366
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": null,
+      "semanticState": "hard_laugh"
+    },
+    {
+      "id": "goose_expr_02__left_brow",
+      "label": "Contented Tooth Smile · Left Brow",
+      "role": "SLOT",
+      "slotId": "LEFT_BROW",
+      "sourceStackIndex": 1,
+      "src": "/expression-maker/goose/layers/goose_expr_02__left_brow.png",
+      "sha256": "7aa9302160328246e18583c5c2c4e43e1ac159096e13f73193aa83044a2c558e",
+      "faceRect": {
+        "x": 577,
+        "y": 405,
+        "width": 331,
+        "height": 171
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "LEFT",
+      "semanticState": "contented_tooth_smile"
+    },
+    {
+      "id": "goose_expr_02__right_brow",
+      "label": "Contented Tooth Smile · Right Brow",
+      "role": "SLOT",
+      "slotId": "RIGHT_BROW",
+      "sourceStackIndex": 2,
+      "src": "/expression-maker/goose/layers/goose_expr_02__right_brow.png",
+      "sha256": "10276a42b73c1063a6214610f21990d9c66483120e24c9b04677441d02a92c64",
+      "faceRect": {
+        "x": 280,
+        "y": 405,
+        "width": 331,
+        "height": 171
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "RIGHT",
+      "semanticState": "contented_tooth_smile"
+    },
+    {
+      "id": "goose_expr_02__left_eye",
+      "label": "Contented Tooth Smile · Left Eye",
+      "role": "SLOT",
+      "slotId": "LEFT_EYE",
+      "sourceStackIndex": 3,
+      "src": "/expression-maker/goose/layers/goose_expr_02__left_eye.png",
+      "sha256": "18bba62a218fb1fed9243393e9170851177a02cbf53dfb6043ddb9fdd762f4ea",
+      "faceRect": {
+        "x": 584,
+        "y": 515,
+        "width": 304,
+        "height": 191
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "LEFT",
+      "semanticState": "contented_tooth_smile"
+    },
+    {
+      "id": "goose_expr_02__right_eye",
+      "label": "Contented Tooth Smile · Right Eye",
+      "role": "SLOT",
+      "slotId": "RIGHT_EYE",
+      "sourceStackIndex": 4,
+      "src": "/expression-maker/goose/layers/goose_expr_02__right_eye.png",
+      "sha256": "2c7a9233d62441f2ea9e7fe061510b4c37e0e46c0629535c0eb41e4db035cf3a",
+      "faceRect": {
+        "x": 300,
+        "y": 515,
+        "width": 304,
+        "height": 191
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "RIGHT",
+      "semanticState": "contented_tooth_smile"
+    },
+    {
+      "id": "goose_expr_02__lower_face",
+      "label": "Contented Tooth Smile · Lower Face",
+      "role": "SLOT",
+      "slotId": "LOWER_FACE",
+      "sourceStackIndex": 5,
+      "src": "/expression-maker/goose/layers/goose_expr_02__lower_face.png",
+      "sha256": "35af8403141ad7b6d9d3189bcc5f11db5b904ec01d7ded2c5c9911df7eef41f6",
+      "faceRect": {
+        "x": 285,
+        "y": 635,
+        "width": 618,
+        "height": 366
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": null,
+      "semanticState": "contented_tooth_smile"
+    },
+    {
+      "id": "goose_expr_03__left_brow",
+      "label": "Wailing Crying · Left Brow",
+      "role": "SLOT",
+      "slotId": "LEFT_BROW",
+      "sourceStackIndex": 1,
+      "src": "/expression-maker/goose/layers/goose_expr_03__left_brow.png",
+      "sha256": "9594a74432aba66a4e41ed4fbbe44678dfa84f53d95693c4cadfa57622e7868c",
+      "faceRect": {
+        "x": 577,
+        "y": 405,
+        "width": 331,
+        "height": 171
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "LEFT",
+      "semanticState": "wailing_crying"
+    },
+    {
+      "id": "goose_expr_03__right_brow",
+      "label": "Wailing Crying · Right Brow",
+      "role": "SLOT",
+      "slotId": "RIGHT_BROW",
+      "sourceStackIndex": 2,
+      "src": "/expression-maker/goose/layers/goose_expr_03__right_brow.png",
+      "sha256": "49d17b9eaa27f4acc6e6d932b7a58a53c1b774118f0d4ae84cbf4f10e4bad56f",
+      "faceRect": {
+        "x": 280,
+        "y": 405,
+        "width": 331,
+        "height": 171
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "RIGHT",
+      "semanticState": "wailing_crying"
+    },
+    {
+      "id": "goose_expr_03__left_eye",
+      "label": "Wailing Crying · Left Eye",
+      "role": "SLOT",
+      "slotId": "LEFT_EYE",
+      "sourceStackIndex": 3,
+      "src": "/expression-maker/goose/layers/goose_expr_03__left_eye.png",
+      "sha256": "688cdfe79f906d94ef30298010226d5dd058ae9891398d9a140350e6d9b1feea",
+      "faceRect": {
+        "x": 584,
+        "y": 515,
+        "width": 304,
+        "height": 191
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "LEFT",
+      "semanticState": "wailing_crying"
+    },
+    {
+      "id": "goose_expr_03__right_eye",
+      "label": "Wailing Crying · Right Eye",
+      "role": "SLOT",
+      "slotId": "RIGHT_EYE",
+      "sourceStackIndex": 4,
+      "src": "/expression-maker/goose/layers/goose_expr_03__right_eye.png",
+      "sha256": "b09401bba7f48d55ddc751ad9951fad6175649d8a905a1585e0bfb163134d672",
+      "faceRect": {
+        "x": 300,
+        "y": 515,
+        "width": 304,
+        "height": 191
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "RIGHT",
+      "semanticState": "wailing_crying"
+    },
+    {
+      "id": "goose_expr_03__lower_face",
+      "label": "Wailing Crying · Lower Face",
+      "role": "SLOT",
+      "slotId": "LOWER_FACE",
+      "sourceStackIndex": 5,
+      "src": "/expression-maker/goose/layers/goose_expr_03__lower_face.png",
+      "sha256": "66dc98008389428f27114da412ebc6d209106cc65a8f338ae197e38c7645945a",
+      "faceRect": {
+        "x": 285,
+        "y": 635,
+        "width": 618,
+        "height": 366
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": null,
+      "semanticState": "wailing_crying"
+    },
+    {
+      "id": "goose_expr_04__left_brow",
+      "label": "Tearful Pout Cringe · Left Brow",
+      "role": "SLOT",
+      "slotId": "LEFT_BROW",
+      "sourceStackIndex": 1,
+      "src": "/expression-maker/goose/layers/goose_expr_04__left_brow.png",
+      "sha256": "302ae8b90389735aaf2f4bcc9d568f79ce3dfc215d25df569b7ff7cdcb59abbf",
+      "faceRect": {
+        "x": 577,
+        "y": 405,
+        "width": 331,
+        "height": 171
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "LEFT",
+      "semanticState": "tearful_pout_cringe"
+    },
+    {
+      "id": "goose_expr_04__right_brow",
+      "label": "Tearful Pout Cringe · Right Brow",
+      "role": "SLOT",
+      "slotId": "RIGHT_BROW",
+      "sourceStackIndex": 2,
+      "src": "/expression-maker/goose/layers/goose_expr_04__right_brow.png",
+      "sha256": "6f9ddc55b089c09b90d161c205ea69f1f9ad28c9d8b7ed8f51f0a6b40a298d98",
+      "faceRect": {
+        "x": 280,
+        "y": 405,
+        "width": 331,
+        "height": 171
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "RIGHT",
+      "semanticState": "tearful_pout_cringe"
+    },
+    {
+      "id": "goose_expr_04__left_eye",
+      "label": "Tearful Pout Cringe · Left Eye",
+      "role": "SLOT",
+      "slotId": "LEFT_EYE",
+      "sourceStackIndex": 3,
+      "src": "/expression-maker/goose/layers/goose_expr_04__left_eye.png",
+      "sha256": "4af4ed1fca64c747e797d47f9b7b926029870339f8b1c72c4c0ce1717f03f537",
+      "faceRect": {
+        "x": 584,
+        "y": 515,
+        "width": 304,
+        "height": 191
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "LEFT",
+      "semanticState": "tearful_pout_cringe"
+    },
+    {
+      "id": "goose_expr_04__right_eye",
+      "label": "Tearful Pout Cringe · Right Eye",
+      "role": "SLOT",
+      "slotId": "RIGHT_EYE",
+      "sourceStackIndex": 4,
+      "src": "/expression-maker/goose/layers/goose_expr_04__right_eye.png",
+      "sha256": "622eaadfee4a5e8dc0ee5e7705abba6d55908e6fcc0fedf61ff57fdbdd8a8d4c",
+      "faceRect": {
+        "x": 300,
+        "y": 515,
+        "width": 304,
+        "height": 191
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "RIGHT",
+      "semanticState": "tearful_pout_cringe"
+    },
+    {
+      "id": "goose_expr_04__lower_face",
+      "label": "Tearful Pout Cringe · Lower Face",
+      "role": "SLOT",
+      "slotId": "LOWER_FACE",
+      "sourceStackIndex": 5,
+      "src": "/expression-maker/goose/layers/goose_expr_04__lower_face.png",
+      "sha256": "8918c25c7f5e81fe5dff33ce3f678146b6b26fd876d44ed98ab81eb3e51f2845",
+      "faceRect": {
+        "x": 285,
+        "y": 635,
+        "width": 618,
+        "height": 366
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": null,
+      "semanticState": "tearful_pout_cringe"
+    },
+    {
+      "id": "goose_expr_05__left_brow",
+      "label": "Smug Skeptical Smirk · Left Brow",
+      "role": "SLOT",
+      "slotId": "LEFT_BROW",
+      "sourceStackIndex": 1,
+      "src": "/expression-maker/goose/layers/goose_expr_05__left_brow.png",
+      "sha256": "5a35495379f6eabcc59ffed92894b1af01dc3c2f93deb157f9b7eed657753023",
+      "faceRect": {
+        "x": 577,
+        "y": 405,
+        "width": 331,
+        "height": 171
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "LEFT",
+      "semanticState": "smug_skeptical_smirk"
+    },
+    {
+      "id": "goose_expr_05__right_brow",
+      "label": "Smug Skeptical Smirk · Right Brow",
+      "role": "SLOT",
+      "slotId": "RIGHT_BROW",
+      "sourceStackIndex": 2,
+      "src": "/expression-maker/goose/layers/goose_expr_05__right_brow.png",
+      "sha256": "20b774eaa27d7d92e11f53443f49227a33ae862b765b7b4545cc9fef6fd08c9b",
+      "faceRect": {
+        "x": 280,
+        "y": 405,
+        "width": 331,
+        "height": 171
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "RIGHT",
+      "semanticState": "smug_skeptical_smirk"
+    },
+    {
+      "id": "goose_expr_05__left_eye",
+      "label": "Smug Skeptical Smirk · Left Eye",
+      "role": "SLOT",
+      "slotId": "LEFT_EYE",
+      "sourceStackIndex": 3,
+      "src": "/expression-maker/goose/layers/goose_expr_05__left_eye.png",
+      "sha256": "725614d0ee58200371d17328d665593bf92b3d61517e2c9a15d991bc503d8c13",
+      "faceRect": {
+        "x": 584,
+        "y": 515,
+        "width": 304,
+        "height": 191
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "LEFT",
+      "semanticState": "smug_skeptical_smirk"
+    },
+    {
+      "id": "goose_expr_05__right_eye",
+      "label": "Smug Skeptical Smirk · Right Eye",
+      "role": "SLOT",
+      "slotId": "RIGHT_EYE",
+      "sourceStackIndex": 4,
+      "src": "/expression-maker/goose/layers/goose_expr_05__right_eye.png",
+      "sha256": "3b5f074789b72361f74a0b426964a28d778fb7e03619873095c3c2007e462926",
+      "faceRect": {
+        "x": 300,
+        "y": 515,
+        "width": 304,
+        "height": 191
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "RIGHT",
+      "semanticState": "smug_skeptical_smirk"
+    },
+    {
+      "id": "goose_expr_05__lower_face",
+      "label": "Smug Skeptical Smirk · Lower Face",
+      "role": "SLOT",
+      "slotId": "LOWER_FACE",
+      "sourceStackIndex": 5,
+      "src": "/expression-maker/goose/layers/goose_expr_05__lower_face.png",
+      "sha256": "7ffa9b7379dff1149be11573f19f7ff386c9f0ab4ae73ba5fa1cb1ab2f04573f",
+      "faceRect": {
+        "x": 285,
+        "y": 635,
+        "width": 618,
+        "height": 366
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": null,
+      "semanticState": "smug_skeptical_smirk"
+    },
+    {
+      "id": "goose_expr_06__left_brow",
+      "label": "Delighted Surprise · Left Brow",
+      "role": "SLOT",
+      "slotId": "LEFT_BROW",
+      "sourceStackIndex": 1,
+      "src": "/expression-maker/goose/layers/goose_expr_06__left_brow.png",
+      "sha256": "a844906dc0eb9d31dcd728e33a96c7dd25514749e449e6a03b9d56d8c390e5be",
+      "faceRect": {
+        "x": 577,
+        "y": 405,
+        "width": 331,
+        "height": 171
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "LEFT",
+      "semanticState": "delighted_surprise"
+    },
+    {
+      "id": "goose_expr_06__right_brow",
+      "label": "Delighted Surprise · Right Brow",
+      "role": "SLOT",
+      "slotId": "RIGHT_BROW",
+      "sourceStackIndex": 2,
+      "src": "/expression-maker/goose/layers/goose_expr_06__right_brow.png",
+      "sha256": "8307b12b2d35ca8fdff15124cd7958bee5dd08b2a201872d0a1df456603f178a",
+      "faceRect": {
+        "x": 280,
+        "y": 405,
+        "width": 331,
+        "height": 171
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "RIGHT",
+      "semanticState": "delighted_surprise"
+    },
+    {
+      "id": "goose_expr_06__left_eye",
+      "label": "Delighted Surprise · Left Eye",
+      "role": "SLOT",
+      "slotId": "LEFT_EYE",
+      "sourceStackIndex": 3,
+      "src": "/expression-maker/goose/layers/goose_expr_06__left_eye.png",
+      "sha256": "c0b911a1e27ffcd45c1842ff2ebefa1078edbe9dc4204438399cb02fbd39dd8c",
+      "faceRect": {
+        "x": 584,
+        "y": 515,
+        "width": 304,
+        "height": 191
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "LEFT",
+      "semanticState": "delighted_surprise"
+    },
+    {
+      "id": "goose_expr_06__right_eye",
+      "label": "Delighted Surprise · Right Eye",
+      "role": "SLOT",
+      "slotId": "RIGHT_EYE",
+      "sourceStackIndex": 4,
+      "src": "/expression-maker/goose/layers/goose_expr_06__right_eye.png",
+      "sha256": "169e433fa369190e5cf7bf77ae41bf57a46a87c0d4edf16117e97dd2d4740d3a",
+      "faceRect": {
+        "x": 300,
+        "y": 515,
+        "width": 304,
+        "height": 191
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "RIGHT",
+      "semanticState": "delighted_surprise"
+    },
+    {
+      "id": "goose_expr_06__lower_face",
+      "label": "Delighted Surprise · Lower Face",
+      "role": "SLOT",
+      "slotId": "LOWER_FACE",
+      "sourceStackIndex": 5,
+      "src": "/expression-maker/goose/layers/goose_expr_06__lower_face.png",
+      "sha256": "1dfa5f51fb9c64920af93e9e3222c9a1f046f1d026fbe399e073bea2e5421ecc",
+      "faceRect": {
+        "x": 285,
+        "y": 635,
+        "width": 618,
+        "height": 366
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": null,
+      "semanticState": "delighted_surprise"
+    },
+    {
+      "id": "goose_expr_07__left_brow",
+      "label": "Pleased Tight Smirk · Left Brow",
+      "role": "SLOT",
+      "slotId": "LEFT_BROW",
+      "sourceStackIndex": 1,
+      "src": "/expression-maker/goose/layers/goose_expr_07__left_brow.png",
+      "sha256": "daa0afe1b1b4428f98ec5450601168179ed5c14fe1f08fd3eaf493bbf0de9a7f",
+      "faceRect": {
+        "x": 577,
+        "y": 405,
+        "width": 331,
+        "height": 171
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "LEFT",
+      "semanticState": "pleased_tight_smirk"
+    },
+    {
+      "id": "goose_expr_07__right_brow",
+      "label": "Pleased Tight Smirk · Right Brow",
+      "role": "SLOT",
+      "slotId": "RIGHT_BROW",
+      "sourceStackIndex": 2,
+      "src": "/expression-maker/goose/layers/goose_expr_07__right_brow.png",
+      "sha256": "e0b92869bda42613016ac65dd43d216d871fed75773b8f01e5791fa14ef5ee40",
+      "faceRect": {
+        "x": 280,
+        "y": 405,
+        "width": 331,
+        "height": 171
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "RIGHT",
+      "semanticState": "pleased_tight_smirk"
+    },
+    {
+      "id": "goose_expr_07__left_eye",
+      "label": "Pleased Tight Smirk · Left Eye",
+      "role": "SLOT",
+      "slotId": "LEFT_EYE",
+      "sourceStackIndex": 3,
+      "src": "/expression-maker/goose/layers/goose_expr_07__left_eye.png",
+      "sha256": "a59edf6379a305c59d5c7ac6eeff696eef0b59e1c4d5ae9e3fe45bcd39640fe5",
+      "faceRect": {
+        "x": 584,
+        "y": 515,
+        "width": 304,
+        "height": 191
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "LEFT",
+      "semanticState": "pleased_tight_smirk"
+    },
+    {
+      "id": "goose_expr_07__right_eye",
+      "label": "Pleased Tight Smirk · Right Eye",
+      "role": "SLOT",
+      "slotId": "RIGHT_EYE",
+      "sourceStackIndex": 4,
+      "src": "/expression-maker/goose/layers/goose_expr_07__right_eye.png",
+      "sha256": "afe40d722a64d7aef34e905c374ad374d61755974c4f0fb51ddff188d738a10e",
+      "faceRect": {
+        "x": 300,
+        "y": 515,
+        "width": 304,
+        "height": 191
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "RIGHT",
+      "semanticState": "pleased_tight_smirk"
+    },
+    {
+      "id": "goose_expr_07__lower_face",
+      "label": "Pleased Tight Smirk · Lower Face",
+      "role": "SLOT",
+      "slotId": "LOWER_FACE",
+      "sourceStackIndex": 5,
+      "src": "/expression-maker/goose/layers/goose_expr_07__lower_face.png",
+      "sha256": "13da83f8fe6caa484b80e656339d38c2601f00f17b6b24090a2a80e77d353cfc",
+      "faceRect": {
+        "x": 285,
+        "y": 635,
+        "width": 618,
+        "height": 366
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": null,
+      "semanticState": "pleased_tight_smirk"
+    },
+    {
+      "id": "goose_expr_08__left_brow",
+      "label": "Holding Breath Puffed Cheeks · Left Brow",
+      "role": "SLOT",
+      "slotId": "LEFT_BROW",
+      "sourceStackIndex": 1,
+      "src": "/expression-maker/goose/layers/goose_expr_08__left_brow.png",
+      "sha256": "259b9442f490d2f12954f6cf8280ade4b8e40d7364fdb475ef7dacaed3d6f61f",
+      "faceRect": {
+        "x": 577,
+        "y": 405,
+        "width": 331,
+        "height": 171
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "LEFT",
+      "semanticState": "holding_breath_puffed_cheeks"
+    },
+    {
+      "id": "goose_expr_08__right_brow",
+      "label": "Holding Breath Puffed Cheeks · Right Brow",
+      "role": "SLOT",
+      "slotId": "RIGHT_BROW",
+      "sourceStackIndex": 2,
+      "src": "/expression-maker/goose/layers/goose_expr_08__right_brow.png",
+      "sha256": "25fe522995eedb47186ea2f233db03dcfec0b8ee0ae5ebefc4eeac8d2aec35ac",
+      "faceRect": {
+        "x": 280,
+        "y": 405,
+        "width": 331,
+        "height": 171
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "RIGHT",
+      "semanticState": "holding_breath_puffed_cheeks"
+    },
+    {
+      "id": "goose_expr_08__left_eye",
+      "label": "Holding Breath Puffed Cheeks · Left Eye",
+      "role": "SLOT",
+      "slotId": "LEFT_EYE",
+      "sourceStackIndex": 3,
+      "src": "/expression-maker/goose/layers/goose_expr_08__left_eye.png",
+      "sha256": "4da60f6781d84d8cdc0399f8ec795b5a3a8337639011cc3c9c09d848171eb2e5",
+      "faceRect": {
+        "x": 584,
+        "y": 515,
+        "width": 304,
+        "height": 191
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "LEFT",
+      "semanticState": "holding_breath_puffed_cheeks"
+    },
+    {
+      "id": "goose_expr_08__right_eye",
+      "label": "Holding Breath Puffed Cheeks · Right Eye",
+      "role": "SLOT",
+      "slotId": "RIGHT_EYE",
+      "sourceStackIndex": 4,
+      "src": "/expression-maker/goose/layers/goose_expr_08__right_eye.png",
+      "sha256": "bd343c9ae49f7bca63d2dd0686794668339dccc1c6487cd7de99d8208fe1353f",
+      "faceRect": {
+        "x": 300,
+        "y": 515,
+        "width": 304,
+        "height": 191
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "RIGHT",
+      "semanticState": "holding_breath_puffed_cheeks"
+    },
+    {
+      "id": "goose_expr_08__lower_face",
+      "label": "Holding Breath Puffed Cheeks · Lower Face",
+      "role": "SLOT",
+      "slotId": "LOWER_FACE",
+      "sourceStackIndex": 5,
+      "src": "/expression-maker/goose/layers/goose_expr_08__lower_face.png",
+      "sha256": "5ef9a5c02607117e32eb45cacdfbaa47639fddb810a2b76686ed12f9eaea04ae",
+      "faceRect": {
+        "x": 285,
+        "y": 635,
+        "width": 618,
+        "height": 366
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": null,
+      "semanticState": "holding_breath_puffed_cheeks"
+    },
+    {
+      "id": "goose_expr_09__left_brow",
+      "label": "Neutral Deadpan · Left Brow",
+      "role": "SLOT",
+      "slotId": "LEFT_BROW",
+      "sourceStackIndex": 1,
+      "src": "/expression-maker/goose/layers/goose_expr_09__left_brow.png",
+      "sha256": "99fac88b1242ab36cdf13d258f7e296e22defa795df246be8ad183b0dcb6abe2",
+      "faceRect": {
+        "x": 577,
+        "y": 405,
+        "width": 331,
+        "height": 171
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "LEFT",
+      "semanticState": "neutral_deadpan"
+    },
+    {
+      "id": "goose_expr_09__right_brow",
+      "label": "Neutral Deadpan · Right Brow",
+      "role": "SLOT",
+      "slotId": "RIGHT_BROW",
+      "sourceStackIndex": 2,
+      "src": "/expression-maker/goose/layers/goose_expr_09__right_brow.png",
+      "sha256": "aa730912e3d8473258a7900b4ca2371784478869da32d8cdd6e2c0215a99f0fc",
+      "faceRect": {
+        "x": 280,
+        "y": 405,
+        "width": 331,
+        "height": 171
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "RIGHT",
+      "semanticState": "neutral_deadpan"
+    },
+    {
+      "id": "goose_expr_09__left_eye",
+      "label": "Neutral Deadpan · Left Eye",
+      "role": "SLOT",
+      "slotId": "LEFT_EYE",
+      "sourceStackIndex": 3,
+      "src": "/expression-maker/goose/layers/goose_expr_09__left_eye.png",
+      "sha256": "db8d78fca0f5f5b397679ab7a9fd609476ea1504ffaf46a97958357e16d878c2",
+      "faceRect": {
+        "x": 584,
+        "y": 515,
+        "width": 304,
+        "height": 191
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "LEFT",
+      "semanticState": "neutral_deadpan"
+    },
+    {
+      "id": "goose_expr_09__right_eye",
+      "label": "Neutral Deadpan · Right Eye",
+      "role": "SLOT",
+      "slotId": "RIGHT_EYE",
+      "sourceStackIndex": 4,
+      "src": "/expression-maker/goose/layers/goose_expr_09__right_eye.png",
+      "sha256": "47cc826e5c9ff8fb6773cd21fe83a1822b8bfccc8ace142930d2abbf2f14234e",
+      "faceRect": {
+        "x": 300,
+        "y": 515,
+        "width": 304,
+        "height": 191
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "RIGHT",
+      "semanticState": "neutral_deadpan"
+    },
+    {
+      "id": "goose_expr_09__lower_face",
+      "label": "Neutral Deadpan · Lower Face",
+      "role": "SLOT",
+      "slotId": "LOWER_FACE",
+      "sourceStackIndex": 5,
+      "src": "/expression-maker/goose/layers/goose_expr_09__lower_face.png",
+      "sha256": "7b643e2e472acac500c7600ed12bf4ec0520f3a1bb322ed2339e1cef7fbbf26f",
+      "faceRect": {
+        "x": 285,
+        "y": 635,
+        "width": 618,
+        "height": 366
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": null,
+      "semanticState": "neutral_deadpan"
+    },
+    {
+      "id": "goose_expr_10__left_brow",
+      "label": "Curious Up Side Glance · Left Brow",
+      "role": "SLOT",
+      "slotId": "LEFT_BROW",
+      "sourceStackIndex": 1,
+      "src": "/expression-maker/goose/layers/goose_expr_10__left_brow.png",
+      "sha256": "d4d33846023c9213f9e42cfed8f9479860298cb991ecd88291a5ae526ef5daf5",
+      "faceRect": {
+        "x": 577,
+        "y": 405,
+        "width": 331,
+        "height": 171
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "LEFT",
+      "semanticState": "curious_up_side_glance"
+    },
+    {
+      "id": "goose_expr_10__right_brow",
+      "label": "Curious Up Side Glance · Right Brow",
+      "role": "SLOT",
+      "slotId": "RIGHT_BROW",
+      "sourceStackIndex": 2,
+      "src": "/expression-maker/goose/layers/goose_expr_10__right_brow.png",
+      "sha256": "b270beb8135542d2aa2287f01a7d57c653f30bfd43238bd4e3a8d0206c40e458",
+      "faceRect": {
+        "x": 280,
+        "y": 405,
+        "width": 331,
+        "height": 171
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "RIGHT",
+      "semanticState": "curious_up_side_glance"
+    },
+    {
+      "id": "goose_expr_10__left_eye",
+      "label": "Curious Up Side Glance · Left Eye",
+      "role": "SLOT",
+      "slotId": "LEFT_EYE",
+      "sourceStackIndex": 3,
+      "src": "/expression-maker/goose/layers/goose_expr_10__left_eye.png",
+      "sha256": "4d48ed37508b54f374ca2b5abbc85ced027c96c1e45f0a85a4cd638470703cf8",
+      "faceRect": {
+        "x": 584,
+        "y": 515,
+        "width": 304,
+        "height": 191
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "LEFT",
+      "semanticState": "curious_up_side_glance"
+    },
+    {
+      "id": "goose_expr_10__right_eye",
+      "label": "Curious Up Side Glance · Right Eye",
+      "role": "SLOT",
+      "slotId": "RIGHT_EYE",
+      "sourceStackIndex": 4,
+      "src": "/expression-maker/goose/layers/goose_expr_10__right_eye.png",
+      "sha256": "2ede493ebd30bff4784ed1941a95e78414492b8c03a80da575aa27be061777a3",
+      "faceRect": {
+        "x": 300,
+        "y": 515,
+        "width": 304,
+        "height": 191
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "RIGHT",
+      "semanticState": "curious_up_side_glance"
+    },
+    {
+      "id": "goose_expr_10__lower_face",
+      "label": "Curious Up Side Glance · Lower Face",
+      "role": "SLOT",
+      "slotId": "LOWER_FACE",
+      "sourceStackIndex": 5,
+      "src": "/expression-maker/goose/layers/goose_expr_10__lower_face.png",
+      "sha256": "3a0a143b522eae1a2cd1de7cb5a0acfd5057651578c98c3f34ea55d9a1ed2893",
+      "faceRect": {
+        "x": 285,
+        "y": 635,
+        "width": 618,
+        "height": 366
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": null,
+      "semanticState": "curious_up_side_glance"
+    },
+    {
+      "id": "goose_expr_11__left_brow",
+      "label": "Awkward Grit Teeth Smile · Left Brow",
+      "role": "SLOT",
+      "slotId": "LEFT_BROW",
+      "sourceStackIndex": 1,
+      "src": "/expression-maker/goose/layers/goose_expr_11__left_brow.png",
+      "sha256": "c5a98d323785c13f9196393a2f180d45869fbc54c75275b4bfd43322c074c0a2",
+      "faceRect": {
+        "x": 577,
+        "y": 405,
+        "width": 331,
+        "height": 171
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "LEFT",
+      "semanticState": "awkward_grit_teeth_smile"
+    },
+    {
+      "id": "goose_expr_11__right_brow",
+      "label": "Awkward Grit Teeth Smile · Right Brow",
+      "role": "SLOT",
+      "slotId": "RIGHT_BROW",
+      "sourceStackIndex": 2,
+      "src": "/expression-maker/goose/layers/goose_expr_11__right_brow.png",
+      "sha256": "993b94912dc730158eb647d9dacf5598a93a81ac7847cd8fa258cea571398c3d",
+      "faceRect": {
+        "x": 280,
+        "y": 405,
+        "width": 331,
+        "height": 171
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "RIGHT",
+      "semanticState": "awkward_grit_teeth_smile"
+    },
+    {
+      "id": "goose_expr_11__left_eye",
+      "label": "Awkward Grit Teeth Smile · Left Eye",
+      "role": "SLOT",
+      "slotId": "LEFT_EYE",
+      "sourceStackIndex": 3,
+      "src": "/expression-maker/goose/layers/goose_expr_11__left_eye.png",
+      "sha256": "e442d068c7b7fcf75e0c97e943c6377ae0aec0a6beb3a1ac37843d2d27d89e66",
+      "faceRect": {
+        "x": 584,
+        "y": 515,
+        "width": 304,
+        "height": 191
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "LEFT",
+      "semanticState": "awkward_grit_teeth_smile"
+    },
+    {
+      "id": "goose_expr_11__right_eye",
+      "label": "Awkward Grit Teeth Smile · Right Eye",
+      "role": "SLOT",
+      "slotId": "RIGHT_EYE",
+      "sourceStackIndex": 4,
+      "src": "/expression-maker/goose/layers/goose_expr_11__right_eye.png",
+      "sha256": "d15ead305f8ca355a7fbb97a83c3f3aa8b2ebb9346bba870e20baaf658664a6f",
+      "faceRect": {
+        "x": 300,
+        "y": 515,
+        "width": 304,
+        "height": 191
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "RIGHT",
+      "semanticState": "awkward_grit_teeth_smile"
+    },
+    {
+      "id": "goose_expr_11__lower_face",
+      "label": "Awkward Grit Teeth Smile · Lower Face",
+      "role": "SLOT",
+      "slotId": "LOWER_FACE",
+      "sourceStackIndex": 5,
+      "src": "/expression-maker/goose/layers/goose_expr_11__lower_face.png",
+      "sha256": "a9e940ebddfd72da268d698a8f9e417a94504d4099a75647b558f1dc81b195a5",
+      "faceRect": {
+        "x": 285,
+        "y": 635,
+        "width": 618,
+        "height": 366
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": null,
+      "semanticState": "awkward_grit_teeth_smile"
+    },
+    {
+      "id": "goose_expr_12__left_brow",
+      "label": "Cross Eyed Downward Focus · Left Brow",
+      "role": "SLOT",
+      "slotId": "LEFT_BROW",
+      "sourceStackIndex": 1,
+      "src": "/expression-maker/goose/layers/goose_expr_12__left_brow.png",
+      "sha256": "654c18da154d09da11863123643ca825afe399c705f9de72407e0b614aa10981",
+      "faceRect": {
+        "x": 577,
+        "y": 405,
+        "width": 331,
+        "height": 171
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "LEFT",
+      "semanticState": "cross_eyed_downward_focus"
+    },
+    {
+      "id": "goose_expr_12__right_brow",
+      "label": "Cross Eyed Downward Focus · Right Brow",
+      "role": "SLOT",
+      "slotId": "RIGHT_BROW",
+      "sourceStackIndex": 2,
+      "src": "/expression-maker/goose/layers/goose_expr_12__right_brow.png",
+      "sha256": "44ec146bedac9f1ead642274cf6bde63957872d755548f51ee5b17e4ca328c75",
+      "faceRect": {
+        "x": 280,
+        "y": 405,
+        "width": 331,
+        "height": 171
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "RIGHT",
+      "semanticState": "cross_eyed_downward_focus"
+    },
+    {
+      "id": "goose_expr_12__left_eye",
+      "label": "Cross Eyed Downward Focus · Left Eye",
+      "role": "SLOT",
+      "slotId": "LEFT_EYE",
+      "sourceStackIndex": 3,
+      "src": "/expression-maker/goose/layers/goose_expr_12__left_eye.png",
+      "sha256": "dc559c88ed9aae836cd987d0175c3c3a8325133ad0ccf3ecb04a36a7dc374e76",
+      "faceRect": {
+        "x": 584,
+        "y": 515,
+        "width": 304,
+        "height": 191
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "LEFT",
+      "semanticState": "cross_eyed_downward_focus"
+    },
+    {
+      "id": "goose_expr_12__right_eye",
+      "label": "Cross Eyed Downward Focus · Right Eye",
+      "role": "SLOT",
+      "slotId": "RIGHT_EYE",
+      "sourceStackIndex": 4,
+      "src": "/expression-maker/goose/layers/goose_expr_12__right_eye.png",
+      "sha256": "67afd023d6b2e45a9010971f1169051ef50899b29d9f359d187ed56392dd0254",
+      "faceRect": {
+        "x": 300,
+        "y": 515,
+        "width": 304,
+        "height": 191
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "RIGHT",
+      "semanticState": "cross_eyed_downward_focus"
+    },
+    {
+      "id": "goose_expr_12__lower_face",
+      "label": "Cross Eyed Downward Focus · Lower Face",
+      "role": "SLOT",
+      "slotId": "LOWER_FACE",
+      "sourceStackIndex": 5,
+      "src": "/expression-maker/goose/layers/goose_expr_12__lower_face.png",
+      "sha256": "c97d65d0f70335122e54b1183325ba5f4b230b43b3f96219233dac89f64b1810",
+      "faceRect": {
+        "x": 285,
+        "y": 635,
+        "width": 618,
+        "height": 366
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": null,
+      "semanticState": "cross_eyed_downward_focus"
+    },
+    {
+      "id": "goose_expr_13__left_brow",
+      "label": "Worried Shock Slack Jaw · Left Brow",
+      "role": "SLOT",
+      "slotId": "LEFT_BROW",
+      "sourceStackIndex": 1,
+      "src": "/expression-maker/goose/layers/goose_expr_13__left_brow.png",
+      "sha256": "a821d35c754ef86b96dc3eeeff061e6eb66592778b2f56a1866488226f7a1b62",
+      "faceRect": {
+        "x": 577,
+        "y": 405,
+        "width": 331,
+        "height": 171
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "LEFT",
+      "semanticState": "worried_shock_slack_jaw"
+    },
+    {
+      "id": "goose_expr_13__right_brow",
+      "label": "Worried Shock Slack Jaw · Right Brow",
+      "role": "SLOT",
+      "slotId": "RIGHT_BROW",
+      "sourceStackIndex": 2,
+      "src": "/expression-maker/goose/layers/goose_expr_13__right_brow.png",
+      "sha256": "1f58f5caaa4ed7588e2c29d4d4dfb21287321db5071571cde1e0f542557857c4",
+      "faceRect": {
+        "x": 280,
+        "y": 405,
+        "width": 331,
+        "height": 171
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "RIGHT",
+      "semanticState": "worried_shock_slack_jaw"
+    },
+    {
+      "id": "goose_expr_13__left_eye",
+      "label": "Worried Shock Slack Jaw · Left Eye",
+      "role": "SLOT",
+      "slotId": "LEFT_EYE",
+      "sourceStackIndex": 3,
+      "src": "/expression-maker/goose/layers/goose_expr_13__left_eye.png",
+      "sha256": "1ddb904a6cbb7d90e64846616247c831333c9f0de06a2246836c8a6bb365de23",
+      "faceRect": {
+        "x": 584,
+        "y": 515,
+        "width": 304,
+        "height": 191
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "LEFT",
+      "semanticState": "worried_shock_slack_jaw"
+    },
+    {
+      "id": "goose_expr_13__right_eye",
+      "label": "Worried Shock Slack Jaw · Right Eye",
+      "role": "SLOT",
+      "slotId": "RIGHT_EYE",
+      "sourceStackIndex": 4,
+      "src": "/expression-maker/goose/layers/goose_expr_13__right_eye.png",
+      "sha256": "8860097c4f9f698dec958bf403755124b0c27ff492f61dc79421eb3e20785ab7",
+      "faceRect": {
+        "x": 300,
+        "y": 515,
+        "width": 304,
+        "height": 191
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "RIGHT",
+      "semanticState": "worried_shock_slack_jaw"
+    },
+    {
+      "id": "goose_expr_13__lower_face",
+      "label": "Worried Shock Slack Jaw · Lower Face",
+      "role": "SLOT",
+      "slotId": "LOWER_FACE",
+      "sourceStackIndex": 5,
+      "src": "/expression-maker/goose/layers/goose_expr_13__lower_face.png",
+      "sha256": "28b39a9f3df4d883d6b9769668db0b1e125b7100a4263e3f6ab14a3e955b4516",
+      "faceRect": {
+        "x": 285,
+        "y": 635,
+        "width": 618,
+        "height": 366
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": null,
+      "semanticState": "worried_shock_slack_jaw"
+    },
+    {
+      "id": "goose_expr_14__left_brow",
+      "label": "Big Toothy Grin · Left Brow",
+      "role": "SLOT",
+      "slotId": "LEFT_BROW",
+      "sourceStackIndex": 1,
+      "src": "/expression-maker/goose/layers/goose_expr_14__left_brow.png",
+      "sha256": "954169d8a5730f35cb8916f8e48ab3cd50e6602dff2533221739d33a213a6571",
+      "faceRect": {
+        "x": 577,
+        "y": 405,
+        "width": 331,
+        "height": 171
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "LEFT",
+      "semanticState": "big_toothy_grin"
+    },
+    {
+      "id": "goose_expr_14__right_brow",
+      "label": "Big Toothy Grin · Right Brow",
+      "role": "SLOT",
+      "slotId": "RIGHT_BROW",
+      "sourceStackIndex": 2,
+      "src": "/expression-maker/goose/layers/goose_expr_14__right_brow.png",
+      "sha256": "4fac0f6b8547035fbda862f2deca8a3d7a5199f13ba51539f0bae8b7921a9a69",
+      "faceRect": {
+        "x": 280,
+        "y": 405,
+        "width": 331,
+        "height": 171
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "RIGHT",
+      "semanticState": "big_toothy_grin"
+    },
+    {
+      "id": "goose_expr_14__left_eye",
+      "label": "Big Toothy Grin · Left Eye",
+      "role": "SLOT",
+      "slotId": "LEFT_EYE",
+      "sourceStackIndex": 3,
+      "src": "/expression-maker/goose/layers/goose_expr_14__left_eye.png",
+      "sha256": "ca4d91121d3417107ebfc44bd0cca34a3e4d660c99e26cf9df7636082823db1a",
+      "faceRect": {
+        "x": 584,
+        "y": 515,
+        "width": 304,
+        "height": 191
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "LEFT",
+      "semanticState": "big_toothy_grin"
+    },
+    {
+      "id": "goose_expr_14__right_eye",
+      "label": "Big Toothy Grin · Right Eye",
+      "role": "SLOT",
+      "slotId": "RIGHT_EYE",
+      "sourceStackIndex": 4,
+      "src": "/expression-maker/goose/layers/goose_expr_14__right_eye.png",
+      "sha256": "b9446266fb64105d94c6dfd5c2484541c5940cc6159b8fd47db2ccff471d3d03",
+      "faceRect": {
+        "x": 300,
+        "y": 515,
+        "width": 304,
+        "height": 191
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "RIGHT",
+      "semanticState": "big_toothy_grin"
+    },
+    {
+      "id": "goose_expr_14__lower_face",
+      "label": "Big Toothy Grin · Lower Face",
+      "role": "SLOT",
+      "slotId": "LOWER_FACE",
+      "sourceStackIndex": 5,
+      "src": "/expression-maker/goose/layers/goose_expr_14__lower_face.png",
+      "sha256": "ab01899471a0a69125b31ab8c7f4370c5d96ba4df6f0f7c3f311266c1e29235d",
+      "faceRect": {
+        "x": 285,
+        "y": 635,
+        "width": 618,
+        "height": 366
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": null,
+      "semanticState": "big_toothy_grin"
+    },
+    {
+      "id": "goose_expr_15__left_brow",
+      "label": "Serene Closed Eye Smile · Left Brow",
+      "role": "SLOT",
+      "slotId": "LEFT_BROW",
+      "sourceStackIndex": 1,
+      "src": "/expression-maker/goose/layers/goose_expr_15__left_brow.png",
+      "sha256": "2bba69169a42bcf8084fe2b4444e8993e321348835dd3a83b070972e9fbc64cf",
+      "faceRect": {
+        "x": 577,
+        "y": 405,
+        "width": 331,
+        "height": 171
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "LEFT",
+      "semanticState": "serene_closed_eye_smile"
+    },
+    {
+      "id": "goose_expr_15__right_brow",
+      "label": "Serene Closed Eye Smile · Right Brow",
+      "role": "SLOT",
+      "slotId": "RIGHT_BROW",
+      "sourceStackIndex": 2,
+      "src": "/expression-maker/goose/layers/goose_expr_15__right_brow.png",
+      "sha256": "c59184a17d45335793f9dde32dd73a303c3c7271e38f8718909e1bc21a3ea62c",
+      "faceRect": {
+        "x": 280,
+        "y": 405,
+        "width": 331,
+        "height": 171
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "RIGHT",
+      "semanticState": "serene_closed_eye_smile"
+    },
+    {
+      "id": "goose_expr_15__left_eye",
+      "label": "Serene Closed Eye Smile · Left Eye",
+      "role": "SLOT",
+      "slotId": "LEFT_EYE",
+      "sourceStackIndex": 3,
+      "src": "/expression-maker/goose/layers/goose_expr_15__left_eye.png",
+      "sha256": "6f82e171302f6259778c1065013c02f9a755bdf922b2af47cfa587daa4cc8a06",
+      "faceRect": {
+        "x": 584,
+        "y": 515,
+        "width": 304,
+        "height": 191
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "LEFT",
+      "semanticState": "serene_closed_eye_smile"
+    },
+    {
+      "id": "goose_expr_15__right_eye",
+      "label": "Serene Closed Eye Smile · Right Eye",
+      "role": "SLOT",
+      "slotId": "RIGHT_EYE",
+      "sourceStackIndex": 4,
+      "src": "/expression-maker/goose/layers/goose_expr_15__right_eye.png",
+      "sha256": "64118c3bc513df4f6cadc5fb1d761af1ba3d044e2e6db2a45eefd913b4657c52",
+      "faceRect": {
+        "x": 300,
+        "y": 515,
+        "width": 304,
+        "height": 191
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "RIGHT",
+      "semanticState": "serene_closed_eye_smile"
+    },
+    {
+      "id": "goose_expr_15__lower_face",
+      "label": "Serene Closed Eye Smile · Lower Face",
+      "role": "SLOT",
+      "slotId": "LOWER_FACE",
+      "sourceStackIndex": 5,
+      "src": "/expression-maker/goose/layers/goose_expr_15__lower_face.png",
+      "sha256": "5b5f526f3f01b3f89be8d3109e6cd1a0d84db7230bbde14e5af01b4317847860",
+      "faceRect": {
+        "x": 285,
+        "y": 635,
+        "width": 618,
+        "height": 366
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": null,
+      "semanticState": "serene_closed_eye_smile"
+    },
+    {
+      "id": "goose_expr_16__left_brow",
+      "label": "Nervous Pleading Grin · Left Brow",
+      "role": "SLOT",
+      "slotId": "LEFT_BROW",
+      "sourceStackIndex": 1,
+      "src": "/expression-maker/goose/layers/goose_expr_16__left_brow.png",
+      "sha256": "e21fee9bcd4ca184f8ac30cbfb15ed1ffe052a8a54366f9cce4bab27e029dec7",
+      "faceRect": {
+        "x": 577,
+        "y": 405,
+        "width": 331,
+        "height": 171
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "LEFT",
+      "semanticState": "nervous_pleading_grin"
+    },
+    {
+      "id": "goose_expr_16__right_brow",
+      "label": "Nervous Pleading Grin · Right Brow",
+      "role": "SLOT",
+      "slotId": "RIGHT_BROW",
+      "sourceStackIndex": 2,
+      "src": "/expression-maker/goose/layers/goose_expr_16__right_brow.png",
+      "sha256": "5c0e0f911f5cb966b228c994c14c78070dc298b66deb85690a293a882b96ef51",
+      "faceRect": {
+        "x": 280,
+        "y": 405,
+        "width": 331,
+        "height": 171
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "RIGHT",
+      "semanticState": "nervous_pleading_grin"
+    },
+    {
+      "id": "goose_expr_16__left_eye",
+      "label": "Nervous Pleading Grin · Left Eye",
+      "role": "SLOT",
+      "slotId": "LEFT_EYE",
+      "sourceStackIndex": 3,
+      "src": "/expression-maker/goose/layers/goose_expr_16__left_eye.png",
+      "sha256": "206939b26051cec39a29501f96910e39e6df751e7ffdd977e50d0bcf2218bb66",
+      "faceRect": {
+        "x": 584,
+        "y": 515,
+        "width": 304,
+        "height": 191
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "LEFT",
+      "semanticState": "nervous_pleading_grin"
+    },
+    {
+      "id": "goose_expr_16__right_eye",
+      "label": "Nervous Pleading Grin · Right Eye",
+      "role": "SLOT",
+      "slotId": "RIGHT_EYE",
+      "sourceStackIndex": 4,
+      "src": "/expression-maker/goose/layers/goose_expr_16__right_eye.png",
+      "sha256": "9f7dfd601dbb66f12c0bf82ab22f1c041b844e419ba137e8662c8177ed98dd1e",
+      "faceRect": {
+        "x": 300,
+        "y": 515,
+        "width": 304,
+        "height": 191
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "RIGHT",
+      "semanticState": "nervous_pleading_grin"
+    },
+    {
+      "id": "goose_expr_16__lower_face",
+      "label": "Nervous Pleading Grin · Lower Face",
+      "role": "SLOT",
+      "slotId": "LOWER_FACE",
+      "sourceStackIndex": 5,
+      "src": "/expression-maker/goose/layers/goose_expr_16__lower_face.png",
+      "sha256": "092e08e4d2c67ca26a08a745e7dbd445c711f3403d0b8bdf411461b950327359",
+      "faceRect": {
+        "x": 285,
+        "y": 635,
+        "width": 618,
+        "height": 366
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": null,
+      "semanticState": "nervous_pleading_grin"
+    },
+    {
+      "id": "goose_expr_17__left_brow",
+      "label": "Sad Sobbing Pout · Left Brow",
+      "role": "SLOT",
+      "slotId": "LEFT_BROW",
+      "sourceStackIndex": 1,
+      "src": "/expression-maker/goose/layers/goose_expr_17__left_brow.png",
+      "sha256": "3483f1baaca2ec1e7d37dc5a4f199324204d723229182d474924db187bf21f1a",
+      "faceRect": {
+        "x": 577,
+        "y": 405,
+        "width": 331,
+        "height": 171
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "LEFT",
+      "semanticState": "sad_sobbing_pout"
+    },
+    {
+      "id": "goose_expr_17__right_brow",
+      "label": "Sad Sobbing Pout · Right Brow",
+      "role": "SLOT",
+      "slotId": "RIGHT_BROW",
+      "sourceStackIndex": 2,
+      "src": "/expression-maker/goose/layers/goose_expr_17__right_brow.png",
+      "sha256": "43958843413c2a0231f40c24779b35de12d9b9f77b1d6c3c17b8cc1aacddaad1",
+      "faceRect": {
+        "x": 280,
+        "y": 405,
+        "width": 331,
+        "height": 171
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "RIGHT",
+      "semanticState": "sad_sobbing_pout"
+    },
+    {
+      "id": "goose_expr_17__left_eye",
+      "label": "Sad Sobbing Pout · Left Eye",
+      "role": "SLOT",
+      "slotId": "LEFT_EYE",
+      "sourceStackIndex": 3,
+      "src": "/expression-maker/goose/layers/goose_expr_17__left_eye.png",
+      "sha256": "1e305db4b3a4376c8b3ad74e78ada576670f1bec99f591126d1ea2cf963ebabf",
+      "faceRect": {
+        "x": 584,
+        "y": 515,
+        "width": 304,
+        "height": 191
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "LEFT",
+      "semanticState": "sad_sobbing_pout"
+    },
+    {
+      "id": "goose_expr_17__right_eye",
+      "label": "Sad Sobbing Pout · Right Eye",
+      "role": "SLOT",
+      "slotId": "RIGHT_EYE",
+      "sourceStackIndex": 4,
+      "src": "/expression-maker/goose/layers/goose_expr_17__right_eye.png",
+      "sha256": "a213f145787a14e4e0f7b4331e80465e6f49217999c8e7a2b12fd8e30aa8de06",
+      "faceRect": {
+        "x": 300,
+        "y": 515,
+        "width": 304,
+        "height": 191
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "RIGHT",
+      "semanticState": "sad_sobbing_pout"
+    },
+    {
+      "id": "goose_expr_17__lower_face",
+      "label": "Sad Sobbing Pout · Lower Face",
+      "role": "SLOT",
+      "slotId": "LOWER_FACE",
+      "sourceStackIndex": 5,
+      "src": "/expression-maker/goose/layers/goose_expr_17__lower_face.png",
+      "sha256": "0b9b6067f4f4f475d40cd15b9524da1c289972b945f50959cb87ae405cd3672a",
+      "faceRect": {
+        "x": 285,
+        "y": 635,
+        "width": 618,
+        "height": 366
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": null,
+      "semanticState": "sad_sobbing_pout"
+    },
+    {
+      "id": "goose_expr_18__left_brow",
+      "label": "Sly Uneven Grin · Left Brow",
+      "role": "SLOT",
+      "slotId": "LEFT_BROW",
+      "sourceStackIndex": 1,
+      "src": "/expression-maker/goose/layers/goose_expr_18__left_brow.png",
+      "sha256": "1f33bda5c79e7ff9b2e2e9eb1e4003f410652de519ad082b4b887871c190fb32",
+      "faceRect": {
+        "x": 577,
+        "y": 405,
+        "width": 331,
+        "height": 171
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "LEFT",
+      "semanticState": "sly_uneven_grin"
+    },
+    {
+      "id": "goose_expr_18__right_brow",
+      "label": "Sly Uneven Grin · Right Brow",
+      "role": "SLOT",
+      "slotId": "RIGHT_BROW",
+      "sourceStackIndex": 2,
+      "src": "/expression-maker/goose/layers/goose_expr_18__right_brow.png",
+      "sha256": "3c6226ea6cbdc8f44631d97c2bb5ba6097a7a659b94aefa642cd1dcd6cd04b17",
+      "faceRect": {
+        "x": 280,
+        "y": 405,
+        "width": 331,
+        "height": 171
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "RIGHT",
+      "semanticState": "sly_uneven_grin"
+    },
+    {
+      "id": "goose_expr_18__left_eye",
+      "label": "Sly Uneven Grin · Left Eye",
+      "role": "SLOT",
+      "slotId": "LEFT_EYE",
+      "sourceStackIndex": 3,
+      "src": "/expression-maker/goose/layers/goose_expr_18__left_eye.png",
+      "sha256": "68a1ebc3d5181700eefd9efe09821ff71b905ed3fa779b0224819ad3a3772b13",
+      "faceRect": {
+        "x": 584,
+        "y": 515,
+        "width": 304,
+        "height": 191
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "LEFT",
+      "semanticState": "sly_uneven_grin"
+    },
+    {
+      "id": "goose_expr_18__right_eye",
+      "label": "Sly Uneven Grin · Right Eye",
+      "role": "SLOT",
+      "slotId": "RIGHT_EYE",
+      "sourceStackIndex": 4,
+      "src": "/expression-maker/goose/layers/goose_expr_18__right_eye.png",
+      "sha256": "5aceda25827efb0ba6ee427e632dca0a3bcb81974de7fcc0a1cfe7e428e81f8f",
+      "faceRect": {
+        "x": 300,
+        "y": 515,
+        "width": 304,
+        "height": 191
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": "RIGHT",
+      "semanticState": "sly_uneven_grin"
+    },
+    {
+      "id": "goose_expr_18__lower_face",
+      "label": "Sly Uneven Grin · Lower Face",
+      "role": "SLOT",
+      "slotId": "LOWER_FACE",
+      "sourceStackIndex": 5,
+      "src": "/expression-maker/goose/layers/goose_expr_18__lower_face.png",
+      "sha256": "578dd7933ea42b51f79f869c77b62125d8460d3e250a7a8ff152262bd321a057",
+      "faceRect": {
+        "x": 285,
+        "y": 635,
+        "width": 618,
+        "height": 366
+      },
+      "defaultVisible": false,
+      "defaultLocked": false,
+      "opacity": 1,
+      "anatomicalSide": null,
+      "semanticState": "sly_uneven_grin"
+    }
+  ],
+  "expressions": [
+    {
+      "id": "goose_expr_01",
+      "name": "hard_laugh",
+      "assetIds": {
+        "LEFT_BROW": "goose_expr_01__left_brow",
+        "RIGHT_BROW": "goose_expr_01__right_brow",
+        "LEFT_EYE": "goose_expr_01__left_eye",
+        "RIGHT_EYE": "goose_expr_01__right_eye",
+        "LOWER_FACE": "goose_expr_01__lower_face"
+      }
+    },
+    {
+      "id": "goose_expr_02",
+      "name": "contented_tooth_smile",
+      "assetIds": {
+        "LEFT_BROW": "goose_expr_02__left_brow",
+        "RIGHT_BROW": "goose_expr_02__right_brow",
+        "LEFT_EYE": "goose_expr_02__left_eye",
+        "RIGHT_EYE": "goose_expr_02__right_eye",
+        "LOWER_FACE": "goose_expr_02__lower_face"
+      }
+    },
+    {
+      "id": "goose_expr_03",
+      "name": "wailing_crying",
+      "assetIds": {
+        "LEFT_BROW": "goose_expr_03__left_brow",
+        "RIGHT_BROW": "goose_expr_03__right_brow",
+        "LEFT_EYE": "goose_expr_03__left_eye",
+        "RIGHT_EYE": "goose_expr_03__right_eye",
+        "LOWER_FACE": "goose_expr_03__lower_face"
+      }
+    },
+    {
+      "id": "goose_expr_04",
+      "name": "tearful_pout_cringe",
+      "assetIds": {
+        "LEFT_BROW": "goose_expr_04__left_brow",
+        "RIGHT_BROW": "goose_expr_04__right_brow",
+        "LEFT_EYE": "goose_expr_04__left_eye",
+        "RIGHT_EYE": "goose_expr_04__right_eye",
+        "LOWER_FACE": "goose_expr_04__lower_face"
+      }
+    },
+    {
+      "id": "goose_expr_05",
+      "name": "smug_skeptical_smirk",
+      "assetIds": {
+        "LEFT_BROW": "goose_expr_05__left_brow",
+        "RIGHT_BROW": "goose_expr_05__right_brow",
+        "LEFT_EYE": "goose_expr_05__left_eye",
+        "RIGHT_EYE": "goose_expr_05__right_eye",
+        "LOWER_FACE": "goose_expr_05__lower_face"
+      }
+    },
+    {
+      "id": "goose_expr_06",
+      "name": "delighted_surprise",
+      "assetIds": {
+        "LEFT_BROW": "goose_expr_06__left_brow",
+        "RIGHT_BROW": "goose_expr_06__right_brow",
+        "LEFT_EYE": "goose_expr_06__left_eye",
+        "RIGHT_EYE": "goose_expr_06__right_eye",
+        "LOWER_FACE": "goose_expr_06__lower_face"
+      }
+    },
+    {
+      "id": "goose_expr_07",
+      "name": "pleased_tight_smirk",
+      "assetIds": {
+        "LEFT_BROW": "goose_expr_07__left_brow",
+        "RIGHT_BROW": "goose_expr_07__right_brow",
+        "LEFT_EYE": "goose_expr_07__left_eye",
+        "RIGHT_EYE": "goose_expr_07__right_eye",
+        "LOWER_FACE": "goose_expr_07__lower_face"
+      }
+    },
+    {
+      "id": "goose_expr_08",
+      "name": "holding_breath_puffed_cheeks",
+      "assetIds": {
+        "LEFT_BROW": "goose_expr_08__left_brow",
+        "RIGHT_BROW": "goose_expr_08__right_brow",
+        "LEFT_EYE": "goose_expr_08__left_eye",
+        "RIGHT_EYE": "goose_expr_08__right_eye",
+        "LOWER_FACE": "goose_expr_08__lower_face"
+      }
+    },
+    {
+      "id": "goose_expr_09",
+      "name": "neutral_deadpan",
+      "assetIds": {
+        "LEFT_BROW": "goose_expr_09__left_brow",
+        "RIGHT_BROW": "goose_expr_09__right_brow",
+        "LEFT_EYE": "goose_expr_09__left_eye",
+        "RIGHT_EYE": "goose_expr_09__right_eye",
+        "LOWER_FACE": "goose_expr_09__lower_face"
+      }
+    },
+    {
+      "id": "goose_expr_10",
+      "name": "curious_up_side_glance",
+      "assetIds": {
+        "LEFT_BROW": "goose_expr_10__left_brow",
+        "RIGHT_BROW": "goose_expr_10__right_brow",
+        "LEFT_EYE": "goose_expr_10__left_eye",
+        "RIGHT_EYE": "goose_expr_10__right_eye",
+        "LOWER_FACE": "goose_expr_10__lower_face"
+      }
+    },
+    {
+      "id": "goose_expr_11",
+      "name": "awkward_grit_teeth_smile",
+      "assetIds": {
+        "LEFT_BROW": "goose_expr_11__left_brow",
+        "RIGHT_BROW": "goose_expr_11__right_brow",
+        "LEFT_EYE": "goose_expr_11__left_eye",
+        "RIGHT_EYE": "goose_expr_11__right_eye",
+        "LOWER_FACE": "goose_expr_11__lower_face"
+      }
+    },
+    {
+      "id": "goose_expr_12",
+      "name": "cross_eyed_downward_focus",
+      "assetIds": {
+        "LEFT_BROW": "goose_expr_12__left_brow",
+        "RIGHT_BROW": "goose_expr_12__right_brow",
+        "LEFT_EYE": "goose_expr_12__left_eye",
+        "RIGHT_EYE": "goose_expr_12__right_eye",
+        "LOWER_FACE": "goose_expr_12__lower_face"
+      }
+    },
+    {
+      "id": "goose_expr_13",
+      "name": "worried_shock_slack_jaw",
+      "assetIds": {
+        "LEFT_BROW": "goose_expr_13__left_brow",
+        "RIGHT_BROW": "goose_expr_13__right_brow",
+        "LEFT_EYE": "goose_expr_13__left_eye",
+        "RIGHT_EYE": "goose_expr_13__right_eye",
+        "LOWER_FACE": "goose_expr_13__lower_face"
+      }
+    },
+    {
+      "id": "goose_expr_14",
+      "name": "big_toothy_grin",
+      "assetIds": {
+        "LEFT_BROW": "goose_expr_14__left_brow",
+        "RIGHT_BROW": "goose_expr_14__right_brow",
+        "LEFT_EYE": "goose_expr_14__left_eye",
+        "RIGHT_EYE": "goose_expr_14__right_eye",
+        "LOWER_FACE": "goose_expr_14__lower_face"
+      }
+    },
+    {
+      "id": "goose_expr_15",
+      "name": "serene_closed_eye_smile",
+      "assetIds": {
+        "LEFT_BROW": "goose_expr_15__left_brow",
+        "RIGHT_BROW": "goose_expr_15__right_brow",
+        "LEFT_EYE": "goose_expr_15__left_eye",
+        "RIGHT_EYE": "goose_expr_15__right_eye",
+        "LOWER_FACE": "goose_expr_15__lower_face"
+      }
+    },
+    {
+      "id": "goose_expr_16",
+      "name": "nervous_pleading_grin",
+      "assetIds": {
+        "LEFT_BROW": "goose_expr_16__left_brow",
+        "RIGHT_BROW": "goose_expr_16__right_brow",
+        "LEFT_EYE": "goose_expr_16__left_eye",
+        "RIGHT_EYE": "goose_expr_16__right_eye",
+        "LOWER_FACE": "goose_expr_16__lower_face"
+      }
+    },
+    {
+      "id": "goose_expr_17",
+      "name": "sad_sobbing_pout",
+      "assetIds": {
+        "LEFT_BROW": "goose_expr_17__left_brow",
+        "RIGHT_BROW": "goose_expr_17__right_brow",
+        "LEFT_EYE": "goose_expr_17__left_eye",
+        "RIGHT_EYE": "goose_expr_17__right_eye",
+        "LOWER_FACE": "goose_expr_17__lower_face"
+      }
+    },
+    {
+      "id": "goose_expr_18",
+      "name": "sly_uneven_grin",
+      "assetIds": {
+        "LEFT_BROW": "goose_expr_18__left_brow",
+        "RIGHT_BROW": "goose_expr_18__right_brow",
+        "LEFT_EYE": "goose_expr_18__left_eye",
+        "RIGHT_EYE": "goose_expr_18__right_eye",
+        "LOWER_FACE": "goose_expr_18__lower_face"
+      }
+    }
+  ],
+  "initialExpressionId": "goose_expr_09"
+}

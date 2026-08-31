@@ -393,7 +393,7 @@ def main() -> int:
         / "marcus"
         / "marcus_layer_mapping.csv"
     )
-    manifest_output = repository_root / "src" / "expression-maker" / "assets" / "marcus_asset_manifest.json"
+    manifest_output = repository_root / "src" / "expression-maker" / "character-packs" / "marcus" / "manifest.json"
     runtime_root = repository_root / "public" / "expression-maker" / "marcus"
     layers_output = runtime_root / "layers"
 

@@ -38,14 +38,17 @@ test("server-renders Quick Scene Maker at its dedicated route", async () => {
   assert.doesNotMatch(html, /Three people enter/i);
 });
 
-test("server-renders Marcus Expression Maker at its dedicated route", async () => {
+test("server-renders the multi-character Expression Maker at its dedicated route", async () => {
   const response = await render("/expression-maker");
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
   const html = await response.text();
-  assert.match(html, /<title>Trapstar Expression Maker v0\.1<\/title>/i);
+  assert.match(html, /<title>Trapstar Expression Maker v0\.2<\/title>/i);
   assert.match(html, /Expression Maker/i);
-  assert.match(html, /TRAPSTAR \/ MARCUS \/ AUTHORING TOOL/i);
+  assert.match(html, /TRAPSTAR \/ MULTI-CHARACTER \/ AUTHORING TOOL/i);
+  assert.match(html, /CHARACTER PACK/i);
+  assert.match(html, />Marcus<\/option>/i);
+  assert.match(html, />Goose<\/option>/i);
   assert.match(html, /Export PNG/i);
   assert.match(html, /PRESET ORDER/i);
   assert.doesNotMatch(html, /Three people enter/i);

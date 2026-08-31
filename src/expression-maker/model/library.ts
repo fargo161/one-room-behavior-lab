@@ -1,12 +1,12 @@
-import { findMarcusAsset } from "../assets/manifest";
+import { findCharacterAsset, getCharacterPack } from "../character-packs/registry";
 import { cloneLayers, createId, createLayer } from "./defaults";
 import type {
+  CharacterPackId,
   ExpressionGroup,
   ExpressionLayer,
   ExpressionLibraryExport,
   ExpressionPreset,
   LayerMove,
-  MarcusSlotId,
 } from "./types";
 
 function requireName(name: string, noun: string): string {
@@ -15,8 +15,8 @@ function requireName(name: string, noun: string): string {
   return clean;
 }
 
-function requireGroup(library: ExpressionLibraryExport, groupId: string | null): void {
-  if (groupId !== null && !library.groups.some(group => group.id === groupId)) {
+function requireGroup(library: ExpressionLibraryExport, groupId: string | null, packId: CharacterPackId): void {
+  if (groupId !== null && !library.groups.some(group => group.id === groupId && group.characterPackId === packId)) {
     throw new Error("Select an existing expression group");
   }
 }
@@ -24,28 +24,34 @@ function requireGroup(library: ExpressionLibraryExport, groupId: string | null):
 function copyLibrary(library: ExpressionLibraryExport): ExpressionLibraryExport {
   return {
     ...library,
+    assetSources: library.assetSources.map(source => ({ ...source })),
     groups: library.groups.map(group => ({ ...group })),
     presets: library.presets.map(preset => ({ ...preset, layers: cloneLayers(preset.layers) })),
   };
 }
 
-export function addAssetLayer(layers: readonly ExpressionLayer[], assetId: string): ExpressionLayer[] {
-  return [...cloneLayers(layers), { ...createLayer(assetId), visible: true }];
+export function addAssetLayer(packId: CharacterPackId, layers: readonly ExpressionLayer[], assetId: string): ExpressionLayer[] {
+  const asset = findCharacterAsset(packId, assetId);
+  if (!asset) throw new Error(`Unknown ${getCharacterPack(packId).displayName} asset: ${assetId}`);
+  if (asset.role === "BASE") throw new Error("A character composition can contain only one immutable base");
+  return [...cloneLayers(layers), { ...createLayer(packId, assetId), visible: true }];
 }
 
-export function replaceAssetInSlot(layers: readonly ExpressionLayer[], assetId: string): { layers: ExpressionLayer[]; selectedId: string } {
-  const asset = findMarcusAsset(assetId);
-  if (!asset) throw new Error(`Unknown Marcus asset: ${assetId}`);
+export function replaceAssetInSlot(packId: CharacterPackId, layers: readonly ExpressionLayer[], assetId: string): { layers: ExpressionLayer[]; selectedId: string } {
+  const asset = findCharacterAsset(packId, assetId);
+  if (!asset) throw new Error(`Unknown ${getCharacterPack(packId).displayName} asset: ${assetId}`);
   const result = cloneLayers(layers);
   let index = -1;
   for (let candidateIndex = result.length - 1; candidateIndex >= 0; candidateIndex--) {
-    if (findMarcusAsset(result[candidateIndex].assetId)?.slotId === asset.slotId) {
+    const candidate = findCharacterAsset(packId, result[candidateIndex].assetId);
+    if ((asset.slotId !== null && candidate?.slotId === asset.slotId)
+      || (asset.role === "BASE" && candidate?.role === "BASE")) {
       index = candidateIndex;
       break;
     }
   }
   if (index < 0) {
-    const layer = { ...createLayer(assetId), visible: true };
+    const layer = { ...createLayer(packId, assetId), visible: true };
     result.push(layer);
     return { layers: result, selectedId: layer.id };
   }
@@ -53,7 +59,7 @@ export function replaceAssetInSlot(layers: readonly ExpressionLayer[], assetId: 
     ...result[index],
     assetId,
     visible: true,
-    locked: asset.slotId === "BASE_HEAD" ? true : result[index].locked,
+    locked: asset.role === "BASE" ? true : result[index].locked,
   };
   return { layers: result, selectedId: result[index].id };
 }
@@ -127,11 +133,12 @@ export function moveLayer(layers: readonly ExpressionLayer[], layerId: string, m
 
 export function createGroup(
   library: ExpressionLibraryExport,
+  packId: CharacterPackId,
   name: string,
   id = createId("group"),
 ): ExpressionLibraryExport {
   const next = copyLibrary(library);
-  next.groups.push({ id, name: requireName(name, "Group") });
+  next.groups.push({ id, name: requireName(name, "Group"), characterPackId: packId });
   return next;
 }
 
@@ -150,16 +157,18 @@ export function deleteEmptyGroup(library: ExpressionLibraryExport, groupId: stri
 
 export function saveNewPreset(
   library: ExpressionLibraryExport,
+  packId: CharacterPackId,
   name: string,
   groupId: string | null,
   layers: readonly ExpressionLayer[],
   options: { id?: string; now?: string } = {},
 ): { library: ExpressionLibraryExport; preset: ExpressionPreset } {
-  requireGroup(library, groupId);
+  requireGroup(library, groupId, packId);
   const now = options.now ?? new Date().toISOString();
   const preset: ExpressionPreset = {
     id: options.id ?? createId("preset"),
     name: requireName(name, "Expression"),
+    characterPackId: packId,
     groupId,
     layers: cloneLayers(layers),
     createdAt: now,
@@ -182,7 +191,7 @@ export function updatePreset(
   const preset = next.presets.find(candidate => candidate.id === presetId);
   if (!preset) throw new Error("Open an expression before updating it");
   if (groupId !== undefined) {
-    requireGroup(next, groupId);
+    requireGroup(next, groupId, preset.characterPackId);
     preset.groupId = groupId;
   }
   preset.layers = cloneLayers(layers);
@@ -200,10 +209,10 @@ export function renamePreset(library: ExpressionLibraryExport, presetId: string,
 }
 
 export function movePresetToGroup(library: ExpressionLibraryExport, presetId: string, groupId: string | null): ExpressionLibraryExport {
-  requireGroup(library, groupId);
   const next = copyLibrary(library);
   const preset = next.presets.find(candidate => candidate.id === presetId);
   if (!preset) throw new Error("Expression was not found");
+  requireGroup(next, groupId, preset.characterPackId);
   preset.groupId = groupId;
   preset.updatedAt = new Date().toISOString();
   return next;
@@ -224,6 +233,7 @@ export function duplicatePreset(
   if (!source) throw new Error("Expression was not found");
   return saveNewPreset(
     library,
+    source.characterPackId,
     `${options.name ?? source.name} Copy`,
     options.groupId === undefined ? source.groupId : options.groupId,
     options.layers ?? source.layers,
@@ -245,6 +255,6 @@ export function groupLabel(groups: readonly ExpressionGroup[], groupId: string |
   return groups.find(group => group.id === groupId)?.name ?? "Ungrouped";
 }
 
-export function layerSlotId(layer: ExpressionLayer): MarcusSlotId | null {
-  return findMarcusAsset(layer.assetId)?.slotId ?? null;
+export function layerSlotId(packId: CharacterPackId, layer: ExpressionLayer): string | null {
+  return findCharacterAsset(packId, layer.assetId)?.slotId ?? null;
 }

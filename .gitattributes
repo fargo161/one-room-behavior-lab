@@ -1,0 +1,2 @@
+# Pack manifests are byte-hashed by validation metadata; keep checkout bytes stable.
+/src/expression-maker/character-packs/**/*.json text eol=lf

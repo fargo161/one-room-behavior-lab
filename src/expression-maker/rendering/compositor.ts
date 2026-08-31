@@ -1,10 +1,10 @@
-import { marcusAssetManifest, marcusAssetsById } from "../assets/manifest";
-import type { ExpressionLayer, FacialAsset } from "../model/types";
+import type { CharacterPackAsset, ExpressionCharacterPack } from "../character-packs/types";
+import type { ExpressionLayer } from "../model/types";
 
 export interface RenderPlanEntry {
   layerId: string;
   assetId: string;
-  asset: FacialAsset;
+  asset: CharacterPackAsset;
   x: number;
   y: number;
   width: number;
@@ -31,12 +31,12 @@ export interface RenderResult {
   committed: boolean;
 }
 
-export function buildRenderPlan(layers: readonly ExpressionLayer[]): RenderPlan {
+export function buildRenderPlan(pack: ExpressionCharacterPack, layers: readonly ExpressionLayer[]): RenderPlan {
   const entries: RenderPlanEntry[] = [];
   const missingAssetIds: string[] = [];
   for (const layer of layers) {
     if (!layer.visible) continue;
-    const asset = marcusAssetsById.get(layer.assetId);
+    const asset = pack.assetsById.get(layer.assetId);
     if (!asset) {
       missingAssetIds.push(layer.assetId);
       continue;
@@ -74,10 +74,11 @@ function loadImage(src: string): Promise<HTMLImageElement> {
   return pending;
 }
 
-async function loadRenderableAsset(asset: FacialAsset): Promise<CanvasImageSource> {
+async function loadRenderableAsset(pack: ExpressionCharacterPack, asset: CharacterPackAsset): Promise<CanvasImageSource> {
   const content = await loadImage(asset.src);
   if (!asset.mask) return content;
-  const cached = maskedAssetCache.get(asset.id);
+  const cacheKey = `${pack.id}:${asset.id}:${asset.mask.sha256}`;
+  const cached = maskedAssetCache.get(cacheKey);
   if (cached) return cached;
   const pending = (async () => {
     const mask = await loadImage(asset.mask!.src);
@@ -93,18 +94,19 @@ async function loadRenderableAsset(asset: FacialAsset): Promise<CanvasImageSourc
     context.globalCompositeOperation = "source-over";
     return local;
   })();
-  maskedAssetCache.set(asset.id, pending);
+  maskedAssetCache.set(cacheKey, pending);
   return pending;
 }
 
 export async function renderExpressionToCanvas(
   canvas: HTMLCanvasElement,
+  pack: ExpressionCharacterPack,
   layers: readonly ExpressionLayer[],
   shouldCommit: () => boolean = () => true,
 ): Promise<RenderResult> {
   const stagedCanvas = document.createElement("canvas");
-  stagedCanvas.width = marcusAssetManifest.canonicalFaceSpace.width;
-  stagedCanvas.height = marcusAssetManifest.canonicalFaceSpace.height;
+  stagedCanvas.width = pack.canonicalFaceSpace.width;
+  stagedCanvas.height = pack.canonicalFaceSpace.height;
   const context = stagedCanvas.getContext("2d");
   if (!context) throw new Error("Canvas 2D rendering is unavailable");
   context.setTransform(1, 0, 0, 1, 0, 0);
@@ -113,11 +115,11 @@ export async function renderExpressionToCanvas(
   context.clearRect(0, 0, stagedCanvas.width, stagedCanvas.height);
   context.imageSmoothingEnabled = true;
 
-  const plan = buildRenderPlan(layers);
+  const plan = buildRenderPlan(pack, layers);
   const failedAssets: RenderFailure[] = [];
   for (const entry of plan.entries) {
     try {
-      const source = await loadRenderableAsset(entry.asset);
+      const source = await loadRenderableAsset(pack, entry.asset);
       const centerX = entry.x + entry.width / 2;
       const centerY = entry.y + entry.height / 2;
       context.save();
@@ -161,19 +163,20 @@ export function sanitizeExpressionFilename(value: string): string {
 }
 
 export async function exportExpressionPng(
+  pack: ExpressionCharacterPack,
   layers: readonly ExpressionLayer[],
   groupName: string,
   expressionName: string,
 ): Promise<RenderResult> {
   const canvas = document.createElement("canvas");
-  const result = await renderExpressionToCanvas(canvas, layers);
+  const result = await renderExpressionToCanvas(canvas, pack, layers);
   const blob = await new Promise<Blob>((resolve, reject) => {
     canvas.toBlob(candidate => candidate ? resolve(candidate) : reject(new Error("PNG export failed")), "image/png");
   });
   const url = URL.createObjectURL(blob);
   const anchor = document.createElement("a");
   anchor.href = url;
-  anchor.download = `${sanitizeExpressionFilename(groupName)}__${sanitizeExpressionFilename(expressionName)}.png`;
+  anchor.download = `${pack.id}__${sanitizeExpressionFilename(groupName)}__${sanitizeExpressionFilename(expressionName)}.png`;
   document.body.appendChild(anchor);
   anchor.click();
   anchor.remove();

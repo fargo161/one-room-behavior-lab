@@ -1,0 +1,236 @@
+{
+  "schema": "trapstar-expression-character-pack-validation",
+  "version": 1,
+  "characterPackId": "goose",
+  "manifestSha256": "bb56a62c0d794f1d09e22cf032de23fb1f70187953b50b67aaf2fd911260db9a",
+  "assetSetSha256": "1a790f1a997101de5000adc8d3698119c55790d165aec1a2c3512ab8048f333f",
+  "canonicalCanvas": {
+    "width": 1187,
+    "height": 1484
+  },
+  "baseAssetCount": 1,
+  "slotCount": 5,
+  "expressionCount": 18,
+  "slotAssetCount": 90,
+  "maskCount": 5,
+  "allExactRecompositions": true,
+  "storage": "LOSSLESS_CROPPED_REGISTERED_RECT",
+  "expressions": [
+    {
+      "expressionId": "goose_expr_01",
+      "assetIds": [
+        "goose_expr_01__left_brow",
+        "goose_expr_01__right_brow",
+        "goose_expr_01__left_eye",
+        "goose_expr_01__right_eye",
+        "goose_expr_01__lower_face"
+      ],
+      "exactRecomposition": true,
+      "compositeRgbaSha256": "13c9b0cbf54b1642dd539d77ce8d7a390fcb2da69e7d733d2edcb272480fd13b"
+    },
+    {
+      "expressionId": "goose_expr_02",
+      "assetIds": [
+        "goose_expr_02__left_brow",
+        "goose_expr_02__right_brow",
+        "goose_expr_02__left_eye",
+        "goose_expr_02__right_eye",
+        "goose_expr_02__lower_face"
+      ],
+      "exactRecomposition": true,
+      "compositeRgbaSha256": "0c4cddc280c5eab2e525fda044993ec04725c0acd3e6c30b0fadf162af2b19f6"
+    },
+    {
+      "expressionId": "goose_expr_03",
+      "assetIds": [
+        "goose_expr_03__left_brow",
+        "goose_expr_03__right_brow",
+        "goose_expr_03__left_eye",
+        "goose_expr_03__right_eye",
+        "goose_expr_03__lower_face"
+      ],
+      "exactRecomposition": true,
+      "compositeRgbaSha256": "7c4a790924e7bf7637989e2630634f1b87fe868a33b6ecca500f93657936ee63"
+    },
+    {
+      "expressionId": "goose_expr_04",
+      "assetIds": [
+        "goose_expr_04__left_brow",
+        "goose_expr_04__right_brow",
+        "goose_expr_04__left_eye",
+        "goose_expr_04__right_eye",
+        "goose_expr_04__lower_face"
+      ],
+      "exactRecomposition": true,
+      "compositeRgbaSha256": "6495eb246022dc284fa20aedf7a871791a721842ebe895c089fbfd3c3d613700"
+    },
+    {
+      "expressionId": "goose_expr_05",
+      "assetIds": [
+        "goose_expr_05__left_brow",
+        "goose_expr_05__right_brow",
+        "goose_expr_05__left_eye",
+        "goose_expr_05__right_eye",
+        "goose_expr_05__lower_face"
+      ],
+      "exactRecomposition": true,
+      "compositeRgbaSha256": "87218352d71999f7ad065ef5c072188cb59c3cc94bcd7b1a063332abedf1337f"
+    },
+    {
+      "expressionId": "goose_expr_06",
+      "assetIds": [
+        "goose_expr_06__left_brow",
+        "goose_expr_06__right_brow",
+        "goose_expr_06__left_eye",
+        "goose_expr_06__right_eye",
+        "goose_expr_06__lower_face"
+      ],
+      "exactRecomposition": true,
+      "compositeRgbaSha256": "87739afa0983175a1af3b3ccf1d5eb46ff771031cc00f1ddafad4112920c6b0e"
+    },
+    {
+      "expressionId": "goose_expr_07",
+      "assetIds": [
+        "goose_expr_07__left_brow",
+        "goose_expr_07__right_brow",
+        "goose_expr_07__left_eye",
+        "goose_expr_07__right_eye",
+        "goose_expr_07__lower_face"
+      ],
+      "exactRecomposition": true,
+      "compositeRgbaSha256": "4619f5d9c255e9664c967bfdcd4932db3ba2f4d924fd8df5beae01e2ed791d0d"
+    },
+    {
+      "expressionId": "goose_expr_08",
+      "assetIds": [
+        "goose_expr_08__left_brow",
+        "goose_expr_08__right_brow",
+        "goose_expr_08__left_eye",
+        "goose_expr_08__right_eye",
+        "goose_expr_08__lower_face"
+      ],
+      "exactRecomposition": true,
+      "compositeRgbaSha256": "00c9b54df87e23cf306ed607e0b50d2c1bb5368df2906e218740f7ebaff7383e"
+    },
+    {
+      "expressionId": "goose_expr_09",
+      "assetIds": [
+        "goose_expr_09__left_brow",
+        "goose_expr_09__right_brow",
+        "goose_expr_09__left_eye",
+        "goose_expr_09__right_eye",
+        "goose_expr_09__lower_face"
+      ],
+      "exactRecomposition": true,
+      "compositeRgbaSha256": "69f29db5eee07fa68a16f83dcf25d4698db15d1ead517e9319a1fa4f693acae9"
+    },
+    {
+      "expressionId": "goose_expr_10",
+      "assetIds": [
+        "goose_expr_10__left_brow",
+        "goose_expr_10__right_brow",
+        "goose_expr_10__left_eye",
+        "goose_expr_10__right_eye",
+        "goose_expr_10__lower_face"
+      ],
+      "exactRecomposition": true,
+      "compositeRgbaSha256": "45179076e298bbd20a2dd047cd9881079a41c12cabd236ba2ec8e979f51f1cb0"
+    },
+    {
+      "expressionId": "goose_expr_11",
+      "assetIds": [
+        "goose_expr_11__left_brow",
+        "goose_expr_11__right_brow",
+        "goose_expr_11__left_eye",
+        "goose_expr_11__right_eye",
+        "goose_expr_11__lower_face"
+      ],
+      "exactRecomposition": true,
+      "compositeRgbaSha256": "6d3ffa07392cb3b07abd4b6996dcea02b163964a9672fbd5f80d7a5df95e603e"
+    },
+    {
+      "expressionId": "goose_expr_12",
+      "assetIds": [
+        "goose_expr_12__left_brow",
+        "goose_expr_12__right_brow",
+        "goose_expr_12__left_eye",
+        "goose_expr_12__right_eye",
+        "goose_expr_12__lower_face"
+      ],
+      "exactRecomposition": true,
+      "compositeRgbaSha256": "065067122543f6b323d0c7fb639586f2d10c5a0a5fecfc6e87842a6c1c885f97"
+    },
+    {
+      "expressionId": "goose_expr_13",
+      "assetIds": [
+        "goose_expr_13__left_brow",
+        "goose_expr_13__right_brow",
+        "goose_expr_13__left_eye",
+        "goose_expr_13__right_eye",
+        "goose_expr_13__lower_face"
+      ],
+      "exactRecomposition": true,
+      "compositeRgbaSha256": "b712d0b85ab1ab6040719a85d7ccb5ff8bb2f7a6f4a6f1f565e9b0c95b2d6d99"
+    },
+    {
+      "expressionId": "goose_expr_14",
+      "assetIds": [
+        "goose_expr_14__left_brow",
+        "goose_expr_14__right_brow",
+        "goose_expr_14__left_eye",
+        "goose_expr_14__right_eye",
+        "goose_expr_14__lower_face"
+      ],
+      "exactRecomposition": true,
+      "compositeRgbaSha256": "479a754327205a2bd9c282456df774cc02450c5537f66854634a0d9d0c5c2833"
+    },
+    {
+      "expressionId": "goose_expr_15",
+      "assetIds": [
+        "goose_expr_15__left_brow",
+        "goose_expr_15__right_brow",
+        "goose_expr_15__left_eye",
+        "goose_expr_15__right_eye",
+        "goose_expr_15__lower_face"
+      ],
+      "exactRecomposition": true,
+      "compositeRgbaSha256": "656689b272572a60c530c94901c5f3183a98aa3064675cf4b7305b47d45d80cd"
+    },
+    {
+      "expressionId": "goose_expr_16",
+      "assetIds": [
+        "goose_expr_16__left_brow",
+        "goose_expr_16__right_brow",
+        "goose_expr_16__left_eye",
+        "goose_expr_16__right_eye",
+        "goose_expr_16__lower_face"
+      ],
+      "exactRecomposition": true,
+      "compositeRgbaSha256": "e1b142b55e6167468479861f4ffc9c3278434b64bf9304fc7f29fb199dc75f6e"
+    },
+    {
+      "expressionId": "goose_expr_17",
+      "assetIds": [
+        "goose_expr_17__left_brow",
+        "goose_expr_17__right_brow",
+        "goose_expr_17__left_eye",
+        "goose_expr_17__right_eye",
+        "goose_expr_17__lower_face"
+      ],
+      "exactRecomposition": true,
+      "compositeRgbaSha256": "e0616c66ed2cc86ca19661e69a7cd7964b0eac215afe85d0939f6daea1fc4221"
+    },
+    {
+      "expressionId": "goose_expr_18",
+      "assetIds": [
+        "goose_expr_18__left_brow",
+        "goose_expr_18__right_brow",
+        "goose_expr_18__left_eye",
+        "goose_expr_18__right_eye",
+        "goose_expr_18__lower_face"
+      ],
+      "exactRecomposition": true,
+      "compositeRgbaSha256": "981e7f3bcf28a2a63ae8f61aa5d207a681094e811816d48e49a3c7b16d6b1c78"
+    }
+  ]
+}

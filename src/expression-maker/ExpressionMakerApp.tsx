@@ -1,10 +1,10 @@
 "use client";
 
-/* eslint-disable @next/next/no-img-element -- registered Marcus PNG crops must bypass image optimization */
+/* eslint-disable @next/next/no-img-element -- registered character-pack PNG crops must bypass image optimization */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions -- layer rows use pointer drag; the retained order buttons provide the keyboard path */
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { marcusAssetManifest, marcusAssets, findMarcusAsset } from "./assets/manifest";
+import { characterPacks, findCharacterAsset, getCharacterPack } from "./character-packs/registry";
 import { cloneLayers, createDefaultLibrary, createSourceVisibleLayers } from "./model/defaults";
 import {
   addAssetLayer,
@@ -26,12 +26,13 @@ import {
   updatePreset,
 } from "./model/library";
 import type { VisibleLayerDropPlacement } from "./model/library";
-import type { ExpressionLayer, ExpressionLibraryExport, MarcusSlotId } from "./model/types";
+import type { CharacterPackId, ExpressionLayer, ExpressionLibraryExport } from "./model/types";
 import { downloadExpressionLibrary, readExpressionLibraryFile } from "./persistence/libraryFiles";
 import { loadLibraryFromStorage, saveLibraryToStorage } from "./persistence/storage";
 import { exportExpressionPng, renderExpressionToCanvas } from "./rendering/compositor";
 
-const INITIAL_PRESET_ID = "suspicious-02";
+const INITIAL_CHARACTER_PACK_ID: CharacterPackId = "marcus";
+const INITIAL_PRESET_ID = getCharacterPack(INITIAL_CHARACTER_PACK_ID).initialPresetId;
 
 function initialPresetLayers(): ExpressionLayer[] {
   return loadPreset(createDefaultLibrary(), INITIAL_PRESET_ID).layers;
@@ -80,17 +81,18 @@ function NumberControl({
 
 export default function ExpressionMakerApp() {
   const [library, setLibrary] = useState<ExpressionLibraryExport>(() => createDefaultLibrary());
+  const [activePackId, setActivePackId] = useState<CharacterPackId>(INITIAL_CHARACTER_PACK_ID);
   const [layers, setLayers] = useState<ExpressionLayer[]>(initialPresetLayers);
   const [currentPresetId, setCurrentPresetId] = useState<string | null>(INITIAL_PRESET_ID);
   const [presetName, setPresetName] = useState("Suspicious 02");
   const [presetGroupId, setPresetGroupId] = useState<string | null>("suspicious");
   const [selectedLayerId, setSelectedLayerId] = useState<string | null>("acceptance-lower-face");
   const [assetSearch, setAssetSearch] = useState("");
-  const [slotFilter, setSlotFilter] = useState<"ALL" | MarcusSlotId>("ALL");
+  const [slotFilter, setSlotFilter] = useState<string>("ALL");
   const [browseGroupId, setBrowseGroupId] = useState("ALL");
   const [manageGroupId, setManageGroupId] = useState("suspicious");
   const [groupDraft, setGroupDraft] = useState("Suspicious");
-  const [notice, setNotice] = useState("Marcus acceptance fixture loaded. Layer order is stored per expression.");
+  const [notice, setNotice] = useState("Marcus canonical pack loaded. Layer order is stored per expression.");
   const [renderIssues, setRenderIssues] = useState<string[]>([]);
   const [layerDrag, setLayerDrag] = useState<LayerDragState | null>(null);
   const [hydrated, setHydrated] = useState(false);
@@ -100,21 +102,24 @@ export default function ExpressionMakerApp() {
   const pointerDropTarget = useRef<LayerDropTarget | null>(null);
   const renderCycle = useRef(0);
 
+  const activePack = getCharacterPack(activePackId);
+  const packGroups = library.groups.filter(group => group.characterPackId === activePackId);
   const selectedLayer = layers.find(layer => layer.id === selectedLayerId) ?? null;
-  const selectedAsset = findMarcusAsset(selectedLayer?.assetId);
+  const selectedAsset = findCharacterAsset(activePackId, selectedLayer?.assetId);
   const filteredAssets = useMemo(() => {
     const search = assetSearch.trim().toLowerCase();
-    return marcusAssets.filter(asset => {
+    return activePack.assets.filter(asset => {
       const inSlot = slotFilter === "ALL" || asset.slotId === slotFilter;
-      const matches = !search || `${asset.label} ${asset.id} ${asset.canonicalSemanticState ?? ""}`.toLowerCase().includes(search);
+      const matches = !search || `${asset.label} ${asset.id} ${asset.semanticState ?? asset.canonicalSemanticState ?? ""}`.toLowerCase().includes(search);
       return inSlot && matches;
     });
-  }, [assetSearch, slotFilter]);
+  }, [activePack, assetSearch, slotFilter]);
   const browsedPresets = useMemo(() => library.presets.filter(preset => {
+    if (preset.characterPackId !== activePackId) return false;
     if (browseGroupId === "ALL") return true;
     if (browseGroupId === "UNGROUPED") return preset.groupId === null;
     return preset.groupId === browseGroupId;
-  }), [browseGroupId, library.presets]);
+  }), [activePackId, browseGroupId, library.presets]);
 
   useEffect(() => {
     let active = true;
@@ -131,10 +136,11 @@ export default function ExpressionMakerApp() {
       }
       setLibrary(loaded.library);
       setBrowseGroupId("ALL");
-      const firstGroup = loaded.library.groups[0];
+      const firstGroup = loaded.library.groups.find(group => group.characterPackId === INITIAL_CHARACTER_PACK_ID);
       setManageGroupId(firstGroup?.id ?? "");
       setGroupDraft(firstGroup?.name ?? "");
-      const preset = loaded.library.presets.find(candidate => candidate.id === INITIAL_PRESET_ID) ?? loaded.library.presets[0];
+      const preset = loaded.library.presets.find(candidate => candidate.id === INITIAL_PRESET_ID && candidate.characterPackId === INITIAL_CHARACTER_PACK_ID)
+        ?? loaded.library.presets.find(candidate => candidate.characterPackId === INITIAL_CHARACTER_PACK_ID);
       if (preset) {
         setLayers(cloneLayers(preset.layers));
         setCurrentPresetId(preset.id);
@@ -142,7 +148,7 @@ export default function ExpressionMakerApp() {
         setPresetGroupId(preset.groupId);
         setSelectedLayerId([...preset.layers].reverse().find(layer => !layer.locked)?.id ?? preset.layers.at(-1)?.id ?? null);
       } else {
-        const sourceLayers = createSourceVisibleLayers();
+        const sourceLayers = createSourceVisibleLayers(INITIAL_CHARACTER_PACK_ID);
         setLayers(sourceLayers);
         setCurrentPresetId(null);
         setPresetName("Untitled Expression");
@@ -172,7 +178,7 @@ export default function ExpressionMakerApp() {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const cycle = ++renderCycle.current;
-    void renderExpressionToCanvas(canvas, layers, () => renderCycle.current === cycle).then(result => {
+    void renderExpressionToCanvas(canvas, activePack, layers, () => renderCycle.current === cycle).then(result => {
       if (renderCycle.current !== cycle || !result.committed) return;
       const issues = [
         ...result.missingAssetIds.map(id => `Missing reference: ${id}`),
@@ -182,19 +188,19 @@ export default function ExpressionMakerApp() {
     }).catch(error => {
       if (renderCycle.current === cycle) setRenderIssues([error instanceof Error ? error.message : "Preview failed"]);
     });
-  }, [layers]);
+  }, [activePack, layers]);
 
   const reportError = (error: unknown) => setNotice(error instanceof Error ? error.message : "That action could not be completed");
 
   const applyAsset = (assetId: string, add: boolean) => {
     try {
       if (add) {
-        const next = addAssetLayer(layers, assetId);
+        const next = addAssetLayer(activePackId, layers, assetId);
         setLayers(next);
         setSelectedLayerId(next.at(-1)!.id);
         setNotice("Asset added as a new layer");
       } else {
-        const next = replaceAssetInSlot(layers, assetId);
+        const next = replaceAssetInSlot(activePackId, layers, assetId);
         setLayers(next.layers);
         setSelectedLayerId(next.selectedId);
         setNotice("Slot asset replaced; registration preserved");
@@ -210,6 +216,13 @@ export default function ExpressionMakerApp() {
   const openExpression = (presetId: string, source = library) => {
     try {
       const preset = loadPreset(source, presetId);
+      const pack = getCharacterPack(preset.characterPackId);
+      const groups = source.groups.filter(group => group.characterPackId === pack.id);
+      setActivePackId(pack.id);
+      setSlotFilter("ALL");
+      setBrowseGroupId("ALL");
+      setManageGroupId(groups[0]?.id ?? "");
+      setGroupDraft(groups[0]?.name ?? "");
       setCurrentPresetId(preset.id);
       setPresetName(preset.name);
       setPresetGroupId(preset.groupId);
@@ -219,9 +232,33 @@ export default function ExpressionMakerApp() {
     } catch (error) { reportError(error); }
   };
 
+  const switchCharacter = (packId: CharacterPackId) => {
+    const pack = getCharacterPack(packId);
+    const preset = library.presets.find(candidate => candidate.id === pack.initialPresetId && candidate.characterPackId === packId)
+      ?? library.presets.find(candidate => candidate.characterPackId === packId);
+    if (preset) {
+      openExpression(preset.id);
+      setNotice(`${pack.displayName} character pack selected`);
+      return;
+    }
+    const groups = library.groups.filter(group => group.characterPackId === packId);
+    const sourceLayers = createSourceVisibleLayers(packId);
+    setActivePackId(packId);
+    setLayers(sourceLayers);
+    setCurrentPresetId(null);
+    setPresetName("Untitled Expression");
+    setPresetGroupId(null);
+    setSelectedLayerId(sourceLayers.at(-1)?.id ?? null);
+    setSlotFilter("ALL");
+    setBrowseGroupId("ALL");
+    setManageGroupId(groups[0]?.id ?? "");
+    setGroupDraft(groups[0]?.name ?? "");
+    setNotice(`${pack.displayName} character pack selected`);
+  };
+
   const saveNew = () => {
     try {
-      const result = saveNewPreset(library, presetName, presetGroupId, layers);
+      const result = saveNewPreset(library, activePackId, presetName, presetGroupId, layers);
       setLibrary(result.library);
       setCurrentPresetId(result.preset.id);
       setPresetName(result.preset.name);
@@ -266,7 +303,7 @@ export default function ExpressionMakerApp() {
     if (!currentPresetId) return;
     const next = deletePreset(library, currentPresetId);
     setLibrary(next);
-    const fallback = next.presets[0];
+    const fallback = next.presets.find(preset => preset.characterPackId === activePackId);
     if (fallback) openExpression(fallback.id, next);
     else {
       setCurrentPresetId(null);
@@ -277,7 +314,7 @@ export default function ExpressionMakerApp() {
 
   const createNewGroup = () => {
     try {
-      const next = createGroup(library, groupDraft);
+      const next = createGroup(library, activePackId, groupDraft);
       const group = next.groups.at(-1)!;
       setLibrary(next);
       setManageGroupId(group.id);
@@ -302,7 +339,7 @@ export default function ExpressionMakerApp() {
       const deletedGroupId = manageGroupId;
       const next = deleteEmptyGroup(library, deletedGroupId);
       setLibrary(next);
-      const fallback = next.groups[0];
+      const fallback = next.groups.find(group => group.characterPackId === activePackId);
       setManageGroupId(fallback?.id ?? "");
       setGroupDraft(fallback?.name ?? "");
       if (presetGroupId === deletedGroupId) setPresetGroupId(null);
@@ -325,14 +362,16 @@ export default function ExpressionMakerApp() {
       const result = await readExpressionLibraryFile(file);
       setLibrary(result.library);
       setBrowseGroupId("ALL");
-      const firstGroup = result.library.groups[0];
+      const first = result.library.presets[0];
+      const importedPackId = first?.characterPackId ?? INITIAL_CHARACTER_PACK_ID;
+      const firstGroup = result.library.groups.find(group => group.characterPackId === importedPackId);
       setManageGroupId(firstGroup?.id ?? "");
       setGroupDraft(firstGroup?.name ?? "");
-      const first = result.library.presets[0];
       if (first) {
         openExpression(first.id, result.library);
       } else {
-        const sourceLayers = createSourceVisibleLayers();
+        setActivePackId(importedPackId);
+        const sourceLayers = createSourceVisibleLayers(importedPackId);
         setLayers(sourceLayers);
         setCurrentPresetId(null);
         setPresetName("Untitled Expression");
@@ -349,9 +388,9 @@ export default function ExpressionMakerApp() {
 
   const exportPng = async () => {
     try {
-      const result = await exportExpressionPng(layers, groupLabel(library.groups, presetGroupId), presetName);
+      const result = await exportExpressionPng(activePack, layers, groupLabel(library.groups, presetGroupId), presetName);
       const issueCount = result.missingAssetIds.length + result.failedAssets.length;
-      setNotice(issueCount ? `PNG exported with ${issueCount} unresolved layer warning(s)` : "Transparent Marcus PNG exported");
+      setNotice(issueCount ? `PNG exported with ${issueCount} unresolved layer warning(s)` : `Transparent ${activePack.displayName} PNG exported`);
     } catch (error) { reportError(error); }
   };
 
@@ -442,8 +481,14 @@ export default function ExpressionMakerApp() {
   return (
     <main className="expression-maker">
       <header className="expression-header">
-        <div className="expression-brand"><span className="expression-kicker">TRAPSTAR / MARCUS / AUTHORING TOOL</span><h1>Expression Maker <i>v0.1</i></h1><p>Build a reproducible face from the registered 62-layer Marcus library.</p></div>
-        <div className="expression-source"><span>CANONICAL FACE</span><strong>1187 × 1484</strong><small>PRESET ORDER · BACK → FRONT</small></div>
+        <div className="expression-brand"><span className="expression-kicker">TRAPSTAR / MULTI-CHARACTER / AUTHORING TOOL</span><h1>Expression Maker <i>v0.2</i></h1><p>Build reproducible faces from registered, identity-bound character packs.</p></div>
+        <div className="expression-source">
+          <label htmlFor="character-pack">CHARACTER PACK</label>
+          <select id="character-pack" value={activePackId} onChange={event => switchCharacter(event.target.value as CharacterPackId)}>
+            {characterPacks.map(pack => <option key={pack.id} value={pack.id}>{pack.displayName}</option>)}
+          </select>
+          <strong>{activePack.canonicalFaceSpace.width} × {activePack.canonicalFaceSpace.height}</strong><small>PRESET ORDER · BACK → FRONT</small>
+        </div>
         <div className="expression-actions">
           <input ref={fileInputRef} className="expression-file-input" type="file" accept="application/json,.json" onChange={event => void importLibrary(event.target.files?.[0])}/>
           <button onClick={() => fileInputRef.current?.click()}>Import JSON</button>
@@ -454,19 +499,19 @@ export default function ExpressionMakerApp() {
 
       <section className="expression-workspace">
         <aside className="expression-panel asset-panel">
-          <div className="panel-heading"><div><span>01 / ASSET LIBRARY</span><h2>Marcus parts</h2></div><b>{filteredAssets.length}</b></div>
+          <div className="panel-heading"><div><span>01 / ASSET LIBRARY</span><h2>{activePack.displayName} parts</h2></div><b>{filteredAssets.length}</b></div>
           <div className="asset-filters">
-            <input type="search" value={assetSearch} onChange={event => setAssetSearch(event.target.value)} placeholder="Search 62 assets…" aria-label="Search Marcus assets"/>
-            <select value={slotFilter} onChange={event => setSlotFilter(event.target.value as "ALL" | MarcusSlotId)} aria-label="Filter assets by slot">
+            <input type="search" value={assetSearch} onChange={event => setAssetSearch(event.target.value)} placeholder={`Search ${activePack.assets.length} assets…`} aria-label={`Search ${activePack.displayName} assets`}/>
+            <select value={slotFilter} onChange={event => setSlotFilter(event.target.value)} aria-label="Filter assets by slot">
               <option value="ALL">All slots</option>
-              {marcusAssetManifest.slots.map(slot => <option value={slot.id} key={slot.id}>{slot.label} · {slot.assetCount}</option>)}
+              {activePack.slots.map(slot => <option value={slot.id} key={slot.id}>{slot.label} · {slot.assetCount}</option>)}
             </select>
           </div>
           <div className="asset-list">
             {filteredAssets.map(asset => <article className="asset-card" key={asset.id}>
               <button className="asset-thumb" onClick={() => applyAsset(asset.id, false)} aria-label={`Use ${asset.label}`}><img src={asset.src} alt="" draggable={false}/></button>
               <div><span>{asset.slotId}</span><strong>{asset.label}</strong><small>{asset.anatomicalSide ? `Anatomical ${asset.anatomicalSide.toLowerCase()}` : asset.mask ? "Registered macro + mask" : "Registered crop"}</small></div>
-              <div className="asset-card-actions"><button onClick={() => applyAsset(asset.id, false)}>Use</button><button onClick={() => applyAsset(asset.id, true)} aria-label={`Add ${asset.label} as another layer`}>＋</button></div>
+              <div className="asset-card-actions"><button onClick={() => applyAsset(asset.id, false)}>Use</button>{asset.role !== "BASE" && <button onClick={() => applyAsset(asset.id, true)} aria-label={`Add ${asset.label} as another layer`}>＋</button>}</div>
             </article>)}
           </div>
         </aside>
@@ -474,7 +519,7 @@ export default function ExpressionMakerApp() {
         <section className="expression-preview-column">
           <div className="expression-panel preview-panel">
             <div className="panel-heading"><div><span>02 / LIVE COMPOSITE</span><h2>{presetName || "Untitled Expression"}</h2></div><b>{layers.filter(layer => layer.visible).length} VISIBLE</b></div>
-            <div className="face-stage"><canvas ref={canvasRef} aria-label="Live Marcus expression preview" tabIndex={0} width={marcusAssetManifest.canonicalFaceSpace.width} height={marcusAssetManifest.canonicalFaceSpace.height}/><div className="face-stage-meta"><span>MARCUS_FACE_SPACE</span><b>{selectedAsset?.slotId ?? "NO SELECTION"}</b></div></div>
+            <div className="face-stage"><canvas ref={canvasRef} aria-label={`Live ${activePack.displayName} expression preview`} tabIndex={0} width={activePack.canonicalFaceSpace.width} height={activePack.canonicalFaceSpace.height} style={{ aspectRatio: `${activePack.canonicalFaceSpace.width} / ${activePack.canonicalFaceSpace.height}` }}/><div className="face-stage-meta"><span>{activePack.identity}_FACE_SPACE</span><b>{selectedAsset?.slotId ?? (selectedAsset?.role === "BASE" ? "BASE" : "NO SELECTION")}</b></div></div>
             {renderIssues.length > 0 && <div className="render-warning" role="alert">{renderIssues.join(" · ")}</div>}
           </div>
 
@@ -495,7 +540,7 @@ export default function ExpressionMakerApp() {
           <p className="stack-rule" id="layer-stack-instructions">Grab any unlocked row and drop above or below the insertion line. The saved array—not the slot—owns render order.</p>
           <div className="layer-stack" aria-describedby="layer-stack-instructions">
             {[...layers].reverse().map(layer => {
-              const asset = findMarcusAsset(layer.assetId);
+              const asset = findCharacterAsset(activePackId, layer.assetId);
               const selected = layer.id === selectedLayerId;
               const dragging = layerDrag?.sourceLayerId === layer.id;
               const dropPlacement = layerDrag?.targetLayerId === layer.id ? layerDrag.placement : null;
@@ -542,37 +587,37 @@ export default function ExpressionMakerApp() {
             })}
             <span className="layer-drag-status" role="status" aria-live="polite">
               {layerDrag?.targetLayerId && layerDrag.placement
-                ? `Insertion ${layerDrag.placement === "BEFORE" ? "above" : "below"} ${findMarcusAsset(layers.find(layer => layer.id === layerDrag.targetLayerId)?.assetId)?.label ?? "target layer"}`
+                ? `Insertion ${layerDrag.placement === "BEFORE" ? "above" : "below"} ${findCharacterAsset(activePackId, layers.find(layer => layer.id === layerDrag.targetLayerId)?.assetId)?.label ?? "target layer"}`
                 : ""}
             </span>
           </div>
-          <button className="reset-source" onClick={() => { const source = createSourceVisibleLayers(); setLayers(source); setSelectedLayerId(source.at(-1)?.id ?? null); setCurrentPresetId(null); setPresetName("Untitled Expression"); setPresetGroupId(null); setNotice("Source-visible Marcus composition restored"); }}>Reset to PXZ visible state</button>
+          <button className="reset-source" onClick={() => { const source = createSourceVisibleLayers(activePackId); setLayers(source); setSelectedLayerId(source.at(-1)?.id ?? null); setCurrentPresetId(null); setPresetName("Untitled Expression"); setPresetGroupId(null); setNotice(`${activePack.displayName} reset composition restored`); }}>Reset {activePack.displayName}</button>
         </aside>
       </section>
 
       <section className="expression-panel library-panel">
         <div className="save-strip">
           <div><span>04 / EXPRESSION PRESET</span><input value={presetName} onChange={event => setPresetName(event.target.value)} aria-label="Expression name"/></div>
-          <label><span>GROUP</span><select value={presetGroupId ?? ""} onChange={event => setPresetGroupId(event.target.value || null)}><option value="">Ungrouped</option>{library.groups.map(group => <option value={group.id} key={group.id}>{group.name}</option>)}</select></label>
+          <label><span>GROUP</span><select value={presetGroupId ?? ""} onChange={event => setPresetGroupId(event.target.value || null)}><option value="">Ungrouped</option>{packGroups.map(group => <option value={group.id} key={group.id}>{group.name}</option>)}</select></label>
           <div className="save-actions"><button className="primary" onClick={saveNew}>Save New</button><button onClick={updateCurrent} disabled={!currentPresetId}>Update</button><button onClick={duplicateCurrent} disabled={!currentPresetId}>Duplicate</button><button onClick={renameCurrent} disabled={!currentPresetId}>Rename</button><button onClick={moveCurrentToGroup} disabled={!currentPresetId}>Move Here</button><button className="danger" onClick={deleteCurrent} disabled={!currentPresetId}>Delete</button></div>
         </div>
 
         <div className="library-browser">
           <div className="group-manager">
-            <div className="panel-heading compact"><div><span>GROUPS</span><h2>Organize</h2></div><b>{library.groups.length}</b></div>
-            <select value={manageGroupId} onChange={event => { const id = event.target.value; setManageGroupId(id); setGroupDraft(library.groups.find(group => group.id === id)?.name ?? ""); }}><option value="">Select group</option>{library.groups.map(group => <option key={group.id} value={group.id}>{group.name}</option>)}</select>
+            <div className="panel-heading compact"><div><span>GROUPS</span><h2>Organize {activePack.displayName}</h2></div><b>{packGroups.length}</b></div>
+            <select value={manageGroupId} onChange={event => { const id = event.target.value; setManageGroupId(id); setGroupDraft(packGroups.find(group => group.id === id)?.name ?? ""); }}><option value="">Select group</option>{packGroups.map(group => <option key={group.id} value={group.id}>{group.name}</option>)}</select>
             <input value={groupDraft} onChange={event => setGroupDraft(event.target.value)} placeholder="Custom group name" aria-label="Group name"/>
             <div><button className="primary" onClick={createNewGroup}>Create</button><button onClick={renameSelectedGroup} disabled={!manageGroupId}>Rename</button><button onClick={deleteSelectedGroup} disabled={!manageGroupId}>Delete empty</button></div>
           </div>
 
           <div className="preset-browser">
-            <div className="preset-browser-heading"><div><span>SAVED EXPRESSIONS</span><h2>Open and edit</h2></div><select value={browseGroupId} onChange={event => setBrowseGroupId(event.target.value)}><option value="ALL">All groups</option><option value="UNGROUPED">Ungrouped</option>{library.groups.map(group => <option key={group.id} value={group.id}>{group.name}</option>)}</select></div>
+            <div className="preset-browser-heading"><div><span>SAVED EXPRESSIONS</span><h2>Open and edit {activePack.displayName}</h2></div><select value={browseGroupId} onChange={event => setBrowseGroupId(event.target.value)}><option value="ALL">All groups</option><option value="UNGROUPED">Ungrouped</option>{packGroups.map(group => <option key={group.id} value={group.id}>{group.name}</option>)}</select></div>
             <div className="preset-list">{browsedPresets.length ? browsedPresets.map(preset => <button className={preset.id === currentPresetId ? "active" : ""} key={preset.id} onClick={() => openExpression(preset.id)}><span>{groupLabel(library.groups, preset.groupId)}</span><strong>{preset.name}</strong><small>{preset.layers.length} layers · updated {new Date(preset.updatedAt).toLocaleDateString()}</small></button>) : <p>No saved expressions in this group.</p>}</div>
           </div>
         </div>
       </section>
 
-      <footer className="expression-footer"><p role="status">{notice}</p><p>Marcus-only identity-bound art · 62 preserved source assets · local browser persistence</p></footer>
+      <footer className="expression-footer"><p role="status">{notice}</p><p>Marcus canonical pack #1 · Goose canonical pack #2 · character-aware local persistence</p></footer>
     </main>
   );
 }

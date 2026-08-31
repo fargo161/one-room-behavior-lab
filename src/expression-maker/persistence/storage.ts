@@ -2,7 +2,8 @@ import { createDefaultLibrary } from "../model/defaults";
 import type { ExpressionLibraryExport } from "../model/types";
 import { parseExpressionLibraryJson, serializeExpressionLibrary } from "../model/validation";
 
-export const EXPRESSION_LIBRARY_STORAGE_KEY = "trapstar-expression-maker:marcus:library:v1";
+export const EXPRESSION_LIBRARY_STORAGE_KEY = "trapstar-expression-maker:library:v2";
+export const LEGACY_MARCUS_LIBRARY_STORAGE_KEY = "trapstar-expression-maker:marcus:library:v1";
 
 export interface StorageLike {
   getItem(key: string): string | null;
@@ -12,8 +13,10 @@ export interface StorageLike {
 export function loadLibraryFromStorage(storage: StorageLike): { library: ExpressionLibraryExport; warnings: string[] } {
   try {
     const stored = storage.getItem(EXPRESSION_LIBRARY_STORAGE_KEY);
-    if (stored === null) return { library: createDefaultLibrary(), warnings: [] };
-    return parseExpressionLibraryJson(stored);
+    if (stored !== null) return parseExpressionLibraryJson(stored);
+    const legacy = storage.getItem(LEGACY_MARCUS_LIBRARY_STORAGE_KEY);
+    if (legacy !== null) return parseExpressionLibraryJson(legacy);
+    return { library: createDefaultLibrary(), warnings: [] };
   } catch (error) {
     return {
       library: createDefaultLibrary(),

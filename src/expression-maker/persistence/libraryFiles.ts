@@ -6,7 +6,7 @@ export function downloadExpressionLibrary(library: ExpressionLibraryExport): voi
   const url = URL.createObjectURL(blob);
   const anchor = document.createElement("a");
   anchor.href = url;
-  anchor.download = "marcus-expression-library.json";
+  anchor.download = "trapstar-expression-library-v2.json";
   document.body.appendChild(anchor);
   anchor.click();
   anchor.remove();

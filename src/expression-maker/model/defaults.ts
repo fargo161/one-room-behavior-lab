@@ -1,5 +1,5 @@
-import acceptanceLibrary from "../fixtures/MARCUS_EXPRESSION_ACCEPTANCE.json";
-import { marcusAssetManifest } from "../assets/manifest";
+import { characterPacks, getCharacterPack } from "../character-packs/registry";
+import type { CharacterPackId } from "../character-packs/types";
 import type { ExpressionLayer, ExpressionLibraryExport } from "./types";
 
 let fallbackId = 0;
@@ -15,9 +15,9 @@ export function cloneLayers(layers: readonly ExpressionLayer[]): ExpressionLayer
   return layers.map(layer => ({ ...layer }));
 }
 
-export function createLayer(assetId: string, id = createId("layer")): ExpressionLayer {
-  const asset = marcusAssetManifest.assets.find(candidate => candidate.id === assetId);
-  if (!asset) throw new Error(`Unknown Marcus asset: ${assetId}`);
+export function createLayer(packId: CharacterPackId, assetId: string, id = createId("layer")): ExpressionLayer {
+  const asset = getCharacterPack(packId).assetsById.get(assetId);
+  if (!asset) throw new Error(`Unknown ${getCharacterPack(packId).displayName} asset: ${assetId}`);
   return {
     id,
     assetId: asset.id,
@@ -30,13 +30,26 @@ export function createLayer(assetId: string, id = createId("layer")): Expression
   };
 }
 
-export function createSourceVisibleLayers(): ExpressionLayer[] {
-  return marcusAssetManifest.assets
-    .filter(asset => asset.defaultVisible)
-    .sort((a, b) => a.sourceStackIndex - b.sourceStackIndex)
-    .map(asset => createLayer(asset.id, `source-${asset.sourceStackIndex}`));
+export function createSourceVisibleLayers(packId: CharacterPackId = "marcus"): ExpressionLayer[] {
+  return cloneLayers(getCharacterPack(packId).resetLayers);
 }
 
 export function createDefaultLibrary(): ExpressionLibraryExport {
-  return JSON.parse(JSON.stringify(acceptanceLibrary)) as ExpressionLibraryExport;
+  return {
+    schema: "trapstar-expression-library",
+    version: 2,
+    assetSources: characterPacks.map(pack => ({
+      characterPackId: pack.id,
+      identity: pack.identity,
+      manifestSchema: pack.manifestSchema,
+      manifestVersion: pack.manifestVersion,
+      sourceSha256: pack.sourceSha256,
+    })),
+    groups: characterPacks.flatMap(pack => pack.seedGroups.map(group => ({ ...group, characterPackId: pack.id }))),
+    presets: characterPacks.flatMap(pack => pack.seedPresets.map(preset => ({
+      ...preset,
+      characterPackId: pack.id,
+      layers: cloneLayers(preset.layers),
+    }))),
+  };
 }

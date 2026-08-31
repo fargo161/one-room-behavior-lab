@@ -39,5 +39,13 @@ yarn-error.log*
 /outputs/
 /work/
 
+# Local Goose source/delivery bundle (licensed references and generated intermediates)
+/artifacts/goose_expression_batch/
+/artifacts/goose_expression_batch.zip
+
 # generated TypeScript incremental state
 *.tsbuildinfo
+
+# generated Python bytecode
+__pycache__/
+*.py[cod]
