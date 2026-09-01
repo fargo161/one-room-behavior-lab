@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0",
+  "overall_status": "PASS",
+  "checks": [
+    {
+      "check": "all_json_parses",
+      "status": "PASS",
+      "files": 52,
+      "errors": []
+    },
+    {
+      "check": "declared_schema_instances",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "check": "iso_element_machine_readable_geometry",
+      "status": "PASS",
+      "records": 5,
+      "failures": [],
+      "coordinate_space": "source_asset_px",
+      "inference_policy": "direct bboxes retained; manual traces and room transforms carry confidence/basis and are not runtime-authoritative"
+    },
+    {
+      "check": "unique_ids_within_namespaces",
+      "status": "PASS",
+      "duplicates": {}
+    },
+    {
+      "check": "package_relative_references_resolve",
+      "status": "PASS",
+      "missing": []
+    },
+    {
+      "check": "no_quarantine_blocked_or_premade_payloads",
+      "status": "PASS",
+      "prohibited_outputs": [],
+      "premade_outputs": []
+    },
+    {
+      "check": "no_os_metadata_or_cache",
+      "status": "PASS",
+      "source_outputs": [],
+      "tree_names": []
+    },
+    {
+      "check": "no_machine_absolute_paths",
+      "status": "PASS",
+      "hits": []
+    },
+    {
+      "check": "complete_source_accounting",
+      "status": "PASS",
+      "records": 1015,
+      "unique": 1015
+    },
+    {
+      "check": "all_delivered_images_decode",
+      "status": "PASS",
+      "count": 348,
+      "failures": []
+    },
+    {
+      "check": "ten_prompt_alpha_derivatives",
+      "status": "PASS",
+      "checked": 10,
+      "failures": []
+    },
+    {
+      "check": "seven_pxz_projects_references",
+      "status": "PASS",
+      "projects": 7,
+      "missing_references": 0
+    }
+  ],
+  "failure_count": 0,
+  "warnings": [],
+  "pre_zip_note": "Final ZIP CRC and extracted path/size/hash equivalence are recorded in the detached delivery verification file."
+}

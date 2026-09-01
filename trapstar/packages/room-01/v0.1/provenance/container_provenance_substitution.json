@@ -1,0 +1,35 @@
+{
+  "authority": "owner-approved",
+  "replacement_archives": [
+    {
+      "filename": "characters.zip",
+      "sha256": "db60e0618bf2ca12c14457b76924eba2dfdd98577d26b300dd42e8514e59af2b"
+    },
+    {
+      "filename": "environment.zip",
+      "sha256": "6849070209029d685e1f141bab077d9df98e55ce099632032bd9f1c587729a05"
+    },
+    {
+      "filename": "pixlr.zip",
+      "sha256": "fb0328b89dccb6c82a54bbdc1c399303c8481aaa08eb1fd5ad2afca0a344a47f"
+    },
+    {
+      "filename": "premade assets.zip",
+      "sha256": "a4f94840b0252ff66d9c53c1418898985d1c33e2747f1b7ee4d0d6c2b941e820"
+    }
+  ],
+  "logical_source_corpus": "all four replacement archives together",
+  "original_three_container_names_available": false,
+  "original_three_container_hashes_verified": false,
+  "original_three_containers_recreated": false,
+  "file_level_provenance_fields": [
+    "source_zip",
+    "source_relative_path",
+    "size_bytes",
+    "sha256",
+    "image dimensions/format",
+    "duplicate relationships",
+    "inferred prior domain/archive",
+    "confidence/evidence"
+  ]
+}

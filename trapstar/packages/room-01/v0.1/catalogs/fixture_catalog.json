@@ -1,0 +1,839 @@
+{
+  "schema_version": "1.0",
+  "fixtures": [
+    {
+      "fixture_id": "ROOM01__FIXTURE__DEAL_TABLE__ISO_3Q__A01",
+      "primary_status": "PRODUCTION_CANDIDATE",
+      "supported_views": [
+        "VIEW_ISO"
+      ],
+      "asset_path": "production/room_01_apt_305/elements/fixtures/normalized/room01__fixture__deal_table__iso_3q__a01__alpha_normalized.png",
+      "master_path": "production/room_01_apt_305/elements/fixtures/masters/room01__fixture__deal_table__iso_3q__a01__master.png",
+      "source_sha256": "b90f15e4b07c8e599651fbc9fcfb05729729ca3d15f9e6d5a213495feb2fa127",
+      "canonical_sha256": "0bba979792a6f9ade4b0703b092a66d1be511cd59cdd2219f71296d07b19ce6e",
+      "origin_pivot": {
+        "point_px": [
+          707.5,
+          983
+        ],
+        "basis": "derived_bottom_center_of_alpha_ge_128_bbox",
+        "confidence": "high",
+        "physical_contact": false
+      },
+      "display_size_hint": {
+        "uniform_scale_from_source": 0.295,
+        "target_alpha_ge_128_bbox_pixels": [
+          342,
+          287
+        ],
+        "confidence": "low",
+        "evidence": "reverse estimate from flattened example_scene_iso.jpg"
+      },
+      "blocked_views": [
+        {
+          "view_id": "VIEW_FP2D",
+          "status": "BLOCKED_MISSING",
+          "reason": "no perspective-compatible variant supplied"
+        }
+      ],
+      "parent_relationships": [
+        "ROOM_01_APT_305"
+      ],
+      "known_limitations": [
+        "ISO perspective only",
+        "ALPHA_MAX_254",
+        "BAKED_BROWN_GLOW",
+        "CONTACT_AND_SURFACE_TRACE_REQUIRE_DERIVATIVE_QA",
+        "generated-art edge/glow cleanup should be reviewed before final ship"
+      ],
+      "geometry": {
+        "geometry_status": "MEASURED_AND_INFERRED_CANDIDATE",
+        "coordinate_space": "source_asset_px",
+        "source_canvas_px": [
+          1313,
+          1004
+        ],
+        "source_alpha_gt_0_bbox_px": [
+          16,
+          1,
+          1297,
+          988
+        ],
+        "bbox_alpha_ge_128_px": {
+          "x": 128,
+          "y": 12,
+          "width": 1160,
+          "height": 972,
+          "x_max_inclusive": 1287,
+          "y_max_inclusive": 983
+        },
+        "bbox_alpha_ge_128_xywh": [
+          128,
+          12,
+          1160,
+          972
+        ],
+        "anchor_set_id": "ANCHORS__DEAL_TABLE__ISO_3Q__A01",
+        "registration_pivot": {
+          "point_px": [
+            707.5,
+            983
+          ],
+          "basis": "derived_bottom_center_of_alpha_ge_128_bbox",
+          "confidence": "high",
+          "physical_contact": false
+        },
+        "alpha_gt_0_pivot_for_comparison": {
+          "point": [
+            656,
+            987
+          ],
+          "basis": "bottom-center of alpha>0 bbox; glow-sensitive",
+          "confidence": "medium"
+        },
+        "contact_anchors": [
+          {
+            "anchor_id": "TABLE__CONTACT__NEAR_LEFT",
+            "point_px": [
+              475.5,
+              983
+            ],
+            "basis": "center_of_measured_last_eight_row_support_interval_462_489",
+            "confidence": "high"
+          },
+          {
+            "anchor_id": "TABLE__CONTACT__FAR_LEFT",
+            "point_px": [
+              178,
+              785
+            ],
+            "basis": "manual_visible_foot_trace",
+            "confidence": "medium"
+          },
+          {
+            "anchor_id": "TABLE__CONTACT__FAR_RIGHT",
+            "point_px": [
+              1010,
+              454
+            ],
+            "basis": "manual_visible_foot_trace",
+            "confidence": "low"
+          },
+          {
+            "anchor_id": "TABLE__CONTACT__NEAR_RIGHT",
+            "point_px": [
+              1215,
+              622
+            ],
+            "basis": "manual_visible_foot_trace",
+            "confidence": "medium"
+          }
+        ],
+        "surface": {
+          "surface_id": "TABLE__SURFACE__TOP",
+          "polygon_px": [
+            [
+              922,
+              13
+            ],
+            [
+              1287,
+              208
+            ],
+            [
+              479,
+              644
+            ],
+            [
+              128,
+              356
+            ]
+          ],
+          "anchor_point_px": [
+            704,
+            322
+          ],
+          "basis": "manual_trace_of_visible_tabletop_edge",
+          "confidence": "medium",
+          "child_slots": [
+            {
+              "slot_id": "TABLE__TOP__A",
+              "point_px": [
+                584,
+                347
+              ],
+              "allowed_child_families": [
+                "CASH_STACKS",
+                "WRAPPED_PACKAGES"
+              ]
+            },
+            {
+              "slot_id": "TABLE__TOP__B",
+              "point_px": [
+                822,
+                284
+              ],
+              "allowed_child_families": [
+                "CASH_STACKS",
+                "WRAPPED_PACKAGES"
+              ]
+            }
+          ]
+        },
+        "surface_polygon_px": [
+          [
+            922,
+            13
+          ],
+          [
+            1287,
+            208
+          ],
+          [
+            479,
+            644
+          ],
+          [
+            128,
+            356
+          ]
+        ],
+        "footprint": {
+          "polygon_px": [
+            [
+              178,
+              785
+            ],
+            [
+              1010,
+              454
+            ],
+            [
+              1215,
+              622
+            ],
+            [
+              475.5,
+              983
+            ]
+          ],
+          "basis": "projected_polygon_through_four_visible_or_inferred_leg_contacts",
+          "confidence": "medium"
+        },
+        "footprint_polygon_px": [
+          [
+            178,
+            785
+          ],
+          [
+            1010,
+            454
+          ],
+          [
+            1215,
+            622
+          ],
+          [
+            475.5,
+            983
+          ]
+        ],
+        "occlusion_anchors": [],
+        "occlusion_status": {
+          "primary_status": "BLOCKED_MISSING",
+          "reason": "No isolated occlusion mask or defensible occlusion boundary was supplied; none was fabricated."
+        },
+        "room_registration_suggestion": {
+          "source_to_room_transform": {
+            "scale_xy": [
+              0.295,
+              0.295
+            ],
+            "sprite_origin_room_px": [
+              505,
+              500
+            ],
+            "registration_pivot_room_px": [
+              713.7,
+              790.0
+            ]
+          },
+          "parent_surface_slot": null,
+          "basis": "reverse_estimate_from_flattened example_scene_iso.jpg",
+          "confidence": "low",
+          "runtime_authoritative": false
+        },
+        "runtime_authoritative": false,
+        "evidence_policy": "Alpha bboxes and bottom support intervals are direct measurements. Manual visible-edge traces are inferred and retain per-record confidence/basis. Room transforms are low-confidence reverse estimates from flattened QA evidence."
+      },
+      "allowed_functions": [
+        "INSPECT",
+        "USE_FIXTURE"
+      ]
+    },
+    {
+      "fixture_id": "ROOM01__FIXTURE__COUCH__ISO_3Q__A01",
+      "primary_status": "PRODUCTION_CANDIDATE",
+      "supported_views": [
+        "VIEW_ISO"
+      ],
+      "asset_path": "production/room_01_apt_305/elements/fixtures/normalized/room01__fixture__couch__iso_3q__a01__alpha_normalized.png",
+      "master_path": "production/room_01_apt_305/elements/fixtures/masters/room01__fixture__couch__iso_3q__a01__master.png",
+      "source_sha256": "e0fb77b7ff5b29c145d816db7f0b0d7743b68a7574ab0cde3526efa0b5e36cf3",
+      "canonical_sha256": "877619a8d08bccb6df0ee562dd7253e580d852dab60cb845b01d95ea026c4bdf",
+      "origin_pivot": {
+        "point_px": [
+          773,
+          1012
+        ],
+        "basis": "derived_bottom_center_of_alpha_ge_128_bbox",
+        "confidence": "high",
+        "physical_contact": false
+      },
+      "display_size_hint": {
+        "uniform_scale_from_source": 0.21,
+        "target_alpha_ge_128_bbox_pixels": [
+          305,
+          209
+        ],
+        "confidence": "low",
+        "evidence": "reverse estimate from flattened example_scene_iso.jpg"
+      },
+      "blocked_views": [
+        {
+          "view_id": "VIEW_FP2D",
+          "status": "BLOCKED_MISSING",
+          "reason": "no perspective-compatible variant supplied"
+        }
+      ],
+      "parent_relationships": [
+        "ROOM_01_APT_305"
+      ],
+      "known_limitations": [
+        "ISO perspective only",
+        "ALPHA_MAX_254",
+        "BAKED_MAGENTA_GLOW",
+        "LOW_ALPHA_GLOW_CLIPPED_AT_LEFT_AND_BOTTOM_CANVAS_EDGES",
+        "LOW_BOTTOM_AND_RIGHT_MARGIN",
+        "SEATING_SLOTS_ARE_GEOMETRIC_ONLY_NOT_INTERACTION_WIRING",
+        "generated-art edge/glow cleanup should be reviewed before final ship"
+      ],
+      "geometry": {
+        "geometry_status": "MEASURED_AND_INFERRED_CANDIDATE",
+        "coordinate_space": "source_asset_px",
+        "source_canvas_px": [
+          1518,
+          1024
+        ],
+        "source_alpha_gt_0_bbox_px": [
+          0,
+          14,
+          1502,
+          1024
+        ],
+        "bbox_alpha_ge_128_px": {
+          "x": 48,
+          "y": 17,
+          "width": 1451,
+          "height": 996,
+          "x_max_inclusive": 1498,
+          "y_max_inclusive": 1012
+        },
+        "bbox_alpha_ge_128_xywh": [
+          48,
+          17,
+          1451,
+          996
+        ],
+        "anchor_set_id": "ANCHORS__COUCH__ISO_3Q__A01",
+        "registration_pivot": {
+          "point_px": [
+            773,
+            1012
+          ],
+          "basis": "derived_bottom_center_of_alpha_ge_128_bbox",
+          "confidence": "high",
+          "physical_contact": false
+        },
+        "alpha_gt_0_pivot_for_comparison": {
+          "point": [
+            751,
+            1023
+          ],
+          "basis": "bottom-center of alpha>0 bbox; glow-sensitive",
+          "confidence": "medium"
+        },
+        "contact_anchors": [
+          {
+            "anchor_id": "COUCH__CONTACT__NEAR_RIGHT",
+            "point_px": [
+              1150.5,
+              1012
+            ],
+            "basis": "center_of_measured_last_eight_row_support_interval_1132_1169",
+            "confidence": "high"
+          },
+          {
+            "anchor_id": "COUCH__CONTACT__FAR_LEFT",
+            "point_px": [
+              113,
+              649
+            ],
+            "basis": "manual_visible_foot_trace",
+            "confidence": "medium"
+          },
+          {
+            "anchor_id": "COUCH__CONTACT__FAR_RIGHT",
+            "point_px": [
+              1415,
+              827
+            ],
+            "basis": "manual_visible_foot_trace",
+            "confidence": "medium"
+          },
+          {
+            "anchor_id": "COUCH__CONTACT__NEAR_LEFT_INFERRED",
+            "point_px": [
+              172,
+              837
+            ],
+            "basis": "inferred_under_skirt_for_footprint_completion",
+            "confidence": "low"
+          }
+        ],
+        "surface": {
+          "surface_id": "COUCH__SURFACE__SEAT",
+          "polygon_px": [
+            [
+              151,
+              405
+            ],
+            [
+              1215,
+              560
+            ],
+            [
+              1070,
+              746
+            ],
+            [
+              153,
+              526
+            ]
+          ],
+          "anchor_point_px": [
+            700,
+            575
+          ],
+          "basis": "manual_trace_across_three_visible_seat_cushions",
+          "confidence": "medium",
+          "child_slots": [
+            {
+              "slot_id": "COUCH__SEAT__LEFT",
+              "point_px": [
+                380,
+                493
+              ],
+              "allowed_child_families": [
+                "CHARACTER_SEATED"
+              ]
+            },
+            {
+              "slot_id": "COUCH__SEAT__CENTER",
+              "point_px": [
+                700,
+                565
+              ],
+              "allowed_child_families": [
+                "CHARACTER_SEATED"
+              ]
+            },
+            {
+              "slot_id": "COUCH__SEAT__RIGHT",
+              "point_px": [
+                978,
+                624
+              ],
+              "allowed_child_families": [
+                "CHARACTER_SEATED"
+              ]
+            }
+          ]
+        },
+        "surface_polygon_px": [
+          [
+            151,
+            405
+          ],
+          [
+            1215,
+            560
+          ],
+          [
+            1070,
+            746
+          ],
+          [
+            153,
+            526
+          ]
+        ],
+        "footprint": {
+          "polygon_px": [
+            [
+              113,
+              649
+            ],
+            [
+              1415,
+              827
+            ],
+            [
+              1150.5,
+              1012
+            ],
+            [
+              172,
+              837
+            ]
+          ],
+          "basis": "projected_polygon_through_three_visible_and_one_inferred_contact",
+          "confidence": "low"
+        },
+        "footprint_polygon_px": [
+          [
+            113,
+            649
+          ],
+          [
+            1415,
+            827
+          ],
+          [
+            1150.5,
+            1012
+          ],
+          [
+            172,
+            837
+          ]
+        ],
+        "occlusion_anchors": [],
+        "occlusion_status": {
+          "primary_status": "BLOCKED_MISSING",
+          "reason": "No isolated occlusion mask or defensible occlusion boundary was supplied; none was fabricated."
+        },
+        "room_registration_suggestion": {
+          "source_to_room_transform": {
+            "scale_xy": [
+              0.21,
+              0.21
+            ],
+            "sprite_origin_room_px": [
+              884,
+              362
+            ],
+            "registration_pivot_room_px": [
+              1046.3,
+              574.5
+            ]
+          },
+          "parent_surface_slot": null,
+          "basis": "reverse_estimate_from_flattened example_scene_iso.jpg",
+          "confidence": "low",
+          "runtime_authoritative": false
+        },
+        "runtime_authoritative": false,
+        "evidence_policy": "Alpha bboxes and bottom support intervals are direct measurements. Manual visible-edge traces are inferred and retain per-record confidence/basis. Room transforms are low-confidence reverse estimates from flattened QA evidence."
+      },
+      "allowed_functions": [
+        "INSPECT",
+        "USE_FIXTURE"
+      ]
+    },
+    {
+      "fixture_id": "ROOM01__FIXTURE__FOLDING_CHAIR__ISO_3Q__A01",
+      "primary_status": "PRODUCTION_CANDIDATE",
+      "supported_views": [
+        "VIEW_ISO"
+      ],
+      "asset_path": "production/room_01_apt_305/elements/fixtures/masters/room01__fixture__folding_chair__iso_3q__a01__master.png",
+      "master_path": "production/room_01_apt_305/elements/fixtures/masters/room01__fixture__folding_chair__iso_3q__a01__master.png",
+      "source_sha256": "4f3030363976bd6346703defa135fe4688b381c66dae517994c5da60defa25fb",
+      "canonical_sha256": "4f3030363976bd6346703defa135fe4688b381c66dae517994c5da60defa25fb",
+      "origin_pivot": {
+        "point_px": [
+          534,
+          1241
+        ],
+        "basis": "derived_bottom_center_of_alpha_ge_128_bbox",
+        "confidence": "high",
+        "physical_contact": false
+      },
+      "display_size_hint": {
+        "uniform_scale_from_source": 0.17,
+        "target_alpha_ge_128_bbox_pixels": [
+          142,
+          205
+        ],
+        "confidence": "low",
+        "evidence": "reverse estimate from flattened example_scene_iso.jpg"
+      },
+      "blocked_views": [
+        {
+          "view_id": "VIEW_FP2D",
+          "status": "BLOCKED_MISSING",
+          "reason": "no perspective-compatible variant supplied"
+        }
+      ],
+      "parent_relationships": [
+        "ROOM_01_APT_305"
+      ],
+      "known_limitations": [
+        "ISO perspective only",
+        "BAKED_EDGE_GLOW",
+        "LOW_BOTTOM_TRIM_MARGIN",
+        "NO_ALPHA_GE_128_CLIPPING_MEASURED",
+        "SEAT_SLOT_IS_GEOMETRIC_ONLY_NOT_INTERACTION_WIRING",
+        "generated-art edge/glow cleanup should be reviewed before final ship"
+      ],
+      "geometry": {
+        "geometry_status": "MEASURED_AND_INFERRED_CANDIDATE",
+        "coordinate_space": "source_asset_px",
+        "source_canvas_px": [
+          1072,
+          1264
+        ],
+        "source_alpha_gt_0_bbox_px": [
+          16,
+          16,
+          1056,
+          1248
+        ],
+        "bbox_alpha_ge_128_px": {
+          "x": 118,
+          "y": 36,
+          "width": 833,
+          "height": 1206,
+          "x_max_inclusive": 950,
+          "y_max_inclusive": 1241
+        },
+        "bbox_alpha_ge_128_xywh": [
+          118,
+          36,
+          833,
+          1206
+        ],
+        "anchor_set_id": "ANCHORS__FOLDING_CHAIR__ISO_3Q__A01",
+        "registration_pivot": {
+          "point_px": [
+            534,
+            1241
+          ],
+          "basis": "derived_bottom_center_of_alpha_ge_128_bbox",
+          "confidence": "high",
+          "physical_contact": false
+        },
+        "alpha_gt_0_pivot_for_comparison": {
+          "point": [
+            536,
+            1247
+          ],
+          "basis": "bottom-center of alpha>0 bbox; glow-sensitive",
+          "confidence": "medium"
+        },
+        "contact_anchors": [
+          {
+            "anchor_id": "CHAIR__CONTACT__NEAR_CENTER",
+            "point_px": [
+              493,
+              1241
+            ],
+            "basis": "center_of_measured_last_eight_row_support_interval_473_513",
+            "confidence": "high"
+          },
+          {
+            "anchor_id": "CHAIR__CONTACT__LEFT",
+            "point_px": [
+              129,
+              1019
+            ],
+            "basis": "manual_visible_foot_trace",
+            "confidence": "medium"
+          },
+          {
+            "anchor_id": "CHAIR__CONTACT__RIGHT",
+            "point_px": [
+              925,
+              1017
+            ],
+            "basis": "manual_visible_foot_trace",
+            "confidence": "medium"
+          },
+          {
+            "anchor_id": "CHAIR__CONTACT__FAR_CENTER",
+            "point_px": [
+              529,
+              815
+            ],
+            "basis": "manual_visible_foot_trace",
+            "confidence": "low"
+          }
+        ],
+        "surface": {
+          "surface_id": "CHAIR__SURFACE__SEAT",
+          "polygon_px": [
+            [
+              172,
+              540
+            ],
+            [
+              560,
+              428
+            ],
+            [
+              817,
+              562
+            ],
+            [
+              426,
+              727
+            ]
+          ],
+          "anchor_point_px": [
+            500,
+            570
+          ],
+          "basis": "manual_trace_of_visible_seat_cushion",
+          "confidence": "medium",
+          "child_slots": [
+            {
+              "slot_id": "CHAIR__SEAT__PRIMARY",
+              "point_px": [
+                500,
+                570
+              ],
+              "allowed_child_families": [
+                "CHARACTER_SEATED"
+              ]
+            }
+          ]
+        },
+        "surface_polygon_px": [
+          [
+            172,
+            540
+          ],
+          [
+            560,
+            428
+          ],
+          [
+            817,
+            562
+          ],
+          [
+            426,
+            727
+          ]
+        ],
+        "footprint": {
+          "polygon_px": [
+            [
+              129,
+              1019
+            ],
+            [
+              529,
+              815
+            ],
+            [
+              925,
+              1017
+            ],
+            [
+              493,
+              1241
+            ]
+          ],
+          "basis": "projected_polygon_through_four leg-contact estimates",
+          "confidence": "medium"
+        },
+        "footprint_polygon_px": [
+          [
+            129,
+            1019
+          ],
+          [
+            529,
+            815
+          ],
+          [
+            925,
+            1017
+          ],
+          [
+            493,
+            1241
+          ]
+        ],
+        "occlusion_anchors": [],
+        "occlusion_status": {
+          "primary_status": "BLOCKED_MISSING",
+          "reason": "No isolated occlusion mask or defensible occlusion boundary was supplied; none was fabricated."
+        },
+        "room_registration_suggestion": {
+          "source_to_room_transform": {
+            "scale_xy": [
+              0.17,
+              0.17
+            ],
+            "sprite_origin_room_px": [
+              532,
+              575
+            ],
+            "registration_pivot_room_px": [
+              622.8,
+              786.0
+            ]
+          },
+          "parent_surface_slot": null,
+          "basis": "reverse_estimate_from_flattened example_scene_iso.jpg with table overlap",
+          "confidence": "low",
+          "runtime_authoritative": false
+        },
+        "runtime_authoritative": false,
+        "evidence_policy": "Alpha bboxes and bottom support intervals are direct measurements. Manual visible-edge traces are inferred and retain per-record confidence/basis. Room transforms are low-confidence reverse estimates from flattened QA evidence."
+      },
+      "allowed_functions": [
+        "INSPECT",
+        "USE_FIXTURE",
+        "SIT"
+      ]
+    },
+    {
+      "fixture_id": "ROOM01__FIXTURE__DEAL_TABLE__FP2D__MISSING",
+      "primary_status": "BLOCKED_MISSING",
+      "supported_views": [],
+      "asset_path": null,
+      "allowed_functions": [],
+      "reason": "No perspective-compatible FP2D asset supplied; no perspective conversion performed."
+    },
+    {
+      "fixture_id": "ROOM01__FIXTURE__COUCH__FP2D__MISSING",
+      "primary_status": "BLOCKED_MISSING",
+      "supported_views": [],
+      "asset_path": null,
+      "allowed_functions": [],
+      "reason": "No perspective-compatible FP2D asset supplied; no perspective conversion performed."
+    },
+    {
+      "fixture_id": "ROOM01__FIXTURE__FOLDING_CHAIR__FP2D__MISSING",
+      "primary_status": "BLOCKED_MISSING",
+      "supported_views": [],
+      "asset_path": null,
+      "allowed_functions": [],
+      "reason": "No perspective-compatible FP2D asset supplied; no perspective conversion performed."
+    }
+  ]
+}

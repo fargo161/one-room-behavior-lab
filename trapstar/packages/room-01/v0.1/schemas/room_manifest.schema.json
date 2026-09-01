@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://trapstar.invalid/schemas/room_manifest.schema.json",
+  "title": "Room Manifest",
+  "type": "object",
+  "required": [
+    "room_id",
+    "room_state_id",
+    "supported_view_ids",
+    "view_profile_paths",
+    "plates",
+    "known_gaps"
+  ],
+  "properties": {
+    "room_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "room_state_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "primary_status": {
+      "enum": [
+        "AUTHORING_SOURCE",
+        "BLOCKED_MISSING",
+        "DEPRECATED",
+        "PRODUCTION_CANDIDATE",
+        "PRODUCTION_READY",
+        "PROVENANCE",
+        "QA_ONLY",
+        "QUARANTINE",
+        "REFERENCE"
+      ]
+    },
+    "supported_view_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "view_profile_paths": {
+      "type": "object"
+    },
+    "plates": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "element_instances": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "node_instances_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "known_gaps": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": true
+}

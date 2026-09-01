@@ -1,0 +1,5747 @@
+{
+  "schema_version": "1.0",
+  "delivered_image_count": 348,
+  "decode_failures": [],
+  "all_delivered_images_decode": true,
+  "known_prompt_alpha_254_candidates_checked": 10,
+  "expected_prompt_alpha_254_candidates": 10,
+  "alpha_checks": [
+    {
+      "source_asset_id": "environment.zip::environment/deal_table_empty_generated.png",
+      "source_measurement": {
+        "width": 1313,
+        "height": 1004,
+        "mode": "RGBA",
+        "alpha_bbox": [
+          16,
+          1,
+          1297,
+          988
+        ],
+        "alpha_min": 0,
+        "alpha_max": 254,
+        "transparent_pixels": 877185,
+        "opaque_pixels": 0,
+        "partial_alpha_pixels": 441067
+      },
+      "normalized_path": "production/room_01_apt_305/elements/fixtures/normalized/room01__fixture__deal_table__iso_3q__a01__alpha_normalized.png",
+      "normalized_measurement": {
+        "width": 1313,
+        "height": 1004,
+        "mode": "RGBA",
+        "alpha_bbox": [
+          16,
+          1,
+          1297,
+          988
+        ],
+        "alpha_min": 0,
+        "alpha_max": 255,
+        "transparent_pixels": 877185,
+        "opaque_pixels": 1499,
+        "partial_alpha_pixels": 439568
+      },
+      "background_check_path": "qa/alpha_checks/room01__fixture__deal_table__iso_3q__a01__background_check.png",
+      "backgrounds_checked": [
+        "WHITE",
+        "MID_GRAY",
+        "BLACK",
+        "CHECKER_VIEWER_ONLY"
+      ],
+      "checker_is_viewer_background_only": true,
+      "automated_result": "PASS_DECODE_ALPHA_RANGE",
+      "visual_result": "PASS_WITH_DOCUMENTED_SOURCE_EDGE_SOFTNESS"
+    },
+    {
+      "source_asset_id": "environment.zip::environment/couch_empty_generated.png",
+      "source_measurement": {
+        "width": 1518,
+        "height": 1024,
+        "mode": "RGBA",
+        "alpha_bbox": [
+          0,
+          14,
+          1502,
+          1024
+        ],
+        "alpha_min": 0,
+        "alpha_max": 254,
+        "transparent_pixels": 679225,
+        "opaque_pixels": 0,
+        "partial_alpha_pixels": 875207
+      },
+      "normalized_path": "production/room_01_apt_305/elements/fixtures/normalized/room01__fixture__couch__iso_3q__a01__alpha_normalized.png",
+      "normalized_measurement": {
+        "width": 1518,
+        "height": 1024,
+        "mode": "RGBA",
+        "alpha_bbox": [
+          0,
+          14,
+          1502,
+          1024
+        ],
+        "alpha_min": 0,
+        "alpha_max": 255,
+        "transparent_pixels": 679225,
+        "opaque_pixels": 4010,
+        "partial_alpha_pixels": 871197
+      },
+      "background_check_path": "qa/alpha_checks/room01__fixture__couch__iso_3q__a01__background_check.png",
+      "backgrounds_checked": [
+        "WHITE",
+        "MID_GRAY",
+        "BLACK",
+        "CHECKER_VIEWER_ONLY"
+      ],
+      "checker_is_viewer_background_only": true,
+      "automated_result": "PASS_DECODE_ALPHA_RANGE",
+      "visual_result": "PASS_WITH_DOCUMENTED_SOURCE_EDGE_SOFTNESS"
+    },
+    {
+      "source_asset_id": "environment.zip::environment/cash_stacks_generated.png",
+      "source_measurement": {
+        "width": 1364,
+        "height": 1024,
+        "mode": "RGBA",
+        "alpha_bbox": [
+          0,
+          16,
+          1348,
+          1024
+        ],
+        "alpha_min": 0,
+        "alpha_max": 254,
+        "transparent_pixels": 681138,
+        "opaque_pixels": 0,
+        "partial_alpha_pixels": 715598
+      },
+      "normalized_path": "production/room_01_apt_305/elements/items/normalized/room01__item__cash_stacks__iso_3q__a01__alpha_normalized.png",
+      "normalized_measurement": {
+        "width": 1364,
+        "height": 1024,
+        "mode": "RGBA",
+        "alpha_bbox": [
+          0,
+          16,
+          1348,
+          1024
+        ],
+        "alpha_min": 0,
+        "alpha_max": 255,
+        "transparent_pixels": 681138,
+        "opaque_pixels": 887,
+        "partial_alpha_pixels": 714711
+      },
+      "background_check_path": "qa/alpha_checks/room01__item__cash_stacks__iso_3q__a01__background_check.png",
+      "backgrounds_checked": [
+        "WHITE",
+        "MID_GRAY",
+        "BLACK",
+        "CHECKER_VIEWER_ONLY"
+      ],
+      "checker_is_viewer_background_only": true,
+      "automated_result": "PASS_DECODE_ALPHA_RANGE",
+      "visual_result": "PASS_WITH_DOCUMENTED_SOURCE_EDGE_SOFTNESS"
+    },
+    {
+      "source_asset_id": "environment.zip::environment/wrapped_packages_generated.png",
+      "source_measurement": {
+        "width": 1474,
+        "height": 1011,
+        "mode": "RGBA",
+        "alpha_bbox": [
+          0,
+          16,
+          1458,
+          1011
+        ],
+        "alpha_min": 0,
+        "alpha_max": 254,
+        "transparent_pixels": 770448,
+        "opaque_pixels": 0,
+        "partial_alpha_pixels": 719766
+      },
+      "normalized_path": "production/room_01_apt_305/elements/items/normalized/room01__item__wrapped_packages__iso_3q__a01__alpha_normalized.png",
+      "normalized_measurement": {
+        "width": 1474,
+        "height": 1011,
+        "mode": "RGBA",
+        "alpha_bbox": [
+          0,
+          16,
+          1458,
+          1011
+        ],
+        "alpha_min": 0,
+        "alpha_max": 255,
+        "transparent_pixels": 770448,
+        "opaque_pixels": 206,
+        "partial_alpha_pixels": 719560
+      },
+      "background_check_path": "qa/alpha_checks/room01__item__wrapped_packages__iso_3q__a01__background_check.png",
+      "backgrounds_checked": [
+        "WHITE",
+        "MID_GRAY",
+        "BLACK",
+        "CHECKER_VIEWER_ONLY"
+      ],
+      "checker_is_viewer_background_only": true,
+      "automated_result": "PASS_DECODE_ALPHA_RANGE",
+      "visual_result": "PASS_WITH_DOCUMENTED_SOURCE_EDGE_SOFTNESS"
+    },
+    {
+      "source_asset_id": "characters.zip::characters/idle_generated (4).png",
+      "source_measurement": {
+        "width": 549,
+        "height": 1563,
+        "mode": "RGBA",
+        "alpha_bbox": [
+          37,
+          37,
+          512,
+          1526
+        ],
+        "alpha_min": 0,
+        "alpha_max": 254,
+        "transparent_pixels": 419337,
+        "opaque_pixels": 0,
+        "partial_alpha_pixels": 438750
+      },
+      "normalized_path": "production/characters/goose_tracksuit/poses/normalized/char_goose_tracksuit__pose__idle__front_3q_viewer_right__iso_a01__normalized.png",
+      "normalized_measurement": {
+        "width": 1448,
+        "height": 1086,
+        "mode": "RGBA",
+        "alpha_bbox": [
+          672,
+          520,
+          777,
+          850
+        ],
+        "alpha_min": 0,
+        "alpha_max": 255,
+        "transparent_pixels": 1550053,
+        "opaque_pixels": 1176,
+        "partial_alpha_pixels": 21299
+      },
+      "background_check_path": "qa/alpha_checks/char_goose_tracksuit__pose__idle__front_3q_viewer_right__iso_a01__background_check.png",
+      "backgrounds_checked": [
+        "WHITE",
+        "MID_GRAY",
+        "BLACK",
+        "CHECKER_VIEWER_ONLY"
+      ],
+      "checker_is_viewer_background_only": true,
+      "automated_result": "PASS_DECODE_ALPHA_RANGE",
+      "visual_result": "PASS_WITH_DOCUMENTED_SOURCE_EDGE_SOFTNESS"
+    },
+    {
+      "source_asset_id": "characters.zip::characters/leaning_generated (2).png",
+      "source_measurement": {
+        "width": 521,
+        "height": 1602,
+        "mode": "RGBA",
+        "alpha_bbox": [
+          38,
+          38,
+          483,
+          1564
+        ],
+        "alpha_min": 0,
+        "alpha_max": 254,
+        "transparent_pixels": 428910,
+        "opaque_pixels": 0,
+        "partial_alpha_pixels": 405732
+      },
+      "normalized_path": "production/characters/marcus_broker/poses/normalized/char_marcus_broker__pose__leaning__front_3q_viewer_right__fp2d_a01__normalized.png",
+      "normalized_measurement": {
+        "width": 1448,
+        "height": 1086,
+        "mode": "RGBA",
+        "alpha_bbox": [
+          619,
+          320,
+          829,
+          1040
+        ],
+        "alpha_min": 0,
+        "alpha_max": 255,
+        "transparent_pixels": 1481472,
+        "opaque_pixels": 1862,
+        "partial_alpha_pixels": 89194
+      },
+      "background_check_path": "qa/alpha_checks/char_marcus_broker__pose__leaning__front_3q_viewer_right__fp2d_a01__background_check.png",
+      "backgrounds_checked": [
+        "WHITE",
+        "MID_GRAY",
+        "BLACK",
+        "CHECKER_VIEWER_ONLY"
+      ],
+      "checker_is_viewer_background_only": true,
+      "automated_result": "PASS_DECODE_ALPHA_RANGE",
+      "visual_result": "PASS_WITH_DOCUMENTED_SOURCE_EDGE_SOFTNESS"
+    },
+    {
+      "source_asset_id": "characters.zip::characters/broker_negotiating_generated.png",
+      "source_measurement": {
+        "width": 950,
+        "height": 1534,
+        "mode": "RGBA",
+        "alpha_bbox": [
+          16,
+          5,
+          934,
+          1518
+        ],
+        "alpha_min": 0,
+        "alpha_max": 254,
+        "transparent_pixels": 918606,
+        "opaque_pixels": 0,
+        "partial_alpha_pixels": 538694
+      },
+      "normalized_path": "reference/character_coverage/special_role_poses/marcus_broker/alpha_normalized/char_marcus_broker__pose__negotiate__front_3q_viewer_left__special_a01__alpha_normalized_only.png",
+      "normalized_measurement": {
+        "width": 950,
+        "height": 1534,
+        "mode": "RGBA",
+        "alpha_bbox": [
+          16,
+          5,
+          934,
+          1518
+        ],
+        "alpha_min": 0,
+        "alpha_max": 255,
+        "transparent_pixels": 918606,
+        "opaque_pixels": 4755,
+        "partial_alpha_pixels": 533939
+      },
+      "background_check_path": "qa/alpha_checks/char_marcus_broker__pose__negotiate__front_3q_viewer_left__special_a01__background_check.png",
+      "backgrounds_checked": [
+        "WHITE",
+        "MID_GRAY",
+        "BLACK",
+        "CHECKER_VIEWER_ONLY"
+      ],
+      "checker_is_viewer_background_only": true,
+      "automated_result": "PASS_DECODE_ALPHA_RANGE",
+      "visual_result": "PASS_WITH_DOCUMENTED_SOURCE_EDGE_SOFTNESS"
+    },
+    {
+      "source_asset_id": "characters.zip::characters/contact_idle_generated.png",
+      "source_measurement": {
+        "width": 833,
+        "height": 1492,
+        "mode": "RGBA",
+        "alpha_bbox": [
+          16,
+          11,
+          817,
+          1476
+        ],
+        "alpha_min": 0,
+        "alpha_max": 254,
+        "transparent_pixels": 814277,
+        "opaque_pixels": 0,
+        "partial_alpha_pixels": 428559
+      },
+      "normalized_path": "reference/character_coverage/special_role_poses/emilio_contact/alpha_normalized/char_emilio_contact__pose__idle_special__front_3q_viewer_right__special_a01__alpha_normalized_only.png",
+      "normalized_measurement": {
+        "width": 833,
+        "height": 1492,
+        "mode": "RGBA",
+        "alpha_bbox": [
+          16,
+          11,
+          817,
+          1476
+        ],
+        "alpha_min": 0,
+        "alpha_max": 255,
+        "transparent_pixels": 814277,
+        "opaque_pixels": 5193,
+        "partial_alpha_pixels": 423366
+      },
+      "background_check_path": "qa/alpha_checks/char_emilio_contact__pose__idle_special__front_3q_viewer_right__special_a01__background_check.png",
+      "backgrounds_checked": [
+        "WHITE",
+        "MID_GRAY",
+        "BLACK",
+        "CHECKER_VIEWER_ONLY"
+      ],
+      "checker_is_viewer_background_only": true,
+      "automated_result": "PASS_DECODE_ALPHA_RANGE",
+      "visual_result": "PASS_WITH_DOCUMENTED_SOURCE_EDGE_SOFTNESS"
+    },
+    {
+      "source_asset_id": "characters.zip::characters/tracksuit_arms_crossed_generated.png",
+      "source_measurement": {
+        "width": 761,
+        "height": 1510,
+        "mode": "RGBA",
+        "alpha_bbox": [
+          16,
+          5,
+          745,
+          1494
+        ],
+        "alpha_min": 0,
+        "alpha_max": 254,
+        "transparent_pixels": 734921,
+        "opaque_pixels": 0,
+        "partial_alpha_pixels": 414189
+      },
+      "normalized_path": "reference/character_coverage/special_role_poses/goose_tracksuit/alpha_normalized/char_goose_tracksuit__pose__arms_crossed_special__front_3q_viewer_right__special_a01__alpha_normalized_only.png",
+      "normalized_measurement": {
+        "width": 761,
+        "height": 1510,
+        "mode": "RGBA",
+        "alpha_bbox": [
+          16,
+          5,
+          745,
+          1494
+        ],
+        "alpha_min": 0,
+        "alpha_max": 255,
+        "transparent_pixels": 734921,
+        "opaque_pixels": 1825,
+        "partial_alpha_pixels": 412364
+      },
+      "background_check_path": "qa/alpha_checks/char_goose_tracksuit__pose__arms_crossed_special__front_3q_viewer_right__special_a01__background_check.png",
+      "backgrounds_checked": [
+        "WHITE",
+        "MID_GRAY",
+        "BLACK",
+        "CHECKER_VIEWER_ONLY"
+      ],
+      "checker_is_viewer_background_only": true,
+      "automated_result": "PASS_DECODE_ALPHA_RANGE",
+      "visual_result": "PASS_WITH_DOCUMENTED_SOURCE_EDGE_SOFTNESS"
+    },
+    {
+      "source_asset_id": "characters.zip::characters/tracksuit_watching_generated.png",
+      "source_measurement": {
+        "width": 505,
+        "height": 1519,
+        "mode": "RGBA",
+        "alpha_bbox": [
+          16,
+          16,
+          489,
+          1503
+        ],
+        "alpha_min": 0,
+        "alpha_max": 254,
+        "transparent_pixels": 392499,
+        "opaque_pixels": 0,
+        "partial_alpha_pixels": 374596
+      },
+      "normalized_path": "reference/character_coverage/special_role_poses/goose_tracksuit/alpha_normalized/char_goose_tracksuit__pose__watching__front_3q_viewer_left__special_a01__alpha_normalized_only.png",
+      "normalized_measurement": {
+        "width": 505,
+        "height": 1519,
+        "mode": "RGBA",
+        "alpha_bbox": [
+          16,
+          16,
+          489,
+          1503
+        ],
+        "alpha_min": 0,
+        "alpha_max": 255,
+        "transparent_pixels": 392499,
+        "opaque_pixels": 26736,
+        "partial_alpha_pixels": 347860
+      },
+      "background_check_path": "qa/alpha_checks/char_goose_tracksuit__pose__watching__front_3q_viewer_left__special_a01__background_check.png",
+      "backgrounds_checked": [
+        "WHITE",
+        "MID_GRAY",
+        "BLACK",
+        "CHECKER_VIEWER_ONLY"
+      ],
+      "checker_is_viewer_background_only": true,
+      "automated_result": "PASS_DECODE_ALPHA_RANGE",
+      "visual_result": "PASS_WITH_DOCUMENTED_SOURCE_EDGE_SOFTNESS"
+    },
+    {
+      "source_asset_id": "characters.zip::characters/marcus/expression_marcus/10_FULL_FACE_PUFFED_CHEEKS_01.png",
+      "source_measurement": {
+        "width": 615,
+        "height": 818,
+        "mode": "RGBA",
+        "alpha_bbox": [
+          72,
+          268,
+          581,
+          671
+        ],
+        "alpha_min": 0,
+        "alpha_max": 147,
+        "transparent_pixels": 356907,
+        "opaque_pixels": 0,
+        "partial_alpha_pixels": 146163
+      },
+      "normalized_path": "production/characters/marcus_broker/face/puffed_cheeks/marcus_puffed_cheeks_override_normalized.png",
+      "normalized_measurement": {
+        "width": 615,
+        "height": 818,
+        "mode": "RGBA",
+        "alpha_bbox": [
+          70,
+          266,
+          582,
+          677
+        ],
+        "alpha_min": 0,
+        "alpha_max": 255,
+        "transparent_pixels": 353061,
+        "opaque_pixels": 13246,
+        "partial_alpha_pixels": 136763
+      },
+      "background_check_path": "qa/alpha_checks/marcus_puffed_cheeks_override__background_check.png",
+      "backgrounds_checked": [
+        "WHITE",
+        "MID_GRAY",
+        "BLACK",
+        "CHECKER_VIEWER_ONLY"
+      ],
+      "checker_is_viewer_background_only": true,
+      "automated_result": "PASS_DECODE_ALPHA_RANGE",
+      "visual_result": "PASS_WITH_DOCUMENTED_SOURCE_EDGE_SOFTNESS"
+    }
+  ],
+  "production_watermarked_asset_count": 0,
+  "production_baked_checker_asset_count": 0,
+  "production_third_party_restricted_asset_count": 0,
+  "visual_qa_scope": {
+    "white_gray_black_checker": true,
+    "checker_used_as_viewer_background_only": true,
+    "edge_finding": "generated assets retain some soft edge/glow contamination; assets remain PRODUCTION_CANDIDATE",
+    "identity_drift_finding": "documented, not repainted or silently normalized"
+  },
+  "images": [
+    {
+      "path": "authoring/source_sheets/broker_source_sheet.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "authoring/source_sheets/contact_source_sheet.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "authoring/source_sheets/tracksuit_source_sheet.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/emilio_contact/poses/masters/char_emilio_contact__pose__arms_crossed__front_3q_viewer_right__iso_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        524,
+        1513
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/emilio_contact/poses/masters/char_emilio_contact__pose__arms_crossed__front__fp2d_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        484,
+        1358
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/emilio_contact/poses/masters/char_emilio_contact__pose__back_facing__rear_3q_viewer_right__iso_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        446,
+        1302
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/emilio_contact/poses/masters/char_emilio_contact__pose__back_facing__rear__fp2d_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        444,
+        1222
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/emilio_contact/poses/masters/char_emilio_contact__pose__hands_on_hips__front_3q_viewer_right__iso_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        515,
+        1343
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/emilio_contact/poses/masters/char_emilio_contact__pose__hands_on_hips__front__fp2d_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        549,
+        1297
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/emilio_contact/poses/masters/char_emilio_contact__pose__idle__front_3q_viewer_right__iso_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        452,
+        1287
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/emilio_contact/poses/masters/char_emilio_contact__pose__idle__front__fp2d_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        509,
+        1387
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/emilio_contact/poses/masters/char_emilio_contact__pose__leaning__front_3q_viewer_right__fp2d_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        480,
+        1452
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/emilio_contact/poses/masters/char_emilio_contact__pose__leaning__front_3q_viewer_right__iso_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        451,
+        1333
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/emilio_contact/poses/masters/char_emilio_contact__pose__open_hand_negotiating__front_3q_viewer_right__iso_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        559,
+        1364
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/emilio_contact/poses/masters/char_emilio_contact__pose__open_hand_negotiating__front__fp2d_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        586,
+        1432
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/emilio_contact/poses/masters/char_emilio_contact__pose__phone_or_listening__profile_3q_viewer_right__fp2d_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        355,
+        1344
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/emilio_contact/poses/masters/char_emilio_contact__pose__phone_or_listening__profile_3q_viewer_right__iso_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        441,
+        1335
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/emilio_contact/poses/masters/char_emilio_contact__pose__pointing__front_3q_viewer_right__iso_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        540,
+        1589
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/emilio_contact/poses/masters/char_emilio_contact__pose__pointing__front__fp2d_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        521,
+        1544
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/emilio_contact/poses/normalized/char_emilio_contact__pose__arms_crossed__front_3q_viewer_right__iso_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/emilio_contact/poses/normalized/char_emilio_contact__pose__arms_crossed__front__fp2d_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/emilio_contact/poses/normalized/char_emilio_contact__pose__back_facing__rear_3q_viewer_right__iso_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/emilio_contact/poses/normalized/char_emilio_contact__pose__back_facing__rear__fp2d_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/emilio_contact/poses/normalized/char_emilio_contact__pose__hands_on_hips__front_3q_viewer_right__iso_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/emilio_contact/poses/normalized/char_emilio_contact__pose__hands_on_hips__front__fp2d_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/emilio_contact/poses/normalized/char_emilio_contact__pose__idle__front_3q_viewer_right__iso_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/emilio_contact/poses/normalized/char_emilio_contact__pose__idle__front__fp2d_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/emilio_contact/poses/normalized/char_emilio_contact__pose__leaning__front_3q_viewer_right__fp2d_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/emilio_contact/poses/normalized/char_emilio_contact__pose__leaning__front_3q_viewer_right__iso_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/emilio_contact/poses/normalized/char_emilio_contact__pose__open_hand_negotiating__front_3q_viewer_right__iso_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/emilio_contact/poses/normalized/char_emilio_contact__pose__open_hand_negotiating__front__fp2d_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/emilio_contact/poses/normalized/char_emilio_contact__pose__phone_or_listening__profile_3q_viewer_right__fp2d_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/emilio_contact/poses/normalized/char_emilio_contact__pose__phone_or_listening__profile_3q_viewer_right__iso_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/emilio_contact/poses/normalized/char_emilio_contact__pose__pointing__front_3q_viewer_right__iso_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/emilio_contact/poses/normalized/char_emilio_contact__pose__pointing__front__fp2d_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/base/goose__base_head.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/goose_slot_registration_guide.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        230,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/masks/left_brow__mask.png",
+      "format": "PNG",
+      "mode": "L",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/masks/left_eye__mask.png",
+      "format": "PNG",
+      "mode": "L",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/masks/lower_face__mask.png",
+      "format": "PNG",
+      "mode": "L",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/masks/right_brow__mask.png",
+      "format": "PNG",
+      "mode": "L",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/masks/right_eye__mask.png",
+      "format": "PNG",
+      "mode": "L",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_01/goose_expr_01__left_brow.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_01/goose_expr_01__left_eye.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_01/goose_expr_01__lower_face.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_01/goose_expr_01__right_brow.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_01/goose_expr_01__right_eye.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_02/goose_expr_02__left_brow.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_02/goose_expr_02__left_eye.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_02/goose_expr_02__lower_face.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_02/goose_expr_02__right_brow.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_02/goose_expr_02__right_eye.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_03/goose_expr_03__left_brow.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_03/goose_expr_03__left_eye.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_03/goose_expr_03__lower_face.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_03/goose_expr_03__right_brow.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_03/goose_expr_03__right_eye.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_04/goose_expr_04__left_brow.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_04/goose_expr_04__left_eye.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_04/goose_expr_04__lower_face.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_04/goose_expr_04__right_brow.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_04/goose_expr_04__right_eye.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_05/goose_expr_05__left_brow.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_05/goose_expr_05__left_eye.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_05/goose_expr_05__lower_face.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_05/goose_expr_05__right_brow.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_05/goose_expr_05__right_eye.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_06/goose_expr_06__left_brow.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_06/goose_expr_06__left_eye.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_06/goose_expr_06__lower_face.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_06/goose_expr_06__right_brow.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_06/goose_expr_06__right_eye.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_07/goose_expr_07__left_brow.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_07/goose_expr_07__left_eye.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_07/goose_expr_07__lower_face.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_07/goose_expr_07__right_brow.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_07/goose_expr_07__right_eye.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_08/goose_expr_08__left_brow.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_08/goose_expr_08__left_eye.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_08/goose_expr_08__lower_face.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_08/goose_expr_08__right_brow.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_08/goose_expr_08__right_eye.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_09/goose_expr_09__left_brow.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_09/goose_expr_09__left_eye.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_09/goose_expr_09__lower_face.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_09/goose_expr_09__right_brow.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_09/goose_expr_09__right_eye.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_10/goose_expr_10__left_brow.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_10/goose_expr_10__left_eye.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_10/goose_expr_10__lower_face.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_10/goose_expr_10__right_brow.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_10/goose_expr_10__right_eye.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_11/goose_expr_11__left_brow.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_11/goose_expr_11__left_eye.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_11/goose_expr_11__lower_face.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_11/goose_expr_11__right_brow.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_11/goose_expr_11__right_eye.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_12/goose_expr_12__left_brow.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_12/goose_expr_12__left_eye.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_12/goose_expr_12__lower_face.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_12/goose_expr_12__right_brow.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_12/goose_expr_12__right_eye.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_13/goose_expr_13__left_brow.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_13/goose_expr_13__left_eye.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_13/goose_expr_13__lower_face.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_13/goose_expr_13__right_brow.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_13/goose_expr_13__right_eye.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_14/goose_expr_14__left_brow.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_14/goose_expr_14__left_eye.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_14/goose_expr_14__lower_face.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_14/goose_expr_14__right_brow.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_14/goose_expr_14__right_eye.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_15/goose_expr_15__left_brow.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_15/goose_expr_15__left_eye.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_15/goose_expr_15__lower_face.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_15/goose_expr_15__right_brow.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_15/goose_expr_15__right_eye.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_16/goose_expr_16__left_brow.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_16/goose_expr_16__left_eye.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_16/goose_expr_16__lower_face.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_16/goose_expr_16__right_brow.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_16/goose_expr_16__right_eye.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_17/goose_expr_17__left_brow.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_17/goose_expr_17__left_eye.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_17/goose_expr_17__lower_face.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_17/goose_expr_17__right_brow.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_17/goose_expr_17__right_eye.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_18/goose_expr_18__left_brow.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_18/goose_expr_18__left_eye.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_18/goose_expr_18__lower_face.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_18/goose_expr_18__right_brow.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_18/goose_expr_18__right_eye.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/poses/masters/char_goose_tracksuit__pose__arms_crossed__front_3q_viewer_right__iso_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        470,
+        1462
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/poses/masters/char_goose_tracksuit__pose__arms_crossed__front__fp2d_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        498,
+        1515
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/poses/masters/char_goose_tracksuit__pose__back_facing__rear_3q_viewer_right__iso_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        486,
+        1454
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/poses/masters/char_goose_tracksuit__pose__back_facing__rear__fp2d_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        511,
+        1462
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/poses/masters/char_goose_tracksuit__pose__hands_on_hips__front_3q_viewer_right__iso_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        529,
+        1375
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/poses/masters/char_goose_tracksuit__pose__hands_on_hips__front__fp2d_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        596,
+        1392
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/poses/masters/char_goose_tracksuit__pose__idle__front_3q_viewer_right__iso_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        549,
+        1563
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/poses/masters/char_goose_tracksuit__pose__idle__front__fp2d_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        505,
+        1438
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/poses/masters/char_goose_tracksuit__pose__leaning__front_3q_viewer_right__fp2d_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        462,
+        1439
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/poses/masters/char_goose_tracksuit__pose__leaning__front_3q_viewer_right__iso_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        464,
+        1499
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/poses/masters/char_goose_tracksuit__pose__open_hand_negotiating__front_3q_viewer_right__iso_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        618,
+        1520
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/poses/masters/char_goose_tracksuit__pose__open_hand_negotiating__front__fp2d_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        454,
+        1191
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/poses/masters/char_goose_tracksuit__pose__phone_or_listening__profile_3q_viewer_right__fp2d_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        335,
+        1369
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/poses/masters/char_goose_tracksuit__pose__phone_or_listening__profile_3q_viewer_right__iso_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        425,
+        1431
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/poses/masters/char_goose_tracksuit__pose__pointing__front_3q_viewer_right__iso_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        456,
+        1408
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/poses/masters/char_goose_tracksuit__pose__pointing__front__fp2d_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        432,
+        1350
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/poses/normalized/char_goose_tracksuit__pose__arms_crossed__front_3q_viewer_right__iso_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/poses/normalized/char_goose_tracksuit__pose__arms_crossed__front__fp2d_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/poses/normalized/char_goose_tracksuit__pose__back_facing__rear_3q_viewer_right__iso_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/poses/normalized/char_goose_tracksuit__pose__back_facing__rear__fp2d_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/poses/normalized/char_goose_tracksuit__pose__hands_on_hips__front_3q_viewer_right__iso_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/poses/normalized/char_goose_tracksuit__pose__hands_on_hips__front__fp2d_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/poses/normalized/char_goose_tracksuit__pose__idle__front_3q_viewer_right__iso_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/poses/normalized/char_goose_tracksuit__pose__idle__front__fp2d_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/poses/normalized/char_goose_tracksuit__pose__leaning__front_3q_viewer_right__fp2d_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/poses/normalized/char_goose_tracksuit__pose__leaning__front_3q_viewer_right__iso_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/poses/normalized/char_goose_tracksuit__pose__open_hand_negotiating__front_3q_viewer_right__iso_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/poses/normalized/char_goose_tracksuit__pose__open_hand_negotiating__front__fp2d_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/poses/normalized/char_goose_tracksuit__pose__phone_or_listening__profile_3q_viewer_right__fp2d_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/poses/normalized/char_goose_tracksuit__pose__phone_or_listening__profile_3q_viewer_right__iso_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/poses/normalized/char_goose_tracksuit__pose__pointing__front_3q_viewer_right__iso_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/goose_tracksuit/poses/normalized/char_goose_tracksuit__pose__pointing__front__fp2d_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/00_base_reference_locked.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/20_upper_face_left_brow_angry_arched_01.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        295,
+        274
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/20_upper_face_left_brow_arched_tall_01.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        255,
+        283
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/20_upper_face_left_brow_arched_tall_02.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        363,
+        274
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/20_upper_face_left_brow_furrow_angled_01.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        344,
+        291
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/20_upper_face_left_brow_furrow_center_deep_01.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        363,
+        304
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/20_upper_face_left_brow_furrow_outer_wrinkle_01.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        326,
+        252
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/20_upper_face_left_brow_furrow_outer_wrinkle_02.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        299,
+        267
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/20_upper_face_left_brow_low_flat_01.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        541,
+        344
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/20_upper_face_left_brow_low_flat_02.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        275,
+        241
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/20_upper_face_left_brow_low_heavy_01.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        276,
+        274
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/20_upper_face_left_brow_neutral_wrinkled_01.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        316,
+        298
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/20_upper_face_left_brow_neutral_wrinkled_02.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        294,
+        314
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/20_upper_face_left_brow_neutral_wrinkled_03.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        288,
+        291
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/30_upper_face_right_brow_angry_arched_01.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        357,
+        287
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/30_upper_face_right_brow_arched_tall_01.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        273,
+        296
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/30_upper_face_right_brow_furrow_angled_01.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        328,
+        307
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/30_upper_face_right_brow_furrow_angled_02.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        371,
+        327
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/30_upper_face_right_brow_furrow_center_deep_01.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        297,
+        281
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/30_upper_face_right_brow_furrow_outer_wrinkle_01.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        301,
+        230
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/30_upper_face_right_brow_furrow_outer_wrinkle_02.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        254,
+        217
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/30_upper_face_right_brow_furrow_outer_wrinkle_03.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        298,
+        178
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/30_upper_face_right_brow_low_flat_01.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        298,
+        135
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/30_upper_face_right_brow_low_heavy_01.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        245,
+        239
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/30_upper_face_right_brow_low_heavy_02.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        300,
+        303
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/30_upper_face_right_brow_neutral_wrinkled_01.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        337,
+        324
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/30_upper_face_right_brow_neutral_wrinkled_02.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        384,
+        319
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/40_eye_left_shut_tight_01.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        224,
+        151
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/50_eye_right_shut_tight_01.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        224,
+        151
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/60_eye_left_closed_tight_01.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        252,
+        145
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/60_eye_left_half_lid_01.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        243,
+        255
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/60_eye_left_open_neutral_01.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        198,
+        80
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/60_eye_left_side_look_01.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        215,
+        110
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/60_eye_left_side_look_02.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        225,
+        115
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/60_eye_left_side_look_03.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        197,
+        110
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/60_eye_left_side_look_04.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        207,
+        107
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/60_eye_left_squint_tight_01.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        177,
+        93
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/60_eye_left_wide_open_alert_01.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        165,
+        87
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/65_eye_right_closed_tight_01.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        230,
+        176
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/65_eye_right_half_lid_01.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        297,
+        205
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/65_eye_right_open_neutral_01.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        153,
+        81
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/65_eye_right_side_look_01.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        222,
+        103
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/65_eye_right_side_look_02.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        247,
+        124
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/65_eye_right_side_look_03.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        207,
+        107
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/65_eye_right_side_look_04.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        197,
+        110
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/65_eye_right_squint_tight_01.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        193,
+        88
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/65_eye_right_wide_open_alert_01.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        224,
+        91
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/70_lower_face_frown_pout_01.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        371,
+        360
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/70_lower_face_frown_tense_01.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        440,
+        368
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/70_lower_face_grimace_fear_01.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        489,
+        511
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/70_lower_face_laugh_wide_open_01.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        464,
+        520
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/70_lower_face_mouth_open_small_01.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        455,
+        520
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/70_lower_face_mouth_open_soft_01.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        419,
+        356
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/70_lower_face_neutral_closed_01.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        378,
+        348
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/70_lower_face_shout_open_01.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        402,
+        584
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/70_lower_face_smile_closed_01.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        446,
+        412
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/70_lower_face_smile_closed_02.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        427,
+        318
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/70_lower_face_smile_closed_03.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        379,
+        374
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/70_lower_face_smile_closed_04.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        499,
+        371
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/70_lower_face_smile_teeth_01.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        451,
+        397
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/native_slots/70_lower_face_smile_teeth_02.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        464,
+        424
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/puffed_cheeks/marcus_puffed_cheeks_override_normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        615,
+        818
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/puffed_cheeks/puffed_cheeks_content_from_pxz.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        615,
+        818
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/face/puffed_cheeks/puffed_cheeks_mask_from_pxz.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        615,
+        818
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/poses/masters/char_marcus_broker__pose__arms_crossed__front_3q_viewer_right__iso_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        519,
+        1485
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/poses/masters/char_marcus_broker__pose__arms_crossed__front__fp2d_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        435,
+        1244
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/poses/masters/char_marcus_broker__pose__back_facing__rear_3q_viewer_right__iso_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        469,
+        1274
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/poses/masters/char_marcus_broker__pose__back_facing__rear__fp2d_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        544,
+        1451
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/poses/masters/char_marcus_broker__pose__hands_on_hips__front_3q_viewer_right__iso_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        551,
+        1358
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/poses/masters/char_marcus_broker__pose__hands_on_hips__front__fp2d_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        611,
+        1511
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/poses/masters/char_marcus_broker__pose__idle__front_3q_viewer_right__iso_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        536,
+        1433
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/poses/masters/char_marcus_broker__pose__idle__front__fp2d_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        538,
+        1543
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/poses/masters/char_marcus_broker__pose__leaning__front_3q_viewer_right__fp2d_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        521,
+        1602
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/poses/masters/char_marcus_broker__pose__leaning__front_3q_viewer_right__iso_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        467,
+        1393
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/poses/masters/char_marcus_broker__pose__open_hand_negotiating__front_3q_viewer_right__iso_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        686,
+        1549
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/poses/masters/char_marcus_broker__pose__open_hand_negotiating__front__fp2d_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        509,
+        1310
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/poses/masters/char_marcus_broker__pose__phone_or_listening__profile_3q_viewer_right__fp2d_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        365,
+        1358
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/poses/masters/char_marcus_broker__pose__phone_or_listening__profile_3q_viewer_right__iso_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        488,
+        1498
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/poses/masters/char_marcus_broker__pose__pointing__front_3q_viewer_right__iso_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        469,
+        1345
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/poses/masters/char_marcus_broker__pose__pointing__front__fp2d_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        485,
+        1380
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/poses/normalized/char_marcus_broker__pose__arms_crossed__front_3q_viewer_right__iso_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/poses/normalized/char_marcus_broker__pose__arms_crossed__front__fp2d_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/poses/normalized/char_marcus_broker__pose__back_facing__rear_3q_viewer_right__iso_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/poses/normalized/char_marcus_broker__pose__back_facing__rear__fp2d_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/poses/normalized/char_marcus_broker__pose__hands_on_hips__front_3q_viewer_right__iso_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/poses/normalized/char_marcus_broker__pose__hands_on_hips__front__fp2d_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/poses/normalized/char_marcus_broker__pose__idle__front_3q_viewer_right__iso_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/poses/normalized/char_marcus_broker__pose__idle__front__fp2d_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/poses/normalized/char_marcus_broker__pose__leaning__front_3q_viewer_right__fp2d_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/poses/normalized/char_marcus_broker__pose__leaning__front_3q_viewer_right__iso_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/poses/normalized/char_marcus_broker__pose__open_hand_negotiating__front_3q_viewer_right__iso_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/poses/normalized/char_marcus_broker__pose__open_hand_negotiating__front__fp2d_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/poses/normalized/char_marcus_broker__pose__phone_or_listening__profile_3q_viewer_right__fp2d_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/poses/normalized/char_marcus_broker__pose__phone_or_listening__profile_3q_viewer_right__iso_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/poses/normalized/char_marcus_broker__pose__pointing__front_3q_viewer_right__iso_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/characters/marcus_broker/poses/normalized/char_marcus_broker__pose__pointing__front__fp2d_a01__normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/room_01_apt_305/elements/fixtures/masters/room01__fixture__couch__iso_3q__a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1518,
+        1024
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/room_01_apt_305/elements/fixtures/masters/room01__fixture__deal_table__iso_3q__a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1313,
+        1004
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/room_01_apt_305/elements/fixtures/masters/room01__fixture__folding_chair__iso_3q__a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1072,
+        1264
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/room_01_apt_305/elements/fixtures/normalized/room01__fixture__couch__iso_3q__a01__alpha_normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1518,
+        1024
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/room_01_apt_305/elements/fixtures/normalized/room01__fixture__deal_table__iso_3q__a01__alpha_normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1313,
+        1004
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/room_01_apt_305/elements/items/masters/room01__item__cash_stacks__iso_3q__a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1364,
+        1024
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/room_01_apt_305/elements/items/masters/room01__item__wrapped_packages__iso_3q__a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1474,
+        1011
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "production/room_01_apt_305/elements/items/normalized/room01__item__cash_stacks__iso_3q__a01__alpha_normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1364,
+        1024
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/room_01_apt_305/elements/items/normalized/room01__item__wrapped_packages__iso_3q__a01__alpha_normalized.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1474,
+        1011
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "production/room_01_apt_305/views/fp2d/plate.png",
+      "format": "PNG",
+      "mode": "RGB",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "production/room_01_apt_305/views/iso/plate.png",
+      "format": "PNG",
+      "mode": "RGB",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "provenance/deprecated_source_evidence/marcus_puffed_cheeks_degraded_alpha.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        615,
+        818
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        147
+      ]
+    },
+    {
+      "path": "qa/alpha_checks/char_emilio_contact__pose__idle_special__front_3q_viewer_right__special_a01__background_check.png",
+      "format": "PNG",
+      "mode": "RGB",
+      "dimensions": [
+        636,
+        1180
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "qa/alpha_checks/char_goose_tracksuit__pose__arms_crossed_special__front_3q_viewer_right__special_a01__background_check.png",
+      "format": "PNG",
+      "mode": "RGB",
+      "dimensions": [
+        636,
+        1180
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "qa/alpha_checks/char_goose_tracksuit__pose__idle__front_3q_viewer_right__iso_a01__background_check.png",
+      "format": "PNG",
+      "mode": "RGB",
+      "dimensions": [
+        636,
+        1180
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "qa/alpha_checks/char_goose_tracksuit__pose__watching__front_3q_viewer_left__special_a01__background_check.png",
+      "format": "PNG",
+      "mode": "RGB",
+      "dimensions": [
+        636,
+        1180
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "qa/alpha_checks/char_marcus_broker__pose__leaning__front_3q_viewer_right__fp2d_a01__background_check.png",
+      "format": "PNG",
+      "mode": "RGB",
+      "dimensions": [
+        636,
+        1180
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "qa/alpha_checks/char_marcus_broker__pose__negotiate__front_3q_viewer_left__special_a01__background_check.png",
+      "format": "PNG",
+      "mode": "RGB",
+      "dimensions": [
+        636,
+        1180
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "qa/alpha_checks/marcus_puffed_cheeks_override__background_check.png",
+      "format": "PNG",
+      "mode": "RGB",
+      "dimensions": [
+        636,
+        1180
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "qa/alpha_checks/room01__fixture__couch__iso_3q__a01__background_check.png",
+      "format": "PNG",
+      "mode": "RGB",
+      "dimensions": [
+        636,
+        1180
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "qa/alpha_checks/room01__fixture__deal_table__iso_3q__a01__background_check.png",
+      "format": "PNG",
+      "mode": "RGB",
+      "dimensions": [
+        636,
+        1180
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "qa/alpha_checks/room01__item__cash_stacks__iso_3q__a01__background_check.png",
+      "format": "PNG",
+      "mode": "RGB",
+      "dimensions": [
+        636,
+        1180
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "qa/alpha_checks/room01__item__wrapped_packages__iso_3q__a01__background_check.png",
+      "format": "PNG",
+      "mode": "RGB",
+      "dimensions": [
+        636,
+        1180
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "qa/alpha_checks/supplied_qualitative/alpha_black.jpg",
+      "format": "JPEG",
+      "mode": "RGB",
+      "dimensions": [
+        1680,
+        1380
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "qa/alpha_checks/supplied_qualitative/alpha_gray.jpg",
+      "format": "JPEG",
+      "mode": "RGB",
+      "dimensions": [
+        1680,
+        1380
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "qa/alpha_checks/supplied_qualitative/alpha_white.jpg",
+      "format": "JPEG",
+      "mode": "RGB",
+      "dimensions": [
+        1680,
+        1380
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "qa/example_composites/example_scene_2d.jpg",
+      "format": "JPEG",
+      "mode": "RGB",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "qa/example_composites/example_scene_iso.jpg",
+      "format": "JPEG",
+      "mode": "RGB",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "qa/placement_checks/character_pose/broker_2d_neutral_validation.jpg",
+      "format": "JPEG",
+      "mode": "RGB",
+      "dimensions": [
+        1600,
+        1100
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "qa/placement_checks/character_pose/broker_iso_neutral_validation.jpg",
+      "format": "JPEG",
+      "mode": "RGB",
+      "dimensions": [
+        1600,
+        1100
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "qa/placement_checks/character_pose/contact_2d_neutral_validation.jpg",
+      "format": "JPEG",
+      "mode": "RGB",
+      "dimensions": [
+        1600,
+        1100
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "qa/placement_checks/character_pose/contact_iso_neutral_validation.jpg",
+      "format": "JPEG",
+      "mode": "RGB",
+      "dimensions": [
+        1600,
+        1100
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "qa/placement_checks/character_pose/tracksuit_2d_neutral_validation.jpg",
+      "format": "JPEG",
+      "mode": "RGB",
+      "dimensions": [
+        1600,
+        1100
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "qa/placement_checks/character_pose/tracksuit_iso_neutral_validation.jpg",
+      "format": "JPEG",
+      "mode": "RGB",
+      "dimensions": [
+        1600,
+        1100
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "qa/placement_checks/goose_face_previews/goose_expr_01__preview.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "qa/placement_checks/goose_face_previews/goose_expr_02__preview.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "qa/placement_checks/goose_face_previews/goose_expr_03__preview.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "qa/placement_checks/goose_face_previews/goose_expr_04__preview.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "qa/placement_checks/goose_face_previews/goose_expr_05__preview.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "qa/placement_checks/goose_face_previews/goose_expr_06__preview.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "qa/placement_checks/goose_face_previews/goose_expr_07__preview.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "qa/placement_checks/goose_face_previews/goose_expr_08__preview.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "qa/placement_checks/goose_face_previews/goose_expr_09__preview.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "qa/placement_checks/goose_face_previews/goose_expr_10__preview.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "qa/placement_checks/goose_face_previews/goose_expr_11__preview.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "qa/placement_checks/goose_face_previews/goose_expr_12__preview.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "qa/placement_checks/goose_face_previews/goose_expr_13__preview.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "qa/placement_checks/goose_face_previews/goose_expr_14__preview.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "qa/placement_checks/goose_face_previews/goose_expr_15__preview.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "qa/placement_checks/goose_face_previews/goose_expr_16__preview.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "qa/placement_checks/goose_face_previews/goose_expr_17__preview.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "qa/placement_checks/goose_face_previews/goose_expr_18__preview.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1187,
+        1484
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "qa/placement_checks/goose_face_previews/goose_expression_contact_sheet.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1560,
+        1035
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        235,
+        255
+      ]
+    },
+    {
+      "path": "qa/placement_checks/lighting_variants/ts_var_006a__apartment_deal_dialogue_lightened.jpg",
+      "format": "JPEG",
+      "mode": "RGB",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "qa/placement_checks/lighting_variants/ts_var_007a__hallway_contact_dialogue_lightened.jpg",
+      "format": "JPEG",
+      "mode": "RGB",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "qa/placement_checks/lighting_variants/ts_var_009a__apartment_ambush_fps_lightened.jpg",
+      "format": "JPEG",
+      "mode": "RGB",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "qa/placement_checks/room/broker_2d_room_validation.jpg",
+      "format": "JPEG",
+      "mode": "RGB",
+      "dimensions": [
+        1600,
+        560
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "qa/placement_checks/room/broker_iso_room_validation.jpg",
+      "format": "JPEG",
+      "mode": "RGB",
+      "dimensions": [
+        1600,
+        560
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "qa/placement_checks/room/contact_2d_room_validation.jpg",
+      "format": "JPEG",
+      "mode": "RGB",
+      "dimensions": [
+        1600,
+        560
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "qa/placement_checks/room/contact_iso_room_validation.jpg",
+      "format": "JPEG",
+      "mode": "RGB",
+      "dimensions": [
+        1600,
+        560
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "qa/placement_checks/room/tracksuit_2d_room_validation.jpg",
+      "format": "JPEG",
+      "mode": "RGB",
+      "dimensions": [
+        1600,
+        560
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "qa/placement_checks/room/tracksuit_iso_room_validation.jpg",
+      "format": "JPEG",
+      "mode": "RGB",
+      "dimensions": [
+        1600,
+        560
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "reference/character_coverage/broker_three_view_sheet.png",
+      "format": "PNG",
+      "mode": "RGB",
+      "dimensions": [
+        1900,
+        1120
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "reference/character_coverage/contact_three_view_sheet.png",
+      "format": "PNG",
+      "mode": "RGB",
+      "dimensions": [
+        1900,
+        1120
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "reference/character_coverage/special_role_poses/emilio_contact/alpha_normalized/char_emilio_contact__pose__idle_special__front_3q_viewer_right__special_a01__alpha_normalized_only.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        833,
+        1492
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "reference/character_coverage/special_role_poses/emilio_contact/masters/char_emilio_contact__pose__defensive__front__special_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        906,
+        1623
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "reference/character_coverage/special_role_poses/emilio_contact/masters/char_emilio_contact__pose__idle_special__front_3q_viewer_right__special_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        833,
+        1492
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "reference/character_coverage/special_role_poses/goose_tracksuit/alpha_normalized/char_goose_tracksuit__pose__arms_crossed_special__front_3q_viewer_right__special_a01__alpha_normalized_only.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        761,
+        1510
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "reference/character_coverage/special_role_poses/goose_tracksuit/alpha_normalized/char_goose_tracksuit__pose__watching__front_3q_viewer_left__special_a01__alpha_normalized_only.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        505,
+        1519
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "reference/character_coverage/special_role_poses/goose_tracksuit/masters/char_goose_tracksuit__pose__arms_crossed_special__front_3q_viewer_right__special_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        761,
+        1510
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "reference/character_coverage/special_role_poses/goose_tracksuit/masters/char_goose_tracksuit__pose__watching__front_3q_viewer_left__special_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        505,
+        1519
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "reference/character_coverage/special_role_poses/marcus_broker/alpha_normalized/char_marcus_broker__pose__negotiate__front_3q_viewer_left__special_a01__alpha_normalized_only.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        950,
+        1534
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "reference/character_coverage/special_role_poses/marcus_broker/masters/char_marcus_broker__pose__negotiate__front_3q_viewer_left__special_a01__master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        950,
+        1534
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "reference/character_coverage/tracksuit_three_view_sheet.png",
+      "format": "PNG",
+      "mode": "RGB",
+      "dimensions": [
+        1900,
+        1120
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "reference/environment_concepts/ts_src_011__hallway_isometric_social_master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "reference/environment_concepts/ts_src_013__apartment_isometric_deal_master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "reference/environment_concepts/ts_src_014__apartment_isometric_combat_master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "reference/gameplay_ui_concepts/ts_src_001__deal_negotiation_ui_wide.png",
+      "format": "PNG",
+      "mode": "RGB",
+      "dimensions": [
+        724,
+        362
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "reference/gameplay_ui_concepts/ts_src_002__apartment_isometric_explore_ui_wide.png",
+      "format": "PNG",
+      "mode": "RGB",
+      "dimensions": [
+        724,
+        362
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "reference/gameplay_ui_concepts/ts_src_003__lockpick_closeup_ui_wide.png",
+      "format": "PNG",
+      "mode": "RGB",
+      "dimensions": [
+        724,
+        362
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "reference/gameplay_ui_concepts/ts_src_004__contact_dialogue_closeup_ui_wide.png",
+      "format": "PNG",
+      "mode": "RGB",
+      "dimensions": [
+        724,
+        362
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "reference/gameplay_ui_concepts/ts_src_005__hallway_fps_exit_ui_wide.png",
+      "format": "PNG",
+      "mode": "RGB",
+      "dimensions": [
+        724,
+        362
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "reference/gameplay_ui_concepts/ts_src_006__apartment_deal_dialogue_master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "reference/gameplay_ui_concepts/ts_src_007__hallway_contact_dialogue_master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "reference/gameplay_ui_concepts/ts_src_009__apartment_ambush_fps_master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "reference/gameplay_ui_concepts/ts_src_010__hallway_firefight_fps_master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "reference/gameplay_ui_concepts/ts_src_012__drawer_puzzle_first_person_master.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "reference/mode_evidence/ts_src_008__six_panel_mode_contact_sheet.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "frames": 1,
+      "decode": "PASS",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    }
+  ]
+}

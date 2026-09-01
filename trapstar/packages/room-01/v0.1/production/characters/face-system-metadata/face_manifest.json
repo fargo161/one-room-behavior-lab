@@ -1,0 +1,599 @@
+{
+  "schema_id": "TRAPSTAR_GOOSE_NATIVE_FIVE_SLOT_FACE_V01",
+  "identity": "CHAR_GOOSE_TRACKSUIT",
+  "primary_status": "PRODUCTION_CANDIDATE",
+  "canvas": {
+    "width": 1187,
+    "height": 1484,
+    "unit": "pixel",
+    "origin": "TOP_LEFT",
+    "xPositive": "RIGHT_ON_IMAGE",
+    "yPositive": "DOWN"
+  },
+  "anatomical_side_convention": "Anatomical LEFT appears on image-right in the unmirrored frontal view.",
+  "slot_draw_order": [
+    "BASE_HEAD",
+    "LEFT_BROW",
+    "RIGHT_BROW",
+    "LEFT_EYE",
+    "RIGHT_EYE",
+    "LOWER_FACE"
+  ],
+  "slot_definitions": [
+    {
+      "slot_id": "LEFT_BROW",
+      "anatomical_side": "LEFT",
+      "canvas_aligned": true,
+      "mask_rect": {
+        "x": 577,
+        "y": 405,
+        "width": 331,
+        "height": 171
+      },
+      "mask_path": "production/characters/goose_tracksuit/face/native_five_slot/masks/left_brow__mask.png",
+      "feather_pixels": 20
+    },
+    {
+      "slot_id": "RIGHT_BROW",
+      "anatomical_side": "RIGHT",
+      "canvas_aligned": true,
+      "mask_rect": {
+        "x": 280,
+        "y": 405,
+        "width": 331,
+        "height": 171
+      },
+      "mask_path": "production/characters/goose_tracksuit/face/native_five_slot/masks/right_brow__mask.png",
+      "feather_pixels": 20
+    },
+    {
+      "slot_id": "LEFT_EYE",
+      "anatomical_side": "LEFT",
+      "canvas_aligned": true,
+      "mask_rect": {
+        "x": 584,
+        "y": 515,
+        "width": 304,
+        "height": 191
+      },
+      "mask_path": "production/characters/goose_tracksuit/face/native_five_slot/masks/left_eye__mask.png",
+      "feather_pixels": 20
+    },
+    {
+      "slot_id": "RIGHT_EYE",
+      "anatomical_side": "RIGHT",
+      "canvas_aligned": true,
+      "mask_rect": {
+        "x": 300,
+        "y": 515,
+        "width": 304,
+        "height": 191
+      },
+      "mask_path": "production/characters/goose_tracksuit/face/native_five_slot/masks/right_eye__mask.png",
+      "feather_pixels": 20
+    },
+    {
+      "slot_id": "LOWER_FACE",
+      "anatomical_side": null,
+      "canvas_aligned": true,
+      "mask_rect": {
+        "x": 285,
+        "y": 635,
+        "width": 618,
+        "height": 366
+      },
+      "mask_path": "production/characters/goose_tracksuit/face/native_five_slot/masks/lower_face__mask.png",
+      "feather_pixels": 24
+    }
+  ],
+  "expression_count": 18,
+  "expressions": [
+    {
+      "expression_id": "GOOSE_EXPR_01",
+      "expression_name": "hard_laugh",
+      "base_head": "production/characters/goose_tracksuit/face/native_five_slot/base/goose__base_head.png",
+      "slots": {
+        "LEFT_BROW": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_01/goose_expr_01__left_brow.png",
+        "RIGHT_BROW": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_01/goose_expr_01__right_brow.png",
+        "LEFT_EYE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_01/goose_expr_01__left_eye.png",
+        "RIGHT_EYE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_01/goose_expr_01__right_eye.png",
+        "LOWER_FACE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_01/goose_expr_01__lower_face.png"
+      },
+      "draw_order": [
+        "BASE_HEAD",
+        "LEFT_BROW",
+        "RIGHT_BROW",
+        "LEFT_EYE",
+        "RIGHT_EYE",
+        "LOWER_FACE"
+      ],
+      "source_reference_cell": {
+        "row": 1,
+        "column": 1
+      },
+      "notes": [
+        "Wide jaw uses most of the standardized LOWER_FACE footprint."
+      ],
+      "status": "PRODUCTION_CANDIDATE"
+    },
+    {
+      "expression_id": "GOOSE_EXPR_02",
+      "expression_name": "contented_tooth_smile",
+      "base_head": "production/characters/goose_tracksuit/face/native_five_slot/base/goose__base_head.png",
+      "slots": {
+        "LEFT_BROW": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_02/goose_expr_02__left_brow.png",
+        "RIGHT_BROW": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_02/goose_expr_02__right_brow.png",
+        "LEFT_EYE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_02/goose_expr_02__left_eye.png",
+        "RIGHT_EYE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_02/goose_expr_02__right_eye.png",
+        "LOWER_FACE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_02/goose_expr_02__lower_face.png"
+      },
+      "draw_order": [
+        "BASE_HEAD",
+        "LEFT_BROW",
+        "RIGHT_BROW",
+        "LEFT_EYE",
+        "RIGHT_EYE",
+        "LOWER_FACE"
+      ],
+      "source_reference_cell": {
+        "row": 1,
+        "column": 2
+      },
+      "notes": [],
+      "status": "PRODUCTION_CANDIDATE"
+    },
+    {
+      "expression_id": "GOOSE_EXPR_03",
+      "expression_name": "wailing_crying",
+      "base_head": "production/characters/goose_tracksuit/face/native_five_slot/base/goose__base_head.png",
+      "slots": {
+        "LEFT_BROW": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_03/goose_expr_03__left_brow.png",
+        "RIGHT_BROW": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_03/goose_expr_03__right_brow.png",
+        "LEFT_EYE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_03/goose_expr_03__left_eye.png",
+        "RIGHT_EYE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_03/goose_expr_03__right_eye.png",
+        "LOWER_FACE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_03/goose_expr_03__lower_face.png"
+      },
+      "draw_order": [
+        "BASE_HEAD",
+        "LEFT_BROW",
+        "RIGHT_BROW",
+        "LEFT_EYE",
+        "RIGHT_EYE",
+        "LOWER_FACE"
+      ],
+      "source_reference_cell": {
+        "row": 1,
+        "column": 3
+      },
+      "notes": [
+        "Wide dropped jaw uses most of the standardized LOWER_FACE footprint."
+      ],
+      "status": "PRODUCTION_CANDIDATE"
+    },
+    {
+      "expression_id": "GOOSE_EXPR_04",
+      "expression_name": "tearful_pout_cringe",
+      "base_head": "production/characters/goose_tracksuit/face/native_five_slot/base/goose__base_head.png",
+      "slots": {
+        "LEFT_BROW": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_04/goose_expr_04__left_brow.png",
+        "RIGHT_BROW": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_04/goose_expr_04__right_brow.png",
+        "LEFT_EYE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_04/goose_expr_04__left_eye.png",
+        "RIGHT_EYE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_04/goose_expr_04__right_eye.png",
+        "LOWER_FACE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_04/goose_expr_04__lower_face.png"
+      },
+      "draw_order": [
+        "BASE_HEAD",
+        "LEFT_BROW",
+        "RIGHT_BROW",
+        "LEFT_EYE",
+        "RIGHT_EYE",
+        "LOWER_FACE"
+      ],
+      "source_reference_cell": {
+        "row": 1,
+        "column": 4
+      },
+      "notes": [
+        "Chin compression is contained inside LOWER_FACE rather than changing the neck silhouette."
+      ],
+      "status": "PRODUCTION_CANDIDATE"
+    },
+    {
+      "expression_id": "GOOSE_EXPR_05",
+      "expression_name": "smug_skeptical_smirk",
+      "base_head": "production/characters/goose_tracksuit/face/native_five_slot/base/goose__base_head.png",
+      "slots": {
+        "LEFT_BROW": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_05/goose_expr_05__left_brow.png",
+        "RIGHT_BROW": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_05/goose_expr_05__right_brow.png",
+        "LEFT_EYE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_05/goose_expr_05__left_eye.png",
+        "RIGHT_EYE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_05/goose_expr_05__right_eye.png",
+        "LOWER_FACE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_05/goose_expr_05__lower_face.png"
+      },
+      "draw_order": [
+        "BASE_HEAD",
+        "LEFT_BROW",
+        "RIGHT_BROW",
+        "LEFT_EYE",
+        "RIGHT_EYE",
+        "LOWER_FACE"
+      ],
+      "source_reference_cell": {
+        "row": 1,
+        "column": 5
+      },
+      "notes": [],
+      "status": "PRODUCTION_CANDIDATE"
+    },
+    {
+      "expression_id": "GOOSE_EXPR_06",
+      "expression_name": "delighted_surprise",
+      "base_head": "production/characters/goose_tracksuit/face/native_five_slot/base/goose__base_head.png",
+      "slots": {
+        "LEFT_BROW": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_06/goose_expr_06__left_brow.png",
+        "RIGHT_BROW": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_06/goose_expr_06__right_brow.png",
+        "LEFT_EYE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_06/goose_expr_06__left_eye.png",
+        "RIGHT_EYE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_06/goose_expr_06__right_eye.png",
+        "LOWER_FACE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_06/goose_expr_06__lower_face.png"
+      },
+      "draw_order": [
+        "BASE_HEAD",
+        "LEFT_BROW",
+        "RIGHT_BROW",
+        "LEFT_EYE",
+        "RIGHT_EYE",
+        "LOWER_FACE"
+      ],
+      "source_reference_cell": {
+        "row": 1,
+        "column": 6
+      },
+      "notes": [
+        "Wide open grin uses most of the standardized LOWER_FACE footprint."
+      ],
+      "status": "PRODUCTION_CANDIDATE"
+    },
+    {
+      "expression_id": "GOOSE_EXPR_07",
+      "expression_name": "pleased_tight_smirk",
+      "base_head": "production/characters/goose_tracksuit/face/native_five_slot/base/goose__base_head.png",
+      "slots": {
+        "LEFT_BROW": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_07/goose_expr_07__left_brow.png",
+        "RIGHT_BROW": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_07/goose_expr_07__right_brow.png",
+        "LEFT_EYE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_07/goose_expr_07__left_eye.png",
+        "RIGHT_EYE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_07/goose_expr_07__right_eye.png",
+        "LOWER_FACE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_07/goose_expr_07__lower_face.png"
+      },
+      "draw_order": [
+        "BASE_HEAD",
+        "LEFT_BROW",
+        "RIGHT_BROW",
+        "LEFT_EYE",
+        "RIGHT_EYE",
+        "LOWER_FACE"
+      ],
+      "source_reference_cell": {
+        "row": 2,
+        "column": 1
+      },
+      "notes": [],
+      "status": "PRODUCTION_CANDIDATE"
+    },
+    {
+      "expression_id": "GOOSE_EXPR_08",
+      "expression_name": "holding_breath_puffed_cheeks",
+      "base_head": "production/characters/goose_tracksuit/face/native_five_slot/base/goose__base_head.png",
+      "slots": {
+        "LEFT_BROW": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_08/goose_expr_08__left_brow.png",
+        "RIGHT_BROW": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_08/goose_expr_08__right_brow.png",
+        "LEFT_EYE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_08/goose_expr_08__left_eye.png",
+        "RIGHT_EYE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_08/goose_expr_08__right_eye.png",
+        "LOWER_FACE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_08/goose_expr_08__lower_face.png"
+      },
+      "draw_order": [
+        "BASE_HEAD",
+        "LEFT_BROW",
+        "RIGHT_BROW",
+        "LEFT_EYE",
+        "RIGHT_EYE",
+        "LOWER_FACE"
+      ],
+      "source_reference_cell": {
+        "row": 2,
+        "column": 2
+      },
+      "notes": [
+        "Cheek inflation is clipped to the common LOWER_FACE footprint to preserve base-head interchangeability."
+      ],
+      "status": "PRODUCTION_CANDIDATE"
+    },
+    {
+      "expression_id": "GOOSE_EXPR_09",
+      "expression_name": "neutral_deadpan",
+      "base_head": "production/characters/goose_tracksuit/face/native_five_slot/base/goose__base_head.png",
+      "slots": {
+        "LEFT_BROW": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_09/goose_expr_09__left_brow.png",
+        "RIGHT_BROW": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_09/goose_expr_09__right_brow.png",
+        "LEFT_EYE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_09/goose_expr_09__left_eye.png",
+        "RIGHT_EYE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_09/goose_expr_09__right_eye.png",
+        "LOWER_FACE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_09/goose_expr_09__lower_face.png"
+      },
+      "draw_order": [
+        "BASE_HEAD",
+        "LEFT_BROW",
+        "RIGHT_BROW",
+        "LEFT_EYE",
+        "RIGHT_EYE",
+        "LOWER_FACE"
+      ],
+      "source_reference_cell": {
+        "row": 2,
+        "column": 3
+      },
+      "notes": [],
+      "status": "PRODUCTION_CANDIDATE"
+    },
+    {
+      "expression_id": "GOOSE_EXPR_10",
+      "expression_name": "curious_up_side_glance",
+      "base_head": "production/characters/goose_tracksuit/face/native_five_slot/base/goose__base_head.png",
+      "slots": {
+        "LEFT_BROW": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_10/goose_expr_10__left_brow.png",
+        "RIGHT_BROW": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_10/goose_expr_10__right_brow.png",
+        "LEFT_EYE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_10/goose_expr_10__left_eye.png",
+        "RIGHT_EYE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_10/goose_expr_10__right_eye.png",
+        "LOWER_FACE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_10/goose_expr_10__lower_face.png"
+      },
+      "draw_order": [
+        "BASE_HEAD",
+        "LEFT_BROW",
+        "RIGHT_BROW",
+        "LEFT_EYE",
+        "RIGHT_EYE",
+        "LOWER_FACE"
+      ],
+      "source_reference_cell": {
+        "row": 2,
+        "column": 4
+      },
+      "notes": [
+        "Reference head turn is normalized to a fixed frontal base; emotion is carried by gaze, brows, and mouth."
+      ],
+      "status": "PRODUCTION_CANDIDATE"
+    },
+    {
+      "expression_id": "GOOSE_EXPR_11",
+      "expression_name": "awkward_grit_teeth_smile",
+      "base_head": "production/characters/goose_tracksuit/face/native_five_slot/base/goose__base_head.png",
+      "slots": {
+        "LEFT_BROW": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_11/goose_expr_11__left_brow.png",
+        "RIGHT_BROW": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_11/goose_expr_11__right_brow.png",
+        "LEFT_EYE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_11/goose_expr_11__left_eye.png",
+        "RIGHT_EYE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_11/goose_expr_11__right_eye.png",
+        "LOWER_FACE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_11/goose_expr_11__lower_face.png"
+      },
+      "draw_order": [
+        "BASE_HEAD",
+        "LEFT_BROW",
+        "RIGHT_BROW",
+        "LEFT_EYE",
+        "RIGHT_EYE",
+        "LOWER_FACE"
+      ],
+      "source_reference_cell": {
+        "row": 2,
+        "column": 5
+      },
+      "notes": [],
+      "status": "PRODUCTION_CANDIDATE"
+    },
+    {
+      "expression_id": "GOOSE_EXPR_12",
+      "expression_name": "cross_eyed_downward_focus",
+      "base_head": "production/characters/goose_tracksuit/face/native_five_slot/base/goose__base_head.png",
+      "slots": {
+        "LEFT_BROW": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_12/goose_expr_12__left_brow.png",
+        "RIGHT_BROW": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_12/goose_expr_12__right_brow.png",
+        "LEFT_EYE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_12/goose_expr_12__left_eye.png",
+        "RIGHT_EYE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_12/goose_expr_12__right_eye.png",
+        "LOWER_FACE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_12/goose_expr_12__lower_face.png"
+      },
+      "draw_order": [
+        "BASE_HEAD",
+        "LEFT_BROW",
+        "RIGHT_BROW",
+        "LEFT_EYE",
+        "RIGHT_EYE",
+        "LOWER_FACE"
+      ],
+      "source_reference_cell": {
+        "row": 2,
+        "column": 6
+      },
+      "notes": [],
+      "status": "PRODUCTION_CANDIDATE"
+    },
+    {
+      "expression_id": "GOOSE_EXPR_13",
+      "expression_name": "worried_shock_slack_jaw",
+      "base_head": "production/characters/goose_tracksuit/face/native_five_slot/base/goose__base_head.png",
+      "slots": {
+        "LEFT_BROW": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_13/goose_expr_13__left_brow.png",
+        "RIGHT_BROW": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_13/goose_expr_13__right_brow.png",
+        "LEFT_EYE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_13/goose_expr_13__left_eye.png",
+        "RIGHT_EYE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_13/goose_expr_13__right_eye.png",
+        "LOWER_FACE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_13/goose_expr_13__lower_face.png"
+      },
+      "draw_order": [
+        "BASE_HEAD",
+        "LEFT_BROW",
+        "RIGHT_BROW",
+        "LEFT_EYE",
+        "RIGHT_EYE",
+        "LOWER_FACE"
+      ],
+      "source_reference_cell": {
+        "row": 3,
+        "column": 1
+      },
+      "notes": [
+        "Reference chin lift is normalized to a fixed frontal base; the slack-jaw signal remains in LOWER_FACE."
+      ],
+      "status": "PRODUCTION_CANDIDATE"
+    },
+    {
+      "expression_id": "GOOSE_EXPR_14",
+      "expression_name": "big_toothy_grin",
+      "base_head": "production/characters/goose_tracksuit/face/native_five_slot/base/goose__base_head.png",
+      "slots": {
+        "LEFT_BROW": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_14/goose_expr_14__left_brow.png",
+        "RIGHT_BROW": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_14/goose_expr_14__right_brow.png",
+        "LEFT_EYE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_14/goose_expr_14__left_eye.png",
+        "RIGHT_EYE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_14/goose_expr_14__right_eye.png",
+        "LOWER_FACE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_14/goose_expr_14__lower_face.png"
+      },
+      "draw_order": [
+        "BASE_HEAD",
+        "LEFT_BROW",
+        "RIGHT_BROW",
+        "LEFT_EYE",
+        "RIGHT_EYE",
+        "LOWER_FACE"
+      ],
+      "source_reference_cell": {
+        "row": 3,
+        "column": 2
+      },
+      "notes": [],
+      "status": "PRODUCTION_CANDIDATE"
+    },
+    {
+      "expression_id": "GOOSE_EXPR_15",
+      "expression_name": "serene_closed_eye_smile",
+      "base_head": "production/characters/goose_tracksuit/face/native_five_slot/base/goose__base_head.png",
+      "slots": {
+        "LEFT_BROW": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_15/goose_expr_15__left_brow.png",
+        "RIGHT_BROW": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_15/goose_expr_15__right_brow.png",
+        "LEFT_EYE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_15/goose_expr_15__left_eye.png",
+        "RIGHT_EYE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_15/goose_expr_15__right_eye.png",
+        "LOWER_FACE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_15/goose_expr_15__lower_face.png"
+      },
+      "draw_order": [
+        "BASE_HEAD",
+        "LEFT_BROW",
+        "RIGHT_BROW",
+        "LEFT_EYE",
+        "RIGHT_EYE",
+        "LOWER_FACE"
+      ],
+      "source_reference_cell": {
+        "row": 3,
+        "column": 3
+      },
+      "notes": [],
+      "status": "PRODUCTION_CANDIDATE"
+    },
+    {
+      "expression_id": "GOOSE_EXPR_16",
+      "expression_name": "nervous_pleading_grin",
+      "base_head": "production/characters/goose_tracksuit/face/native_five_slot/base/goose__base_head.png",
+      "slots": {
+        "LEFT_BROW": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_16/goose_expr_16__left_brow.png",
+        "RIGHT_BROW": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_16/goose_expr_16__right_brow.png",
+        "LEFT_EYE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_16/goose_expr_16__left_eye.png",
+        "RIGHT_EYE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_16/goose_expr_16__right_eye.png",
+        "LOWER_FACE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_16/goose_expr_16__lower_face.png"
+      },
+      "draw_order": [
+        "BASE_HEAD",
+        "LEFT_BROW",
+        "RIGHT_BROW",
+        "LEFT_EYE",
+        "RIGHT_EYE",
+        "LOWER_FACE"
+      ],
+      "source_reference_cell": {
+        "row": 3,
+        "column": 4
+      },
+      "notes": [],
+      "status": "PRODUCTION_CANDIDATE"
+    },
+    {
+      "expression_id": "GOOSE_EXPR_17",
+      "expression_name": "sad_sobbing_pout",
+      "base_head": "production/characters/goose_tracksuit/face/native_five_slot/base/goose__base_head.png",
+      "slots": {
+        "LEFT_BROW": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_17/goose_expr_17__left_brow.png",
+        "RIGHT_BROW": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_17/goose_expr_17__right_brow.png",
+        "LEFT_EYE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_17/goose_expr_17__left_eye.png",
+        "RIGHT_EYE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_17/goose_expr_17__right_eye.png",
+        "LOWER_FACE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_17/goose_expr_17__lower_face.png"
+      },
+      "draw_order": [
+        "BASE_HEAD",
+        "LEFT_BROW",
+        "RIGHT_BROW",
+        "LEFT_EYE",
+        "RIGHT_EYE",
+        "LOWER_FACE"
+      ],
+      "source_reference_cell": {
+        "row": 3,
+        "column": 5
+      },
+      "notes": [
+        "Chin compression is contained inside LOWER_FACE rather than changing the neck silhouette."
+      ],
+      "status": "PRODUCTION_CANDIDATE"
+    },
+    {
+      "expression_id": "GOOSE_EXPR_18",
+      "expression_name": "sly_uneven_grin",
+      "base_head": "production/characters/goose_tracksuit/face/native_five_slot/base/goose__base_head.png",
+      "slots": {
+        "LEFT_BROW": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_18/goose_expr_18__left_brow.png",
+        "RIGHT_BROW": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_18/goose_expr_18__right_brow.png",
+        "LEFT_EYE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_18/goose_expr_18__left_eye.png",
+        "RIGHT_EYE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_18/goose_expr_18__right_eye.png",
+        "LOWER_FACE": "production/characters/goose_tracksuit/face/native_five_slot/slots/goose_expr_18/goose_expr_18__lower_face.png"
+      },
+      "draw_order": [
+        "BASE_HEAD",
+        "LEFT_BROW",
+        "RIGHT_BROW",
+        "LEFT_EYE",
+        "RIGHT_EYE",
+        "LOWER_FACE"
+      ],
+      "source_reference_cell": {
+        "row": 3,
+        "column": 6
+      },
+      "notes": [],
+      "status": "PRODUCTION_CANDIDATE"
+    }
+  ],
+  "validation": {
+    "manifest_and_recomposition": "PASS",
+    "slot_assets": 90,
+    "all_slot_paths_resolve": true,
+    "not_equivalent_to_production_readiness": true,
+    "visual_findings": [
+      "expression 08 can expose cheek/slot-boundary compromise",
+      "expression 10 normalizes a head-turn reference to the frontal base and can show identity/lighting drift",
+      "cross-expression swaps may expose lighting or wrinkle seams"
+    ]
+  },
+  "excluded_source_dependencies": [
+    "raw generated_full renders with baked checker/background",
+    "watermarked expression reference",
+    "raw prompts containing local/private context",
+    "supplied build script (inspected, not executed)"
+  ],
+  "pose_attachment": {
+    "supported": false,
+    "reason": "No deterministic head socket links the 1187x1484 face canvas to the supplied full-pose sprites."
+  },
+  "source_manifest_sha256": "d2191ffba6842a1f1543844021edef3f5fad24593f3b1b7f5c8f56b2b0985bf1",
+  "sanitization": "Raw generatedSource/preview/private prompt dependencies were removed; paths resolve only inside this package."
+}

@@ -1,0 +1,559 @@
+{
+  "schema_version": "1.0",
+  "authority": "direct measurements from uploaded images; inferred values explicitly marked",
+  "supplied_validation_sheets_role": "qualitative QA evidence, not a measured size bible",
+  "legacy_repository_scale_values": {
+    "iso_700": "advisory compatibility default only; not used as measured target",
+    "fp2d_760": "advisory compatibility default only; not used as measured target"
+  },
+  "profiles": {
+    "VIEW_FP2D": {
+      "view_canvas": [
+        1448,
+        1086
+      ],
+      "nominal_character_content_height": 720,
+      "permitted_content_height_range": [
+        684,
+        756
+      ],
+      "ground_foot_baseline_y": 1040,
+      "safe_character_region": [
+        220,
+        280,
+        1280,
+        1000
+      ],
+      "normalized_head_box_estimate": [
+        600,
+        320,
+        848,
+        493
+      ],
+      "normalized_head_anchor_estimate": [
+        724,
+        414
+      ],
+      "normalized_pelvis_anchor_estimate": [
+        724,
+        716
+      ],
+      "safe_padding": {
+        "top": 46,
+        "left": 96,
+        "right": 96,
+        "bottom": 46
+      },
+      "depth_scale_behavior": "fixed nominal scale; no perspective depth scaling inferred",
+      "orientation_vocabulary": [
+        "FRONT",
+        "REAR",
+        "FRONT_3Q_VIEWER_RIGHT",
+        "PROFILE_3Q_VIEWER_RIGHT"
+      ],
+      "direct_source_content_height_distribution": {
+        "count": 24,
+        "min": 1135,
+        "max": 1526,
+        "median": 1323.5,
+        "mean": 1332.96
+      },
+      "direct_source_content_width_distribution": {
+        "count": 24,
+        "min": 269,
+        "max": 539,
+        "median": 431.5,
+        "mean": 422.04
+      },
+      "numeric_basis": {
+        "direct": [
+          "room canvas 1448x1086",
+          "24 source alpha bounding boxes",
+          "qualitative validation/example-scene pixel comparison"
+        ],
+        "inferred": [
+          "720 target height",
+          "684-756 tolerance",
+          "head/pelvis proportional estimates"
+        ],
+        "confidence": "medium"
+      }
+    },
+    "VIEW_ISO": {
+      "view_canvas": [
+        1448,
+        1086
+      ],
+      "nominal_character_content_height": 330,
+      "permitted_content_height_range": [
+        297,
+        363
+      ],
+      "ground_foot_baseline_y": 850,
+      "safe_character_region": [
+        410,
+        410,
+        1265,
+        928
+      ],
+      "normalized_head_box_estimate": [
+        665,
+        563,
+        783,
+        643
+      ],
+      "normalized_head_anchor_estimate": [
+        724,
+        607
+      ],
+      "normalized_pelvis_anchor_estimate": [
+        724,
+        702
+      ],
+      "safe_padding": {
+        "top": 48,
+        "left": 64,
+        "right": 64,
+        "bottom": 48
+      },
+      "depth_scale_behavior": "nominal at center depth; suggested 0.90-1.10 display multiplier only after anchor review",
+      "orientation_vocabulary": [
+        "FRONT_3Q_VIEWER_RIGHT",
+        "REAR_3Q_VIEWER_RIGHT",
+        "PROFILE_3Q_VIEWER_RIGHT"
+      ],
+      "direct_source_content_height_distribution": {
+        "count": 24,
+        "min": 1214,
+        "max": 1513,
+        "median": 1351.5,
+        "mean": 1353.62
+      },
+      "direct_source_content_width_distribution": {
+        "count": 24,
+        "min": 357,
+        "max": 612,
+        "median": 416.0,
+        "mean": 436.83
+      },
+      "numeric_basis": {
+        "direct": [
+          "room canvas 1448x1086",
+          "24 source alpha bounding boxes",
+          "qualitative validation/example-scene pixel comparison"
+        ],
+        "inferred": [
+          "330 target height",
+          "297-363 tolerance",
+          "neutral baseline and depth scaling suggestion"
+        ],
+        "confidence": "medium"
+      }
+    }
+  },
+  "cross_scale_comparisons": {
+    "door": {
+      "finding": "static in each flattened plate; no separable measured door asset",
+      "status": "inferred visual comparison only"
+    },
+    "deal_table": {
+      "iso_target_bbox_hint": [
+        342,
+        287
+      ],
+      "uniform_scale": 0.295,
+      "basis": "reverse estimate from flattened example scene",
+      "confidence": "low"
+    },
+    "folding_chair": {
+      "iso_target_bbox_hint": [
+        142,
+        205
+      ],
+      "uniform_scale": 0.17,
+      "basis": "reverse estimate from flattened example scene",
+      "confidence": "low"
+    },
+    "fp2d_fixture_comparison": {
+      "status": "BLOCKED_MISSING",
+      "reason": "perspective-compatible fixture variants absent"
+    }
+  },
+  "specialist_measurement_appendix": {
+    "groups": [
+      {
+        "character_id": "goose",
+        "view": "2d",
+        "sample_count": 8,
+        "evidence": "direct",
+        "canvas_width_px": {
+          "min": 335,
+          "median": 480.0,
+          "max": 596
+        },
+        "canvas_height_px": {
+          "min": 1191,
+          "median": 1415.0,
+          "max": 1515
+        },
+        "effective_width_px": {
+          "min": 267,
+          "median": 410.0,
+          "max": 528
+        },
+        "effective_height_px": {
+          "min": 1133,
+          "median": 1346.0,
+          "max": 1441
+        },
+        "effective_top_padding_px": {
+          "min": 29,
+          "median": 34.5,
+          "max": 37
+        },
+        "effective_bottom_padding_px": {
+          "min": 29,
+          "median": 34.5,
+          "max": 37
+        },
+        "inferred_foot_baseline_y_px": {
+          "min": 1161,
+          "median": 1379.5,
+          "max": 1477
+        }
+      },
+      {
+        "character_id": "goose",
+        "view": "iso_3_4",
+        "sample_count": 8,
+        "evidence": "direct",
+        "canvas_width_px": {
+          "min": 425,
+          "median": 478.0,
+          "max": 618
+        },
+        "canvas_height_px": {
+          "min": 1375,
+          "median": 1458.0,
+          "max": 1563
+        },
+        "effective_width_px": {
+          "min": 355,
+          "median": 406.0,
+          "max": 544
+        },
+        "effective_height_px": {
+          "min": 1308,
+          "median": 1386.0,
+          "max": 1486
+        },
+        "effective_top_padding_px": {
+          "min": 34,
+          "median": 36.0,
+          "max": 38
+        },
+        "effective_bottom_padding_px": {
+          "min": 33,
+          "median": 36.0,
+          "max": 39
+        },
+        "inferred_foot_baseline_y_px": {
+          "min": 1341,
+          "median": 1421.0,
+          "max": 1523
+        }
+      },
+      {
+        "character_id": "goose",
+        "view": "special",
+        "sample_count": 2,
+        "evidence": "direct",
+        "canvas_width_px": {
+          "min": 505,
+          "median": 633.0,
+          "max": 761
+        },
+        "canvas_height_px": {
+          "min": 1510,
+          "median": 1514.5,
+          "max": 1519
+        },
+        "effective_width_px": {
+          "min": 433,
+          "median": 445.0,
+          "max": 457
+        },
+        "effective_height_px": {
+          "min": 1456,
+          "median": 1467.0,
+          "max": 1478
+        },
+        "effective_top_padding_px": {
+          "min": 11,
+          "median": 14.5,
+          "max": 18
+        },
+        "effective_bottom_padding_px": {
+          "min": 23,
+          "median": 33.0,
+          "max": 43
+        },
+        "inferred_foot_baseline_y_px": {
+          "min": 1466,
+          "median": 1480.5,
+          "max": 1495
+        }
+      },
+      {
+        "character_id": "marcus",
+        "view": "2d",
+        "sample_count": 8,
+        "evidence": "direct",
+        "canvas_width_px": {
+          "min": 365,
+          "median": 515.0,
+          "max": 611
+        },
+        "canvas_height_px": {
+          "min": 1244,
+          "median": 1415.5,
+          "max": 1602
+        },
+        "effective_width_px": {
+          "min": 299,
+          "median": 442.0,
+          "max": 537
+        },
+        "effective_height_px": {
+          "min": 1182,
+          "median": 1345.5,
+          "max": 1519
+        },
+        "effective_top_padding_px": {
+          "min": 31,
+          "median": 35.0,
+          "max": 41
+        },
+        "effective_bottom_padding_px": {
+          "min": 31,
+          "median": 35.0,
+          "max": 42
+        },
+        "inferred_foot_baseline_y_px": {
+          "min": 1212,
+          "median": 1379.5,
+          "max": 1559
+        }
+      },
+      {
+        "character_id": "marcus",
+        "view": "iso_3_4",
+        "sample_count": 8,
+        "evidence": "direct",
+        "canvas_width_px": {
+          "min": 467,
+          "median": 503.5,
+          "max": 686
+        },
+        "canvas_height_px": {
+          "min": 1274,
+          "median": 1413.0,
+          "max": 1549
+        },
+        "effective_width_px": {
+          "min": 399,
+          "median": 430.5,
+          "max": 610
+        },
+        "effective_height_px": {
+          "min": 1212,
+          "median": 1344.0,
+          "max": 1474
+        },
+        "effective_top_padding_px": {
+          "min": 31,
+          "median": 34.5,
+          "max": 37
+        },
+        "effective_bottom_padding_px": {
+          "min": 31,
+          "median": 34.5,
+          "max": 38
+        },
+        "inferred_foot_baseline_y_px": {
+          "min": 1242,
+          "median": 1377.5,
+          "max": 1510
+        }
+      },
+      {
+        "character_id": "marcus",
+        "view": "special",
+        "sample_count": 1,
+        "evidence": "direct",
+        "canvas_width_px": {
+          "min": 950,
+          "median": 950.0,
+          "max": 950
+        },
+        "canvas_height_px": {
+          "min": 1534,
+          "median": 1534.0,
+          "max": 1534
+        },
+        "effective_width_px": {
+          "min": 805,
+          "median": 805.0,
+          "max": 805
+        },
+        "effective_height_px": {
+          "min": 1502,
+          "median": 1502.0,
+          "max": 1502
+        },
+        "effective_top_padding_px": {
+          "min": 11,
+          "median": 11.0,
+          "max": 11
+        },
+        "effective_bottom_padding_px": {
+          "min": 21,
+          "median": 21.0,
+          "max": 21
+        },
+        "inferred_foot_baseline_y_px": {
+          "min": 1512,
+          "median": 1512.0,
+          "max": 1512
+        }
+      },
+      {
+        "character_id": "emilio",
+        "view": "2d",
+        "sample_count": 8,
+        "evidence": "direct",
+        "canvas_width_px": {
+          "min": 355,
+          "median": 496.5,
+          "max": 586
+        },
+        "canvas_height_px": {
+          "min": 1222,
+          "median": 1372.5,
+          "max": 1544
+        },
+        "effective_width_px": {
+          "min": 289,
+          "median": 429.5,
+          "max": 516
+        },
+        "effective_height_px": {
+          "min": 1162,
+          "median": 1305.5,
+          "max": 1468
+        },
+        "effective_top_padding_px": {
+          "min": 30,
+          "median": 33.5,
+          "max": 38
+        },
+        "effective_bottom_padding_px": {
+          "min": 30,
+          "median": 33.5,
+          "max": 38
+        },
+        "inferred_foot_baseline_y_px": {
+          "min": 1191,
+          "median": 1338.0,
+          "max": 1505
+        }
+      },
+      {
+        "character_id": "emilio",
+        "view": "iso_3_4",
+        "sample_count": 8,
+        "evidence": "direct",
+        "canvas_width_px": {
+          "min": 441,
+          "median": 483.5,
+          "max": 559
+        },
+        "canvas_height_px": {
+          "min": 1287,
+          "median": 1339.0,
+          "max": 1589
+        },
+        "effective_width_px": {
+          "min": 375,
+          "median": 418.5,
+          "max": 493
+        },
+        "effective_height_px": {
+          "min": 1223,
+          "median": 1273.0,
+          "max": 1511
+        },
+        "effective_top_padding_px": {
+          "min": 32,
+          "median": 33.0,
+          "max": 39
+        },
+        "effective_bottom_padding_px": {
+          "min": 32,
+          "median": 33.0,
+          "max": 39
+        },
+        "inferred_foot_baseline_y_px": {
+          "min": 1254,
+          "median": 1305.0,
+          "max": 1549
+        }
+      },
+      {
+        "character_id": "emilio",
+        "view": "special",
+        "sample_count": 2,
+        "evidence": "direct",
+        "canvas_width_px": {
+          "min": 833,
+          "median": 869.5,
+          "max": 906
+        },
+        "canvas_height_px": {
+          "min": 1492,
+          "median": 1557.5,
+          "max": 1623
+        },
+        "effective_width_px": {
+          "min": 579,
+          "median": 581.0,
+          "max": 583
+        },
+        "effective_height_px": {
+          "min": 1459,
+          "median": 1521.5,
+          "max": 1584
+        },
+        "effective_top_padding_px": {
+          "min": 15,
+          "median": 17.0,
+          "max": 19
+        },
+        "effective_bottom_padding_px": {
+          "min": 18,
+          "median": 19.0,
+          "max": 20
+        },
+        "inferred_foot_baseline_y_px": {
+          "min": 1473,
+          "median": 1537.5,
+          "max": 1602
+        }
+      }
+    ],
+    "measured_standard_status": "none_observed",
+    "explanation": "The supplied sprites use variable canvases and the six 1600x1100 validation JPGs contain no rulers, source-size labels, common bbox, ground line, pivot, anchor, or scaling rule."
+  },
+  "integration_resolution": "The specialist's alternative 1024x1792 authoring-canvas proposal was not adopted because it was explicitly inferred and not tied to the supplied 1448x1086 Room 01 canvases. Direct measurements are retained; final view targets are the profiles above.",
+  "important_limit": "These are assembler defaults and QA gates, not identity normalization. Proportion drift remains documented."
+}

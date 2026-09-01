@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://trapstar.invalid/schemas/character.schema.json",
+  "title": "Character",
+  "type": "object",
+  "required": [
+    "character_id",
+    "aliases",
+    "primary_status",
+    "manifest_path"
+  ],
+  "properties": {
+    "character_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "aliases": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "primary_status": {
+      "enum": [
+        "AUTHORING_SOURCE",
+        "BLOCKED_MISSING",
+        "DEPRECATED",
+        "PRODUCTION_CANDIDATE",
+        "PRODUCTION_READY",
+        "PROVENANCE",
+        "QA_ONLY",
+        "QUARANTINE",
+        "REFERENCE"
+      ]
+    },
+    "manifest_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "pose_count": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "additionalProperties": true
+}

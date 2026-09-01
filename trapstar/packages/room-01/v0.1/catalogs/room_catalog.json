@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "rooms": [
+    {
+      "room_id": "ROOM_01_APT_305",
+      "room_state_id": "STATE_NEUTRAL_NEON",
+      "primary_status": "PRODUCTION_CANDIDATE",
+      "manifest_path": "production/room_01_apt_305/room_manifest.json",
+      "supported_views": [
+        "VIEW_ISO",
+        "VIEW_FP2D"
+      ]
+    }
+  ]
+}

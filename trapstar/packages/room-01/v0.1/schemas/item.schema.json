@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://trapstar.invalid/schemas/item.schema.json",
+  "title": "Item",
+  "type": "object",
+  "required": [
+    "item_id",
+    "primary_status",
+    "supported_views"
+  ],
+  "properties": {
+    "item_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "primary_status": {
+      "enum": [
+        "AUTHORING_SOURCE",
+        "BLOCKED_MISSING",
+        "DEPRECATED",
+        "PRODUCTION_CANDIDATE",
+        "PRODUCTION_READY",
+        "PROVENANCE",
+        "QA_ONLY",
+        "QUARANTINE",
+        "REFERENCE"
+      ]
+    },
+    "supported_views": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "asset_path": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "item_tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    }
+  },
+  "additionalProperties": true
+}

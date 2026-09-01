@@ -1,0 +1,2217 @@
+{
+  "generated_at": "2026-09-01T20:31:05+00:00",
+  "scope": "outer files from four approved source ZIPs; nested PXZ duplicate evidence is in pxz_nested sections",
+  "byte_groups": [
+    {
+      "group_id": "byte_sha256_05174362a1789d8c78bf75f0ec7335dfe4de60f5d6b6903a1764384e4687beac",
+      "sha256": "05174362a1789d8c78bf75f0ec7335dfe4de60f5d6b6903a1764384e4687beac",
+      "copy_count": 2,
+      "each_size_bytes": 2776058,
+      "redundant_bytes": 2776058,
+      "cross_archive": false,
+      "source_zips": [
+        "characters.zip"
+      ],
+      "members": [
+        "characters.zip::characters/marcus/expression_marcus/suspicious__png-hardened-reordered.png",
+        "characters.zip::characters/marcus/expression_marcus/suspicious__png-reordered-qa.png"
+      ]
+    },
+    {
+      "group_id": "byte_sha256_0a54fb699d3b6f1f77f5aefaab4b211b98bbe368ec63e42dc68862f314c7e7d3",
+      "sha256": "0a54fb699d3b6f1f77f5aefaab4b211b98bbe368ec63e42dc68862f314c7e7d3",
+      "copy_count": 2,
+      "each_size_bytes": 1870,
+      "redundant_bytes": 1870,
+      "cross_archive": false,
+      "source_zips": [
+        "premade assets.zip"
+      ],
+      "members": [
+        "premade assets.zip::premade assets/GandalfHardcore 128px Female/Gun aim Walk and idle/Choker.png",
+        "premade assets.zip::premade assets/GandalfHardcore 128px Female/Holding gun walk and Idle/Choker.png"
+      ]
+    },
+    {
+      "group_id": "byte_sha256_0c64cf15d8f12b39d25289107a9107ad253e4526a673f3b63bbffd95b4786a84",
+      "sha256": "0c64cf15d8f12b39d25289107a9107ad253e4526a673f3b63bbffd95b4786a84",
+      "copy_count": 4,
+      "each_size_bytes": 142,
+      "redundant_bytes": 426,
+      "cross_archive": false,
+      "source_zips": [
+        "premade assets.zip"
+      ],
+      "members": [
+        "premade assets.zip::premade assets/GandalfHardcore 128px Female/Links.txt",
+        "premade assets.zip::premade assets/GandalfHardcore City Tiles/Links.txt",
+        "premade assets.zip::premade assets/GandalfHardcore Modern NPCs/GandalfHardcore Modern NPCs/Links.txt",
+        "premade assets.zip::premade assets/GandalfHardcore character effects/Links.txt"
+      ]
+    },
+    {
+      "group_id": "byte_sha256_14a561f8f178239f2922753e2cd4e3f60ed3d850b8a4a881b05dddc7b3807f9b",
+      "sha256": "14a561f8f178239f2922753e2cd4e3f60ed3d850b8a4a881b05dddc7b3807f9b",
+      "copy_count": 2,
+      "each_size_bytes": 185869,
+      "redundant_bytes": 185869,
+      "cross_archive": false,
+      "source_zips": [
+        "environment.zip"
+      ],
+      "members": [
+        "environment.zip::environment/Ldz53a - Copy.png",
+        "environment.zip::environment/Ldz53a.png"
+      ]
+    },
+    {
+      "group_id": "byte_sha256_1f102ccc8dfcf47f245cf9f75b59f9faec7730cd55a68b99360f3a5ebc4d7577",
+      "sha256": "1f102ccc8dfcf47f245cf9f75b59f9faec7730cd55a68b99360f3a5ebc4d7577",
+      "copy_count": 2,
+      "each_size_bytes": 462477,
+      "redundant_bytes": 462477,
+      "cross_archive": false,
+      "source_zips": [
+        "environment.zip"
+      ],
+      "members": [
+        "environment.zip::environment/ChatGPT_Image_Jul_26__2026__07_59_50_PM__3__lightened.jpg",
+        "environment.zip::environment/TS_VAR_009A__apartment_ambush_fps_lightened.jpg"
+      ]
+    },
+    {
+      "group_id": "byte_sha256_2e94b65c7663ee77dabb1f1ec94740750b022b7f298feba57a1608313f46eee3",
+      "sha256": "2e94b65c7663ee77dabb1f1ec94740750b022b7f298feba57a1608313f46eee3",
+      "copy_count": 2,
+      "each_size_bytes": 2012488,
+      "redundant_bytes": 2012488,
+      "cross_archive": false,
+      "source_zips": [
+        "environment.zip"
+      ],
+      "members": [
+        "environment.zip::environment/63371c45-1c6b-4d29-b2b5-e18ba7d3d286.png",
+        "environment.zip::environment/ChatGPT Image Jul 26, 2026, 07_59_50 PM (2).png"
+      ]
+    },
+    {
+      "group_id": "byte_sha256_2f380f4a3d05a8d90c2106f50da75064e9ce57a598599dc5404f8f69a0223aa9",
+      "sha256": "2f380f4a3d05a8d90c2106f50da75064e9ce57a598599dc5404f8f69a0223aa9",
+      "copy_count": 8,
+      "each_size_bytes": 120,
+      "redundant_bytes": 840,
+      "cross_archive": false,
+      "source_zips": [
+        "premade assets.zip"
+      ],
+      "members": [
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/._.DS_Store",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/._.DS_Store",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Previews/._.DS_Store",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/._.DS_Store",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/._.DS_Store",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Enemy-Punk/._.DS_Store",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Spritesheets/._.DS_Store",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Stage Layers/props/._.DS_Store"
+      ]
+    },
+    {
+      "group_id": "byte_sha256_30fa8e3006dd25127b0d248b90b5fb0e8b9dde1fbfe78507191d140c8c15fa64",
+      "sha256": "30fa8e3006dd25127b0d248b90b5fb0e8b9dde1fbfe78507191d140c8c15fa64",
+      "copy_count": 2,
+      "each_size_bytes": 503194,
+      "redundant_bytes": 503194,
+      "cross_archive": false,
+      "source_zips": [
+        "environment.zip"
+      ],
+      "members": [
+        "environment.zip::environment/02_isometric_explore.png",
+        "environment.zip::environment/TS_SRC_002__apartment_isometric_explore_ui_wide.png"
+      ]
+    },
+    {
+      "group_id": "byte_sha256_3cfa42e9f9bce473e03b699959f8bd083f629fc86246955f5255fafa22c7f3a8",
+      "sha256": "3cfa42e9f9bce473e03b699959f8bd083f629fc86246955f5255fafa22c7f3a8",
+      "copy_count": 2,
+      "each_size_bytes": 438816,
+      "redundant_bytes": 438816,
+      "cross_archive": false,
+      "source_zips": [
+        "environment.zip"
+      ],
+      "members": [
+        "environment.zip::environment/ChatGPT_Image_Jul_26__2026__07_59_49_PM__1__lightened.jpg",
+        "environment.zip::environment/TS_VAR_006A__apartment_deal_dialogue_lightened.jpg"
+      ]
+    },
+    {
+      "group_id": "byte_sha256_3da5a215426198aef01c2dce3d5bd6cda0d59974b37f77607887562b1b11dbaf",
+      "sha256": "3da5a215426198aef01c2dce3d5bd6cda0d59974b37f77607887562b1b11dbaf",
+      "copy_count": 3,
+      "each_size_bytes": 472,
+      "redundant_bytes": 944,
+      "cross_archive": false,
+      "source_zips": [
+        "premade assets.zip"
+      ],
+      "members": [
+        "premade assets.zip::premade assets/GandalfHardcore 128px Female/READ ME.txt",
+        "premade assets.zip::premade assets/GandalfHardcore City Tiles/READ ME.txt",
+        "premade assets.zip::premade assets/GandalfHardcore Modern NPCs/GandalfHardcore Modern NPCs/READ ME.txt"
+      ]
+    },
+    {
+      "group_id": "byte_sha256_424712756a95d0bfd12a220cd08284fd279d777e311c8629ccb7e1ede8a9d94f",
+      "sha256": "424712756a95d0bfd12a220cd08284fd279d777e311c8629ccb7e1ede8a9d94f",
+      "copy_count": 2,
+      "each_size_bytes": 1875504,
+      "redundant_bytes": 1875504,
+      "cross_archive": false,
+      "source_zips": [
+        "characters.zip"
+      ],
+      "members": [
+        "characters.zip::characters/BROKER_source_sheet.png",
+        "characters.zip::characters/marcus/ChatGPT Image Aug 20, 2026, 09_14_40 AM (2).png"
+      ]
+    },
+    {
+      "group_id": "byte_sha256_46b0d66ddfb81feb80ddf00ac7670bfbbed1d8ec4ecfd053770eba386629c76b",
+      "sha256": "46b0d66ddfb81feb80ddf00ac7670bfbbed1d8ec4ecfd053770eba386629c76b",
+      "copy_count": 2,
+      "each_size_bytes": 13039,
+      "redundant_bytes": 13039,
+      "cross_archive": false,
+      "source_zips": [
+        "premade assets.zip"
+      ],
+      "members": [
+        "premade assets.zip::premade assets/GandalfHardcore 128px Female/Gun aim Walk and idle/Pantyhose.png",
+        "premade assets.zip::premade assets/GandalfHardcore 128px Female/Holding gun walk and Idle/Pantyhose.png"
+      ]
+    },
+    {
+      "group_id": "byte_sha256_4d73fe29ab7dcb4d44365b44ce255db0177d50af42e9e01e3f77a645e6862043",
+      "sha256": "4d73fe29ab7dcb4d44365b44ce255db0177d50af42e9e01e3f77a645e6862043",
+      "copy_count": 2,
+      "each_size_bytes": 5018,
+      "redundant_bytes": 5018,
+      "cross_archive": false,
+      "source_zips": [
+        "premade assets.zip"
+      ],
+      "members": [
+        "premade assets.zip::premade assets/GandalfHardcore 128px Female/Gun aim Walk and idle/Hair.png",
+        "premade assets.zip::premade assets/GandalfHardcore 128px Female/Holding gun walk and Idle/Hair.png"
+      ]
+    },
+    {
+      "group_id": "byte_sha256_5ed478a436152a7cbc0571b6073295e66169ec62f6650706873982c4e4cd2d2a",
+      "sha256": "5ed478a436152a7cbc0571b6073295e66169ec62f6650706873982c4e4cd2d2a",
+      "copy_count": 2,
+      "each_size_bytes": 2928966,
+      "redundant_bytes": 2928966,
+      "cross_archive": false,
+      "source_zips": [
+        "environment.zip"
+      ],
+      "members": [
+        "environment.zip::environment/TS_DUP_007A__exact_duplicate_of_TS_SRC_007.png",
+        "environment.zip::environment/TS_SRC_007__hallway_contact_dialogue_master.png"
+      ]
+    },
+    {
+      "group_id": "byte_sha256_60fc67b882769e04eef664096bbeb1b17adb6e97e1cd2db321eab4ee44c15572",
+      "sha256": "60fc67b882769e04eef664096bbeb1b17adb6e97e1cd2db321eab4ee44c15572",
+      "copy_count": 2,
+      "each_size_bytes": 263,
+      "redundant_bytes": 263,
+      "cross_archive": false,
+      "source_zips": [
+        "premade assets.zip"
+      ],
+      "members": [
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/._looking-for-more.pdf",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/._public-license.pdf"
+      ]
+    },
+    {
+      "group_id": "byte_sha256_6a760c4d1c7e9a6f335c5c1ef50c458e62d0219cfa751ecf20263f8cc2dc1139",
+      "sha256": "6a760c4d1c7e9a6f335c5c1ef50c458e62d0219cfa751ecf20263f8cc2dc1139",
+      "copy_count": 2,
+      "each_size_bytes": 1835,
+      "redundant_bytes": 1835,
+      "cross_archive": false,
+      "source_zips": [
+        "premade assets.zip"
+      ],
+      "members": [
+        "premade assets.zip::premade assets/GandalfHardcore 128px Female/Gun aim Walk and idle/Earrings.png",
+        "premade assets.zip::premade assets/GandalfHardcore 128px Female/Holding gun walk and Idle/Earrings.png"
+      ]
+    },
+    {
+      "group_id": "byte_sha256_6c5a70195250b937a08c49f46e8aca290cde97cd9f88495e23320ecbe6e1ca07",
+      "sha256": "6c5a70195250b937a08c49f46e8aca290cde97cd9f88495e23320ecbe6e1ca07",
+      "copy_count": 2,
+      "each_size_bytes": 2080835,
+      "redundant_bytes": 2080835,
+      "cross_archive": false,
+      "source_zips": [
+        "characters.zip"
+      ],
+      "members": [
+        "characters.zip::characters/CONTACT_source_sheet.png",
+        "characters.zip::characters/Emilio/ChatGPT Image Aug 20, 2026, 09_14_40 AM (1).png"
+      ]
+    },
+    {
+      "group_id": "byte_sha256_714ef253ceb6ae3f846b16337baa031cdb2b46ab63fa7e8fed08abe38e3339a0",
+      "sha256": "714ef253ceb6ae3f846b16337baa031cdb2b46ab63fa7e8fed08abe38e3339a0",
+      "copy_count": 2,
+      "each_size_bytes": 395628,
+      "redundant_bytes": 395628,
+      "cross_archive": false,
+      "source_zips": [
+        "environment.zip"
+      ],
+      "members": [
+        "environment.zip::environment/ChatGPT_Image_Jul_26__2026__07_59_50_PM__2__lightened.jpg",
+        "environment.zip::environment/TS_VAR_007A__hallway_contact_dialogue_lightened.jpg"
+      ]
+    },
+    {
+      "group_id": "byte_sha256_7cf6e5491e3122a4678b6d7b39286c552ee8a865afc84ffb17ed686eaf58d9b6",
+      "sha256": "7cf6e5491e3122a4678b6d7b39286c552ee8a865afc84ffb17ed686eaf58d9b6",
+      "copy_count": 2,
+      "each_size_bytes": 2183592,
+      "redundant_bytes": 2183592,
+      "cross_archive": false,
+      "source_zips": [
+        "environment.zip"
+      ],
+      "members": [
+        "environment.zip::environment/9795e229-b54e-4af4-acf0-0237a7354ba1.png",
+        "environment.zip::environment/ChatGPT Image Jul 26, 2026, 07_59_50 PM (3).png"
+      ]
+    },
+    {
+      "group_id": "byte_sha256_847bfe693bee36b6a3a5e7d261f76d971c630a67f8036aad4f758989a619d8fa",
+      "sha256": "847bfe693bee36b6a3a5e7d261f76d971c630a67f8036aad4f758989a619d8fa",
+      "copy_count": 2,
+      "each_size_bytes": 701260,
+      "redundant_bytes": 701260,
+      "cross_archive": false,
+      "source_zips": [
+        "characters.zip"
+      ],
+      "members": [
+        "characters.zip::characters/goose/goose_expression_batch/references/goose_idle_identity_anchor.png",
+        "characters.zip::characters/idle_generated.png"
+      ]
+    },
+    {
+      "group_id": "byte_sha256_8673aa1bfba0176ec965bc4578fe65a04c5bb14b558aef1b60a5db4bcf6982d5",
+      "sha256": "8673aa1bfba0176ec965bc4578fe65a04c5bb14b558aef1b60a5db4bcf6982d5",
+      "copy_count": 2,
+      "each_size_bytes": 1601,
+      "redundant_bytes": 1601,
+      "cross_archive": false,
+      "source_zips": [
+        "premade assets.zip"
+      ],
+      "members": [
+        "premade assets.zip::premade assets/Horror City - Sprite Pack 1 - RPG Maker MV/ReadMe.txt",
+        "premade assets.zip::premade assets/Horror City - Sprite Pack 2 - RPG Maker MV/ReadMe.txt"
+      ]
+    },
+    {
+      "group_id": "byte_sha256_8677dfa9d14f6efc115af2182903c5cdeabe113541abfaa8c6f3fd10054794f3",
+      "sha256": "8677dfa9d14f6efc115af2182903c5cdeabe113541abfaa8c6f3fd10054794f3",
+      "copy_count": 2,
+      "each_size_bytes": 326916,
+      "redundant_bytes": 326916,
+      "cross_archive": false,
+      "source_zips": [
+        "characters.zip"
+      ],
+      "members": [
+        "characters.zip::characters/expression base.jpg",
+        "characters.zip::characters/goose/goose_expression_batch/references/expression_reference_18.jpg"
+      ]
+    },
+    {
+      "group_id": "byte_sha256_881275691702ede4bcd0efba18f79986d16b5304c77b8c10602fdaaa0e4b3e62",
+      "sha256": "881275691702ede4bcd0efba18f79986d16b5304c77b8c10602fdaaa0e4b3e62",
+      "copy_count": 2,
+      "each_size_bytes": 467906,
+      "redundant_bytes": 467906,
+      "cross_archive": false,
+      "source_zips": [
+        "environment.zip"
+      ],
+      "members": [
+        "environment.zip::environment/01_deal_negotiation.png",
+        "environment.zip::environment/TS_SRC_001__deal_negotiation_ui_wide.png"
+      ]
+    },
+    {
+      "group_id": "byte_sha256_8be80f1de3ff9b0462451260bb865a2d45170f056772ec71cad51af9d77cf772",
+      "sha256": "8be80f1de3ff9b0462451260bb865a2d45170f056772ec71cad51af9d77cf772",
+      "copy_count": 2,
+      "each_size_bytes": 2573092,
+      "redundant_bytes": 2573092,
+      "cross_archive": false,
+      "source_zips": [
+        "characters.zip"
+      ],
+      "members": [
+        "characters.zip::characters/ChatGPT Image Aug 20, 2026, 09_02_02 AM.png",
+        "characters.zip::characters/ChatGPT Image Aug 20, 2026, 09_04_11 AM.png"
+      ]
+    },
+    {
+      "group_id": "byte_sha256_9534487a9c881a342053cd352074666898f1ba5dc74a0a8d20e0801a49cea356",
+      "sha256": "9534487a9c881a342053cd352074666898f1ba5dc74a0a8d20e0801a49cea356",
+      "copy_count": 2,
+      "each_size_bytes": 3100776,
+      "redundant_bytes": 3100776,
+      "cross_archive": false,
+      "source_zips": [
+        "environment.zip"
+      ],
+      "members": [
+        "environment.zip::environment/TS_DUP_006A__exact_duplicate_of_TS_SRC_006.png",
+        "environment.zip::environment/TS_SRC_006__apartment_deal_dialogue_master.png"
+      ]
+    },
+    {
+      "group_id": "byte_sha256_9c9297583c229a06fd3adbe9a25ba6c279e87f2fe61557a278a99901385b56e2",
+      "sha256": "9c9297583c229a06fd3adbe9a25ba6c279e87f2fe61557a278a99901385b56e2",
+      "copy_count": 2,
+      "each_size_bytes": 3441161,
+      "redundant_bytes": 3441161,
+      "cross_archive": false,
+      "source_zips": [
+        "environment.zip"
+      ],
+      "members": [
+        "environment.zip::environment/8a147acf-37fc-48e2-89ff-9d6cd8dc7028.png",
+        "environment.zip::environment/TS_SRC_008__six_panel_mode_contact_sheet.png"
+      ]
+    },
+    {
+      "group_id": "byte_sha256_9d6d34b7a59802c5a93b76852d447f25c99afa4a908b92b4d5c04dc2388a270c",
+      "sha256": "9d6d34b7a59802c5a93b76852d447f25c99afa4a908b92b4d5c04dc2388a270c",
+      "copy_count": 2,
+      "each_size_bytes": 348955,
+      "redundant_bytes": 348955,
+      "cross_archive": false,
+      "source_zips": [
+        "environment.zip"
+      ],
+      "members": [
+        "environment.zip::environment/03_puzzle_lockpick.png",
+        "environment.zip::environment/TS_SRC_003__lockpick_closeup_ui_wide.png"
+      ]
+    },
+    {
+      "group_id": "byte_sha256_9e3a05b88f5a807a12457f8a20110672f1cd8532d4bea154e32d5fbf71747ae5",
+      "sha256": "9e3a05b88f5a807a12457f8a20110672f1cd8532d4bea154e32d5fbf71747ae5",
+      "copy_count": 92,
+      "each_size_bytes": 176,
+      "redundant_bytes": 16016,
+      "cross_archive": false,
+      "source_zips": [
+        "premade assets.zip"
+      ],
+      "members": [
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/._Aseprite",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/._Previews",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/._Sprites",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/._Spritesheets",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/._Stage Layers",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Previews/._Brawler Girl",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Previews/._Enemy Punk",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Previews/._Stage",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/._Brawler-Girl",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/._Enemy-Punk",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/._shadow.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/._Dive_kick",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/._Hurt",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/._Idle",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/._Jab",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/._Jump",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/._Jump_kick",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/._Kick",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/._Punch",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/._Walk",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/Dive_kick/._dive_kick1.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/Dive_kick/._dive_kick2.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/Dive_kick/._dive_kick3.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/Hurt/._hurt1.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/Hurt/._hurt2.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/Idle/._idle1.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/Idle/._idle2.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/Idle/._idle3.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/Idle/._idle4.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/Jab/._jab1.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/Jab/._jab2.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/Jab/._jab3.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/Jump/._jump1.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/Jump/._jump2.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/Jump/._jump3.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/Jump/._jump4.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/Jump_kick/._jump_kick1.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/Jump_kick/._jump_kick2.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/Kick/._kick1.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/Kick/._kick2.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/Kick/._kick3.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/Punch/._punch1.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/Punch/._punch2.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/Punch/._punch3.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/Walk/._walk1.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/Walk/._walk10.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/Walk/._walk2.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/Walk/._walk3.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/Walk/._walk4.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/Walk/._walk5.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/Walk/._walk6.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/Walk/._walk7.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/Walk/._walk8.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Brawler-Girl/Walk/._walk9.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Enemy-Punk/._Hurt",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Enemy-Punk/._Idle",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Enemy-Punk/._Punch",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Enemy-Punk/._Walk",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Enemy-Punk/Hurt/._hurt1.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Enemy-Punk/Hurt/._hurt2.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Enemy-Punk/Hurt/._hurt4.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Enemy-Punk/Idle/._idle1.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Enemy-Punk/Idle/._idle2.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Enemy-Punk/Idle/._idle3.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Enemy-Punk/Idle/._idle4.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Enemy-Punk/Punch/._punch1.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Enemy-Punk/Punch/._punch3.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Enemy-Punk/Walk/._walk1.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Enemy-Punk/Walk/._walk2.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Enemy-Punk/Walk/._walk3.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Sprites/Enemy-Punk/Walk/._walk4.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Spritesheets/._Brawler Girl",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Spritesheets/._Enemy Punk",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Spritesheets/Brawler Girl/._hurt.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Spritesheets/Brawler Girl/._idle.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Spritesheets/Brawler Girl/._jab.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Spritesheets/Brawler Girl/._jump.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Spritesheets/Brawler Girl/._kick.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Spritesheets/Enemy Punk/._hurt.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Spritesheets/Enemy Punk/._idle.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Spritesheets/Enemy Punk/._punch.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Spritesheets/Enemy Punk/._walk.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Stage Layers/._props",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Stage Layers/props/._Ethereum",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Stage Layers/props/._Sushi",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Stage Layers/props/._banner-hor",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Stage Layers/props/._barrel.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Stage Layers/props/Ethereum/._ethereum-1.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Stage Layers/props/Ethereum/._ethereum-2.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Stage Layers/props/Sushi/._sushi-2.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Stage Layers/props/banner-hor/._banner-hor1.png",
+        "premade assets.zip::premade assets/__MACOSX/Streets of Fight files/Assets/Stage Layers/props/banner-hor/._banner-hor2.png"
+      ]
+    },
+    {
+      "group_id": "byte_sha256_a48629dcce442e7b825120964eafd08c90559bc26c9bf0e55828b743bf9866be",
+      "sha256": "a48629dcce442e7b825120964eafd08c90559bc26c9bf0e55828b743bf9866be",
+      "copy_count": 2,
+      "each_size_bytes": 375556,
+      "redundant_bytes": 375556,
+      "cross_archive": false,
+      "source_zips": [
+        "environment.zip"
+      ],
+      "members": [
+        "environment.zip::environment/06_get_to_exit.png",
+        "environment.zip::environment/TS_SRC_005__hallway_fps_exit_ui_wide.png"
+      ]
+    },
+    {
+      "group_id": "byte_sha256_a73c4650c94ba2d080fd260c62bffe4483b50d13fd74c39933604a60e23a56b5",
+      "sha256": "a73c4650c94ba2d080fd260c62bffe4483b50d13fd74c39933604a60e23a56b5",
+      "copy_count": 2,
+      "each_size_bytes": 4606,
+      "redundant_bytes": 4606,
+      "cross_archive": false,
+      "source_zips": [
+        "premade assets.zip"
+      ],
+      "members": [
+        "premade assets.zip::premade assets/GandalfHardcore 128px Female/Gun aim Walk and idle/Red High Heels.png",
+        "premade assets.zip::premade assets/GandalfHardcore 128px Female/Holding gun walk and Idle/Red High Heels.png"
+      ]
+    },
+    {
+      "group_id": "byte_sha256_b59c8093d701866b6b861db1e6972fd229948f9ec4fde4e59c6a848cc1209807",
+      "sha256": "b59c8093d701866b6b861db1e6972fd229948f9ec4fde4e59c6a848cc1209807",
+      "copy_count": 2,
+      "each_size_bytes": 2112383,
+      "redundant_bytes": 2112383,
+      "cross_archive": false,
+      "source_zips": [
+        "environment.zip"
+      ],
+      "members": [
+        "environment.zip::environment/62d208c0-9f4b-4f5b-af89-c849a881d118.png",
+        "environment.zip::environment/ChatGPT Image Jul 26, 2026, 07_59_49 PM (1).png"
+      ]
+    },
+    {
+      "group_id": "byte_sha256_bd6bf215aa343e4b87b9f0e4a71e02069c4c374c16ef670d3d056006372efe5d",
+      "sha256": "bd6bf215aa343e4b87b9f0e4a71e02069c4c374c16ef670d3d056006372efe5d",
+      "copy_count": 2,
+      "each_size_bytes": 2776228,
+      "redundant_bytes": 2776228,
+      "cross_archive": false,
+      "source_zips": [
+        "characters.zip"
+      ],
+      "members": [
+        "characters.zip::characters/marcus/expression_marcus/suspicious__png-baseline-qa.png",
+        "characters.zip::characters/marcus/expression_marcus/suspicious__png-hardened-baseline.png"
+      ]
+    },
+    {
+      "group_id": "byte_sha256_d5786f18f840623f883dc9e10f98efdc05cacf39b7c05dad100b10bd12f16570",
+      "sha256": "d5786f18f840623f883dc9e10f98efdc05cacf39b7c05dad100b10bd12f16570",
+      "copy_count": 2,
+      "each_size_bytes": 358451,
+      "redundant_bytes": 358451,
+      "cross_archive": false,
+      "source_zips": [
+        "environment.zip"
+      ],
+      "members": [
+        "environment.zip::environment/05_talk_to_contact.png",
+        "environment.zip::environment/TS_SRC_004__contact_dialogue_closeup_ui_wide.png"
+      ]
+    },
+    {
+      "group_id": "byte_sha256_f2560335e55597eb65e82e5a2eb8189df66a861e8a73d9a1d4628f6667be5d5e",
+      "sha256": "f2560335e55597eb65e82e5a2eb8189df66a861e8a73d9a1d4628f6667be5d5e",
+      "copy_count": 3,
+      "each_size_bytes": 2130626,
+      "redundant_bytes": 4261252,
+      "cross_archive": false,
+      "source_zips": [
+        "characters.zip"
+      ],
+      "members": [
+        "characters.zip::characters/TRACKSUIT_source_sheet.png",
+        "characters.zip::characters/goose/ChatGPT Image Aug 20, 2026, 09_14_40 AM (3).png",
+        "characters.zip::characters/goose/goose_expression_batch/references/goose_tracksuit_reference.png"
+      ]
+    }
+  ],
+  "decoded_pixel_groups": [
+    {
+      "group_id": "decoded_pixel_sha256_02ff38dd08a3b2d9f7dff85ca9237bda4c2ae81171577c4216e3ca5f4f888057",
+      "decoded_pixel_sha256": "02ff38dd08a3b2d9f7dff85ca9237bda4c2ae81171577c4216e3ca5f4f888057",
+      "copy_count": 2,
+      "cross_archive": false,
+      "source_zips": [
+        "environment.zip"
+      ],
+      "dimensions": "724x362",
+      "frame_count": 1,
+      "members": [
+        "environment.zip::environment/06_get_to_exit.png",
+        "environment.zip::environment/TS_SRC_005__hallway_fps_exit_ui_wide.png"
+      ],
+      "byte_sha256_count": 1,
+      "reencoded_or_metadata_variant": false
+    },
+    {
+      "group_id": "decoded_pixel_sha256_0e877cc6f95ae8c1d67e9eac0ded2f9bd71458baa45f797fe055435808d584cb",
+      "decoded_pixel_sha256": "0e877cc6f95ae8c1d67e9eac0ded2f9bd71458baa45f797fe055435808d584cb",
+      "copy_count": 2,
+      "cross_archive": false,
+      "source_zips": [
+        "environment.zip"
+      ],
+      "dimensions": "724x362",
+      "frame_count": 1,
+      "members": [
+        "environment.zip::environment/05_talk_to_contact.png",
+        "environment.zip::environment/TS_SRC_004__contact_dialogue_closeup_ui_wide.png"
+      ],
+      "byte_sha256_count": 1,
+      "reencoded_or_metadata_variant": false
+    },
+    {
+      "group_id": "decoded_pixel_sha256_17b7c5ced89b26c65821b26ffea1619e6ca63c62337ed36a9767df6ef5bf35a7",
+      "decoded_pixel_sha256": "17b7c5ced89b26c65821b26ffea1619e6ca63c62337ed36a9767df6ef5bf35a7",
+      "copy_count": 2,
+      "cross_archive": false,
+      "source_zips": [
+        "characters.zip"
+      ],
+      "dimensions": "1536x1024",
+      "frame_count": 1,
+      "members": [
+        "characters.zip::characters/ChatGPT Image Aug 20, 2026, 09_02_02 AM.png",
+        "characters.zip::characters/ChatGPT Image Aug 20, 2026, 09_04_11 AM.png"
+      ],
+      "byte_sha256_count": 1,
+      "reencoded_or_metadata_variant": false
+    },
+    {
+      "group_id": "decoded_pixel_sha256_241b0d570aadbc29fba49ade5fc6edd15784bff49a82968768c3ee120eb26d7c",
+      "decoded_pixel_sha256": "241b0d570aadbc29fba49ade5fc6edd15784bff49a82968768c3ee120eb26d7c",
+      "copy_count": 3,
+      "cross_archive": false,
+      "source_zips": [
+        "environment.zip"
+      ],
+      "dimensions": "1448x1086",
+      "frame_count": 1,
+      "members": [
+        "environment.zip::environment/9795e229-b54e-4af4-acf0-0237a7354ba1.png",
+        "environment.zip::environment/ChatGPT Image Jul 26, 2026, 07_59_50 PM (3).png",
+        "environment.zip::environment/TS_SRC_009__apartment_ambush_fps_master.png"
+      ],
+      "byte_sha256_count": 2,
+      "reencoded_or_metadata_variant": true
+    },
+    {
+      "group_id": "decoded_pixel_sha256_32518b7b1570c2f6a88a695d31707bee991344c856fdf96a41d8502f7376a2fc",
+      "decoded_pixel_sha256": "32518b7b1570c2f6a88a695d31707bee991344c856fdf96a41d8502f7376a2fc",
+      "copy_count": 2,
+      "cross_archive": false,
+      "source_zips": [
+        "characters.zip"
+      ],
+      "dimensions": "1187x1484",
+      "frame_count": 1,
+      "members": [
+        "characters.zip::characters/marcus/expression_marcus/suspicious__png-hardened-reordered.png",
+        "characters.zip::characters/marcus/expression_marcus/suspicious__png-reordered-qa.png"
+      ],
+      "byte_sha256_count": 1,
+      "reencoded_or_metadata_variant": false
+    },
+    {
+      "group_id": "decoded_pixel_sha256_33edee090b6a5c3a5ac05ca5a73d21416a4240006dade20a3c02e290dadddf8c",
+      "decoded_pixel_sha256": "33edee090b6a5c3a5ac05ca5a73d21416a4240006dade20a3c02e290dadddf8c",
+      "copy_count": 2,
+      "cross_archive": false,
+      "source_zips": [
+        "premade assets.zip"
+      ],
+      "dimensions": "1536x256",
+      "frame_count": 1,
+      "members": [
+        "premade assets.zip::premade assets/GandalfHardcore 128px Female/Gun aim Walk and idle/Red High Heels.png",
+        "premade assets.zip::premade assets/GandalfHardcore 128px Female/Holding gun walk and Idle/Red High Heels.png"
+      ],
+      "byte_sha256_count": 1,
+      "reencoded_or_metadata_variant": false
+    },
+    {
+      "group_id": "decoded_pixel_sha256_41333905e33b558a5349c66cc3763e602b0408af8408c215fa93d3ad8772d7cf",
+      "decoded_pixel_sha256": "41333905e33b558a5349c66cc3763e602b0408af8408c215fa93d3ad8772d7cf",
+      "copy_count": 2,
+      "cross_archive": false,
+      "source_zips": [
+        "characters.zip"
+      ],
+      "dimensions": "1187x1484",
+      "frame_count": 1,
+      "members": [
+        "characters.zip::characters/marcus/expression_marcus/suspicious__png-baseline-qa.png",
+        "characters.zip::characters/marcus/expression_marcus/suspicious__png-hardened-baseline.png"
+      ],
+      "byte_sha256_count": 1,
+      "reencoded_or_metadata_variant": false
+    },
+    {
+      "group_id": "decoded_pixel_sha256_5517e01ed4bfcba57a110827bad1e8886c3f008d8cde1dc432b17520390a1426",
+      "decoded_pixel_sha256": "5517e01ed4bfcba57a110827bad1e8886c3f008d8cde1dc432b17520390a1426",
+      "copy_count": 2,
+      "cross_archive": false,
+      "source_zips": [
+        "environment.zip"
+      ],
+      "dimensions": "1448x1086",
+      "frame_count": 1,
+      "members": [
+        "environment.zip::environment/ChatGPT Image Jul 26, 2026, 08_00_54 PM (2).png",
+        "environment.zip::environment/TS_SRC_012__drawer_puzzle_first_person_master.png"
+      ],
+      "byte_sha256_count": 2,
+      "reencoded_or_metadata_variant": true
+    },
+    {
+      "group_id": "decoded_pixel_sha256_5ba35b855eb721c3c1f82e0183aa35d50a0838313316697e0f0c061cc9c7339e",
+      "decoded_pixel_sha256": "5ba35b855eb721c3c1f82e0183aa35d50a0838313316697e0f0c061cc9c7339e",
+      "copy_count": 2,
+      "cross_archive": false,
+      "source_zips": [
+        "environment.zip"
+      ],
+      "dimensions": "1448x1086",
+      "frame_count": 1,
+      "members": [
+        "environment.zip::environment/ChatGPT Image Jul 26, 2026, 08_00_54 PM (1).png",
+        "environment.zip::environment/TS_SRC_011__hallway_isometric_social_master.png"
+      ],
+      "byte_sha256_count": 2,
+      "reencoded_or_metadata_variant": true
+    },
+    {
+      "group_id": "decoded_pixel_sha256_65feb78c7d6fb882d8f6dc72a90d033c5337e6d1a73e0124f9f449820493791f",
+      "decoded_pixel_sha256": "65feb78c7d6fb882d8f6dc72a90d033c5337e6d1a73e0124f9f449820493791f",
+      "copy_count": 2,
+      "cross_archive": false,
+      "source_zips": [
+        "characters.zip"
+      ],
+      "dimensions": "1122x1402",
+      "frame_count": 1,
+      "members": [
+        "characters.zip::characters/BROKER_source_sheet.png",
+        "characters.zip::characters/marcus/ChatGPT Image Aug 20, 2026, 09_14_40 AM (2).png"
+      ],
+      "byte_sha256_count": 1,
+      "reencoded_or_metadata_variant": false
+    },
+    {
+      "group_id": "decoded_pixel_sha256_66b71112549def1af917bb1e124caf628e599ee266d850a7becfe16a47ee7c0d",
+      "decoded_pixel_sha256": "66b71112549def1af917bb1e124caf628e599ee266d850a7becfe16a47ee7c0d",
+      "copy_count": 2,
+      "cross_archive": false,
+      "source_zips": [
+        "premade assets.zip"
+      ],
+      "dimensions": "1536x256",
+      "frame_count": 1,
+      "members": [
+        "premade assets.zip::premade assets/GandalfHardcore 128px Female/Gun aim Walk and idle/Choker.png",
+        "premade assets.zip::premade assets/GandalfHardcore 128px Female/Holding gun walk and Idle/Choker.png"
+      ],
+      "byte_sha256_count": 1,
+      "reencoded_or_metadata_variant": false
+    },
+    {
+      "group_id": "decoded_pixel_sha256_7aac1dfa26d1985ee81944182599f0436f721d9b1a3051f122f11ed3ea45456b",
+      "decoded_pixel_sha256": "7aac1dfa26d1985ee81944182599f0436f721d9b1a3051f122f11ed3ea45456b",
+      "copy_count": 2,
+      "cross_archive": false,
+      "source_zips": [
+        "environment.zip"
+      ],
+      "dimensions": "724x362",
+      "frame_count": 1,
+      "members": [
+        "environment.zip::environment/01_deal_negotiation.png",
+        "environment.zip::environment/TS_SRC_001__deal_negotiation_ui_wide.png"
+      ],
+      "byte_sha256_count": 1,
+      "reencoded_or_metadata_variant": false
+    },
+    {
+      "group_id": "decoded_pixel_sha256_7d383c39b0429bc0662b8bd0091cedfd86454830f9e95b734a9d306fcabdfa4c",
+      "decoded_pixel_sha256": "7d383c39b0429bc0662b8bd0091cedfd86454830f9e95b734a9d306fcabdfa4c",
+      "copy_count": 2,
+      "cross_archive": false,
+      "source_zips": [
+        "characters.zip"
+      ],
+      "dimensions": "1122x1402",
+      "frame_count": 1,
+      "members": [
+        "characters.zip::characters/CONTACT_source_sheet.png",
+        "characters.zip::characters/Emilio/ChatGPT Image Aug 20, 2026, 09_14_40 AM (1).png"
+      ],
+      "byte_sha256_count": 1,
+      "reencoded_or_metadata_variant": false
+    },
+    {
+      "group_id": "decoded_pixel_sha256_7fb07e8086b9dc55fa09cb3ef6012b2b367722518ced6492c14cac4caddb2615",
+      "decoded_pixel_sha256": "7fb07e8086b9dc55fa09cb3ef6012b2b367722518ced6492c14cac4caddb2615",
+      "copy_count": 2,
+      "cross_archive": false,
+      "source_zips": [
+        "environment.zip"
+      ],
+      "dimensions": "1448x1086",
+      "frame_count": 1,
+      "members": [
+        "environment.zip::environment/ChatGPT Image Jul 26, 2026, 07_59_51 PM (4).png",
+        "environment.zip::environment/TS_SRC_010__hallway_firefight_fps_master.png"
+      ],
+      "byte_sha256_count": 2,
+      "reencoded_or_metadata_variant": true
+    },
+    {
+      "group_id": "decoded_pixel_sha256_85c2929d12de3bf129e72d9f48adbd21c7150c6b3bf490d781bee328ba21759d",
+      "decoded_pixel_sha256": "85c2929d12de3bf129e72d9f48adbd21c7150c6b3bf490d781bee328ba21759d",
+      "copy_count": 2,
+      "cross_archive": false,
+      "source_zips": [
+        "characters.zip"
+      ],
+      "dimensions": "2048x1272",
+      "frame_count": 1,
+      "members": [
+        "characters.zip::characters/expression base.jpg",
+        "characters.zip::characters/goose/goose_expression_batch/references/expression_reference_18.jpg"
+      ],
+      "byte_sha256_count": 1,
+      "reencoded_or_metadata_variant": false
+    },
+    {
+      "group_id": "decoded_pixel_sha256_90ac907f57ef3c0334ffae139a4b2ed752c72c4cc74d99f1af884aa8999a6464",
+      "decoded_pixel_sha256": "90ac907f57ef3c0334ffae139a4b2ed752c72c4cc74d99f1af884aa8999a6464",
+      "copy_count": 2,
+      "cross_archive": false,
+      "source_zips": [
+        "characters.zip"
+      ],
+      "dimensions": "505x1438",
+      "frame_count": 1,
+      "members": [
+        "characters.zip::characters/goose/goose_expression_batch/references/goose_idle_identity_anchor.png",
+        "characters.zip::characters/idle_generated.png"
+      ],
+      "byte_sha256_count": 1,
+      "reencoded_or_metadata_variant": false
+    },
+    {
+      "group_id": "decoded_pixel_sha256_91e7064ebb9234f808d36502770255f99ad835d2f42c8658c0a5f1d3527873c5",
+      "decoded_pixel_sha256": "91e7064ebb9234f808d36502770255f99ad835d2f42c8658c0a5f1d3527873c5",
+      "copy_count": 2,
+      "cross_archive": false,
+      "source_zips": [
+        "premade assets.zip"
+      ],
+      "dimensions": "1536x256",
+      "frame_count": 1,
+      "members": [
+        "premade assets.zip::premade assets/GandalfHardcore 128px Female/Gun aim Walk and idle/Pantyhose.png",
+        "premade assets.zip::premade assets/GandalfHardcore 128px Female/Holding gun walk and Idle/Pantyhose.png"
+      ],
+      "byte_sha256_count": 1,
+      "reencoded_or_metadata_variant": false
+    },
+    {
+      "group_id": "decoded_pixel_sha256_96aa6855fcb0a447ee1d118a957dc68b1a4dcac0be748fa9e9e5780e2a956bc4",
+      "decoded_pixel_sha256": "96aa6855fcb0a447ee1d118a957dc68b1a4dcac0be748fa9e9e5780e2a956bc4",
+      "copy_count": 2,
+      "cross_archive": false,
+      "source_zips": [
+        "environment.zip"
+      ],
+      "dimensions": "1448x1086",
+      "frame_count": 1,
+      "members": [
+        "environment.zip::environment/ChatGPT Image Jul 26, 2026, 08_00_54 PM (4).png",
+        "environment.zip::environment/TS_SRC_014__apartment_isometric_combat_master.png"
+      ],
+      "byte_sha256_count": 2,
+      "reencoded_or_metadata_variant": true
+    },
+    {
+      "group_id": "decoded_pixel_sha256_974211ae261a8ad887dcce2f8bc7c49285bd2c372a551f24fc53c87396ddeb44",
+      "decoded_pixel_sha256": "974211ae261a8ad887dcce2f8bc7c49285bd2c372a551f24fc53c87396ddeb44",
+      "copy_count": 2,
+      "cross_archive": false,
+      "source_zips": [
+        "environment.zip"
+      ],
+      "dimensions": "1280x360",
+      "frame_count": 1,
+      "members": [
+        "environment.zip::environment/Ldz53a - Copy.png",
+        "environment.zip::environment/Ldz53a.png"
+      ],
+      "byte_sha256_count": 1,
+      "reencoded_or_metadata_variant": false
+    },
+    {
+      "group_id": "decoded_pixel_sha256_a25ca1f433cf68fcaf0ed78fcd8411465fd102df77e573901ce449f78cf34357",
+      "decoded_pixel_sha256": "a25ca1f433cf68fcaf0ed78fcd8411465fd102df77e573901ce449f78cf34357",
+      "copy_count": 2,
+      "cross_archive": false,
+      "source_zips": [
+        "environment.zip"
+      ],
+      "dimensions": "1448x1086",
+      "frame_count": 1,
+      "members": [
+        "environment.zip::environment/ChatGPT_Image_Jul_26__2026__07_59_49_PM__1__lightened.jpg",
+        "environment.zip::environment/TS_VAR_006A__apartment_deal_dialogue_lightened.jpg"
+      ],
+      "byte_sha256_count": 1,
+      "reencoded_or_metadata_variant": false
+    },
+    {
+      "group_id": "decoded_pixel_sha256_addbec1e088304e38bac60c2e8fdc109ffc713897e00a29ed34afd1d03c869fb",
+      "decoded_pixel_sha256": "addbec1e088304e38bac60c2e8fdc109ffc713897e00a29ed34afd1d03c869fb",
+      "copy_count": 2,
+      "cross_archive": false,
+      "source_zips": [
+        "environment.zip"
+      ],
+      "dimensions": "1448x1086",
+      "frame_count": 1,
+      "members": [
+        "environment.zip::environment/8a147acf-37fc-48e2-89ff-9d6cd8dc7028.png",
+        "environment.zip::environment/TS_SRC_008__six_panel_mode_contact_sheet.png"
+      ],
+      "byte_sha256_count": 1,
+      "reencoded_or_metadata_variant": false
+    },
+    {
+      "group_id": "decoded_pixel_sha256_afe4872633d28cc420524a2d8d7cf5728ce56f295ccfbedf98474b9f9ab9243e",
+      "decoded_pixel_sha256": "afe4872633d28cc420524a2d8d7cf5728ce56f295ccfbedf98474b9f9ab9243e",
+      "copy_count": 2,
+      "cross_archive": false,
+      "source_zips": [
+        "premade assets.zip"
+      ],
+      "dimensions": "1536x256",
+      "frame_count": 1,
+      "members": [
+        "premade assets.zip::premade assets/GandalfHardcore 128px Female/Gun aim Walk and idle/Hair.png",
+        "premade assets.zip::premade assets/GandalfHardcore 128px Female/Holding gun walk and Idle/Hair.png"
+      ],
+      "byte_sha256_count": 1,
+      "reencoded_or_metadata_variant": false
+    },
+    {
+      "group_id": "decoded_pixel_sha256_c1559ebc8dc4df0895671db764bbb03ca5e190b35da45b8d16505be1117f4d3e",
+      "decoded_pixel_sha256": "c1559ebc8dc4df0895671db764bbb03ca5e190b35da45b8d16505be1117f4d3e",
+      "copy_count": 2,
+      "cross_archive": false,
+      "source_zips": [
+        "premade assets.zip"
+      ],
+      "dimensions": "1536x256",
+      "frame_count": 1,
+      "members": [
+        "premade assets.zip::premade assets/GandalfHardcore 128px Female/Gun aim Walk and idle/Earrings.png",
+        "premade assets.zip::premade assets/GandalfHardcore 128px Female/Holding gun walk and Idle/Earrings.png"
+      ],
+      "byte_sha256_count": 1,
+      "reencoded_or_metadata_variant": false
+    },
+    {
+      "group_id": "decoded_pixel_sha256_c3cdea3e25c2e74c158870a8007d6917aec6675fae2464bff3b111884d89726d",
+      "decoded_pixel_sha256": "c3cdea3e25c2e74c158870a8007d6917aec6675fae2464bff3b111884d89726d",
+      "copy_count": 2,
+      "cross_archive": false,
+      "source_zips": [
+        "environment.zip"
+      ],
+      "dimensions": "724x362",
+      "frame_count": 1,
+      "members": [
+        "environment.zip::environment/02_isometric_explore.png",
+        "environment.zip::environment/TS_SRC_002__apartment_isometric_explore_ui_wide.png"
+      ],
+      "byte_sha256_count": 1,
+      "reencoded_or_metadata_variant": false
+    },
+    {
+      "group_id": "decoded_pixel_sha256_c4b095e9b0ec024d2872992e3873ff40244dedbb96f68879a155271e26ad5f0f",
+      "decoded_pixel_sha256": "c4b095e9b0ec024d2872992e3873ff40244dedbb96f68879a155271e26ad5f0f",
+      "copy_count": 2,
+      "cross_archive": false,
+      "source_zips": [
+        "environment.zip"
+      ],
+      "dimensions": "1448x1086",
+      "frame_count": 1,
+      "members": [
+        "environment.zip::environment/ChatGPT_Image_Jul_26__2026__07_59_50_PM__3__lightened.jpg",
+        "environment.zip::environment/TS_VAR_009A__apartment_ambush_fps_lightened.jpg"
+      ],
+      "byte_sha256_count": 1,
+      "reencoded_or_metadata_variant": false
+    },
+    {
+      "group_id": "decoded_pixel_sha256_c7b3965fd1c85654af6c2fd1d5171aedc668ba2b1334e63d9ab5b6c9724b7c5d",
+      "decoded_pixel_sha256": "c7b3965fd1c85654af6c2fd1d5171aedc668ba2b1334e63d9ab5b6c9724b7c5d",
+      "copy_count": 4,
+      "cross_archive": false,
+      "source_zips": [
+        "environment.zip"
+      ],
+      "dimensions": "1448x1086",
+      "frame_count": 1,
+      "members": [
+        "environment.zip::environment/63371c45-1c6b-4d29-b2b5-e18ba7d3d286.png",
+        "environment.zip::environment/ChatGPT Image Jul 26, 2026, 07_59_50 PM (2).png",
+        "environment.zip::environment/TS_DUP_007A__exact_duplicate_of_TS_SRC_007.png",
+        "environment.zip::environment/TS_SRC_007__hallway_contact_dialogue_master.png"
+      ],
+      "byte_sha256_count": 2,
+      "reencoded_or_metadata_variant": true
+    },
+    {
+      "group_id": "decoded_pixel_sha256_d896408868254d8ec20663bef95cf49bcc95fcfced41e287af7874654a1d94f6",
+      "decoded_pixel_sha256": "d896408868254d8ec20663bef95cf49bcc95fcfced41e287af7874654a1d94f6",
+      "copy_count": 2,
+      "cross_archive": false,
+      "source_zips": [
+        "environment.zip"
+      ],
+      "dimensions": "724x362",
+      "frame_count": 1,
+      "members": [
+        "environment.zip::environment/03_puzzle_lockpick.png",
+        "environment.zip::environment/TS_SRC_003__lockpick_closeup_ui_wide.png"
+      ],
+      "byte_sha256_count": 1,
+      "reencoded_or_metadata_variant": false
+    },
+    {
+      "group_id": "decoded_pixel_sha256_daef98fa1883d525d12dcc6c0466e6b0f5262d1e5a6c408ded93525a5bb43b81",
+      "decoded_pixel_sha256": "daef98fa1883d525d12dcc6c0466e6b0f5262d1e5a6c408ded93525a5bb43b81",
+      "copy_count": 3,
+      "cross_archive": false,
+      "source_zips": [
+        "characters.zip"
+      ],
+      "dimensions": "1122x1402",
+      "frame_count": 1,
+      "members": [
+        "characters.zip::characters/TRACKSUIT_source_sheet.png",
+        "characters.zip::characters/goose/ChatGPT Image Aug 20, 2026, 09_14_40 AM (3).png",
+        "characters.zip::characters/goose/goose_expression_batch/references/goose_tracksuit_reference.png"
+      ],
+      "byte_sha256_count": 1,
+      "reencoded_or_metadata_variant": false
+    },
+    {
+      "group_id": "decoded_pixel_sha256_dd14fcbdbc7435ed477860a2796eae2ae06d2ac71e52acee56f08cc031e78362",
+      "decoded_pixel_sha256": "dd14fcbdbc7435ed477860a2796eae2ae06d2ac71e52acee56f08cc031e78362",
+      "copy_count": 4,
+      "cross_archive": false,
+      "source_zips": [
+        "environment.zip"
+      ],
+      "dimensions": "1448x1086",
+      "frame_count": 1,
+      "members": [
+        "environment.zip::environment/62d208c0-9f4b-4f5b-af89-c849a881d118.png",
+        "environment.zip::environment/ChatGPT Image Jul 26, 2026, 07_59_49 PM (1).png",
+        "environment.zip::environment/TS_DUP_006A__exact_duplicate_of_TS_SRC_006.png",
+        "environment.zip::environment/TS_SRC_006__apartment_deal_dialogue_master.png"
+      ],
+      "byte_sha256_count": 2,
+      "reencoded_or_metadata_variant": true
+    },
+    {
+      "group_id": "decoded_pixel_sha256_df19d6fbcc15732ccda083fdc3601f46d333c839ca03cc40cc89aaed38e4c75f",
+      "decoded_pixel_sha256": "df19d6fbcc15732ccda083fdc3601f46d333c839ca03cc40cc89aaed38e4c75f",
+      "copy_count": 2,
+      "cross_archive": false,
+      "source_zips": [
+        "environment.zip"
+      ],
+      "dimensions": "1448x1086",
+      "frame_count": 1,
+      "members": [
+        "environment.zip::environment/ChatGPT Image Jul 26, 2026, 08_00_54 PM (3).png",
+        "environment.zip::environment/TS_SRC_013__apartment_isometric_deal_master.png"
+      ],
+      "byte_sha256_count": 2,
+      "reencoded_or_metadata_variant": true
+    },
+    {
+      "group_id": "decoded_pixel_sha256_fae45feb8bb78987537eb23ed4d8433ac84992e286f32c2b2fa7f9093470a7c0",
+      "decoded_pixel_sha256": "fae45feb8bb78987537eb23ed4d8433ac84992e286f32c2b2fa7f9093470a7c0",
+      "copy_count": 2,
+      "cross_archive": false,
+      "source_zips": [
+        "environment.zip"
+      ],
+      "dimensions": "1448x1086",
+      "frame_count": 1,
+      "members": [
+        "environment.zip::environment/ChatGPT_Image_Jul_26__2026__07_59_50_PM__2__lightened.jpg",
+        "environment.zip::environment/TS_VAR_007A__hallway_contact_dialogue_lightened.jpg"
+      ],
+      "byte_sha256_count": 1,
+      "reencoded_or_metadata_variant": false
+    }
+  ],
+  "summary": {
+    "byte_group_count": 34,
+    "byte_duplicate_file_count": 168,
+    "byte_redundant_copy_count": 134,
+    "byte_redundant_bytes": 36733821,
+    "cross_archive_byte_group_count": 0,
+    "decoded_pixel_group_count": 31,
+    "decoded_pixel_duplicate_file_count": 68,
+    "decoded_pixel_reencoded_variant_group_count": 8,
+    "cross_archive_decoded_pixel_group_count": 0
+  },
+  "pxz_nested_byte_groups": [
+    {
+      "group_id": "pxz_nested_byte_sha256_026c3019a21418bba6bb358b20f2ff1ff7bb87e03f1af3531c8082055e692133",
+      "sha256": "026c3019a21418bba6bb358b20f2ff1ff7bb87e03f1af3531c8082055e692133",
+      "copy_count": 2,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trap body.pxz::thumbnail.webp",
+        "pixlr.zip::pixlr/trap_body_modular_library_upscaled_organized.pxz::thumbnail.webp"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_0c666ee33c731bdec6996e4b8436a857f2c6c047fc59c003f054f055cc591c99",
+      "sha256": "0c666ee33c731bdec6996e4b8436a857f2c6c047fc59c003f054f055cc591c99",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trap body.pxz::24cca4704e83.png",
+        "pixlr.zip::pixlr/trap_body_modular_library_upscaled_organized.pxz::24cca4704e83.png",
+        "pixlr.zip::pixlr/trap_body_top_row_individual_layers.pxz::5f4288a848c5.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_0f5699b53e56554885290909ffd3ddc3a3cd8f8f7a01e666846711653f855fea",
+      "sha256": "0f5699b53e56554885290909ffd3ddc3a3cd8f8f7a01e666846711653f855fea",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::e12791d14415.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::6ff8b7f846d4.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::86bb9a9e4180.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_12586a9d9797e0df311e4daaa049432b37b9fc3fd3b04a4c2056a38c1df2ebe5",
+      "sha256": "12586a9d9797e0df311e4daaa049432b37b9fc3fd3b04a4c2056a38c1df2ebe5",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trap body.pxz::f9afb40c4952.png",
+        "pixlr.zip::pixlr/trap_body_modular_library_upscaled_organized.pxz::f9afb40c4952.png",
+        "pixlr.zip::pixlr/trap_body_top_row_individual_layers.pxz::b41ea40a4447.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_1272c2cb34a4e437dbed32e635435ffc45cbf195dcb2580a4ca72c76daa14af3",
+      "sha256": "1272c2cb34a4e437dbed32e635435ffc45cbf195dcb2580a4ca72c76daa14af3",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trap body.pxz::b33990cf4b68.png",
+        "pixlr.zip::pixlr/trap_body_modular_library_upscaled_organized.pxz::b33990cf4b68.png",
+        "pixlr.zip::pixlr/trap_body_top_row_individual_layers.pxz::4503b23242f7.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_13ba331e22fab297f7975ac134a3900a812fea744822242efcf22a2b1706e66b",
+      "sha256": "13ba331e22fab297f7975ac134a3900a812fea744822242efcf22a2b1706e66b",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::ad408694430a.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::3997a90e4d65.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::7e75a41649e5.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_16016345b4ea75607fb174c6c9c3b82e7b36b8822c83ebeba55441037917f68d",
+      "sha256": "16016345b4ea75607fb174c6c9c3b82e7b36b8822c83ebeba55441037917f68d",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::20e380e04943.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::04efb7034004.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::7859ae314acd.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_19db49bc3f7edfeb7e6e38bf6e07e67441e2498477a64daabcc88e8847db7d25",
+      "sha256": "19db49bc3f7edfeb7e6e38bf6e07e67441e2498477a64daabcc88e8847db7d25",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::50cea13f48dd.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::f25498e24ed5.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::a7bdb9964a36.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_2056c631fb05807aeebe326b0ed32c4d03125d77b179f65fcc866da82f26c1a7",
+      "sha256": "2056c631fb05807aeebe326b0ed32c4d03125d77b179f65fcc866da82f26c1a7",
+      "copy_count": 2,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trap body.pxz::a8b8b92a4552.png",
+        "pixlr.zip::pixlr/trap_body_modular_library_upscaled_organized.pxz::a8b8b92a4552.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_24ab31bcae19a00472edbbcf4c613868cdd420de6ffd1ddbe5ae09f57782e90d",
+      "sha256": "24ab31bcae19a00472edbbcf4c613868cdd420de6ffd1ddbe5ae09f57782e90d",
+      "copy_count": 2,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::e44cbbdc481d.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::a9d3941d4624.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_24f84ccfdd524d9e10a4bb9ee58cf4235ebf9cb9e42d944e43af940970d63859",
+      "sha256": "24f84ccfdd524d9e10a4bb9ee58cf4235ebf9cb9e42d944e43af940970d63859",
+      "copy_count": 2,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trap body.pxz::0ea39e9c4a5b.png",
+        "pixlr.zip::pixlr/trap_body_modular_library_upscaled_organized.pxz::0ea39e9c4a5b.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_25e8175fa158625727a91af8925a3cb661acd5814c060a6069c57dd400306478",
+      "sha256": "25e8175fa158625727a91af8925a3cb661acd5814c060a6069c57dd400306478",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::d303b3f84436.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::37af95f94bda.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::c3ffa98d4726.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_2a917d56d2102eb95193c28b55d21a8c163a6a4fc8ee6a1f7e50eaea05d04a69",
+      "sha256": "2a917d56d2102eb95193c28b55d21a8c163a6a4fc8ee6a1f7e50eaea05d04a69",
+      "copy_count": 2,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trap body.pxz::542a83a9461c.png",
+        "pixlr.zip::pixlr/trap_body_modular_library_upscaled_organized.pxz::542a83a9461c.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_2d76678a6c89c1ceb2bc347b9e1b200d62ba6c1fa16d17794144055747b3dd19",
+      "sha256": "2d76678a6c89c1ceb2bc347b9e1b200d62ba6c1fa16d17794144055747b3dd19",
+      "copy_count": 2,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trap body.pxz::b742a5f64887.png",
+        "pixlr.zip::pixlr/trap_body_modular_library_upscaled_organized.pxz::b742a5f64887.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_3084a2932e303eb3d4d1c332481ac3031d4243d571302e3eba34dca2dce25b1d",
+      "sha256": "3084a2932e303eb3d4d1c332481ac3031d4243d571302e3eba34dca2dce25b1d",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trap body.pxz::aa01ab194735.png",
+        "pixlr.zip::pixlr/trap_body_modular_library_upscaled_organized.pxz::aa01ab194735.png",
+        "pixlr.zip::pixlr/trap_body_top_row_individual_layers.pxz::4038b98b4072.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_348a1fc28618f922963ee930c649acc63433af9828e55f11be79a540702c1e82",
+      "sha256": "348a1fc28618f922963ee930c649acc63433af9828e55f11be79a540702c1e82",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::be50b2ab497e.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::e39b97e04014.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::e803b9e5420a.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_36ac0dd92a4df15425aa304fcb7b2300f25269b603a573911ac6b2711f430c27",
+      "sha256": "36ac0dd92a4df15425aa304fcb7b2300f25269b603a573911ac6b2711f430c27",
+      "copy_count": 2,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trap body.pxz::3cf8807d485a.png",
+        "pixlr.zip::pixlr/trap_body_modular_library_upscaled_organized.pxz::3cf8807d485a.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_36c49bb049e0fc1c245a4bc0ce26d77e0ffe3463f2f087f7a9c66a3516f6011f",
+      "sha256": "36c49bb049e0fc1c245a4bc0ce26d77e0ffe3463f2f087f7a9c66a3516f6011f",
+      "copy_count": 2,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::4d37b6e4444f.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::f12d8eef4523.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_3b4ba61974f21d3beedff4605084b2bed76a10269fcfc5a447d0e712c57d8e36",
+      "sha256": "3b4ba61974f21d3beedff4605084b2bed76a10269fcfc5a447d0e712c57d8e36",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trap body.pxz::bf91872c421c.png",
+        "pixlr.zip::pixlr/trap_body_modular_library_upscaled_organized.pxz::bf91872c421c.png",
+        "pixlr.zip::pixlr/trap_body_top_row_individual_layers.pxz::ddd4ae2f4e41.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_448c5b40868dff4c69b56596f193922253685d0a0e411a49d2d73cd081184c21",
+      "sha256": "448c5b40868dff4c69b56596f193922253685d0a0e411a49d2d73cd081184c21",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::6c999a7241dc.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::f33788c242b2.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::aab89ac748ec.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_44e016373cc5e105c4ad3245509d26374fcda9c64dd1066a53797d9ab07705af",
+      "sha256": "44e016373cc5e105c4ad3245509d26374fcda9c64dd1066a53797d9ab07705af",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::07a0bedf4404.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::128785a04572.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::5a3da1ab4e86.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_4a73bc6a009d4db06e84ef4bc503abde8e942dcfdac8c2186fd35b39bbcb6ce3",
+      "sha256": "4a73bc6a009d4db06e84ef4bc503abde8e942dcfdac8c2186fd35b39bbcb6ce3",
+      "copy_count": 2,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::thumbnail.webp",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::thumbnail.webp"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_4cd66dd5712d5ddcb53c5abec35357e23a8ebc9219a3be21043c714f1376c219",
+      "sha256": "4cd66dd5712d5ddcb53c5abec35357e23a8ebc9219a3be21043c714f1376c219",
+      "copy_count": 2,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::9132b4574dbf.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::d109a3bc4f56.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_4e14f1e77fc41ce76bd3dae03cf8a8a5eaade48808feee4f3ef6f7166c35d96f",
+      "sha256": "4e14f1e77fc41ce76bd3dae03cf8a8a5eaade48808feee4f3ef6f7166c35d96f",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::fe919fd842b7.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::ee2f9a5f430c.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::827aa2494360.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_4e427ccdf10909c2174763b9af8b29fd031482c6f61a7a8c8a91c6d6a64df6af",
+      "sha256": "4e427ccdf10909c2174763b9af8b29fd031482c6f61a7a8c8a91c6d6a64df6af",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trap body.pxz::42c199ea4ea4.png",
+        "pixlr.zip::pixlr/trap_body_modular_library_upscaled_organized.pxz::42c199ea4ea4.png",
+        "pixlr.zip::pixlr/trap_body_top_row_individual_layers.pxz::bae896dc4c2e.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_4e65fd73f44381051db3eaab9626cf4d3530d6fa98085d40ec7ed7c7acf07eea",
+      "sha256": "4e65fd73f44381051db3eaab9626cf4d3530d6fa98085d40ec7ed7c7acf07eea",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::e397a2fb4ed3.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::5608b3eb4175.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::c6d0a57b48cd.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_51507d0c76f121f7ba1683ba5d15e887a2b35aa31bc56b9c39a7766e2a5cb717",
+      "sha256": "51507d0c76f121f7ba1683ba5d15e887a2b35aa31bc56b9c39a7766e2a5cb717",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::da9d95474a50.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::bb8ea4934937.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::b8aeb23b414a.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_51a4ecf55a35865c84a354749c349797f5da7568d0d9ae66d447a5827937cc12",
+      "sha256": "51a4ecf55a35865c84a354749c349797f5da7568d0d9ae66d447a5827937cc12",
+      "copy_count": 2,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::38fb8c464126.webp",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::aa30aebf4c24.webp"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_51a58d38e25d066a9c96505277966a1341309b316eb8208a135bd1df5dc79ad4",
+      "sha256": "51a58d38e25d066a9c96505277966a1341309b316eb8208a135bd1df5dc79ad4",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::1484bdf846dd.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::ab4589104a5d.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::5d728ffb44ee.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_53671e922a6b41f28bb7f247d95fc3daab915763e29d411e6fea70409936770f",
+      "sha256": "53671e922a6b41f28bb7f247d95fc3daab915763e29d411e6fea70409936770f",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::1dc285b54b58.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::7799b1f44119.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::5224a69f434c.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_55a4bbbedae4c90ab84ec512a50fc347fedd29441bb52f11bd4cf8d98b7f20a7",
+      "sha256": "55a4bbbedae4c90ab84ec512a50fc347fedd29441bb52f11bd4cf8d98b7f20a7",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::624f8ad245ec.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::4926af08417c.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::de7fbdac4a21.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_55e784fedc3e99d504431e321c5b31b8b582971bf6b24164ece4359af78c1c7d",
+      "sha256": "55e784fedc3e99d504431e321c5b31b8b582971bf6b24164ece4359af78c1c7d",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::0123944e4a9e.webp",
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::fa41b4d648f0.webp",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::758fbb21406c.webp"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_578f8922ebc567a2abf33f2b9d471a2878defe70736d7425a3381c7f64e65399",
+      "sha256": "578f8922ebc567a2abf33f2b9d471a2878defe70736d7425a3381c7f64e65399",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trap body.pxz::83deb323494b.png",
+        "pixlr.zip::pixlr/trap_body_modular_library_upscaled_organized.pxz::83deb323494b.png",
+        "pixlr.zip::pixlr/trap_body_top_row_individual_layers.pxz::b647a63a42ba.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_5b064c93dcd7e8b1f38b9fe54025a4f89c97c5633e030d623cf92fb56b4ca0df",
+      "sha256": "5b064c93dcd7e8b1f38b9fe54025a4f89c97c5633e030d623cf92fb56b4ca0df",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::5e33a37b4843.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::3b8b8b1d48a0.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::7d739e034f9b.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_5cb0fc660ee5075133c33e810101c9a219279b2eccbf795297224246f69f9dd8",
+      "sha256": "5cb0fc660ee5075133c33e810101c9a219279b2eccbf795297224246f69f9dd8",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::b21397694dcb.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::111d8f06441f.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::8fdcb8434a92.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_64a1aaa87f50e3b68e4215a73fa686809798c0a8b410c4ef846c2b532c18c6b6",
+      "sha256": "64a1aaa87f50e3b68e4215a73fa686809798c0a8b410c4ef846c2b532c18c6b6",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::4879b1a44f4e.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::236981054e01.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::f7508ab44a4a.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_652b29e7da02ae818a90b21f25627f96e0236076ab81a824c3fbf05e31ceae85",
+      "sha256": "652b29e7da02ae818a90b21f25627f96e0236076ab81a824c3fbf05e31ceae85",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::0f31acb1454f.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::9f449f644fe0.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::246490d84bf9.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_663b97eb78974fb0d06f08a530f1449b3f7efead5fabf2280d72f5ca7395e782",
+      "sha256": "663b97eb78974fb0d06f08a530f1449b3f7efead5fabf2280d72f5ca7395e782",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::22de8af84d32.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::322e8b22462a.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::770a8d3b4996.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_6cb4069ce7e643918447333e7e83533d880965a648aede6021967e86e3bb9264",
+      "sha256": "6cb4069ce7e643918447333e7e83533d880965a648aede6021967e86e3bb9264",
+      "copy_count": 2,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::dec1bad34bd5.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::d3c78016483b.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_710765df626680ef439eeb07adc455ce13298575c320bed2c7082eed2721ef1e",
+      "sha256": "710765df626680ef439eeb07adc455ce13298575c320bed2c7082eed2721ef1e",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trap body.pxz::6139a5564430.png",
+        "pixlr.zip::pixlr/trap_body_modular_library_upscaled_organized.pxz::6139a5564430.png",
+        "pixlr.zip::pixlr/trap_body_top_row_individual_layers.pxz::70a980384021.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_7139d93ba7739ddc04a56ec420b11ed3fe34a748ed58992ec687eb5a73660881",
+      "sha256": "7139d93ba7739ddc04a56ec420b11ed3fe34a748ed58992ec687eb5a73660881",
+      "copy_count": 2,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::1e04b9164f7a.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::d3f08e3b4b5d.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_72d5e4e4df2c8a690864ae426821fcee67fec8a0c6be9658cc8f40fe36617bd2",
+      "sha256": "72d5e4e4df2c8a690864ae426821fcee67fec8a0c6be9658cc8f40fe36617bd2",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::6f9b92864a39.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::0ee7b2304046.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::7973a8364ca4.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_750dd774f1d44fd5a91b0d993b9798ada2c15497a2058668050e048fbf522dc6",
+      "sha256": "750dd774f1d44fd5a91b0d993b9798ada2c15497a2058668050e048fbf522dc6",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trap body.pxz::b6d2af89422e.png",
+        "pixlr.zip::pixlr/trap_body_modular_library_upscaled_organized.pxz::b6d2af89422e.png",
+        "pixlr.zip::pixlr/trap_body_top_row_individual_layers.pxz::1a1688674690.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_75388bf9db0b5ea6baf8a7b67c473170219e1e7eafb66d2b5a72cdee288f5c53",
+      "sha256": "75388bf9db0b5ea6baf8a7b67c473170219e1e7eafb66d2b5a72cdee288f5c53",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trap body.pxz::8de5b8d54c3e.png",
+        "pixlr.zip::pixlr/trap_body_modular_library_upscaled_organized.pxz::8de5b8d54c3e.png",
+        "pixlr.zip::pixlr/trap_body_top_row_individual_layers.pxz::ae2e918b4305.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_7825b0f72426fdb93aa7ed47c639fa62d49b251f029080a3103bb9962d6feef5",
+      "sha256": "7825b0f72426fdb93aa7ed47c639fa62d49b251f029080a3103bb9962d6feef5",
+      "copy_count": 2,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::34c982754577.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::954d837e41c3.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_7c9a74632755af1e6ba272637bc51c1a2ad215aae1bacc4bc35fdfe514dd7d9b",
+      "sha256": "7c9a74632755af1e6ba272637bc51c1a2ad215aae1bacc4bc35fdfe514dd7d9b",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trap body.pxz::a3c0bb3b423d.png",
+        "pixlr.zip::pixlr/trap_body_modular_library_upscaled_organized.pxz::a3c0bb3b423d.png",
+        "pixlr.zip::pixlr/trap_body_top_row_individual_layers.pxz::716da7de45c5.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_7d6de3eb4274dcff06a9222e6d4905770c3138fbdb87b0192676eece49d5e57b",
+      "sha256": "7d6de3eb4274dcff06a9222e6d4905770c3138fbdb87b0192676eece49d5e57b",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trap body.pxz::46a698834d33.png",
+        "pixlr.zip::pixlr/trap_body_modular_library_upscaled_organized.pxz::46a698834d33.png",
+        "pixlr.zip::pixlr/trap_body_top_row_individual_layers.pxz::f060a83e46cc.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_84b348da0f3c5f5e6110d1cfd104e88b221d8386f16593f2228a42bbb6f1c515",
+      "sha256": "84b348da0f3c5f5e6110d1cfd104e88b221d8386f16593f2228a42bbb6f1c515",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trap body.pxz::9a3f955a4017.png",
+        "pixlr.zip::pixlr/trap_body_modular_library_upscaled_organized.pxz::9a3f955a4017.png",
+        "pixlr.zip::pixlr/trap_body_top_row_individual_layers.pxz::88b5bf1d4392.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_84eed4be0221f45eee0c9667882edd2ac342b37afbb06aab88621407b5fcb630",
+      "sha256": "84eed4be0221f45eee0c9667882edd2ac342b37afbb06aab88621407b5fcb630",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trap body.pxz::fc48811f4890.png",
+        "pixlr.zip::pixlr/trap_body_modular_library_upscaled_organized.pxz::fc48811f4890.png",
+        "pixlr.zip::pixlr/trap_body_top_row_individual_layers.pxz::27e29d9046c7.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_85724314463cd74b8850b6107ac48c6b72218b2a92919f0164c6681e712178a6",
+      "sha256": "85724314463cd74b8850b6107ac48c6b72218b2a92919f0164c6681e712178a6",
+      "copy_count": 2,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::910fafbc4f1e.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::4b76b6a140d5.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_87ca7cfdb056a8abd31b9e332b56c1b5ba5acaf2094c2c6b60236f210a227501",
+      "sha256": "87ca7cfdb056a8abd31b9e332b56c1b5ba5acaf2094c2c6b60236f210a227501",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trap body.pxz::caffb18a41ec.png",
+        "pixlr.zip::pixlr/trap_body_modular_library_upscaled_organized.pxz::caffb18a41ec.png",
+        "pixlr.zip::pixlr/trap_body_top_row_individual_layers.pxz::d70988b148d1.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_8982e8bd5be5972323bef9a7d223618e50545abf085ebbba548c16825d38299d",
+      "sha256": "8982e8bd5be5972323bef9a7d223618e50545abf085ebbba548c16825d38299d",
+      "copy_count": 2,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::fc87a2b440d1.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::50e9b43b4ff1.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_8ee707c7177b5920ee20bd75d6f60e590d3b3ac5675d5015b961db71426beb54",
+      "sha256": "8ee707c7177b5920ee20bd75d6f60e590d3b3ac5675d5015b961db71426beb54",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::10679418448c.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::6aed8f484276.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::bb079bc9477d.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_94453486a251cb78258be5dd80c68ef0d900d9d346dba39f5d14c7c2401d51b7",
+      "sha256": "94453486a251cb78258be5dd80c68ef0d900d9d346dba39f5d14c7c2401d51b7",
+      "copy_count": 2,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::a420aade41f8.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::2c9c8a27431f.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_947b92f67ba3f8d0f5f434a38c8baeb9916c2887e2c6c0d309bd32985b13e32f",
+      "sha256": "947b92f67ba3f8d0f5f434a38c8baeb9916c2887e2c6c0d309bd32985b13e32f",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trap body.pxz::8ef1a4c1441f.png",
+        "pixlr.zip::pixlr/trap_body_modular_library_upscaled_organized.pxz::8ef1a4c1441f.png",
+        "pixlr.zip::pixlr/trap_body_top_row_individual_layers.pxz::2677a4a44780.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_9d25d60580f7a9cf26905dca5cbe60b3a118ec877befe8db6e3d4a49f46e9bda",
+      "sha256": "9d25d60580f7a9cf26905dca5cbe60b3a118ec877befe8db6e3d4a49f46e9bda",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::1faebbbc47f1.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::f5db945447a0.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::f787a2854761.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_9dbbea4dc679158cb26233675e4c3a046bc1b86ce139ca6f8c7fafac0f542d0b",
+      "sha256": "9dbbea4dc679158cb26233675e4c3a046bc1b86ce139ca6f8c7fafac0f542d0b",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trap body.pxz::aa6f89b44809.png",
+        "pixlr.zip::pixlr/trap_body_modular_library_upscaled_organized.pxz::aa6f89b44809.png",
+        "pixlr.zip::pixlr/trap_body_top_row_individual_layers.pxz::5549b40f43a8.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_a88b95c828f9b93d28842325e5d70cd9342e1c8ba835d7bfe151390ad6c57060",
+      "sha256": "a88b95c828f9b93d28842325e5d70cd9342e1c8ba835d7bfe151390ad6c57060",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trap body.pxz::7c079177469a.png",
+        "pixlr.zip::pixlr/trap_body_modular_library_upscaled_organized.pxz::7c079177469a.png",
+        "pixlr.zip::pixlr/trap_body_top_row_individual_layers.pxz::49faaf6f47e2.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_a89403536794c33cb314ed4476d3497ef7586594d3ca29b3083979b20e8c6fe4",
+      "sha256": "a89403536794c33cb314ed4476d3497ef7586594d3ca29b3083979b20e8c6fe4",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trap body.pxz::5146b1dd42d0.webp",
+        "pixlr.zip::pixlr/trap_body_modular_library_upscaled_organized.pxz::5146b1dd42d0.webp",
+        "pixlr.zip::pixlr/trap_body_top_row_individual_layers.pxz::9b3f836e4aeb.webp"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_a99eb27508de649a076c85c27c36d66eb44204093748057af6a4126678be67cf",
+      "sha256": "a99eb27508de649a076c85c27c36d66eb44204093748057af6a4126678be67cf",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trap body.pxz::31e0921449bf.png",
+        "pixlr.zip::pixlr/trap_body_modular_library_upscaled_organized.pxz::31e0921449bf.png",
+        "pixlr.zip::pixlr/trap_body_top_row_individual_layers.pxz::77039eb84fa9.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_aed06baf5eb34209296de7559fa296592d7825eff21792caf85b1670b9e4396d",
+      "sha256": "aed06baf5eb34209296de7559fa296592d7825eff21792caf85b1670b9e4396d",
+      "copy_count": 2,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::aaa4b09248a0.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::88578d7e40e3.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_afa7e7b9788279942d037b3afcc2c7228a78614239ffccf218e7d8869c8d835e",
+      "sha256": "afa7e7b9788279942d037b3afcc2c7228a78614239ffccf218e7d8869c8d835e",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trap body.pxz::4955abd149e8.png",
+        "pixlr.zip::pixlr/trap_body_modular_library_upscaled_organized.pxz::4955abd149e8.png",
+        "pixlr.zip::pixlr/trap_body_top_row_individual_layers.pxz::eb2886004ee2.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_b1544b1eee3e3591e47b6d12e937d13c449bce67a93d32c903dabeca5f03e3a4",
+      "sha256": "b1544b1eee3e3591e47b6d12e937d13c449bce67a93d32c903dabeca5f03e3a4",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trap body.pxz::47a4b0f74228.png",
+        "pixlr.zip::pixlr/trap_body_modular_library_upscaled_organized.pxz::47a4b0f74228.png",
+        "pixlr.zip::pixlr/trap_body_top_row_individual_layers.pxz::d3a490d342bc.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_b16fdd9d20c4c35de190570cb3a3574041271d3eaf5220107f990c18315f8201",
+      "sha256": "b16fdd9d20c4c35de190570cb3a3574041271d3eaf5220107f990c18315f8201",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trap body.pxz::108fbd6c4e13.png",
+        "pixlr.zip::pixlr/trap_body_modular_library_upscaled_organized.pxz::108fbd6c4e13.png",
+        "pixlr.zip::pixlr/trap_body_top_row_individual_layers.pxz::e437be5c4e54.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_b3253693a455592560777d3004a49d07132b94f5cd41226f5ee20e41f619eb7d",
+      "sha256": "b3253693a455592560777d3004a49d07132b94f5cd41226f5ee20e41f619eb7d",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::ef5f9ece4b8a.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::543fa5dd48fb.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::1785bd6e4923.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_b3e8cedd0cf10712d6edb9d9172e148a00da5220b10ab26edb84f745cafe6b80",
+      "sha256": "b3e8cedd0cf10712d6edb9d9172e148a00da5220b10ab26edb84f745cafe6b80",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::171d99c64e01.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::0f4ba937424e.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::db27b71a4974.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_b84df68dcbb8ce66389f8f2da962feb658e078338b8aa5a05d955099fc92f00c",
+      "sha256": "b84df68dcbb8ce66389f8f2da962feb658e078338b8aa5a05d955099fc92f00c",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trap body.pxz::7f2484a94109.png",
+        "pixlr.zip::pixlr/trap_body_modular_library_upscaled_organized.pxz::7f2484a94109.png",
+        "pixlr.zip::pixlr/trap_body_top_row_individual_layers.pxz::92e7892e492d.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_ba575f68c8ee618df09119a004b1168a5fe2c36fd8c9ff488541a91bce0f790c",
+      "sha256": "ba575f68c8ee618df09119a004b1168a5fe2c36fd8c9ff488541a91bce0f790c",
+      "copy_count": 2,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::47ef96f44971.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::eb3f82274ae1.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_bb2ac4133699202939688d445cb410f74b62481eb836a4ec4a9f98e36aeb4959",
+      "sha256": "bb2ac4133699202939688d445cb410f74b62481eb836a4ec4a9f98e36aeb4959",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::7fbabb2b4b4d.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::780c95ce4935.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::14c7ac184826.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_bc18d5beeb99ff1d657c0b0ab26b53582684a79f44d116aee0693538d8ed994a",
+      "sha256": "bc18d5beeb99ff1d657c0b0ab26b53582684a79f44d116aee0693538d8ed994a",
+      "copy_count": 2,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trap body.pxz::3e13a88d4134.png",
+        "pixlr.zip::pixlr/trap_body_modular_library_upscaled_organized.pxz::3e13a88d4134.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_bcd6066e698eac8f1ac81a9fad34a5f7d418c232d1e9348f86f45e55ebb6e7f2",
+      "sha256": "bcd6066e698eac8f1ac81a9fad34a5f7d418c232d1e9348f86f45e55ebb6e7f2",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trap body.pxz::df91a3664ef0.png",
+        "pixlr.zip::pixlr/trap_body_modular_library_upscaled_organized.pxz::df91a3664ef0.png",
+        "pixlr.zip::pixlr/trap_body_top_row_individual_layers.pxz::da15b2744a0a.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_c053c151409a17a88647680c8cc718e192976249864f656a333ac1d84932fac3",
+      "sha256": "c053c151409a17a88647680c8cc718e192976249864f656a333ac1d84932fac3",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::e177bbf84eee.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::ba32ab2c4cee.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::679e8d534492.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_c3323eb7cf826dfe1a2ba9b6a5a6a8fdd857467e51c77540b69b0aa39002aa57",
+      "sha256": "c3323eb7cf826dfe1a2ba9b6a5a6a8fdd857467e51c77540b69b0aa39002aa57",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::829fa03244ea.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::a508968842ea.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::afe3bfee4634.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_cd43d6bd74f7ec4ce6389a2e3282b6c55e5ef6d632d4eb8c01008b13c701005a",
+      "sha256": "cd43d6bd74f7ec4ce6389a2e3282b6c55e5ef6d632d4eb8c01008b13c701005a",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trap body.pxz::5935a2c74ccd.png",
+        "pixlr.zip::pixlr/trap_body_modular_library_upscaled_organized.pxz::5935a2c74ccd.png",
+        "pixlr.zip::pixlr/trap_body_top_row_individual_layers.pxz::17d195bb4ae5.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_cd78419c99d0b05c16b203af0b995e5e355e1458c576bb13c8e9543dbd48544a",
+      "sha256": "cd78419c99d0b05c16b203af0b995e5e355e1458c576bb13c8e9543dbd48544a",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::c0959c1748d5.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::259aa6f0435d.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::0725a089410b.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_cd7a7bf3518b5a42864c0a7c7d152ac289e092ac7d2555387343d8300fc032e2",
+      "sha256": "cd7a7bf3518b5a42864c0a7c7d152ac289e092ac7d2555387343d8300fc032e2",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::224482e648ce.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::bacfb05b4c2b.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::fd46b9da49b8.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_d1d6f0d718749967365fe4dc544227924e5e9e6b87d922a0c8c912ce34b8dd92",
+      "sha256": "d1d6f0d718749967365fe4dc544227924e5e9e6b87d922a0c8c912ce34b8dd92",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trap body.pxz::ddbba7bc4e23.png",
+        "pixlr.zip::pixlr/trap_body_modular_library_upscaled_organized.pxz::ddbba7bc4e23.png",
+        "pixlr.zip::pixlr/trap_body_top_row_individual_layers.pxz::8c6bb1b142b4.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_d2911416f458d204f8adb5c9a5ed9b86b06e47d1b86fcfe52d797a3d6844418d",
+      "sha256": "d2911416f458d204f8adb5c9a5ed9b86b06e47d1b86fcfe52d797a3d6844418d",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::32c9856e4bdb.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::b045b4e740cc.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::5050bbfa4ff8.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_d7f3d6eca14803127c5f1e037e116c3209f2410338e28c1e36c0ff89e8be5229",
+      "sha256": "d7f3d6eca14803127c5f1e037e116c3209f2410338e28c1e36c0ff89e8be5229",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trap body.pxz::4c9ebe564e73.png",
+        "pixlr.zip::pixlr/trap_body_modular_library_upscaled_organized.pxz::4c9ebe564e73.png",
+        "pixlr.zip::pixlr/trap_body_top_row_individual_layers.pxz::12bda2414d6a.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_d8448f0e3b8c0b6466da4abdaf1b1617630139590a32d97e6bcdd01448d0fffe",
+      "sha256": "d8448f0e3b8c0b6466da4abdaf1b1617630139590a32d97e6bcdd01448d0fffe",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::9ff69ed24e3a.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::5b169664410c.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::c6f5a5264ecc.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_d853aad64edb4af09c18cb2fdcbdae7c13019420430559c1303e28df73c2d9c9",
+      "sha256": "d853aad64edb4af09c18cb2fdcbdae7c13019420430559c1303e28df73c2d9c9",
+      "copy_count": 2,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::dbfebd614473.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::bc23b7e84749.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_dc50cdef188f2f77ba80d2bc6261fa0e0b69785575b1aeff74b4aa2d8510547a",
+      "sha256": "dc50cdef188f2f77ba80d2bc6261fa0e0b69785575b1aeff74b4aa2d8510547a",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trap body.pxz::4b70b3cf4218.png",
+        "pixlr.zip::pixlr/trap_body_modular_library_upscaled_organized.pxz::4b70b3cf4218.png",
+        "pixlr.zip::pixlr/trap_body_top_row_individual_layers.pxz::14ccbd874a97.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_e0e8f6a52b53797cb2ca10a4ecd1b7b3b74042e59affaeb4256d8ad1b6b70e10",
+      "sha256": "e0e8f6a52b53797cb2ca10a4ecd1b7b3b74042e59affaeb4256d8ad1b6b70e10",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::89468c404b09.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::71e6a5244db6.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::3af5b4c345d8.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_e11c2b3b357b221a4ef7b302fa84d656ba993b6e5669d808ed8ad5fab0ad4587",
+      "sha256": "e11c2b3b357b221a4ef7b302fa84d656ba993b6e5669d808ed8ad5fab0ad4587",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trap body.pxz::be878a3449d3.png",
+        "pixlr.zip::pixlr/trap_body_modular_library_upscaled_organized.pxz::be878a3449d3.png",
+        "pixlr.zip::pixlr/trap_body_top_row_individual_layers.pxz::0abaaed44e9b.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_e213a30008f4917d8edaafc8c66c063e8666badc86cc6adbdb7aa424aabdde80",
+      "sha256": "e213a30008f4917d8edaafc8c66c063e8666badc86cc6adbdb7aa424aabdde80",
+      "copy_count": 2,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::f96e8aad49e0.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::fac79c4841ce.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_e329925114efbafa44702236e3dff60e65fa65895f29bb6629131c57340f81ac",
+      "sha256": "e329925114efbafa44702236e3dff60e65fa65895f29bb6629131c57340f81ac",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::3f428c834c40.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::f92084464fad.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::7e3a9a384a26.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_e4a69c31968c8b519b26b74a7c6c985a8176136c9c1b8616a08414d3c57202d3",
+      "sha256": "e4a69c31968c8b519b26b74a7c6c985a8176136c9c1b8616a08414d3c57202d3",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trap body.pxz::8c5484b74158.png",
+        "pixlr.zip::pixlr/trap_body_modular_library_upscaled_organized.pxz::8c5484b74158.png",
+        "pixlr.zip::pixlr/trap_body_top_row_individual_layers.pxz::3ae181e04b94.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_e8b33039000ca54c6afa16471c19ab4c86283a4a0c22e7a6a82c6c17d7d94cef",
+      "sha256": "e8b33039000ca54c6afa16471c19ab4c86283a4a0c22e7a6a82c6c17d7d94cef",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::1825ae2149ba.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::9339816b4740.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::bc9da5524d8d.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_ea38add88ec4029deab56ed55ffd6b17dc2dd8467b3fefa42fda9d0f8fdb2b02",
+      "sha256": "ea38add88ec4029deab56ed55ffd6b17dc2dd8467b3fefa42fda9d0f8fdb2b02",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::e6d9ad034f60.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::627d9ffc49d3.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::e2fb88a4494a.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_eee97db5bf1417e1e2189bb36708671f6c02cc296381c433d45b7288c5266f9b",
+      "sha256": "eee97db5bf1417e1e2189bb36708671f6c02cc296381c433d45b7288c5266f9b",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trap body.pxz::0d86898b4faa.png",
+        "pixlr.zip::pixlr/trap_body_modular_library_upscaled_organized.pxz::0d86898b4faa.png",
+        "pixlr.zip::pixlr/trap_body_top_row_individual_layers.pxz::3550b4b14656.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_f25a4b15b595ffa59460d4bc60ed8b30b5f0bdcf4db2be2d976b0089f56d8874",
+      "sha256": "f25a4b15b595ffa59460d4bc60ed8b30b5f0bdcf4db2be2d976b0089f56d8874",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::373f8f164faa.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::dc9faa984cec.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::a68aa3df4796.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_f377b80f7c27a8c23be44dfac50450c452a16020e7de160a120d21e5f7191092",
+      "sha256": "f377b80f7c27a8c23be44dfac50450c452a16020e7de160a120d21e5f7191092",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trap body.pxz::32d3ad424c5e.png",
+        "pixlr.zip::pixlr/trap_body_modular_library_upscaled_organized.pxz::32d3ad424c5e.png",
+        "pixlr.zip::pixlr/trap_body_top_row_individual_layers.pxz::96fb8bb944ac.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_f3bc156e853490bd24f53bc90725d53394d91c8b77c75304e49b2e131737b563",
+      "sha256": "f3bc156e853490bd24f53bc90725d53394d91c8b77c75304e49b2e131737b563",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::472bb4d3474c.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::70dda5d045bb.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::6766beee4f18.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_fce8cb5cd3a7fff18c82b6a40c299a4a803a0e18331572d6638e740aeaefb874",
+      "sha256": "fce8cb5cd3a7fff18c82b6a40c299a4a803a0e18331572d6638e740aeaefb874",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::51418d444d46.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::04e5bc614ea1.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::74f490114319.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_fe14ee4e012bb1a72e0817629823fe51fc642c201daa6eb417e314aa37726c28",
+      "sha256": "fe14ee4e012bb1a72e0817629823fe51fc642c201daa6eb417e314aa37726c28",
+      "copy_count": 2,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::9ac89b3e404e.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::30d3b5e74889.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_fe5072a406daae18c691faaf9961f6b7b1d60bb93032351d59051acbbbcadfe4",
+      "sha256": "fe5072a406daae18c691faaf9961f6b7b1d60bb93032351d59051acbbbcadfe4",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trap body.pxz::8a5083374aa0.png",
+        "pixlr.zip::pixlr/trap_body_modular_library_upscaled_organized.pxz::8a5083374aa0.png",
+        "pixlr.zip::pixlr/trap_body_top_row_individual_layers.pxz::876ab5914017.png"
+      ]
+    },
+    {
+      "group_id": "pxz_nested_byte_sha256_fee59be56c15567347a73c6e58c52296e1f804d3df3992ad04d74951d8833534",
+      "sha256": "fee59be56c15567347a73c6e58c52296e1f804d3df3992ad04d74951d8833534",
+      "copy_count": 3,
+      "cross_project": true,
+      "members": [
+        "pixlr.zip::pixlr/trapface.pxz::ebd998b44cf3.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::f6a98ba64f1d.png",
+        "pixlr.zip::pixlr/trapface_slot_labeled_specific.pxz::ccfbb33e4d2b.png"
+      ]
+    }
+  ],
+  "outer_to_pxz_nested_byte_matches": [
+    {
+      "nested_asset_id": "pixlr.zip::pixlr/trapface_slot_labeled_anatomical_eye_split.pxz::3cd88cde492c.png",
+      "sha256": "069f717d87f2c05610a1fc992b5e5dbc3f495aef59108dffbe1d4382cba6cc1c",
+      "outer_matches": [
+        "characters.zip::characters/marcus/expression_marcus/30_UPPER_FACE_RIGHT_BROW_ARCHED_TALL_01.png"
+      ]
+    }
+  ]
+}

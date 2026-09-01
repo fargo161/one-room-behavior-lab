@@ -1,0 +1,874 @@
+{
+  "schema": "trapstar-goose-expression-validation",
+  "version": 1,
+  "canonicalCanvas": {
+    "width": 1187,
+    "height": 1484
+  },
+  "expressionCount": 18,
+  "slotAssetCount": 90,
+  "previewCount": 18,
+  "allExactRecompositions": true,
+  "allSlotsNonEmpty": true,
+  "expressions": [
+    {
+      "expressionId": "goose_expr_01",
+      "dimensions": {
+        "width": 1187,
+        "height": 1484
+      },
+      "mode": "RGBA",
+      "exactRecomposition": true,
+      "changedFromNeutralPixelCount": 275011,
+      "changedBoundingBox": [
+        280,
+        405,
+        908,
+        1001
+      ],
+      "slotAlphaBoundingBoxes": {
+        "LEFT_BROW": [
+          577,
+          405,
+          908,
+          576
+        ],
+        "RIGHT_BROW": [
+          280,
+          405,
+          611,
+          576
+        ],
+        "LEFT_EYE": [
+          584,
+          515,
+          888,
+          706
+        ],
+        "RIGHT_EYE": [
+          300,
+          515,
+          604,
+          706
+        ],
+        "LOWER_FACE": [
+          285,
+          635,
+          903,
+          1001
+        ]
+      }
+    },
+    {
+      "expressionId": "goose_expr_02",
+      "dimensions": {
+        "width": 1187,
+        "height": 1484
+      },
+      "mode": "RGBA",
+      "exactRecomposition": true,
+      "changedFromNeutralPixelCount": 281786,
+      "changedBoundingBox": [
+        280,
+        405,
+        908,
+        1001
+      ],
+      "slotAlphaBoundingBoxes": {
+        "LEFT_BROW": [
+          577,
+          405,
+          908,
+          576
+        ],
+        "RIGHT_BROW": [
+          280,
+          405,
+          611,
+          576
+        ],
+        "LEFT_EYE": [
+          584,
+          515,
+          888,
+          706
+        ],
+        "RIGHT_EYE": [
+          300,
+          515,
+          604,
+          706
+        ],
+        "LOWER_FACE": [
+          285,
+          635,
+          903,
+          1001
+        ]
+      }
+    },
+    {
+      "expressionId": "goose_expr_03",
+      "dimensions": {
+        "width": 1187,
+        "height": 1484
+      },
+      "mode": "RGBA",
+      "exactRecomposition": true,
+      "changedFromNeutralPixelCount": 294078,
+      "changedBoundingBox": [
+        280,
+        405,
+        908,
+        1001
+      ],
+      "slotAlphaBoundingBoxes": {
+        "LEFT_BROW": [
+          577,
+          405,
+          908,
+          576
+        ],
+        "RIGHT_BROW": [
+          280,
+          405,
+          611,
+          576
+        ],
+        "LEFT_EYE": [
+          584,
+          515,
+          888,
+          706
+        ],
+        "RIGHT_EYE": [
+          300,
+          515,
+          604,
+          706
+        ],
+        "LOWER_FACE": [
+          285,
+          635,
+          903,
+          1001
+        ]
+      }
+    },
+    {
+      "expressionId": "goose_expr_04",
+      "dimensions": {
+        "width": 1187,
+        "height": 1484
+      },
+      "mode": "RGBA",
+      "exactRecomposition": true,
+      "changedFromNeutralPixelCount": 248553,
+      "changedBoundingBox": [
+        280,
+        405,
+        908,
+        1001
+      ],
+      "slotAlphaBoundingBoxes": {
+        "LEFT_BROW": [
+          577,
+          405,
+          908,
+          576
+        ],
+        "RIGHT_BROW": [
+          280,
+          405,
+          611,
+          576
+        ],
+        "LEFT_EYE": [
+          584,
+          515,
+          888,
+          706
+        ],
+        "RIGHT_EYE": [
+          300,
+          515,
+          604,
+          706
+        ],
+        "LOWER_FACE": [
+          285,
+          635,
+          903,
+          1001
+        ]
+      }
+    },
+    {
+      "expressionId": "goose_expr_05",
+      "dimensions": {
+        "width": 1187,
+        "height": 1484
+      },
+      "mode": "RGBA",
+      "exactRecomposition": true,
+      "changedFromNeutralPixelCount": 257448,
+      "changedBoundingBox": [
+        280,
+        405,
+        908,
+        1001
+      ],
+      "slotAlphaBoundingBoxes": {
+        "LEFT_BROW": [
+          577,
+          405,
+          908,
+          576
+        ],
+        "RIGHT_BROW": [
+          280,
+          405,
+          611,
+          576
+        ],
+        "LEFT_EYE": [
+          584,
+          515,
+          888,
+          706
+        ],
+        "RIGHT_EYE": [
+          300,
+          515,
+          604,
+          706
+        ],
+        "LOWER_FACE": [
+          285,
+          635,
+          903,
+          1001
+        ]
+      }
+    },
+    {
+      "expressionId": "goose_expr_06",
+      "dimensions": {
+        "width": 1187,
+        "height": 1484
+      },
+      "mode": "RGBA",
+      "exactRecomposition": true,
+      "changedFromNeutralPixelCount": 287169,
+      "changedBoundingBox": [
+        280,
+        405,
+        908,
+        1001
+      ],
+      "slotAlphaBoundingBoxes": {
+        "LEFT_BROW": [
+          577,
+          405,
+          908,
+          576
+        ],
+        "RIGHT_BROW": [
+          280,
+          405,
+          611,
+          576
+        ],
+        "LEFT_EYE": [
+          584,
+          515,
+          888,
+          706
+        ],
+        "RIGHT_EYE": [
+          300,
+          515,
+          604,
+          706
+        ],
+        "LOWER_FACE": [
+          285,
+          635,
+          903,
+          1001
+        ]
+      }
+    },
+    {
+      "expressionId": "goose_expr_07",
+      "dimensions": {
+        "width": 1187,
+        "height": 1484
+      },
+      "mode": "RGBA",
+      "exactRecomposition": true,
+      "changedFromNeutralPixelCount": 269417,
+      "changedBoundingBox": [
+        280,
+        405,
+        908,
+        1001
+      ],
+      "slotAlphaBoundingBoxes": {
+        "LEFT_BROW": [
+          577,
+          405,
+          908,
+          576
+        ],
+        "RIGHT_BROW": [
+          280,
+          405,
+          611,
+          576
+        ],
+        "LEFT_EYE": [
+          584,
+          515,
+          888,
+          706
+        ],
+        "RIGHT_EYE": [
+          300,
+          515,
+          604,
+          706
+        ],
+        "LOWER_FACE": [
+          285,
+          635,
+          903,
+          1001
+        ]
+      }
+    },
+    {
+      "expressionId": "goose_expr_08",
+      "dimensions": {
+        "width": 1187,
+        "height": 1484
+      },
+      "mode": "RGBA",
+      "exactRecomposition": true,
+      "changedFromNeutralPixelCount": 278298,
+      "changedBoundingBox": [
+        280,
+        405,
+        908,
+        1001
+      ],
+      "slotAlphaBoundingBoxes": {
+        "LEFT_BROW": [
+          577,
+          405,
+          908,
+          576
+        ],
+        "RIGHT_BROW": [
+          280,
+          405,
+          611,
+          576
+        ],
+        "LEFT_EYE": [
+          584,
+          515,
+          888,
+          706
+        ],
+        "RIGHT_EYE": [
+          300,
+          515,
+          604,
+          706
+        ],
+        "LOWER_FACE": [
+          285,
+          635,
+          903,
+          1001
+        ]
+      }
+    },
+    {
+      "expressionId": "goose_expr_09",
+      "dimensions": {
+        "width": 1187,
+        "height": 1484
+      },
+      "mode": "RGBA",
+      "exactRecomposition": true,
+      "changedFromNeutralPixelCount": 0,
+      "changedBoundingBox": null,
+      "slotAlphaBoundingBoxes": {
+        "LEFT_BROW": [
+          577,
+          405,
+          908,
+          576
+        ],
+        "RIGHT_BROW": [
+          280,
+          405,
+          611,
+          576
+        ],
+        "LEFT_EYE": [
+          584,
+          515,
+          888,
+          706
+        ],
+        "RIGHT_EYE": [
+          300,
+          515,
+          604,
+          706
+        ],
+        "LOWER_FACE": [
+          285,
+          635,
+          903,
+          1001
+        ]
+      }
+    },
+    {
+      "expressionId": "goose_expr_10",
+      "dimensions": {
+        "width": 1187,
+        "height": 1484
+      },
+      "mode": "RGBA",
+      "exactRecomposition": true,
+      "changedFromNeutralPixelCount": 292124,
+      "changedBoundingBox": [
+        280,
+        405,
+        908,
+        1001
+      ],
+      "slotAlphaBoundingBoxes": {
+        "LEFT_BROW": [
+          577,
+          405,
+          908,
+          576
+        ],
+        "RIGHT_BROW": [
+          280,
+          405,
+          611,
+          576
+        ],
+        "LEFT_EYE": [
+          584,
+          515,
+          888,
+          706
+        ],
+        "RIGHT_EYE": [
+          300,
+          515,
+          604,
+          706
+        ],
+        "LOWER_FACE": [
+          285,
+          635,
+          903,
+          1001
+        ]
+      }
+    },
+    {
+      "expressionId": "goose_expr_11",
+      "dimensions": {
+        "width": 1187,
+        "height": 1484
+      },
+      "mode": "RGBA",
+      "exactRecomposition": true,
+      "changedFromNeutralPixelCount": 288691,
+      "changedBoundingBox": [
+        280,
+        405,
+        908,
+        1001
+      ],
+      "slotAlphaBoundingBoxes": {
+        "LEFT_BROW": [
+          577,
+          405,
+          908,
+          576
+        ],
+        "RIGHT_BROW": [
+          280,
+          405,
+          611,
+          576
+        ],
+        "LEFT_EYE": [
+          584,
+          515,
+          888,
+          706
+        ],
+        "RIGHT_EYE": [
+          300,
+          515,
+          604,
+          706
+        ],
+        "LOWER_FACE": [
+          285,
+          635,
+          903,
+          1001
+        ]
+      }
+    },
+    {
+      "expressionId": "goose_expr_12",
+      "dimensions": {
+        "width": 1187,
+        "height": 1484
+      },
+      "mode": "RGBA",
+      "exactRecomposition": true,
+      "changedFromNeutralPixelCount": 210894,
+      "changedBoundingBox": [
+        280,
+        405,
+        908,
+        1000
+      ],
+      "slotAlphaBoundingBoxes": {
+        "LEFT_BROW": [
+          577,
+          405,
+          908,
+          576
+        ],
+        "RIGHT_BROW": [
+          280,
+          405,
+          611,
+          576
+        ],
+        "LEFT_EYE": [
+          584,
+          515,
+          888,
+          706
+        ],
+        "RIGHT_EYE": [
+          300,
+          515,
+          604,
+          706
+        ],
+        "LOWER_FACE": [
+          285,
+          635,
+          903,
+          1001
+        ]
+      }
+    },
+    {
+      "expressionId": "goose_expr_13",
+      "dimensions": {
+        "width": 1187,
+        "height": 1484
+      },
+      "mode": "RGBA",
+      "exactRecomposition": true,
+      "changedFromNeutralPixelCount": 213183,
+      "changedBoundingBox": [
+        281,
+        405,
+        908,
+        1001
+      ],
+      "slotAlphaBoundingBoxes": {
+        "LEFT_BROW": [
+          577,
+          405,
+          908,
+          576
+        ],
+        "RIGHT_BROW": [
+          280,
+          405,
+          611,
+          576
+        ],
+        "LEFT_EYE": [
+          584,
+          515,
+          888,
+          706
+        ],
+        "RIGHT_EYE": [
+          300,
+          515,
+          604,
+          706
+        ],
+        "LOWER_FACE": [
+          285,
+          635,
+          903,
+          1001
+        ]
+      }
+    },
+    {
+      "expressionId": "goose_expr_14",
+      "dimensions": {
+        "width": 1187,
+        "height": 1484
+      },
+      "mode": "RGBA",
+      "exactRecomposition": true,
+      "changedFromNeutralPixelCount": 253997,
+      "changedBoundingBox": [
+        280,
+        405,
+        908,
+        1001
+      ],
+      "slotAlphaBoundingBoxes": {
+        "LEFT_BROW": [
+          577,
+          405,
+          908,
+          576
+        ],
+        "RIGHT_BROW": [
+          280,
+          405,
+          611,
+          576
+        ],
+        "LEFT_EYE": [
+          584,
+          515,
+          888,
+          706
+        ],
+        "RIGHT_EYE": [
+          300,
+          515,
+          604,
+          706
+        ],
+        "LOWER_FACE": [
+          285,
+          635,
+          903,
+          1001
+        ]
+      }
+    },
+    {
+      "expressionId": "goose_expr_15",
+      "dimensions": {
+        "width": 1187,
+        "height": 1484
+      },
+      "mode": "RGBA",
+      "exactRecomposition": true,
+      "changedFromNeutralPixelCount": 202462,
+      "changedBoundingBox": [
+        280,
+        405,
+        908,
+        1000
+      ],
+      "slotAlphaBoundingBoxes": {
+        "LEFT_BROW": [
+          577,
+          405,
+          908,
+          576
+        ],
+        "RIGHT_BROW": [
+          280,
+          405,
+          611,
+          576
+        ],
+        "LEFT_EYE": [
+          584,
+          515,
+          888,
+          706
+        ],
+        "RIGHT_EYE": [
+          300,
+          515,
+          604,
+          706
+        ],
+        "LOWER_FACE": [
+          285,
+          635,
+          903,
+          1001
+        ]
+      }
+    },
+    {
+      "expressionId": "goose_expr_16",
+      "dimensions": {
+        "width": 1187,
+        "height": 1484
+      },
+      "mode": "RGBA",
+      "exactRecomposition": true,
+      "changedFromNeutralPixelCount": 291819,
+      "changedBoundingBox": [
+        280,
+        405,
+        908,
+        1001
+      ],
+      "slotAlphaBoundingBoxes": {
+        "LEFT_BROW": [
+          577,
+          405,
+          908,
+          576
+        ],
+        "RIGHT_BROW": [
+          280,
+          405,
+          611,
+          576
+        ],
+        "LEFT_EYE": [
+          584,
+          515,
+          888,
+          706
+        ],
+        "RIGHT_EYE": [
+          300,
+          515,
+          604,
+          706
+        ],
+        "LOWER_FACE": [
+          285,
+          635,
+          903,
+          1001
+        ]
+      }
+    },
+    {
+      "expressionId": "goose_expr_17",
+      "dimensions": {
+        "width": 1187,
+        "height": 1484
+      },
+      "mode": "RGBA",
+      "exactRecomposition": true,
+      "changedFromNeutralPixelCount": 290518,
+      "changedBoundingBox": [
+        280,
+        405,
+        908,
+        1001
+      ],
+      "slotAlphaBoundingBoxes": {
+        "LEFT_BROW": [
+          577,
+          405,
+          908,
+          576
+        ],
+        "RIGHT_BROW": [
+          280,
+          405,
+          611,
+          576
+        ],
+        "LEFT_EYE": [
+          584,
+          515,
+          888,
+          706
+        ],
+        "RIGHT_EYE": [
+          300,
+          515,
+          604,
+          706
+        ],
+        "LOWER_FACE": [
+          285,
+          635,
+          903,
+          1001
+        ]
+      }
+    },
+    {
+      "expressionId": "goose_expr_18",
+      "dimensions": {
+        "width": 1187,
+        "height": 1484
+      },
+      "mode": "RGBA",
+      "exactRecomposition": true,
+      "changedFromNeutralPixelCount": 189752,
+      "changedBoundingBox": [
+        280,
+        405,
+        908,
+        999
+      ],
+      "slotAlphaBoundingBoxes": {
+        "LEFT_BROW": [
+          577,
+          405,
+          908,
+          576
+        ],
+        "RIGHT_BROW": [
+          280,
+          405,
+          611,
+          576
+        ],
+        "LEFT_EYE": [
+          584,
+          515,
+          888,
+          706
+        ],
+        "RIGHT_EYE": [
+          300,
+          515,
+          604,
+          706
+        ],
+        "LOWER_FACE": [
+          285,
+          635,
+          903,
+          1001
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://trapstar.invalid/schemas/health_state.schema.json",
+  "title": "Health State",
+  "type": "object",
+  "required": [
+    "character_id",
+    "current_health",
+    "maximum_health",
+    "state_thresholds",
+    "change_reason"
+  ],
+  "properties": {
+    "character_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "current_health": {
+      "type": "number",
+      "minimum": 0
+    },
+    "maximum_health": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "state_thresholds": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "change_reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reaction_hook": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

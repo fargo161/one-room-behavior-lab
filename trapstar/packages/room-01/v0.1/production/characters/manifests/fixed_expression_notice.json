@@ -1,0 +1,7 @@
+{
+  "character_id": "CHAR_EMILIO_CONTACT",
+  "face_system": "FIXED_EXPRESSION_ONLY",
+  "modular_expression_contract_found": false,
+  "status": "BLOCKED_MISSING",
+  "reason": "No genuine replaceable-head or modular face package was supplied."
+}

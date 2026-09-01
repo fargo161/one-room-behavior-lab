@@ -1,0 +1,16 @@
+{
+  "room_id": "ROOM_01_APT_305",
+  "export_art": false,
+  "groups": [
+    "CANVAS_SAFE_AREA",
+    "CHARACTER_SCALE",
+    "FLOOR_BASELINE",
+    "DEPTH_ZONES",
+    "CHARACTER_SPACES",
+    "ITEM_SPACES",
+    "NODE_HOTSPOTS",
+    "UI_SAFE_AREA"
+  ],
+  "status": "contract_only",
+  "note": "No master assembler PXZ was built in this pass."
+}

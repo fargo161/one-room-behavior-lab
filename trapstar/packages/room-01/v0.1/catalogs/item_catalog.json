@@ -1,0 +1,412 @@
+{
+  "schema_version": "1.0",
+  "items": [
+    {
+      "item_id": "ROOM01__ITEM__CASH_STACKS__ISO_3Q__A01",
+      "primary_status": "PRODUCTION_CANDIDATE",
+      "supported_views": [
+        "VIEW_ISO"
+      ],
+      "asset_path": "production/room_01_apt_305/elements/items/normalized/room01__item__cash_stacks__iso_3q__a01__alpha_normalized.png",
+      "master_path": "production/room_01_apt_305/elements/items/masters/room01__item__cash_stacks__iso_3q__a01__master.png",
+      "source_sha256": "0d6f541dbe72660071caae4adb5f1c9a8dd6702cd9615af8a909c92b3a71ecdd",
+      "canonical_sha256": "587bc96c9f65a512adb9780cb901daaadf3cecc6592b9442c747364a72fc5f3b",
+      "origin_pivot": {
+        "point_px": [
+          767.5,
+          982
+        ],
+        "basis": "derived_bottom_center_of_alpha_ge_128_bbox",
+        "confidence": "high",
+        "physical_contact": false
+      },
+      "display_size_hint": {
+        "uniform_scale_from_source": 0.075,
+        "target_alpha_ge_128_bbox_pixels": [
+          87,
+          72
+        ],
+        "confidence": "low",
+        "evidence": "reverse estimate from flattened example_scene_iso.jpg"
+      },
+      "blocked_views": [
+        {
+          "view_id": "VIEW_FP2D",
+          "status": "BLOCKED_MISSING",
+          "reason": "no perspective-compatible variant supplied"
+        }
+      ],
+      "parent_relationships": [
+        "ROOM_01_APT_305",
+        "ROOM01__FIXTURE__DEAL_TABLE__ISO_3Q__A01"
+      ],
+      "known_limitations": [
+        "ISO perspective only",
+        "ALPHA_MAX_254",
+        "BAKED_BROWN_GLOW",
+        "LOW_ALPHA_GLOW_CLIPPED_AT_LEFT_AND_BOTTOM_CANVAS_EDGES",
+        "LOW_RIGHT_MARGIN",
+        "IRREGULAR_STACK_HAS_NO_SINGLE_PLANAR_TOP_SURFACE",
+        "generated-art edge/glow cleanup should be reviewed before final ship"
+      ],
+      "geometry": {
+        "geometry_status": "MEASURED_AND_INFERRED_CANDIDATE",
+        "coordinate_space": "source_asset_px",
+        "source_canvas_px": [
+          1364,
+          1024
+        ],
+        "source_alpha_gt_0_bbox_px": [
+          0,
+          16,
+          1348,
+          1024
+        ],
+        "bbox_alpha_ge_128_px": {
+          "x": 191,
+          "y": 19,
+          "width": 1154,
+          "height": 964,
+          "x_max_inclusive": 1344,
+          "y_max_inclusive": 982
+        },
+        "bbox_alpha_ge_128_xywh": [
+          191,
+          19,
+          1154,
+          964
+        ],
+        "anchor_set_id": "ANCHORS__CASH_STACKS__ISO_3Q__A01",
+        "registration_pivot": {
+          "point_px": [
+            767.5,
+            982
+          ],
+          "basis": "derived_bottom_center_of_alpha_ge_128_bbox",
+          "confidence": "high",
+          "physical_contact": false
+        },
+        "alpha_gt_0_pivot_for_comparison": {
+          "point": [
+            674,
+            1023
+          ],
+          "basis": "bottom-center of alpha>0 bbox; glow-sensitive",
+          "confidence": "medium"
+        },
+        "contact_anchors": [
+          {
+            "anchor_id": "CASH__CONTACT__NEAR",
+            "point_px": [
+              660.5,
+              982
+            ],
+            "basis": "center_of_measured_last_eight_row_support_interval_646_675",
+            "confidence": "high"
+          }
+        ],
+        "surface": {
+          "surface_id": "CASH__SURFACE__TOP_PRIMARY",
+          "anchor_point_px": [
+            798,
+            192
+          ],
+          "basis": "manual_center_of_highest_visible_bundle",
+          "confidence": "low",
+          "child_slots": []
+        },
+        "surface_polygon_px": null,
+        "footprint": {
+          "polygon_px": [
+            [
+              220,
+              604
+            ],
+            [
+              942,
+              446
+            ],
+            [
+              1322,
+              684
+            ],
+            [
+              660.5,
+              982
+            ]
+          ],
+          "basis": "manual_projected_base_envelope_of_irregular_stack",
+          "confidence": "low"
+        },
+        "footprint_polygon_px": [
+          [
+            220,
+            604
+          ],
+          [
+            942,
+            446
+          ],
+          [
+            1322,
+            684
+          ],
+          [
+            660.5,
+            982
+          ]
+        ],
+        "occlusion_anchors": [],
+        "occlusion_status": {
+          "primary_status": "BLOCKED_MISSING",
+          "reason": "No isolated occlusion mask or defensible occlusion boundary was supplied; none was fabricated."
+        },
+        "room_registration_suggestion": {
+          "source_to_room_transform": {
+            "scale_xy": [
+              0.075,
+              0.075
+            ],
+            "sprite_origin_room_px": [
+              634.4,
+              519.4
+            ],
+            "registration_pivot_room_px": [
+              692.0,
+              593.0
+            ]
+          },
+          "parent_surface_slot": "TABLE__TOP__A",
+          "basis": "reverse_estimate_from_flattened example_scene_iso.jpg",
+          "confidence": "low",
+          "runtime_authoritative": false
+        },
+        "runtime_authoritative": false,
+        "evidence_policy": "Alpha bboxes and bottom support intervals are direct measurements. Manual visible-edge traces are inferred and retain per-record confidence/basis. Room transforms are low-confidence reverse estimates from flattened QA evidence."
+      },
+      "item_tags": [
+        "CASH"
+      ],
+      "allowed_functions": [
+        "INSPECT",
+        "TAKE_ITEM",
+        "GIVE_ITEM",
+        "PLACE_ITEM"
+      ]
+    },
+    {
+      "item_id": "ROOM01__ITEM__WRAPPED_PACKAGES__ISO_3Q__A01",
+      "primary_status": "PRODUCTION_CANDIDATE",
+      "supported_views": [
+        "VIEW_ISO"
+      ],
+      "asset_path": "production/room_01_apt_305/elements/items/normalized/room01__item__wrapped_packages__iso_3q__a01__alpha_normalized.png",
+      "master_path": "production/room_01_apt_305/elements/items/masters/room01__item__wrapped_packages__iso_3q__a01__master.png",
+      "source_sha256": "69e4bc378553cf511284906ef46891d4224b2e5c2b9f49417eb7559d0af8fdbb",
+      "canonical_sha256": "819fa6f73fde7404dd64cec84b15c21125400e8bd874524789b8d927170cea45",
+      "origin_pivot": {
+        "point_px": [
+          772.5,
+          965
+        ],
+        "basis": "derived_bottom_center_of_alpha_ge_128_bbox",
+        "confidence": "high",
+        "physical_contact": false
+      },
+      "display_size_hint": {
+        "uniform_scale_from_source": 0.07,
+        "target_alpha_ge_128_bbox_pixels": [
+          84,
+          66
+        ],
+        "confidence": "low",
+        "evidence": "reverse estimate from flattened example_scene_iso.jpg"
+      },
+      "blocked_views": [
+        {
+          "view_id": "VIEW_FP2D",
+          "status": "BLOCKED_MISSING",
+          "reason": "no perspective-compatible variant supplied"
+        }
+      ],
+      "parent_relationships": [
+        "ROOM_01_APT_305",
+        "ROOM01__FIXTURE__DEAL_TABLE__ISO_3Q__A01"
+      ],
+      "known_limitations": [
+        "ISO perspective only",
+        "ALPHA_MAX_254",
+        "BAKED_BROWN_GLOW",
+        "LOW_ALPHA_GLOW_CLIPPED_AT_LEFT_AND_BOTTOM_CANVAS_EDGES",
+        "IRREGULAR_STACK_HAS_NO_SINGLE_PLANAR_TOP_SURFACE",
+        "generated-art edge/glow cleanup should be reviewed before final ship"
+      ],
+      "geometry": {
+        "geometry_status": "MEASURED_AND_INFERRED_CANDIDATE",
+        "coordinate_space": "source_asset_px",
+        "source_canvas_px": [
+          1474,
+          1011
+        ],
+        "source_alpha_gt_0_bbox_px": [
+          0,
+          16,
+          1458,
+          1011
+        ],
+        "bbox_alpha_ge_128_px": {
+          "x": 171,
+          "y": 29,
+          "width": 1204,
+          "height": 937,
+          "x_max_inclusive": 1374,
+          "y_max_inclusive": 965
+        },
+        "bbox_alpha_ge_128_xywh": [
+          171,
+          29,
+          1204,
+          937
+        ],
+        "anchor_set_id": "ANCHORS__WRAPPED_PACKAGES__ISO_3Q__A01",
+        "registration_pivot": {
+          "point_px": [
+            772.5,
+            965
+          ],
+          "basis": "derived_bottom_center_of_alpha_ge_128_bbox",
+          "confidence": "high",
+          "physical_contact": false
+        },
+        "alpha_gt_0_pivot_for_comparison": {
+          "point": [
+            729,
+            1010
+          ],
+          "basis": "bottom-center of alpha>0 bbox; glow-sensitive",
+          "confidence": "medium"
+        },
+        "contact_anchors": [
+          {
+            "anchor_id": "PACKAGES__CONTACT__NEAR",
+            "point_px": [
+              708.5,
+              965
+            ],
+            "basis": "center_of_measured_last_eight_row_support_interval_689_728",
+            "confidence": "high"
+          }
+        ],
+        "surface": {
+          "surface_id": "PACKAGES__SURFACE__TOP_PRIMARY",
+          "anchor_point_px": [
+            793,
+            198
+          ],
+          "basis": "manual_center_of_highest_visible package",
+          "confidence": "low",
+          "child_slots": []
+        },
+        "surface_polygon_px": null,
+        "footprint": {
+          "polygon_px": [
+            [
+              178,
+              510
+            ],
+            [
+              917,
+              306
+            ],
+            [
+              1374,
+              615
+            ],
+            [
+              708.5,
+              965
+            ]
+          ],
+          "basis": "manual_projected_base_envelope_of_irregular stack",
+          "confidence": "low"
+        },
+        "footprint_polygon_px": [
+          [
+            178,
+            510
+          ],
+          [
+            917,
+            306
+          ],
+          [
+            1374,
+            615
+          ],
+          [
+            708.5,
+            965
+          ]
+        ],
+        "occlusion_anchors": [],
+        "occlusion_status": {
+          "primary_status": "BLOCKED_MISSING",
+          "reason": "No isolated occlusion mask or defensible occlusion boundary was supplied; none was fabricated."
+        },
+        "room_registration_suggestion": {
+          "source_to_room_transform": {
+            "scale_xy": [
+              0.07,
+              0.07
+            ],
+            "sprite_origin_room_px": [
+              731.9,
+              526.5
+            ],
+            "registration_pivot_room_px": [
+              786.0,
+              594.0
+            ]
+          },
+          "parent_surface_slot": "TABLE__TOP__B",
+          "basis": "reverse_estimate_from_flattened example_scene_iso.jpg",
+          "confidence": "low",
+          "runtime_authoritative": false
+        },
+        "runtime_authoritative": false,
+        "evidence_policy": "Alpha bboxes and bottom support intervals are direct measurements. Manual visible-edge traces are inferred and retain per-record confidence/basis. Room transforms are low-confidence reverse estimates from flattened QA evidence."
+      },
+      "item_tags": [
+        "PACKAGE"
+      ],
+      "allowed_functions": [
+        "INSPECT",
+        "TAKE_ITEM",
+        "GIVE_ITEM",
+        "PLACE_ITEM"
+      ]
+    },
+    {
+      "item_id": "ROOM01__ITEM__CONTRABAND__MISSING",
+      "primary_status": "BLOCKED_MISSING",
+      "supported_views": [],
+      "asset_path": null,
+      "item_tags": [
+        "CONTRABAND"
+      ],
+      "allowed_functions": [],
+      "reason": "Schema category is supported, but no isolated Room 01 artwork was supplied."
+    },
+    {
+      "item_id": "ROOM01__ITEM__WEAPON__MISSING",
+      "primary_status": "BLOCKED_MISSING",
+      "supported_views": [],
+      "asset_path": null,
+      "item_tags": [
+        "WEAPON"
+      ],
+      "allowed_functions": [],
+      "reason": "Schema category is supported, but no isolated Room 01 artwork was supplied."
+    }
+  ]
+}

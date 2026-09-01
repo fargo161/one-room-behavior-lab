@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://trapstar.invalid/schemas/view_profile.schema.json",
+  "title": "View Profile",
+  "type": "object",
+  "required": [
+    "view_id",
+    "room_id",
+    "canvas_dimensions",
+    "plate_path",
+    "floor_region",
+    "safe_character_region"
+  ],
+  "properties": {
+    "view_id": {
+      "enum": [
+        "VIEW_ISO",
+        "VIEW_FP2D"
+      ]
+    },
+    "room_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "canvas_dimensions": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "integer",
+          "minimum": 1
+        },
+        {
+          "type": "integer",
+          "minimum": 1
+        }
+      ],
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "plate_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "floor_region": {
+      "type": "object"
+    },
+    "safe_character_region": {
+      "type": "array",
+      "minItems": 4
+    },
+    "depth_rules": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": true
+}

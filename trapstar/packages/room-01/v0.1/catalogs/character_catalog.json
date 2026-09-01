@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "characters": [
+    {
+      "character_id": "CHAR_MARCUS_BROKER",
+      "name": "Marcus",
+      "aliases": [
+        "BROKER",
+        "marcus_broker"
+      ],
+      "face_system": "MARCUS_NATIVE_CROPPED_OVERLAPPING_LAYERS",
+      "face_manifest": "production/characters/marcus_broker/face/native_face_manifest.json",
+      "body_authoring": "authoring/pixlr/canonical/trap_body_modular_library_upscaled_organized.pxz",
+      "manifest_path": "production/characters/marcus_broker/character_manifest.json",
+      "primary_status": "PRODUCTION_CANDIDATE",
+      "pose_count": 17
+    },
+    {
+      "character_id": "CHAR_GOOSE_TRACKSUIT",
+      "name": "Goose",
+      "aliases": [
+        "TRACKSUIT",
+        "goose_tracksuit"
+      ],
+      "face_system": "GOOSE_NATIVE_FIVE_FULL_CANVAS_SLOTS",
+      "face_manifest": "production/characters/goose_tracksuit/face/native_five_slot/face_manifest.json",
+      "body_authoring": null,
+      "manifest_path": "production/characters/goose_tracksuit/character_manifest.json",
+      "primary_status": "PRODUCTION_CANDIDATE",
+      "pose_count": 18
+    },
+    {
+      "character_id": "CHAR_EMILIO_CONTACT",
+      "name": "Emilio",
+      "aliases": [
+        "CONTACT",
+        "emilio_contact"
+      ],
+      "face_system": "FIXED_EXPRESSION_ONLY",
+      "face_manifest": "production/characters/emilio_contact/face/fixed_expression_notice.json",
+      "body_authoring": null,
+      "manifest_path": "production/characters/emilio_contact/character_manifest.json",
+      "primary_status": "PRODUCTION_CANDIDATE",
+      "pose_count": 18
+    }
+  ]
+}

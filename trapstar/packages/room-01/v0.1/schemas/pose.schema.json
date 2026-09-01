@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://trapstar.invalid/schemas/pose.schema.json",
+  "title": "Pose",
+  "type": "object",
+  "required": [
+    "pose_id",
+    "character_id",
+    "source_file",
+    "canonical_file",
+    "pose_family",
+    "orientation",
+    "supported_views",
+    "quality_status",
+    "source_hash",
+    "output_hash"
+  ],
+  "properties": {
+    "pose_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "character_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_file": {
+      "type": "string",
+      "minLength": 1
+    },
+    "canonical_file": {
+      "type": "string",
+      "minLength": 1
+    },
+    "pose_family": {
+      "type": "string",
+      "minLength": 1
+    },
+    "orientation": {
+      "type": "string",
+      "minLength": 1
+    },
+    "supported_views": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "quality_status": {
+      "enum": [
+        "AUTHORING_SOURCE",
+        "BLOCKED_MISSING",
+        "DEPRECATED",
+        "PRODUCTION_CANDIDATE",
+        "PRODUCTION_READY",
+        "PROVENANCE",
+        "QA_ONLY",
+        "QUARANTINE",
+        "REFERENCE"
+      ]
+    },
+    "source_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "output_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  },
+  "additionalProperties": true
+}

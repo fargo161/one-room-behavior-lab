@@ -1,0 +1,124 @@
+{
+  "schema_version": "1.0",
+  "view_id": "VIEW_ISO",
+  "room_id": "ROOM_01_APT_305",
+  "canvas_dimensions": [
+    1448,
+    1086
+  ],
+  "plate_path": "production/room_01_apt_305/views/iso/plate.png",
+  "floor_region": {
+    "shape": "POLYGON",
+    "points": [
+      [
+        447,
+        337
+      ],
+      [
+        946,
+        333
+      ],
+      [
+        1355,
+        519
+      ],
+      [
+        1392,
+        757
+      ],
+      [
+        900,
+        912
+      ],
+      [
+        620,
+        1085
+      ],
+      [
+        397,
+        1005
+      ],
+      [
+        286,
+        891
+      ],
+      [
+        287,
+        701
+      ],
+      [
+        448,
+        578
+      ]
+    ],
+    "basis": "specialist manual trace against supplied plate pixels",
+    "confidence": "medium"
+  },
+  "nominal_foot_baseline_y": 850,
+  "safe_character_region": [
+    [
+      540,
+      470
+    ],
+    [
+      919,
+      410
+    ],
+    [
+      1245,
+      556
+    ],
+    [
+      1265,
+      713
+    ],
+    [
+      885,
+      845
+    ],
+    [
+      590,
+      928
+    ],
+    [
+      410,
+      800
+    ],
+    [
+      435,
+      636
+    ]
+  ],
+  "ui_safe_region": {
+    "top_reserve": [
+      0,
+      0,
+      1448,
+      110
+    ],
+    "bottom_reserve": [
+      0,
+      950,
+      1448,
+      136
+    ]
+  },
+  "depth_rules": {
+    "method": "baseline_y_sort_with_manual_occluder_overrides",
+    "suggested_scale_range": [
+      0.9,
+      1.1
+    ],
+    "implementation_status": "contract_only"
+  },
+  "supported_element_perspectives": [
+    "ISO_3Q"
+  ],
+  "supported_pose_perspectives": [
+    "VIEW_ISO"
+  ],
+  "known_limitations": [
+    "floor polygon and scale curve require manual overlay calibration",
+    "no explicit occlusion masks supplied"
+  ]
+}

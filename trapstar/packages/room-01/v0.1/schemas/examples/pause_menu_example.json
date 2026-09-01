@@ -1,0 +1,30 @@
+{
+  "menu_id": "PAUSE_MENU__ROOM01__CONTRACT",
+  "entries": [
+    {
+      "entry_id": "RESUME",
+      "label": "Resume",
+      "implementation_status": "PLACEHOLDER_CONTRACT_ONLY"
+    },
+    {
+      "entry_id": "INVENTORY",
+      "label": "Inventory",
+      "implementation_status": "PLACEHOLDER_CONTRACT_ONLY"
+    },
+    {
+      "entry_id": "RESTART_ROOM",
+      "label": "Restart Room",
+      "implementation_status": "PLACEHOLDER_CONTRACT_ONLY"
+    },
+    {
+      "entry_id": "SETTINGS_VOLUME",
+      "label": "Settings / Volume",
+      "implementation_status": "PLACEHOLDER_CONTRACT_ONLY"
+    },
+    {
+      "entry_id": "EXIT_TO_TITLE",
+      "label": "Exit to Title",
+      "implementation_status": "PLACEHOLDER_CONTRACT_ONLY"
+    }
+  ]
+}

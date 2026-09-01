@@ -1,0 +1,130 @@
+{
+  "schema_version": "1.0",
+  "room_id": "ROOM_01_APT_305",
+  "room_state_id": "STATE_NEUTRAL_NEON",
+  "primary_status": "PRODUCTION_CANDIDATE",
+  "supported_view_ids": [
+    "VIEW_ISO",
+    "VIEW_FP2D"
+  ],
+  "view_profile_paths": {
+    "VIEW_ISO": "production/room_01_apt_305/views/iso/view_profile.json",
+    "VIEW_FP2D": "production/room_01_apt_305/views/fp2d/view_profile.json"
+  },
+  "plates": [
+    {
+      "plate_id": "ROOM_01_APT_305__PLATE__ISO__NEUTRAL_NEON",
+      "view_id": "VIEW_ISO",
+      "path": "production/room_01_apt_305/views/iso/plate.png",
+      "sha256": "47d0c2817b9de6d7fb85b69df353483eac73b641fa91609987ca04368b54db39",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "status": "PRODUCTION_CANDIDATE",
+      "observed": [
+        "decoded successfully",
+        "no character, player weapon, HUD, dialogue, crosshair, or menu observed"
+      ],
+      "remaining_gate": "owner art/style and cross-view geometry approval"
+    },
+    {
+      "plate_id": "ROOM_01_APT_305__PLATE__FP2D__NEUTRAL_NEON",
+      "view_id": "VIEW_FP2D",
+      "path": "production/room_01_apt_305/views/fp2d/plate.png",
+      "sha256": "983363ac4f36cc66f7ca5fee8974747707dd477398615285db001a6ab8de27d6",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "status": "PRODUCTION_CANDIDATE",
+      "observed": [
+        "decoded successfully",
+        "no character, player weapon, HUD, dialogue, crosshair, or menu observed"
+      ],
+      "remaining_gate": "owner art/style and cross-view geometry approval"
+    }
+  ],
+  "element_instances": [
+    {
+      "element_id": "ROOM01__FIXTURE__DEAL_TABLE__ISO_3Q__A01",
+      "asset_path": "production/room_01_apt_305/elements/fixtures/normalized/room01__fixture__deal_table__iso_3q__a01__alpha_normalized.png",
+      "supported_views": [
+        "VIEW_ISO"
+      ],
+      "default_anchor": "ANCHOR__ISO__TABLE_CENTER",
+      "status": "PRODUCTION_CANDIDATE"
+    },
+    {
+      "element_id": "ROOM01__FIXTURE__COUCH__ISO_3Q__A01",
+      "asset_path": "production/room_01_apt_305/elements/fixtures/normalized/room01__fixture__couch__iso_3q__a01__alpha_normalized.png",
+      "supported_views": [
+        "VIEW_ISO"
+      ],
+      "default_anchor": null,
+      "status": "PRODUCTION_CANDIDATE"
+    },
+    {
+      "element_id": "ROOM01__FIXTURE__FOLDING_CHAIR__ISO_3Q__A01",
+      "asset_path": "production/room_01_apt_305/elements/fixtures/masters/room01__fixture__folding_chair__iso_3q__a01__master.png",
+      "supported_views": [
+        "VIEW_ISO"
+      ],
+      "default_anchor": null,
+      "status": "PRODUCTION_CANDIDATE"
+    },
+    {
+      "element_id": "ROOM01__ITEM__CASH_STACKS__ISO_3Q__A01",
+      "asset_path": "production/room_01_apt_305/elements/items/normalized/room01__item__cash_stacks__iso_3q__a01__alpha_normalized.png",
+      "supported_views": [
+        "VIEW_ISO"
+      ],
+      "default_anchor": null,
+      "status": "PRODUCTION_CANDIDATE"
+    },
+    {
+      "element_id": "ROOM01__ITEM__WRAPPED_PACKAGES__ISO_3Q__A01",
+      "asset_path": "production/room_01_apt_305/elements/items/normalized/room01__item__wrapped_packages__iso_3q__a01__alpha_normalized.png",
+      "supported_views": [
+        "VIEW_ISO"
+      ],
+      "default_anchor": null,
+      "status": "PRODUCTION_CANDIDATE"
+    }
+  ],
+  "node_instances_path": "production/room_01_apt_305/nodes/node_instances.json",
+  "depth_order": [
+    "ROOM_PLATE",
+    "FLOOR_ITEMS",
+    "FIXTURES",
+    "CHARACTERS",
+    "HANDHELD_ITEMS",
+    "EFFECTS",
+    "NODE_OVERLAYS",
+    "UI"
+  ],
+  "character_spaces": [
+    "NODE__CHARACTER_SPACE__DEAL_LEFT",
+    "NODE__CHARACTER_SPACE__DEAL_RIGHT"
+  ],
+  "item_spaces": [
+    "NODE__ITEM_SPACE__TABLE_TOP_A"
+  ],
+  "state_variables": {
+    "door_main_locked": false,
+    "deal_active": false,
+    "room_alert_state": "NEUTRAL"
+  },
+  "source_provenance": {
+    "logical_corpus": "four owner-approved replacement ZIPs",
+    "room_art_source_zip": "environment.zip"
+  },
+  "known_gaps": [
+    "window is visible and inspectable as static architecture, but traversability/state art is not established",
+    "ISO-only cutaway door has no FP2D counterpart or defensible route role; disabled and not treated as secret",
+    "no defensible secret route is identifiable in supplied art",
+    "no isolated occlusion mask supplied",
+    "FP2D fixture/item variants are BLOCKED_MISSING",
+    "cross-view geometry is semantic, not pixel-identical"
+  ]
+}

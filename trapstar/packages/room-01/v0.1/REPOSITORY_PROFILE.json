@@ -1,0 +1,11 @@
+{
+  "companionDeliveryRequired": true,
+  "companionDelivery": {
+    "fileName": "TRAPSTAR_ROOM_01_RESTRUCTURED_ASSET_PACKAGE_V01.zip",
+    "storage": "GitHub Release or external handoff storage",
+    "fileCount": 422,
+    "sha256": "bb5844999f1447458865b12c41ea077c73a6ea17a31ed799dc45577e811291db"
+  },
+  "packageId": "TRAPSTAR_ROOM_01_RESTRUCTURED_ASSET_PACKAGE_V01",
+  "repositoryRole": "portable_design_and_metadata_profile"
+}

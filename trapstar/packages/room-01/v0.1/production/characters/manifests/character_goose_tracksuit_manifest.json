@@ -1,0 +1,228 @@
+{
+  "schema_version": "1.0",
+  "character_id": "CHAR_GOOSE_TRACKSUIT",
+  "display_name": "Goose",
+  "aliases": [
+    "TRACKSUIT",
+    "goose_tracksuit"
+  ],
+  "primary_status": "PRODUCTION_CANDIDATE",
+  "pose_ids": [
+    "CHAR_GOOSE_TRACKSUIT__POSE__ARMS_CROSSED_SPECIAL__FRONT_3Q_VIEWER_RIGHT__SPECIAL_A01",
+    "CHAR_GOOSE_TRACKSUIT__POSE__ARMS_CROSSED__FRONT_3Q_VIEWER_RIGHT__ISO_A01",
+    "CHAR_GOOSE_TRACKSUIT__POSE__ARMS_CROSSED__FRONT__FP2D_A01",
+    "CHAR_GOOSE_TRACKSUIT__POSE__BACK_FACING__REAR_3Q_VIEWER_RIGHT__ISO_A01",
+    "CHAR_GOOSE_TRACKSUIT__POSE__BACK_FACING__REAR__FP2D_A01",
+    "CHAR_GOOSE_TRACKSUIT__POSE__HANDS_ON_HIPS__FRONT_3Q_VIEWER_RIGHT__ISO_A01",
+    "CHAR_GOOSE_TRACKSUIT__POSE__HANDS_ON_HIPS__FRONT__FP2D_A01",
+    "CHAR_GOOSE_TRACKSUIT__POSE__IDLE__FRONT_3Q_VIEWER_RIGHT__ISO_A01",
+    "CHAR_GOOSE_TRACKSUIT__POSE__IDLE__FRONT__FP2D_A01",
+    "CHAR_GOOSE_TRACKSUIT__POSE__LEANING__FRONT_3Q_VIEWER_RIGHT__FP2D_A01",
+    "CHAR_GOOSE_TRACKSUIT__POSE__LEANING__FRONT_3Q_VIEWER_RIGHT__ISO_A01",
+    "CHAR_GOOSE_TRACKSUIT__POSE__OPEN_HAND_NEGOTIATING__FRONT_3Q_VIEWER_RIGHT__ISO_A01",
+    "CHAR_GOOSE_TRACKSUIT__POSE__OPEN_HAND_NEGOTIATING__FRONT__FP2D_A01",
+    "CHAR_GOOSE_TRACKSUIT__POSE__PHONE_OR_LISTENING__PROFILE_3Q_VIEWER_RIGHT__FP2D_A01",
+    "CHAR_GOOSE_TRACKSUIT__POSE__PHONE_OR_LISTENING__PROFILE_3Q_VIEWER_RIGHT__ISO_A01",
+    "CHAR_GOOSE_TRACKSUIT__POSE__POINTING__FRONT_3Q_VIEWER_RIGHT__ISO_A01",
+    "CHAR_GOOSE_TRACKSUIT__POSE__POINTING__FRONT__FP2D_A01",
+    "CHAR_GOOSE_TRACKSUIT__POSE__WATCHING__FRONT_3Q_VIEWER_LEFT__SPECIAL_A01"
+  ],
+  "production_candidate_pose_ids": [
+    "CHAR_GOOSE_TRACKSUIT__POSE__ARMS_CROSSED__FRONT_3Q_VIEWER_RIGHT__ISO_A01",
+    "CHAR_GOOSE_TRACKSUIT__POSE__ARMS_CROSSED__FRONT__FP2D_A01",
+    "CHAR_GOOSE_TRACKSUIT__POSE__BACK_FACING__REAR_3Q_VIEWER_RIGHT__ISO_A01",
+    "CHAR_GOOSE_TRACKSUIT__POSE__BACK_FACING__REAR__FP2D_A01",
+    "CHAR_GOOSE_TRACKSUIT__POSE__HANDS_ON_HIPS__FRONT_3Q_VIEWER_RIGHT__ISO_A01",
+    "CHAR_GOOSE_TRACKSUIT__POSE__HANDS_ON_HIPS__FRONT__FP2D_A01",
+    "CHAR_GOOSE_TRACKSUIT__POSE__IDLE__FRONT_3Q_VIEWER_RIGHT__ISO_A01",
+    "CHAR_GOOSE_TRACKSUIT__POSE__IDLE__FRONT__FP2D_A01",
+    "CHAR_GOOSE_TRACKSUIT__POSE__LEANING__FRONT_3Q_VIEWER_RIGHT__FP2D_A01",
+    "CHAR_GOOSE_TRACKSUIT__POSE__LEANING__FRONT_3Q_VIEWER_RIGHT__ISO_A01",
+    "CHAR_GOOSE_TRACKSUIT__POSE__OPEN_HAND_NEGOTIATING__FRONT_3Q_VIEWER_RIGHT__ISO_A01",
+    "CHAR_GOOSE_TRACKSUIT__POSE__OPEN_HAND_NEGOTIATING__FRONT__FP2D_A01",
+    "CHAR_GOOSE_TRACKSUIT__POSE__PHONE_OR_LISTENING__PROFILE_3Q_VIEWER_RIGHT__FP2D_A01",
+    "CHAR_GOOSE_TRACKSUIT__POSE__PHONE_OR_LISTENING__PROFILE_3Q_VIEWER_RIGHT__ISO_A01",
+    "CHAR_GOOSE_TRACKSUIT__POSE__POINTING__FRONT_3Q_VIEWER_RIGHT__ISO_A01",
+    "CHAR_GOOSE_TRACKSUIT__POSE__POINTING__FRONT__FP2D_A01"
+  ],
+  "reference_only_pose_ids": [
+    "CHAR_GOOSE_TRACKSUIT__POSE__ARMS_CROSSED_SPECIAL__FRONT_3Q_VIEWER_RIGHT__SPECIAL_A01",
+    "CHAR_GOOSE_TRACKSUIT__POSE__WATCHING__FRONT_3Q_VIEWER_LEFT__SPECIAL_A01"
+  ],
+  "pose_files": [
+    "production/characters/goose_tracksuit/poses/normalized/char_goose_tracksuit__pose__arms_crossed__front_3q_viewer_right__iso_a01__normalized.png",
+    "production/characters/goose_tracksuit/poses/normalized/char_goose_tracksuit__pose__arms_crossed__front__fp2d_a01__normalized.png",
+    "production/characters/goose_tracksuit/poses/normalized/char_goose_tracksuit__pose__back_facing__rear_3q_viewer_right__iso_a01__normalized.png",
+    "production/characters/goose_tracksuit/poses/normalized/char_goose_tracksuit__pose__back_facing__rear__fp2d_a01__normalized.png",
+    "production/characters/goose_tracksuit/poses/normalized/char_goose_tracksuit__pose__hands_on_hips__front_3q_viewer_right__iso_a01__normalized.png",
+    "production/characters/goose_tracksuit/poses/normalized/char_goose_tracksuit__pose__hands_on_hips__front__fp2d_a01__normalized.png",
+    "production/characters/goose_tracksuit/poses/normalized/char_goose_tracksuit__pose__idle__front_3q_viewer_right__iso_a01__normalized.png",
+    "production/characters/goose_tracksuit/poses/normalized/char_goose_tracksuit__pose__idle__front__fp2d_a01__normalized.png",
+    "production/characters/goose_tracksuit/poses/normalized/char_goose_tracksuit__pose__leaning__front_3q_viewer_right__fp2d_a01__normalized.png",
+    "production/characters/goose_tracksuit/poses/normalized/char_goose_tracksuit__pose__leaning__front_3q_viewer_right__iso_a01__normalized.png",
+    "production/characters/goose_tracksuit/poses/normalized/char_goose_tracksuit__pose__open_hand_negotiating__front_3q_viewer_right__iso_a01__normalized.png",
+    "production/characters/goose_tracksuit/poses/normalized/char_goose_tracksuit__pose__open_hand_negotiating__front__fp2d_a01__normalized.png",
+    "production/characters/goose_tracksuit/poses/normalized/char_goose_tracksuit__pose__phone_or_listening__profile_3q_viewer_right__fp2d_a01__normalized.png",
+    "production/characters/goose_tracksuit/poses/normalized/char_goose_tracksuit__pose__phone_or_listening__profile_3q_viewer_right__iso_a01__normalized.png",
+    "production/characters/goose_tracksuit/poses/normalized/char_goose_tracksuit__pose__pointing__front_3q_viewer_right__iso_a01__normalized.png",
+    "production/characters/goose_tracksuit/poses/normalized/char_goose_tracksuit__pose__pointing__front__fp2d_a01__normalized.png",
+    "reference/character_coverage/special_role_poses/goose_tracksuit/alpha_normalized/char_goose_tracksuit__pose__arms_crossed_special__front_3q_viewer_right__special_a01__alpha_normalized_only.png",
+    "reference/character_coverage/special_role_poses/goose_tracksuit/alpha_normalized/char_goose_tracksuit__pose__watching__front_3q_viewer_left__special_a01__alpha_normalized_only.png"
+  ],
+  "size_profiles": {
+    "VIEW_FP2D": {
+      "view_canvas": [
+        1448,
+        1086
+      ],
+      "nominal_character_content_height": 720,
+      "permitted_content_height_range": [
+        684,
+        756
+      ],
+      "ground_foot_baseline_y": 1040,
+      "safe_character_region": [
+        220,
+        280,
+        1280,
+        1000
+      ],
+      "normalized_head_box_estimate": [
+        600,
+        320,
+        848,
+        493
+      ],
+      "normalized_head_anchor_estimate": [
+        724,
+        414
+      ],
+      "normalized_pelvis_anchor_estimate": [
+        724,
+        716
+      ],
+      "safe_padding": {
+        "top": 46,
+        "left": 96,
+        "right": 96,
+        "bottom": 46
+      },
+      "depth_scale_behavior": "fixed nominal scale; no perspective depth scaling inferred",
+      "orientation_vocabulary": [
+        "FRONT",
+        "REAR",
+        "FRONT_3Q_VIEWER_RIGHT",
+        "PROFILE_3Q_VIEWER_RIGHT"
+      ],
+      "direct_source_content_height_distribution": {
+        "count": 24,
+        "min": 1135,
+        "max": 1526,
+        "median": 1323.5,
+        "mean": 1332.96
+      },
+      "direct_source_content_width_distribution": {
+        "count": 24,
+        "min": 269,
+        "max": 539,
+        "median": 431.5,
+        "mean": 422.04
+      },
+      "numeric_basis": {
+        "direct": [
+          "room canvas 1448x1086",
+          "24 source alpha bounding boxes",
+          "qualitative validation/example-scene pixel comparison"
+        ],
+        "inferred": [
+          "720 target height",
+          "684-756 tolerance",
+          "head/pelvis proportional estimates"
+        ],
+        "confidence": "medium"
+      }
+    },
+    "VIEW_ISO": {
+      "view_canvas": [
+        1448,
+        1086
+      ],
+      "nominal_character_content_height": 330,
+      "permitted_content_height_range": [
+        297,
+        363
+      ],
+      "ground_foot_baseline_y": 850,
+      "safe_character_region": [
+        410,
+        410,
+        1265,
+        928
+      ],
+      "normalized_head_box_estimate": [
+        665,
+        563,
+        783,
+        643
+      ],
+      "normalized_head_anchor_estimate": [
+        724,
+        607
+      ],
+      "normalized_pelvis_anchor_estimate": [
+        724,
+        702
+      ],
+      "safe_padding": {
+        "top": 48,
+        "left": 64,
+        "right": 64,
+        "bottom": 48
+      },
+      "depth_scale_behavior": "nominal at center depth; suggested 0.90-1.10 display multiplier only after anchor review",
+      "orientation_vocabulary": [
+        "FRONT_3Q_VIEWER_RIGHT",
+        "REAR_3Q_VIEWER_RIGHT",
+        "PROFILE_3Q_VIEWER_RIGHT"
+      ],
+      "direct_source_content_height_distribution": {
+        "count": 24,
+        "min": 1214,
+        "max": 1513,
+        "median": 1351.5,
+        "mean": 1353.62
+      },
+      "direct_source_content_width_distribution": {
+        "count": 24,
+        "min": 357,
+        "max": 612,
+        "median": 416.0,
+        "mean": 436.83
+      },
+      "numeric_basis": {
+        "direct": [
+          "room canvas 1448x1086",
+          "24 source alpha bounding boxes",
+          "qualitative validation/example-scene pixel comparison"
+        ],
+        "inferred": [
+          "330 target height",
+          "297-363 tolerance",
+          "neutral baseline and depth scaling suggestion"
+        ],
+        "confidence": "medium"
+      }
+    }
+  },
+  "face_system": {
+    "type": "GOOSE_NATIVE_FIVE_FULL_CANVAS_SLOTS",
+    "manifest": "production/characters/goose_tracksuit/face/native_five_slot/face_manifest.json",
+    "head_replacement_on_supplied_poses": false
+  },
+  "body_authoring_source": null,
+  "known_limitations": [
+    "single-frame pose states only",
+    "identity/proportion drift remains in some poses and was not painted over",
+    "manual art review required before final production-ready designation"
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "schema_version": "1.0",
+  "view_id": "VIEW_FP2D",
+  "room_id": "ROOM_01_APT_305",
+  "canvas_dimensions": [
+    1448,
+    1086
+  ],
+  "plate_path": "production/room_01_apt_305/views/fp2d/plate.png",
+  "floor_region": {
+    "shape": "POLYGON",
+    "points": [
+      [
+        0,
+        694
+      ],
+      [
+        320,
+        675
+      ],
+      [
+        660,
+        650
+      ],
+      [
+        958,
+        659
+      ],
+      [
+        1265,
+        681
+      ],
+      [
+        1447,
+        716
+      ],
+      [
+        1447,
+        1085
+      ],
+      [
+        0,
+        1085
+      ]
+    ],
+    "basis": "specialist manual trace of visible floor boundary",
+    "confidence": "medium"
+  },
+  "nominal_foot_baseline_y": 1040,
+  "safe_character_region": [
+    220,
+    280,
+    1060,
+    720
+  ],
+  "character_baseline_corridor": [
+    260,
+    900,
+    975,
+    115
+  ],
+  "ui_safe_region": {
+    "top_reserve": [
+      0,
+      0,
+      1448,
+      110
+    ],
+    "bottom_reserve": [
+      0,
+      940,
+      1448,
+      146
+    ]
+  },
+  "depth_rules": {
+    "method": "fixed_stage_baseline_with_manual_horizontal_slots",
+    "suggested_scale_range": [
+      0.95,
+      1.05
+    ],
+    "implementation_status": "contract_only"
+  },
+  "supported_element_perspectives": [],
+  "blocked_element_perspectives": [
+    "all supplied separated fixtures/items are ISO_3Q"
+  ],
+  "supported_pose_perspectives": [
+    "VIEW_FP2D"
+  ],
+  "known_limitations": [
+    "FP2D table/couch/chair/cash/package variants are BLOCKED_MISSING",
+    "no explicit occlusion masks supplied"
+  ]
+}

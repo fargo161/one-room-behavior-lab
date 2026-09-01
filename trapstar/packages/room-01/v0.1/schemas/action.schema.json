@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://trapstar.invalid/schemas/visual_action.schema.json",
+  "title": "Visual Action",
+  "type": "object",
+  "required": [
+    "visual_action_id",
+    "character_id",
+    "binding_status",
+    "single_frame_or_sequence_role",
+    "visual_pose_bindings"
+  ],
+  "properties": {
+    "visual_action_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "character_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "semantic_action": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "binding_status": {
+      "enum": [
+        "BOUND_SINGLE_FRAME",
+        "UNBOUND"
+      ]
+    },
+    "single_frame_or_sequence_role": {
+      "enum": [
+        "SINGLE_FRAME_STATE",
+        "UNBOUND"
+      ]
+    },
+    "visual_pose_bindings": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "implemented": {
+      "const": false
+    }
+  },
+  "additionalProperties": true
+}

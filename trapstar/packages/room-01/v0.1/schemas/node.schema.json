@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://trapstar.invalid/schemas/node.schema.json",
+  "title": "Node",
+  "type": "object",
+  "required": [
+    "node_id",
+    "room_id",
+    "semantic_role",
+    "view_data",
+    "allowed_functions",
+    "enabled",
+    "hidden"
+  ],
+  "properties": {
+    "node_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "room_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "semantic_role": {
+      "enum": [
+        "ENTRY",
+        "EXIT",
+        "ENTRY_EXIT",
+        "SECRET",
+        "FIXTURE",
+        "CHARACTER_SPACE",
+        "ITEM_SPACE",
+        "INTERACTION",
+        "OCCLUDER"
+      ]
+    },
+    "view_data": {
+      "type": "object",
+      "minProperties": 1
+    },
+    "allowed_functions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "enabled": {
+      "type": "boolean"
+    },
+    "hidden": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": true
+}

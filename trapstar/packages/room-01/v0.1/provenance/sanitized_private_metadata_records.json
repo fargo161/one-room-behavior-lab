@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "records": [
+    {
+      "source_asset_id": "characters.zip::characters/goose/goose_expression_batch/technical/prompts_01_06.json",
+      "source_relative_path": "characters/goose/goose_expression_batch/technical/prompts_01_06.json",
+      "sha256": "f2588e4127ee705ea049ffaa45822b2feb8520047af510f2793c2dc8fd3d9aee",
+      "size_bytes": 13688,
+      "raw_bytes_in_delivery": false,
+      "sanitized_fact": "Goose expression-generation prompt record; raw local/private path context withheld"
+    },
+    {
+      "source_asset_id": "characters.zip::characters/goose/goose_expression_batch/technical/prompts_07_12.json",
+      "source_relative_path": "characters/goose/goose_expression_batch/technical/prompts_07_12.json",
+      "sha256": "d569141aea59de8c8cb7c9b80b87b2e95287c5326becfe1ae1d5d2df825d6de7",
+      "size_bytes": 10917,
+      "raw_bytes_in_delivery": false,
+      "sanitized_fact": "Goose expression-generation prompt record; raw local/private path context withheld"
+    },
+    {
+      "source_asset_id": "characters.zip::characters/goose/goose_expression_batch/technical/prompts_13_18.json",
+      "source_relative_path": "characters/goose/goose_expression_batch/technical/prompts_13_18.json",
+      "sha256": "516dd227d08b7fdf8a099233d220da23c7297eb4c004aa6c7c60b51e7d19e024",
+      "size_bytes": 13613,
+      "raw_bytes_in_delivery": false,
+      "sanitized_fact": "Goose expression-generation prompt record; raw local/private path context withheld"
+    },
+    {
+      "source_asset_id": "characters.zip::characters/goose/goose_expression_batch/technical/prompts_base.json",
+      "source_relative_path": "characters/goose/goose_expression_batch/technical/prompts_base.json",
+      "sha256": "1e6c8706667663015205cf28693796dc43d27e343f517f5dd0b652a746f367d0",
+      "size_bytes": 2265,
+      "raw_bytes_in_delivery": false,
+      "sanitized_fact": "Goose expression-generation prompt record; raw local/private path context withheld"
+    }
+  ],
+  "absolute_paths_preserved": false
+}

@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0",
+  "view_id": "VIEW_ISO",
+  "coordinate_system": "top-left origin, +x right, +y down",
+  "anchors": [
+    {
+      "anchor_id": "ANCHOR__ISO__CHAR_DEAL_LEFT",
+      "point": [
+        506,
+        760
+      ],
+      "confidence": "low",
+      "basis": "floor-clearance inference near candidate table"
+    },
+    {
+      "anchor_id": "ANCHOR__ISO__CHAR_DEAL_RIGHT",
+      "point": [
+        921,
+        744
+      ],
+      "confidence": "low",
+      "basis": "floor-clearance inference near candidate table"
+    },
+    {
+      "anchor_id": "ANCHOR__ISO__TABLE_CENTER",
+      "point": [
+        714,
+        790
+      ],
+      "confidence": "low",
+      "basis": "reverse estimate from flattened example_scene_iso.jpg"
+    },
+    {
+      "anchor_id": "ANCHOR__ISO__ITEM_TABLE_TOP_A",
+      "point": [
+        692,
+        593
+      ],
+      "confidence": "low",
+      "basis": "reverse estimate from flattened example_scene_iso.jpg"
+    },
+    {
+      "anchor_id": "ANCHOR__ISO__DOOR_MAIN",
+      "point": [
+        1387,
+        470
+      ],
+      "confidence": "medium",
+      "basis": "manual center of visible partially clipped closed door"
+    },
+    {
+      "anchor_id": "ANCHOR__ISO__WINDOW_MAIN",
+      "point": [
+        1129,
+        223
+      ],
+      "confidence": "medium",
+      "basis": "manual center of visible static window"
+    },
+    {
+      "anchor_id": "ANCHOR__ISO__DOOR_FOREGROUND_LEFT_UNRESOLVED",
+      "point": [
+        327,
+        782
+      ],
+      "confidence": "medium",
+      "basis": "visible ISO-only cutaway door; disabled and not a secret route"
+    }
+  ]
+}

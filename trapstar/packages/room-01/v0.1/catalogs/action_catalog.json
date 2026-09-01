@@ -1,0 +1,1732 @@
+{
+  "schema_version": "1.0",
+  "implemented_runtime": false,
+  "actions": [
+    {
+      "visual_action_id": "CHAR_MARCUS_BROKER__VISUAL_ACTION__IDLE",
+      "character_id": "CHAR_MARCUS_BROKER",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "BOUND_SINGLE_FRAME",
+      "single_frame_or_sequence_role": "SINGLE_FRAME_STATE",
+      "visual_pose_bindings": [
+        "CHAR_MARCUS_BROKER__POSE__IDLE__FRONT_3Q_VIEWER_RIGHT__ISO_A01",
+        "CHAR_MARCUS_BROKER__POSE__IDLE__FRONT__FP2D_A01"
+      ],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [
+          "CHAR_MARCUS_BROKER__POSE__IDLE__FRONT_3Q_VIEWER_RIGHT__ISO_A01"
+        ],
+        "loop": [],
+        "hold": [
+          "CHAR_MARCUS_BROKER__POSE__IDLE__FRONT_3Q_VIEWER_RIGHT__ISO_A01"
+        ],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": "HOLD_UNTIL_REPLACED",
+      "cancel_behavior": "RETURN_TO_IDLE",
+      "implemented": false,
+      "known_limitations": []
+    },
+    {
+      "visual_action_id": "CHAR_MARCUS_BROKER__VISUAL_ACTION__TALK",
+      "character_id": "CHAR_MARCUS_BROKER",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "UNBOUND",
+      "single_frame_or_sequence_role": "UNBOUND",
+      "visual_pose_bindings": [],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [],
+        "loop": [],
+        "hold": [],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": null,
+      "cancel_behavior": null,
+      "implemented": false,
+      "known_limitations": [
+        "No defensible matching visual still was supplied."
+      ]
+    },
+    {
+      "visual_action_id": "CHAR_MARCUS_BROKER__VISUAL_ACTION__LISTEN",
+      "character_id": "CHAR_MARCUS_BROKER",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "BOUND_SINGLE_FRAME",
+      "single_frame_or_sequence_role": "SINGLE_FRAME_STATE",
+      "visual_pose_bindings": [
+        "CHAR_MARCUS_BROKER__POSE__PHONE_OR_LISTENING__PROFILE_3Q_VIEWER_RIGHT__FP2D_A01",
+        "CHAR_MARCUS_BROKER__POSE__PHONE_OR_LISTENING__PROFILE_3Q_VIEWER_RIGHT__ISO_A01"
+      ],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [
+          "CHAR_MARCUS_BROKER__POSE__PHONE_OR_LISTENING__PROFILE_3Q_VIEWER_RIGHT__FP2D_A01"
+        ],
+        "loop": [],
+        "hold": [
+          "CHAR_MARCUS_BROKER__POSE__PHONE_OR_LISTENING__PROFILE_3Q_VIEWER_RIGHT__FP2D_A01"
+        ],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": "HOLD_UNTIL_REPLACED",
+      "cancel_behavior": "RETURN_TO_IDLE",
+      "implemented": false,
+      "known_limitations": []
+    },
+    {
+      "visual_action_id": "CHAR_MARCUS_BROKER__VISUAL_ACTION__NEGOTIATE",
+      "character_id": "CHAR_MARCUS_BROKER",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "BOUND_SINGLE_FRAME",
+      "single_frame_or_sequence_role": "SINGLE_FRAME_STATE",
+      "visual_pose_bindings": [
+        "CHAR_MARCUS_BROKER__POSE__OPEN_HAND_NEGOTIATING__FRONT_3Q_VIEWER_RIGHT__ISO_A01",
+        "CHAR_MARCUS_BROKER__POSE__OPEN_HAND_NEGOTIATING__FRONT__FP2D_A01"
+      ],
+      "reference_pose_candidates_not_bound": [
+        "CHAR_MARCUS_BROKER__POSE__NEGOTIATE__FRONT_3Q_VIEWER_LEFT__SPECIAL_A01"
+      ],
+      "frames": {
+        "start": [
+          "CHAR_MARCUS_BROKER__POSE__OPEN_HAND_NEGOTIATING__FRONT_3Q_VIEWER_RIGHT__ISO_A01"
+        ],
+        "loop": [],
+        "hold": [
+          "CHAR_MARCUS_BROKER__POSE__OPEN_HAND_NEGOTIATING__FRONT_3Q_VIEWER_RIGHT__ISO_A01"
+        ],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": "HOLD_UNTIL_REPLACED",
+      "cancel_behavior": "RETURN_TO_IDLE",
+      "implemented": false,
+      "known_limitations": []
+    },
+    {
+      "visual_action_id": "CHAR_MARCUS_BROKER__VISUAL_ACTION__POINT",
+      "character_id": "CHAR_MARCUS_BROKER",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "BOUND_SINGLE_FRAME",
+      "single_frame_or_sequence_role": "SINGLE_FRAME_STATE",
+      "visual_pose_bindings": [
+        "CHAR_MARCUS_BROKER__POSE__POINTING__FRONT_3Q_VIEWER_RIGHT__ISO_A01",
+        "CHAR_MARCUS_BROKER__POSE__POINTING__FRONT__FP2D_A01"
+      ],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [
+          "CHAR_MARCUS_BROKER__POSE__POINTING__FRONT_3Q_VIEWER_RIGHT__ISO_A01"
+        ],
+        "loop": [],
+        "hold": [
+          "CHAR_MARCUS_BROKER__POSE__POINTING__FRONT_3Q_VIEWER_RIGHT__ISO_A01"
+        ],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": "HOLD_UNTIL_REPLACED",
+      "cancel_behavior": "RETURN_TO_IDLE",
+      "implemented": false,
+      "known_limitations": []
+    },
+    {
+      "visual_action_id": "CHAR_MARCUS_BROKER__VISUAL_ACTION__PHONE_OR_LISTEN",
+      "character_id": "CHAR_MARCUS_BROKER",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "BOUND_SINGLE_FRAME",
+      "single_frame_or_sequence_role": "SINGLE_FRAME_STATE",
+      "visual_pose_bindings": [
+        "CHAR_MARCUS_BROKER__POSE__PHONE_OR_LISTENING__PROFILE_3Q_VIEWER_RIGHT__FP2D_A01",
+        "CHAR_MARCUS_BROKER__POSE__PHONE_OR_LISTENING__PROFILE_3Q_VIEWER_RIGHT__ISO_A01"
+      ],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [
+          "CHAR_MARCUS_BROKER__POSE__PHONE_OR_LISTENING__PROFILE_3Q_VIEWER_RIGHT__FP2D_A01"
+        ],
+        "loop": [],
+        "hold": [
+          "CHAR_MARCUS_BROKER__POSE__PHONE_OR_LISTENING__PROFILE_3Q_VIEWER_RIGHT__FP2D_A01"
+        ],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": "HOLD_UNTIL_REPLACED",
+      "cancel_behavior": "RETURN_TO_IDLE",
+      "implemented": false,
+      "known_limitations": []
+    },
+    {
+      "visual_action_id": "CHAR_MARCUS_BROKER__VISUAL_ACTION__LEAN",
+      "character_id": "CHAR_MARCUS_BROKER",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "BOUND_SINGLE_FRAME",
+      "single_frame_or_sequence_role": "SINGLE_FRAME_STATE",
+      "visual_pose_bindings": [
+        "CHAR_MARCUS_BROKER__POSE__LEANING__FRONT_3Q_VIEWER_RIGHT__FP2D_A01",
+        "CHAR_MARCUS_BROKER__POSE__LEANING__FRONT_3Q_VIEWER_RIGHT__ISO_A01"
+      ],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [
+          "CHAR_MARCUS_BROKER__POSE__LEANING__FRONT_3Q_VIEWER_RIGHT__FP2D_A01"
+        ],
+        "loop": [],
+        "hold": [
+          "CHAR_MARCUS_BROKER__POSE__LEANING__FRONT_3Q_VIEWER_RIGHT__FP2D_A01"
+        ],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": "HOLD_UNTIL_REPLACED",
+      "cancel_behavior": "RETURN_TO_IDLE",
+      "implemented": false,
+      "known_limitations": []
+    },
+    {
+      "visual_action_id": "CHAR_MARCUS_BROKER__VISUAL_ACTION__ARMS_CROSSED",
+      "character_id": "CHAR_MARCUS_BROKER",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "BOUND_SINGLE_FRAME",
+      "single_frame_or_sequence_role": "SINGLE_FRAME_STATE",
+      "visual_pose_bindings": [
+        "CHAR_MARCUS_BROKER__POSE__ARMS_CROSSED__FRONT_3Q_VIEWER_RIGHT__ISO_A01",
+        "CHAR_MARCUS_BROKER__POSE__ARMS_CROSSED__FRONT__FP2D_A01"
+      ],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [
+          "CHAR_MARCUS_BROKER__POSE__ARMS_CROSSED__FRONT_3Q_VIEWER_RIGHT__ISO_A01"
+        ],
+        "loop": [],
+        "hold": [
+          "CHAR_MARCUS_BROKER__POSE__ARMS_CROSSED__FRONT_3Q_VIEWER_RIGHT__ISO_A01"
+        ],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": "HOLD_UNTIL_REPLACED",
+      "cancel_behavior": "RETURN_TO_IDLE",
+      "implemented": false,
+      "known_limitations": []
+    },
+    {
+      "visual_action_id": "CHAR_MARCUS_BROKER__VISUAL_ACTION__HANDS_ON_HIPS",
+      "character_id": "CHAR_MARCUS_BROKER",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "BOUND_SINGLE_FRAME",
+      "single_frame_or_sequence_role": "SINGLE_FRAME_STATE",
+      "visual_pose_bindings": [
+        "CHAR_MARCUS_BROKER__POSE__HANDS_ON_HIPS__FRONT_3Q_VIEWER_RIGHT__ISO_A01",
+        "CHAR_MARCUS_BROKER__POSE__HANDS_ON_HIPS__FRONT__FP2D_A01"
+      ],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [
+          "CHAR_MARCUS_BROKER__POSE__HANDS_ON_HIPS__FRONT_3Q_VIEWER_RIGHT__ISO_A01"
+        ],
+        "loop": [],
+        "hold": [
+          "CHAR_MARCUS_BROKER__POSE__HANDS_ON_HIPS__FRONT_3Q_VIEWER_RIGHT__ISO_A01"
+        ],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": "HOLD_UNTIL_REPLACED",
+      "cancel_behavior": "RETURN_TO_IDLE",
+      "implemented": false,
+      "known_limitations": []
+    },
+    {
+      "visual_action_id": "CHAR_MARCUS_BROKER__VISUAL_ACTION__BACK_FACING",
+      "character_id": "CHAR_MARCUS_BROKER",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "BOUND_SINGLE_FRAME",
+      "single_frame_or_sequence_role": "SINGLE_FRAME_STATE",
+      "visual_pose_bindings": [
+        "CHAR_MARCUS_BROKER__POSE__BACK_FACING__REAR_3Q_VIEWER_RIGHT__ISO_A01",
+        "CHAR_MARCUS_BROKER__POSE__BACK_FACING__REAR__FP2D_A01"
+      ],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [
+          "CHAR_MARCUS_BROKER__POSE__BACK_FACING__REAR_3Q_VIEWER_RIGHT__ISO_A01"
+        ],
+        "loop": [],
+        "hold": [
+          "CHAR_MARCUS_BROKER__POSE__BACK_FACING__REAR_3Q_VIEWER_RIGHT__ISO_A01"
+        ],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": "HOLD_UNTIL_REPLACED",
+      "cancel_behavior": "RETURN_TO_IDLE",
+      "implemented": false,
+      "known_limitations": []
+    },
+    {
+      "visual_action_id": "CHAR_MARCUS_BROKER__VISUAL_ACTION__ENTER",
+      "character_id": "CHAR_MARCUS_BROKER",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "UNBOUND",
+      "single_frame_or_sequence_role": "UNBOUND",
+      "visual_pose_bindings": [],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [],
+        "loop": [],
+        "hold": [],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": null,
+      "cancel_behavior": null,
+      "implemented": false,
+      "known_limitations": [
+        "No defensible matching visual still was supplied."
+      ]
+    },
+    {
+      "visual_action_id": "CHAR_MARCUS_BROKER__VISUAL_ACTION__EXIT",
+      "character_id": "CHAR_MARCUS_BROKER",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "UNBOUND",
+      "single_frame_or_sequence_role": "UNBOUND",
+      "visual_pose_bindings": [],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [],
+        "loop": [],
+        "hold": [],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": null,
+      "cancel_behavior": null,
+      "implemented": false,
+      "known_limitations": [
+        "No defensible matching visual still was supplied."
+      ]
+    },
+    {
+      "visual_action_id": "CHAR_MARCUS_BROKER__VISUAL_ACTION__TAKE_ITEM",
+      "character_id": "CHAR_MARCUS_BROKER",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "UNBOUND",
+      "single_frame_or_sequence_role": "UNBOUND",
+      "visual_pose_bindings": [],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [],
+        "loop": [],
+        "hold": [],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": null,
+      "cancel_behavior": null,
+      "implemented": false,
+      "known_limitations": [
+        "No defensible matching visual still was supplied."
+      ]
+    },
+    {
+      "visual_action_id": "CHAR_MARCUS_BROKER__VISUAL_ACTION__GIVE_ITEM",
+      "character_id": "CHAR_MARCUS_BROKER",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "UNBOUND",
+      "single_frame_or_sequence_role": "UNBOUND",
+      "visual_pose_bindings": [],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [],
+        "loop": [],
+        "hold": [],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": null,
+      "cancel_behavior": null,
+      "implemented": false,
+      "known_limitations": [
+        "No defensible matching visual still was supplied."
+      ]
+    },
+    {
+      "visual_action_id": "CHAR_MARCUS_BROKER__VISUAL_ACTION__USE_FIXTURE",
+      "character_id": "CHAR_MARCUS_BROKER",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "UNBOUND",
+      "single_frame_or_sequence_role": "UNBOUND",
+      "visual_pose_bindings": [],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [],
+        "loop": [],
+        "hold": [],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": null,
+      "cancel_behavior": null,
+      "implemented": false,
+      "known_limitations": [
+        "No defensible matching visual still was supplied."
+      ]
+    },
+    {
+      "visual_action_id": "CHAR_MARCUS_BROKER__VISUAL_ACTION__DEFENSIVE",
+      "character_id": "CHAR_MARCUS_BROKER",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "UNBOUND",
+      "single_frame_or_sequence_role": "UNBOUND",
+      "visual_pose_bindings": [],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [],
+        "loop": [],
+        "hold": [],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": null,
+      "cancel_behavior": null,
+      "implemented": false,
+      "known_limitations": [
+        "No defensible matching visual still was supplied."
+      ]
+    },
+    {
+      "visual_action_id": "CHAR_MARCUS_BROKER__VISUAL_ACTION__THREATEN",
+      "character_id": "CHAR_MARCUS_BROKER",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "UNBOUND",
+      "single_frame_or_sequence_role": "UNBOUND",
+      "visual_pose_bindings": [],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [],
+        "loop": [],
+        "hold": [],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": null,
+      "cancel_behavior": null,
+      "implemented": false,
+      "known_limitations": [
+        "No defensible matching visual still was supplied."
+      ]
+    },
+    {
+      "visual_action_id": "CHAR_GOOSE_TRACKSUIT__VISUAL_ACTION__IDLE",
+      "character_id": "CHAR_GOOSE_TRACKSUIT",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "BOUND_SINGLE_FRAME",
+      "single_frame_or_sequence_role": "SINGLE_FRAME_STATE",
+      "visual_pose_bindings": [
+        "CHAR_GOOSE_TRACKSUIT__POSE__IDLE__FRONT_3Q_VIEWER_RIGHT__ISO_A01",
+        "CHAR_GOOSE_TRACKSUIT__POSE__IDLE__FRONT__FP2D_A01"
+      ],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [
+          "CHAR_GOOSE_TRACKSUIT__POSE__IDLE__FRONT_3Q_VIEWER_RIGHT__ISO_A01"
+        ],
+        "loop": [],
+        "hold": [
+          "CHAR_GOOSE_TRACKSUIT__POSE__IDLE__FRONT_3Q_VIEWER_RIGHT__ISO_A01"
+        ],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": "HOLD_UNTIL_REPLACED",
+      "cancel_behavior": "RETURN_TO_IDLE",
+      "implemented": false,
+      "known_limitations": []
+    },
+    {
+      "visual_action_id": "CHAR_GOOSE_TRACKSUIT__VISUAL_ACTION__TALK",
+      "character_id": "CHAR_GOOSE_TRACKSUIT",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "UNBOUND",
+      "single_frame_or_sequence_role": "UNBOUND",
+      "visual_pose_bindings": [],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [],
+        "loop": [],
+        "hold": [],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": null,
+      "cancel_behavior": null,
+      "implemented": false,
+      "known_limitations": [
+        "No defensible matching visual still was supplied."
+      ]
+    },
+    {
+      "visual_action_id": "CHAR_GOOSE_TRACKSUIT__VISUAL_ACTION__LISTEN",
+      "character_id": "CHAR_GOOSE_TRACKSUIT",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "BOUND_SINGLE_FRAME",
+      "single_frame_or_sequence_role": "SINGLE_FRAME_STATE",
+      "visual_pose_bindings": [
+        "CHAR_GOOSE_TRACKSUIT__POSE__PHONE_OR_LISTENING__PROFILE_3Q_VIEWER_RIGHT__FP2D_A01",
+        "CHAR_GOOSE_TRACKSUIT__POSE__PHONE_OR_LISTENING__PROFILE_3Q_VIEWER_RIGHT__ISO_A01"
+      ],
+      "reference_pose_candidates_not_bound": [
+        "CHAR_GOOSE_TRACKSUIT__POSE__WATCHING__FRONT_3Q_VIEWER_LEFT__SPECIAL_A01"
+      ],
+      "frames": {
+        "start": [
+          "CHAR_GOOSE_TRACKSUIT__POSE__PHONE_OR_LISTENING__PROFILE_3Q_VIEWER_RIGHT__FP2D_A01"
+        ],
+        "loop": [],
+        "hold": [
+          "CHAR_GOOSE_TRACKSUIT__POSE__PHONE_OR_LISTENING__PROFILE_3Q_VIEWER_RIGHT__FP2D_A01"
+        ],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": "HOLD_UNTIL_REPLACED",
+      "cancel_behavior": "RETURN_TO_IDLE",
+      "implemented": false,
+      "known_limitations": []
+    },
+    {
+      "visual_action_id": "CHAR_GOOSE_TRACKSUIT__VISUAL_ACTION__NEGOTIATE",
+      "character_id": "CHAR_GOOSE_TRACKSUIT",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "BOUND_SINGLE_FRAME",
+      "single_frame_or_sequence_role": "SINGLE_FRAME_STATE",
+      "visual_pose_bindings": [
+        "CHAR_GOOSE_TRACKSUIT__POSE__OPEN_HAND_NEGOTIATING__FRONT_3Q_VIEWER_RIGHT__ISO_A01",
+        "CHAR_GOOSE_TRACKSUIT__POSE__OPEN_HAND_NEGOTIATING__FRONT__FP2D_A01"
+      ],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [
+          "CHAR_GOOSE_TRACKSUIT__POSE__OPEN_HAND_NEGOTIATING__FRONT_3Q_VIEWER_RIGHT__ISO_A01"
+        ],
+        "loop": [],
+        "hold": [
+          "CHAR_GOOSE_TRACKSUIT__POSE__OPEN_HAND_NEGOTIATING__FRONT_3Q_VIEWER_RIGHT__ISO_A01"
+        ],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": "HOLD_UNTIL_REPLACED",
+      "cancel_behavior": "RETURN_TO_IDLE",
+      "implemented": false,
+      "known_limitations": []
+    },
+    {
+      "visual_action_id": "CHAR_GOOSE_TRACKSUIT__VISUAL_ACTION__POINT",
+      "character_id": "CHAR_GOOSE_TRACKSUIT",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "BOUND_SINGLE_FRAME",
+      "single_frame_or_sequence_role": "SINGLE_FRAME_STATE",
+      "visual_pose_bindings": [
+        "CHAR_GOOSE_TRACKSUIT__POSE__POINTING__FRONT_3Q_VIEWER_RIGHT__ISO_A01",
+        "CHAR_GOOSE_TRACKSUIT__POSE__POINTING__FRONT__FP2D_A01"
+      ],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [
+          "CHAR_GOOSE_TRACKSUIT__POSE__POINTING__FRONT_3Q_VIEWER_RIGHT__ISO_A01"
+        ],
+        "loop": [],
+        "hold": [
+          "CHAR_GOOSE_TRACKSUIT__POSE__POINTING__FRONT_3Q_VIEWER_RIGHT__ISO_A01"
+        ],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": "HOLD_UNTIL_REPLACED",
+      "cancel_behavior": "RETURN_TO_IDLE",
+      "implemented": false,
+      "known_limitations": []
+    },
+    {
+      "visual_action_id": "CHAR_GOOSE_TRACKSUIT__VISUAL_ACTION__PHONE_OR_LISTEN",
+      "character_id": "CHAR_GOOSE_TRACKSUIT",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "BOUND_SINGLE_FRAME",
+      "single_frame_or_sequence_role": "SINGLE_FRAME_STATE",
+      "visual_pose_bindings": [
+        "CHAR_GOOSE_TRACKSUIT__POSE__PHONE_OR_LISTENING__PROFILE_3Q_VIEWER_RIGHT__FP2D_A01",
+        "CHAR_GOOSE_TRACKSUIT__POSE__PHONE_OR_LISTENING__PROFILE_3Q_VIEWER_RIGHT__ISO_A01"
+      ],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [
+          "CHAR_GOOSE_TRACKSUIT__POSE__PHONE_OR_LISTENING__PROFILE_3Q_VIEWER_RIGHT__FP2D_A01"
+        ],
+        "loop": [],
+        "hold": [
+          "CHAR_GOOSE_TRACKSUIT__POSE__PHONE_OR_LISTENING__PROFILE_3Q_VIEWER_RIGHT__FP2D_A01"
+        ],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": "HOLD_UNTIL_REPLACED",
+      "cancel_behavior": "RETURN_TO_IDLE",
+      "implemented": false,
+      "known_limitations": []
+    },
+    {
+      "visual_action_id": "CHAR_GOOSE_TRACKSUIT__VISUAL_ACTION__LEAN",
+      "character_id": "CHAR_GOOSE_TRACKSUIT",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "BOUND_SINGLE_FRAME",
+      "single_frame_or_sequence_role": "SINGLE_FRAME_STATE",
+      "visual_pose_bindings": [
+        "CHAR_GOOSE_TRACKSUIT__POSE__LEANING__FRONT_3Q_VIEWER_RIGHT__FP2D_A01",
+        "CHAR_GOOSE_TRACKSUIT__POSE__LEANING__FRONT_3Q_VIEWER_RIGHT__ISO_A01"
+      ],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [
+          "CHAR_GOOSE_TRACKSUIT__POSE__LEANING__FRONT_3Q_VIEWER_RIGHT__FP2D_A01"
+        ],
+        "loop": [],
+        "hold": [
+          "CHAR_GOOSE_TRACKSUIT__POSE__LEANING__FRONT_3Q_VIEWER_RIGHT__FP2D_A01"
+        ],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": "HOLD_UNTIL_REPLACED",
+      "cancel_behavior": "RETURN_TO_IDLE",
+      "implemented": false,
+      "known_limitations": []
+    },
+    {
+      "visual_action_id": "CHAR_GOOSE_TRACKSUIT__VISUAL_ACTION__ARMS_CROSSED",
+      "character_id": "CHAR_GOOSE_TRACKSUIT",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "BOUND_SINGLE_FRAME",
+      "single_frame_or_sequence_role": "SINGLE_FRAME_STATE",
+      "visual_pose_bindings": [
+        "CHAR_GOOSE_TRACKSUIT__POSE__ARMS_CROSSED__FRONT_3Q_VIEWER_RIGHT__ISO_A01",
+        "CHAR_GOOSE_TRACKSUIT__POSE__ARMS_CROSSED__FRONT__FP2D_A01"
+      ],
+      "reference_pose_candidates_not_bound": [
+        "CHAR_GOOSE_TRACKSUIT__POSE__ARMS_CROSSED_SPECIAL__FRONT_3Q_VIEWER_RIGHT__SPECIAL_A01"
+      ],
+      "frames": {
+        "start": [
+          "CHAR_GOOSE_TRACKSUIT__POSE__ARMS_CROSSED__FRONT_3Q_VIEWER_RIGHT__ISO_A01"
+        ],
+        "loop": [],
+        "hold": [
+          "CHAR_GOOSE_TRACKSUIT__POSE__ARMS_CROSSED__FRONT_3Q_VIEWER_RIGHT__ISO_A01"
+        ],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": "HOLD_UNTIL_REPLACED",
+      "cancel_behavior": "RETURN_TO_IDLE",
+      "implemented": false,
+      "known_limitations": []
+    },
+    {
+      "visual_action_id": "CHAR_GOOSE_TRACKSUIT__VISUAL_ACTION__HANDS_ON_HIPS",
+      "character_id": "CHAR_GOOSE_TRACKSUIT",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "BOUND_SINGLE_FRAME",
+      "single_frame_or_sequence_role": "SINGLE_FRAME_STATE",
+      "visual_pose_bindings": [
+        "CHAR_GOOSE_TRACKSUIT__POSE__HANDS_ON_HIPS__FRONT_3Q_VIEWER_RIGHT__ISO_A01",
+        "CHAR_GOOSE_TRACKSUIT__POSE__HANDS_ON_HIPS__FRONT__FP2D_A01"
+      ],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [
+          "CHAR_GOOSE_TRACKSUIT__POSE__HANDS_ON_HIPS__FRONT_3Q_VIEWER_RIGHT__ISO_A01"
+        ],
+        "loop": [],
+        "hold": [
+          "CHAR_GOOSE_TRACKSUIT__POSE__HANDS_ON_HIPS__FRONT_3Q_VIEWER_RIGHT__ISO_A01"
+        ],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": "HOLD_UNTIL_REPLACED",
+      "cancel_behavior": "RETURN_TO_IDLE",
+      "implemented": false,
+      "known_limitations": []
+    },
+    {
+      "visual_action_id": "CHAR_GOOSE_TRACKSUIT__VISUAL_ACTION__BACK_FACING",
+      "character_id": "CHAR_GOOSE_TRACKSUIT",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "BOUND_SINGLE_FRAME",
+      "single_frame_or_sequence_role": "SINGLE_FRAME_STATE",
+      "visual_pose_bindings": [
+        "CHAR_GOOSE_TRACKSUIT__POSE__BACK_FACING__REAR_3Q_VIEWER_RIGHT__ISO_A01",
+        "CHAR_GOOSE_TRACKSUIT__POSE__BACK_FACING__REAR__FP2D_A01"
+      ],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [
+          "CHAR_GOOSE_TRACKSUIT__POSE__BACK_FACING__REAR_3Q_VIEWER_RIGHT__ISO_A01"
+        ],
+        "loop": [],
+        "hold": [
+          "CHAR_GOOSE_TRACKSUIT__POSE__BACK_FACING__REAR_3Q_VIEWER_RIGHT__ISO_A01"
+        ],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": "HOLD_UNTIL_REPLACED",
+      "cancel_behavior": "RETURN_TO_IDLE",
+      "implemented": false,
+      "known_limitations": []
+    },
+    {
+      "visual_action_id": "CHAR_GOOSE_TRACKSUIT__VISUAL_ACTION__ENTER",
+      "character_id": "CHAR_GOOSE_TRACKSUIT",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "UNBOUND",
+      "single_frame_or_sequence_role": "UNBOUND",
+      "visual_pose_bindings": [],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [],
+        "loop": [],
+        "hold": [],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": null,
+      "cancel_behavior": null,
+      "implemented": false,
+      "known_limitations": [
+        "No defensible matching visual still was supplied."
+      ]
+    },
+    {
+      "visual_action_id": "CHAR_GOOSE_TRACKSUIT__VISUAL_ACTION__EXIT",
+      "character_id": "CHAR_GOOSE_TRACKSUIT",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "UNBOUND",
+      "single_frame_or_sequence_role": "UNBOUND",
+      "visual_pose_bindings": [],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [],
+        "loop": [],
+        "hold": [],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": null,
+      "cancel_behavior": null,
+      "implemented": false,
+      "known_limitations": [
+        "No defensible matching visual still was supplied."
+      ]
+    },
+    {
+      "visual_action_id": "CHAR_GOOSE_TRACKSUIT__VISUAL_ACTION__TAKE_ITEM",
+      "character_id": "CHAR_GOOSE_TRACKSUIT",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "UNBOUND",
+      "single_frame_or_sequence_role": "UNBOUND",
+      "visual_pose_bindings": [],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [],
+        "loop": [],
+        "hold": [],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": null,
+      "cancel_behavior": null,
+      "implemented": false,
+      "known_limitations": [
+        "No defensible matching visual still was supplied."
+      ]
+    },
+    {
+      "visual_action_id": "CHAR_GOOSE_TRACKSUIT__VISUAL_ACTION__GIVE_ITEM",
+      "character_id": "CHAR_GOOSE_TRACKSUIT",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "UNBOUND",
+      "single_frame_or_sequence_role": "UNBOUND",
+      "visual_pose_bindings": [],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [],
+        "loop": [],
+        "hold": [],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": null,
+      "cancel_behavior": null,
+      "implemented": false,
+      "known_limitations": [
+        "No defensible matching visual still was supplied."
+      ]
+    },
+    {
+      "visual_action_id": "CHAR_GOOSE_TRACKSUIT__VISUAL_ACTION__USE_FIXTURE",
+      "character_id": "CHAR_GOOSE_TRACKSUIT",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "UNBOUND",
+      "single_frame_or_sequence_role": "UNBOUND",
+      "visual_pose_bindings": [],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [],
+        "loop": [],
+        "hold": [],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": null,
+      "cancel_behavior": null,
+      "implemented": false,
+      "known_limitations": [
+        "No defensible matching visual still was supplied."
+      ]
+    },
+    {
+      "visual_action_id": "CHAR_GOOSE_TRACKSUIT__VISUAL_ACTION__DEFENSIVE",
+      "character_id": "CHAR_GOOSE_TRACKSUIT",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "UNBOUND",
+      "single_frame_or_sequence_role": "UNBOUND",
+      "visual_pose_bindings": [],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [],
+        "loop": [],
+        "hold": [],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": null,
+      "cancel_behavior": null,
+      "implemented": false,
+      "known_limitations": [
+        "No defensible matching visual still was supplied."
+      ]
+    },
+    {
+      "visual_action_id": "CHAR_GOOSE_TRACKSUIT__VISUAL_ACTION__THREATEN",
+      "character_id": "CHAR_GOOSE_TRACKSUIT",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "UNBOUND",
+      "single_frame_or_sequence_role": "UNBOUND",
+      "visual_pose_bindings": [],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [],
+        "loop": [],
+        "hold": [],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": null,
+      "cancel_behavior": null,
+      "implemented": false,
+      "known_limitations": [
+        "No defensible matching visual still was supplied."
+      ]
+    },
+    {
+      "visual_action_id": "CHAR_EMILIO_CONTACT__VISUAL_ACTION__IDLE",
+      "character_id": "CHAR_EMILIO_CONTACT",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "BOUND_SINGLE_FRAME",
+      "single_frame_or_sequence_role": "SINGLE_FRAME_STATE",
+      "visual_pose_bindings": [
+        "CHAR_EMILIO_CONTACT__POSE__IDLE__FRONT_3Q_VIEWER_RIGHT__ISO_A01",
+        "CHAR_EMILIO_CONTACT__POSE__IDLE__FRONT__FP2D_A01"
+      ],
+      "reference_pose_candidates_not_bound": [
+        "CHAR_EMILIO_CONTACT__POSE__IDLE_SPECIAL__FRONT_3Q_VIEWER_RIGHT__SPECIAL_A01"
+      ],
+      "frames": {
+        "start": [
+          "CHAR_EMILIO_CONTACT__POSE__IDLE__FRONT_3Q_VIEWER_RIGHT__ISO_A01"
+        ],
+        "loop": [],
+        "hold": [
+          "CHAR_EMILIO_CONTACT__POSE__IDLE__FRONT_3Q_VIEWER_RIGHT__ISO_A01"
+        ],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": "HOLD_UNTIL_REPLACED",
+      "cancel_behavior": "RETURN_TO_IDLE",
+      "implemented": false,
+      "known_limitations": []
+    },
+    {
+      "visual_action_id": "CHAR_EMILIO_CONTACT__VISUAL_ACTION__TALK",
+      "character_id": "CHAR_EMILIO_CONTACT",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "UNBOUND",
+      "single_frame_or_sequence_role": "UNBOUND",
+      "visual_pose_bindings": [],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [],
+        "loop": [],
+        "hold": [],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": null,
+      "cancel_behavior": null,
+      "implemented": false,
+      "known_limitations": [
+        "No defensible matching visual still was supplied."
+      ]
+    },
+    {
+      "visual_action_id": "CHAR_EMILIO_CONTACT__VISUAL_ACTION__LISTEN",
+      "character_id": "CHAR_EMILIO_CONTACT",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "BOUND_SINGLE_FRAME",
+      "single_frame_or_sequence_role": "SINGLE_FRAME_STATE",
+      "visual_pose_bindings": [
+        "CHAR_EMILIO_CONTACT__POSE__PHONE_OR_LISTENING__PROFILE_3Q_VIEWER_RIGHT__FP2D_A01",
+        "CHAR_EMILIO_CONTACT__POSE__PHONE_OR_LISTENING__PROFILE_3Q_VIEWER_RIGHT__ISO_A01"
+      ],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [
+          "CHAR_EMILIO_CONTACT__POSE__PHONE_OR_LISTENING__PROFILE_3Q_VIEWER_RIGHT__FP2D_A01"
+        ],
+        "loop": [],
+        "hold": [
+          "CHAR_EMILIO_CONTACT__POSE__PHONE_OR_LISTENING__PROFILE_3Q_VIEWER_RIGHT__FP2D_A01"
+        ],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": "HOLD_UNTIL_REPLACED",
+      "cancel_behavior": "RETURN_TO_IDLE",
+      "implemented": false,
+      "known_limitations": []
+    },
+    {
+      "visual_action_id": "CHAR_EMILIO_CONTACT__VISUAL_ACTION__NEGOTIATE",
+      "character_id": "CHAR_EMILIO_CONTACT",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "BOUND_SINGLE_FRAME",
+      "single_frame_or_sequence_role": "SINGLE_FRAME_STATE",
+      "visual_pose_bindings": [
+        "CHAR_EMILIO_CONTACT__POSE__OPEN_HAND_NEGOTIATING__FRONT_3Q_VIEWER_RIGHT__ISO_A01",
+        "CHAR_EMILIO_CONTACT__POSE__OPEN_HAND_NEGOTIATING__FRONT__FP2D_A01"
+      ],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [
+          "CHAR_EMILIO_CONTACT__POSE__OPEN_HAND_NEGOTIATING__FRONT_3Q_VIEWER_RIGHT__ISO_A01"
+        ],
+        "loop": [],
+        "hold": [
+          "CHAR_EMILIO_CONTACT__POSE__OPEN_HAND_NEGOTIATING__FRONT_3Q_VIEWER_RIGHT__ISO_A01"
+        ],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": "HOLD_UNTIL_REPLACED",
+      "cancel_behavior": "RETURN_TO_IDLE",
+      "implemented": false,
+      "known_limitations": []
+    },
+    {
+      "visual_action_id": "CHAR_EMILIO_CONTACT__VISUAL_ACTION__POINT",
+      "character_id": "CHAR_EMILIO_CONTACT",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "BOUND_SINGLE_FRAME",
+      "single_frame_or_sequence_role": "SINGLE_FRAME_STATE",
+      "visual_pose_bindings": [
+        "CHAR_EMILIO_CONTACT__POSE__POINTING__FRONT_3Q_VIEWER_RIGHT__ISO_A01",
+        "CHAR_EMILIO_CONTACT__POSE__POINTING__FRONT__FP2D_A01"
+      ],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [
+          "CHAR_EMILIO_CONTACT__POSE__POINTING__FRONT_3Q_VIEWER_RIGHT__ISO_A01"
+        ],
+        "loop": [],
+        "hold": [
+          "CHAR_EMILIO_CONTACT__POSE__POINTING__FRONT_3Q_VIEWER_RIGHT__ISO_A01"
+        ],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": "HOLD_UNTIL_REPLACED",
+      "cancel_behavior": "RETURN_TO_IDLE",
+      "implemented": false,
+      "known_limitations": []
+    },
+    {
+      "visual_action_id": "CHAR_EMILIO_CONTACT__VISUAL_ACTION__PHONE_OR_LISTEN",
+      "character_id": "CHAR_EMILIO_CONTACT",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "BOUND_SINGLE_FRAME",
+      "single_frame_or_sequence_role": "SINGLE_FRAME_STATE",
+      "visual_pose_bindings": [
+        "CHAR_EMILIO_CONTACT__POSE__PHONE_OR_LISTENING__PROFILE_3Q_VIEWER_RIGHT__FP2D_A01",
+        "CHAR_EMILIO_CONTACT__POSE__PHONE_OR_LISTENING__PROFILE_3Q_VIEWER_RIGHT__ISO_A01"
+      ],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [
+          "CHAR_EMILIO_CONTACT__POSE__PHONE_OR_LISTENING__PROFILE_3Q_VIEWER_RIGHT__FP2D_A01"
+        ],
+        "loop": [],
+        "hold": [
+          "CHAR_EMILIO_CONTACT__POSE__PHONE_OR_LISTENING__PROFILE_3Q_VIEWER_RIGHT__FP2D_A01"
+        ],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": "HOLD_UNTIL_REPLACED",
+      "cancel_behavior": "RETURN_TO_IDLE",
+      "implemented": false,
+      "known_limitations": []
+    },
+    {
+      "visual_action_id": "CHAR_EMILIO_CONTACT__VISUAL_ACTION__LEAN",
+      "character_id": "CHAR_EMILIO_CONTACT",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "BOUND_SINGLE_FRAME",
+      "single_frame_or_sequence_role": "SINGLE_FRAME_STATE",
+      "visual_pose_bindings": [
+        "CHAR_EMILIO_CONTACT__POSE__LEANING__FRONT_3Q_VIEWER_RIGHT__FP2D_A01",
+        "CHAR_EMILIO_CONTACT__POSE__LEANING__FRONT_3Q_VIEWER_RIGHT__ISO_A01"
+      ],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [
+          "CHAR_EMILIO_CONTACT__POSE__LEANING__FRONT_3Q_VIEWER_RIGHT__FP2D_A01"
+        ],
+        "loop": [],
+        "hold": [
+          "CHAR_EMILIO_CONTACT__POSE__LEANING__FRONT_3Q_VIEWER_RIGHT__FP2D_A01"
+        ],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": "HOLD_UNTIL_REPLACED",
+      "cancel_behavior": "RETURN_TO_IDLE",
+      "implemented": false,
+      "known_limitations": []
+    },
+    {
+      "visual_action_id": "CHAR_EMILIO_CONTACT__VISUAL_ACTION__ARMS_CROSSED",
+      "character_id": "CHAR_EMILIO_CONTACT",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "BOUND_SINGLE_FRAME",
+      "single_frame_or_sequence_role": "SINGLE_FRAME_STATE",
+      "visual_pose_bindings": [
+        "CHAR_EMILIO_CONTACT__POSE__ARMS_CROSSED__FRONT_3Q_VIEWER_RIGHT__ISO_A01",
+        "CHAR_EMILIO_CONTACT__POSE__ARMS_CROSSED__FRONT__FP2D_A01"
+      ],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [
+          "CHAR_EMILIO_CONTACT__POSE__ARMS_CROSSED__FRONT_3Q_VIEWER_RIGHT__ISO_A01"
+        ],
+        "loop": [],
+        "hold": [
+          "CHAR_EMILIO_CONTACT__POSE__ARMS_CROSSED__FRONT_3Q_VIEWER_RIGHT__ISO_A01"
+        ],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": "HOLD_UNTIL_REPLACED",
+      "cancel_behavior": "RETURN_TO_IDLE",
+      "implemented": false,
+      "known_limitations": []
+    },
+    {
+      "visual_action_id": "CHAR_EMILIO_CONTACT__VISUAL_ACTION__HANDS_ON_HIPS",
+      "character_id": "CHAR_EMILIO_CONTACT",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "BOUND_SINGLE_FRAME",
+      "single_frame_or_sequence_role": "SINGLE_FRAME_STATE",
+      "visual_pose_bindings": [
+        "CHAR_EMILIO_CONTACT__POSE__HANDS_ON_HIPS__FRONT_3Q_VIEWER_RIGHT__ISO_A01",
+        "CHAR_EMILIO_CONTACT__POSE__HANDS_ON_HIPS__FRONT__FP2D_A01"
+      ],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [
+          "CHAR_EMILIO_CONTACT__POSE__HANDS_ON_HIPS__FRONT_3Q_VIEWER_RIGHT__ISO_A01"
+        ],
+        "loop": [],
+        "hold": [
+          "CHAR_EMILIO_CONTACT__POSE__HANDS_ON_HIPS__FRONT_3Q_VIEWER_RIGHT__ISO_A01"
+        ],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": "HOLD_UNTIL_REPLACED",
+      "cancel_behavior": "RETURN_TO_IDLE",
+      "implemented": false,
+      "known_limitations": []
+    },
+    {
+      "visual_action_id": "CHAR_EMILIO_CONTACT__VISUAL_ACTION__BACK_FACING",
+      "character_id": "CHAR_EMILIO_CONTACT",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "BOUND_SINGLE_FRAME",
+      "single_frame_or_sequence_role": "SINGLE_FRAME_STATE",
+      "visual_pose_bindings": [
+        "CHAR_EMILIO_CONTACT__POSE__BACK_FACING__REAR_3Q_VIEWER_RIGHT__ISO_A01",
+        "CHAR_EMILIO_CONTACT__POSE__BACK_FACING__REAR__FP2D_A01"
+      ],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [
+          "CHAR_EMILIO_CONTACT__POSE__BACK_FACING__REAR_3Q_VIEWER_RIGHT__ISO_A01"
+        ],
+        "loop": [],
+        "hold": [
+          "CHAR_EMILIO_CONTACT__POSE__BACK_FACING__REAR_3Q_VIEWER_RIGHT__ISO_A01"
+        ],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": "HOLD_UNTIL_REPLACED",
+      "cancel_behavior": "RETURN_TO_IDLE",
+      "implemented": false,
+      "known_limitations": []
+    },
+    {
+      "visual_action_id": "CHAR_EMILIO_CONTACT__VISUAL_ACTION__ENTER",
+      "character_id": "CHAR_EMILIO_CONTACT",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "UNBOUND",
+      "single_frame_or_sequence_role": "UNBOUND",
+      "visual_pose_bindings": [],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [],
+        "loop": [],
+        "hold": [],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": null,
+      "cancel_behavior": null,
+      "implemented": false,
+      "known_limitations": [
+        "No defensible matching visual still was supplied."
+      ]
+    },
+    {
+      "visual_action_id": "CHAR_EMILIO_CONTACT__VISUAL_ACTION__EXIT",
+      "character_id": "CHAR_EMILIO_CONTACT",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "UNBOUND",
+      "single_frame_or_sequence_role": "UNBOUND",
+      "visual_pose_bindings": [],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [],
+        "loop": [],
+        "hold": [],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": null,
+      "cancel_behavior": null,
+      "implemented": false,
+      "known_limitations": [
+        "No defensible matching visual still was supplied."
+      ]
+    },
+    {
+      "visual_action_id": "CHAR_EMILIO_CONTACT__VISUAL_ACTION__TAKE_ITEM",
+      "character_id": "CHAR_EMILIO_CONTACT",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "UNBOUND",
+      "single_frame_or_sequence_role": "UNBOUND",
+      "visual_pose_bindings": [],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [],
+        "loop": [],
+        "hold": [],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": null,
+      "cancel_behavior": null,
+      "implemented": false,
+      "known_limitations": [
+        "No defensible matching visual still was supplied."
+      ]
+    },
+    {
+      "visual_action_id": "CHAR_EMILIO_CONTACT__VISUAL_ACTION__GIVE_ITEM",
+      "character_id": "CHAR_EMILIO_CONTACT",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "UNBOUND",
+      "single_frame_or_sequence_role": "UNBOUND",
+      "visual_pose_bindings": [],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [],
+        "loop": [],
+        "hold": [],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": null,
+      "cancel_behavior": null,
+      "implemented": false,
+      "known_limitations": [
+        "No defensible matching visual still was supplied."
+      ]
+    },
+    {
+      "visual_action_id": "CHAR_EMILIO_CONTACT__VISUAL_ACTION__USE_FIXTURE",
+      "character_id": "CHAR_EMILIO_CONTACT",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "UNBOUND",
+      "single_frame_or_sequence_role": "UNBOUND",
+      "visual_pose_bindings": [],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [],
+        "loop": [],
+        "hold": [],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": null,
+      "cancel_behavior": null,
+      "implemented": false,
+      "known_limitations": [
+        "No defensible matching visual still was supplied."
+      ]
+    },
+    {
+      "visual_action_id": "CHAR_EMILIO_CONTACT__VISUAL_ACTION__DEFENSIVE",
+      "character_id": "CHAR_EMILIO_CONTACT",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "UNBOUND",
+      "single_frame_or_sequence_role": "UNBOUND",
+      "visual_pose_bindings": [],
+      "reference_pose_candidates_not_bound": [
+        "CHAR_EMILIO_CONTACT__POSE__DEFENSIVE__FRONT__SPECIAL_A01"
+      ],
+      "frames": {
+        "start": [],
+        "loop": [],
+        "hold": [],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": null,
+      "cancel_behavior": null,
+      "implemented": false,
+      "known_limitations": [
+        "Only a reference-only special pose exists; it is not bound."
+      ]
+    },
+    {
+      "visual_action_id": "CHAR_EMILIO_CONTACT__VISUAL_ACTION__THREATEN",
+      "character_id": "CHAR_EMILIO_CONTACT",
+      "semantic_action": null,
+      "namespace_note": "visual_action_id is separate from living_comic semantic_action",
+      "trigger_function_tags": [
+        "PLAY_ACTION"
+      ],
+      "required_view": null,
+      "required_orientation": null,
+      "required_fixture_or_item_or_node": null,
+      "binding_status": "UNBOUND",
+      "single_frame_or_sequence_role": "UNBOUND",
+      "visual_pose_bindings": [],
+      "reference_pose_candidates_not_bound": [],
+      "frames": {
+        "start": [],
+        "loop": [],
+        "hold": [],
+        "end": []
+      },
+      "state_changes": [],
+      "dialogue_trigger": null,
+      "inventory_or_health_effect_hooks": [],
+      "completion_behavior": null,
+      "cancel_behavior": null,
+      "implemented": false,
+      "known_limitations": [
+        "No defensible matching visual still was supplied."
+      ]
+    }
+  ]
+}

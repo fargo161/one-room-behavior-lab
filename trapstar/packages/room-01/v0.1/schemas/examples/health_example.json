@@ -1,0 +1,13 @@
+{
+  "character_id": "CHAR_MARCUS_BROKER",
+  "current_health": 100,
+  "maximum_health": 100,
+  "state_thresholds": [
+    {
+      "at_or_below": 25,
+      "state": "WOUNDED"
+    }
+  ],
+  "change_reason": "EXAMPLE_ONLY",
+  "reaction_hook": null
+}

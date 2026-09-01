@@ -1,0 +1,19 @@
+{
+  "owner_id": "CHAR_MARCUS_BROKER",
+  "capacity": null,
+  "entries": [
+    {
+      "item_id": "ROOM01__ITEM__CASH_STACKS__ISO_3Q__A01",
+      "quantity": 1,
+      "item_tags": [
+        "CASH"
+      ],
+      "use_functions": [
+        "GIVE_ITEM",
+        "PLACE_ITEM"
+      ],
+      "source_node": "NODE__ITEM_SPACE__TABLE_TOP_A",
+      "current_container": "EXAMPLE_INVENTORY"
+    }
+  ]
+}

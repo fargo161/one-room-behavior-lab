@@ -1,0 +1,8 @@
+{
+  "character_id": "CHAR_MARCUS_BROKER",
+  "canonical_body_authoring_source": "authoring/pixlr/canonical/trap_body_modular_library_upscaled_organized.pxz",
+  "source_character": "Marcus",
+  "contract": "curated pose-fragment library; not a complete anatomical rig",
+  "pose_to_layer_registration": "not supplied",
+  "generic_ten_slot_face_chassis_present": false
+}

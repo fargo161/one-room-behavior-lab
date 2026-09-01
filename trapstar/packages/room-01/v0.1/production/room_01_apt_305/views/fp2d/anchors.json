@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "view_id": "VIEW_FP2D",
+  "coordinate_system": "top-left origin, +x right, +y down",
+  "anchors": [
+    {
+      "anchor_id": "ANCHOR__FP2D__CHAR_DEAL_LEFT",
+      "point": [
+        300,
+        1045
+      ],
+      "confidence": "low",
+      "basis": "flattened example_scene_2d.jpg placement evidence"
+    },
+    {
+      "anchor_id": "ANCHOR__FP2D__CHAR_DEAL_CENTER",
+      "point": [
+        760,
+        1045
+      ],
+      "confidence": "low",
+      "basis": "flattened example_scene_2d.jpg placement evidence"
+    },
+    {
+      "anchor_id": "ANCHOR__FP2D__CHAR_DEAL_RIGHT",
+      "point": [
+        1185,
+        1045
+      ],
+      "confidence": "low",
+      "basis": "flattened example_scene_2d.jpg placement evidence"
+    },
+    {
+      "anchor_id": "ANCHOR__FP2D__DOOR_MAIN",
+      "point": [
+        1388,
+        507
+      ],
+      "confidence": "medium",
+      "basis": "manual center of visible partially clipped closed door"
+    },
+    {
+      "anchor_id": "ANCHOR__FP2D__WINDOW_MAIN",
+      "point": [
+        990,
+        390
+      ],
+      "confidence": "medium",
+      "basis": "manual center of visible static window; traversal unsupported"
+    }
+  ]
+}

@@ -5,6 +5,10 @@ This repository now contains two deliberately separated executable design lineag
 1. **Living Comic Engine v0.1** — the active product implementation under `src/living-comic/` and `content/`.
 2. **One-Room Behavior Lab v0.3.1** — the preserved earlier reference/regression oracle under the existing `src/v3`, legacy app, tests, reports, and tags.
 
+And a third, self-contained design package lineage:
+
+3. **Trapstar Room 01 portable design package** — the canonical design-and-metadata package for Room 01 is maintained under `trapstar/packages/room-01/v0.1/`.
+
 Living Comic is additive. It does not mutate the Mara/Drew/Envelope assumptions of One-Room into a generic system. The older prototype remains useful evidence for deterministic collision, attention, communication, provenance, and regression behavior.
 
 ## Living Comic v0.1

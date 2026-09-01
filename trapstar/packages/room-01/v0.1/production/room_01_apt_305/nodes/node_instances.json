@@ -1,0 +1,337 @@
+{
+  "schema_version": "1.0",
+  "room_id": "ROOM_01_APT_305",
+  "instances": [
+    {
+      "node_id": "NODE__ENTRY__DOOR_MAIN",
+      "room_id": "ROOM_01_APT_305",
+      "semantic_role": "ENTRY",
+      "view_data": {
+        "VIEW_ISO": {
+          "anchor_id": "ANCHOR__ISO__DOOR_MAIN",
+          "hotspot": {
+            "shape": "RECT",
+            "rect": [
+              1338,
+              200,
+              110,
+              403
+            ]
+          }
+        },
+        "VIEW_FP2D": {
+          "anchor_id": "ANCHOR__FP2D__DOOR_MAIN",
+          "hotspot": {
+            "shape": "RECT",
+            "rect": [
+              1347,
+              259,
+              101,
+              457
+            ]
+          }
+        }
+      },
+      "allowed_functions": [
+        "ENTER_ROOM",
+        "TRAVEL_TO_NODE",
+        "INSPECT"
+      ],
+      "enabled": false,
+      "hidden": false,
+      "runtime_binding": "UNBOUND",
+      "blockers": [
+        "only baked closed-state art exists",
+        "no transition or runtime binding supplied"
+      ],
+      "conditions": [],
+      "depth_layer": "ARCHITECTURE",
+      "connected_node": null,
+      "evidence": "visible door architecture",
+      "confidence": "medium"
+    },
+    {
+      "node_id": "NODE__EXIT__DOOR_MAIN",
+      "room_id": "ROOM_01_APT_305",
+      "semantic_role": "EXIT",
+      "view_data": {
+        "VIEW_ISO": {
+          "anchor_id": "ANCHOR__ISO__DOOR_MAIN",
+          "hotspot": {
+            "shape": "RECT",
+            "rect": [
+              1338,
+              200,
+              110,
+              403
+            ]
+          }
+        },
+        "VIEW_FP2D": {
+          "anchor_id": "ANCHOR__FP2D__DOOR_MAIN",
+          "hotspot": {
+            "shape": "RECT",
+            "rect": [
+              1347,
+              259,
+              101,
+              457
+            ]
+          }
+        }
+      },
+      "allowed_functions": [
+        "EXIT_ROOM",
+        "TRAVEL_TO_NODE",
+        "INSPECT"
+      ],
+      "enabled": false,
+      "hidden": false,
+      "runtime_binding": "UNBOUND",
+      "blockers": [
+        "only baked closed-state art exists",
+        "no destination/transition or runtime binding supplied"
+      ],
+      "conditions": [],
+      "depth_layer": "ARCHITECTURE",
+      "connected_node": null,
+      "evidence": "visible door architecture; external destination not supplied",
+      "confidence": "medium"
+    },
+    {
+      "node_id": "NODE__FIXTURE__DEAL_TABLE_01",
+      "room_id": "ROOM_01_APT_305",
+      "semantic_role": "FIXTURE",
+      "parent_fixture_id": "ROOM01__FIXTURE__DEAL_TABLE__ISO_3Q__A01",
+      "view_data": {
+        "VIEW_ISO": {
+          "anchor_id": "ANCHOR__ISO__TABLE_CENTER",
+          "hotspot": {
+            "shape": "RECT",
+            "rect": [
+              505,
+              500,
+              342,
+              287
+            ]
+          },
+          "suggested_uniform_scale": 0.295
+        }
+      },
+      "allowed_functions": [
+        "INSPECT",
+        "USE_FIXTURE",
+        "START_DEAL",
+        "PLACE_ITEM"
+      ],
+      "enabled": true,
+      "hidden": false,
+      "runtime_binding": "UNBOUND_CONTRACT_ONLY",
+      "conditions": [],
+      "depth_layer": "FIXTURES",
+      "connected_node": null,
+      "evidence": "separated ISO table asset",
+      "confidence": "medium"
+    },
+    {
+      "node_id": "NODE__FIXTURE__CHAIR_PRIMARY_01",
+      "room_id": "ROOM_01_APT_305",
+      "semantic_role": "FIXTURE",
+      "parent_fixture_id": "ROOM01__FIXTURE__FOLDING_CHAIR__ISO_3Q__A01",
+      "view_data": {
+        "VIEW_ISO": {
+          "anchor_id": "ANCHOR__ISO__CHAR_DEAL_LEFT",
+          "hotspot": {
+            "shape": "RECT",
+            "rect": [
+              532,
+              575,
+              142,
+              205
+            ]
+          },
+          "suggested_uniform_scale": 0.17
+        }
+      },
+      "allowed_functions": [
+        "INSPECT",
+        "SIT",
+        "USE_FIXTURE"
+      ],
+      "enabled": true,
+      "hidden": false,
+      "runtime_binding": "UNBOUND_CONTRACT_ONLY",
+      "conditions": [],
+      "depth_layer": "FIXTURES",
+      "connected_node": null,
+      "evidence": "separated ISO chair asset",
+      "confidence": "medium"
+    },
+    {
+      "node_id": "NODE__FIXTURE__COUCH_01",
+      "room_id": "ROOM_01_APT_305",
+      "semantic_role": "FIXTURE",
+      "parent_fixture_id": "ROOM01__FIXTURE__COUCH__ISO_3Q__A01",
+      "view_data": {
+        "VIEW_ISO": {
+          "hotspot": {
+            "shape": "RECT",
+            "rect": [
+              884,
+              362,
+              305,
+              209
+            ]
+          },
+          "registration_pivot": [
+            1046,
+            575
+          ],
+          "suggested_uniform_scale": 0.21
+        }
+      },
+      "allowed_functions": [
+        "INSPECT",
+        "USE_FIXTURE",
+        "SIT"
+      ],
+      "enabled": true,
+      "hidden": false,
+      "runtime_binding": "UNBOUND_CONTRACT_ONLY",
+      "conditions": [],
+      "depth_layer": "FIXTURES",
+      "connected_node": null,
+      "evidence": "separated ISO couch asset and flattened example-scene transform",
+      "confidence": "low"
+    },
+    {
+      "node_id": "NODE__CHARACTER_SPACE__DEAL_LEFT",
+      "room_id": "ROOM_01_APT_305",
+      "semantic_role": "CHARACTER_SPACE",
+      "view_data": {
+        "VIEW_ISO": {
+          "anchor_id": "ANCHOR__ISO__CHAR_DEAL_LEFT"
+        },
+        "VIEW_FP2D": {
+          "anchor_id": "ANCHOR__FP2D__CHAR_DEAL_LEFT"
+        }
+      },
+      "allowed_functions": [
+        "TRAVEL_TO_NODE",
+        "START_DIALOGUE",
+        "START_DEAL",
+        "PLAY_ACTION"
+      ],
+      "enabled": true,
+      "hidden": false,
+      "runtime_binding": "UNBOUND_CONTRACT_ONLY",
+      "conditions": [],
+      "depth_layer": "CHARACTERS",
+      "connected_node": null,
+      "evidence": "example scenes and qualitative validation sheets",
+      "confidence": "medium"
+    },
+    {
+      "node_id": "NODE__CHARACTER_SPACE__DEAL_RIGHT",
+      "room_id": "ROOM_01_APT_305",
+      "semantic_role": "CHARACTER_SPACE",
+      "view_data": {
+        "VIEW_ISO": {
+          "anchor_id": "ANCHOR__ISO__CHAR_DEAL_RIGHT"
+        },
+        "VIEW_FP2D": {
+          "anchor_id": "ANCHOR__FP2D__CHAR_DEAL_RIGHT"
+        }
+      },
+      "allowed_functions": [
+        "TRAVEL_TO_NODE",
+        "START_DIALOGUE",
+        "START_DEAL",
+        "PLAY_ACTION"
+      ],
+      "enabled": true,
+      "hidden": false,
+      "runtime_binding": "UNBOUND_CONTRACT_ONLY",
+      "conditions": [],
+      "depth_layer": "CHARACTERS",
+      "connected_node": null,
+      "evidence": "example scenes and qualitative validation sheets",
+      "confidence": "medium"
+    },
+    {
+      "node_id": "NODE__ITEM_SPACE__TABLE_TOP_A",
+      "room_id": "ROOM_01_APT_305",
+      "semantic_role": "ITEM_SPACE",
+      "parent_fixture_id": "ROOM01__FIXTURE__DEAL_TABLE__ISO_3Q__A01",
+      "view_data": {
+        "VIEW_ISO": {
+          "anchor_id": "ANCHOR__ISO__ITEM_TABLE_TOP_A",
+          "hotspot": {
+            "shape": "ELLIPSE",
+            "rect": [
+              570,
+              600,
+              320,
+              120
+            ]
+          }
+        }
+      },
+      "allowed_functions": [
+        "PLACE_ITEM",
+        "TAKE_ITEM",
+        "INSPECT"
+      ],
+      "enabled": true,
+      "hidden": false,
+      "runtime_binding": "UNBOUND_CONTRACT_ONLY",
+      "conditions": [],
+      "depth_layer": "ITEMS",
+      "connected_node": null,
+      "evidence": "separated table/cash/package assets",
+      "confidence": "low"
+    }
+  ],
+  "unassigned_schema_capabilities": [
+    {
+      "node_id": "NODE__ARCHITECTURE__WINDOW_MAIN",
+      "semantic_role": "INTERACTION",
+      "status": "REFERENCE",
+      "view_anchors": {
+        "VIEW_ISO": [
+          1129,
+          223
+        ],
+        "VIEW_FP2D": [
+          990,
+          390
+        ]
+      },
+      "reason": "window is visible and inspectable as static architecture, but traversability/state art is not established"
+    },
+    {
+      "node_id": "NODE__UNRESOLVED__DOOR_FOREGROUND_LEFT",
+      "semantic_role": "INTERACTION",
+      "status": "REFERENCE",
+      "view_anchors": {
+        "VIEW_ISO": [
+          327,
+          782
+        ]
+      },
+      "reason": "ISO-only cutaway door has no FP2D counterpart or defensible route role; disabled and not treated as secret"
+    },
+    {
+      "node_id": "NODE__SECRET__ROUTE_01",
+      "semantic_role": "SECRET",
+      "status": "BLOCKED_MISSING",
+      "reason": "no defensible secret route is identifiable in supplied art"
+    },
+    {
+      "node_id": "NODE__OCCLUDER__MASK_01",
+      "semantic_role": "OCCLUDER",
+      "status": "BLOCKED_MISSING",
+      "reason": "no isolated occlusion mask supplied"
+    }
+  ]
+}

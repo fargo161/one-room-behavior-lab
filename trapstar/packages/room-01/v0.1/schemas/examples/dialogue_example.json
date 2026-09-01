@@ -1,0 +1,12 @@
+{
+  "dialogue_id": "DIALOGUE__ROOM01__EXAMPLE_ONLY",
+  "node_id": "DIALOGUE_NODE__START",
+  "speaker_character_id": "CHAR_EMILIO_CONTACT",
+  "text": "Example placeholder text; no shipped dialogue was supplied.",
+  "expression_or_pose_hook": null,
+  "choices": [],
+  "preconditions": [],
+  "state_effects": [],
+  "next_dialogue_node": null,
+  "end_behavior": "END"
+}

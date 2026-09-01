@@ -1,0 +1,913 @@
+{
+  "schema_id": "TRAPSTAR_MARCUS_NATIVE_FACE_EXPORTS_V01",
+  "identity": "CHAR_MARCUS_BROKER",
+  "primary_status": "AUTHORING_SOURCE",
+  "canonical_pxz": "authoring/pixlr/canonical/trapface_slot_labeled_anatomical_eye_split.pxz",
+  "canvas": {
+    "width": 3264,
+    "height": 2448
+  },
+  "organization": {
+    "numeric_bands": [
+      "00",
+      "10",
+      "20",
+      "30",
+      "40",
+      "50",
+      "60",
+      "65",
+      "70"
+    ],
+    "band_count": 9,
+    "description": "observed/inferred native organization",
+    "explicit_machine_readable_nine_slot_contract_found": false,
+    "warning": "Do not describe this as a generic ten-slot chassis; no such art chassis is present in the uploads."
+  },
+  "topology": {
+    "csv_rows": 62,
+    "pxz_layers": 62,
+    "topology_match": true,
+    "visibility_differences": [
+      "60_EYE_LEFT_SIDE_LOOK_02",
+      "65_EYE_RIGHT_SIDE_LOOK_04",
+      "70_LOWER_FACE_SMILE_CLOSED_03"
+    ]
+  },
+  "layers_except_repaired_puffed_override": [
+    {
+      "stack_index": 0,
+      "layer_name": "00_BASE_REFERENCE_LOCKED",
+      "path": "production/characters/marcus_broker/face/native_slots/00_base_reference_locked.png",
+      "rect": {
+        "x": 1019,
+        "y": 499,
+        "w": 1187,
+        "h": 1484
+      },
+      "visible_in_export_csv": true,
+      "locked": true,
+      "sha256": "6b33b42f3088b10ae921136e5df0e5729b54a31c464e84d04a3a62383b834a5b"
+    },
+    {
+      "stack_index": 2,
+      "layer_name": "20_UPPER_FACE_LEFT_BROW_FURROW_CENTER_DEEP_01",
+      "path": "production/characters/marcus_broker/face/native_slots/20_upper_face_left_brow_furrow_center_deep_01.png",
+      "rect": {
+        "x": 1548,
+        "y": 804,
+        "w": 363,
+        "h": 304
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "a39b43b06d4cc1b2db66af3842e15dcdeb19d2269789e4877a68bd083aa150fe"
+    },
+    {
+      "stack_index": 3,
+      "layer_name": "20_UPPER_FACE_LEFT_BROW_FURROW_ANGLED_01",
+      "path": "production/characters/marcus_broker/face/native_slots/20_upper_face_left_brow_furrow_angled_01.png",
+      "rect": {
+        "x": 1584,
+        "y": 804,
+        "w": 344,
+        "h": 291
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "5ac805228377f4f9117da5f1e4e773a92e8d288f794e2219ad8257f8265ba929"
+    },
+    {
+      "stack_index": 4,
+      "layer_name": "20_UPPER_FACE_LEFT_BROW_ANGRY_ARCHED_01",
+      "path": "production/characters/marcus_broker/face/native_slots/20_upper_face_left_brow_angry_arched_01.png",
+      "rect": {
+        "x": 1611,
+        "y": 847,
+        "w": 295,
+        "h": 274
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "42c6448ad62400273a98e47b76c8348af04d802e41b0674258cf425067e6edf8"
+    },
+    {
+      "stack_index": 5,
+      "layer_name": "20_UPPER_FACE_LEFT_BROW_LOW_FLAT_01",
+      "path": "production/characters/marcus_broker/face/native_slots/20_upper_face_left_brow_low_flat_01.png",
+      "rect": {
+        "x": 1363,
+        "y": 800,
+        "w": 541,
+        "h": 344
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "f72ee340b2f21cbfe36ba903987e3b3ac45f4c9c0ac7e5a86eb9a06e7aaed151"
+    },
+    {
+      "stack_index": 6,
+      "layer_name": "20_UPPER_FACE_LEFT_BROW_NEUTRAL_WRINKLED_01",
+      "path": "production/characters/marcus_broker/face/native_slots/20_upper_face_left_brow_neutral_wrinkled_01.png",
+      "rect": {
+        "x": 1596,
+        "y": 769,
+        "w": 316,
+        "h": 298
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "d5e845539cff78b7491516d774b0081ec6c5bb2930600452547a40319f9a5335"
+    },
+    {
+      "stack_index": 7,
+      "layer_name": "20_UPPER_FACE_LEFT_BROW_NEUTRAL_WRINKLED_02",
+      "path": "production/characters/marcus_broker/face/native_slots/20_upper_face_left_brow_neutral_wrinkled_02.png",
+      "rect": {
+        "x": 1619,
+        "y": 760,
+        "w": 294,
+        "h": 314
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "fd416f1bcb007b9e9255910cbcd341221f164b66353f7f7b022aa67a7028ece3"
+    },
+    {
+      "stack_index": 8,
+      "layer_name": "20_UPPER_FACE_LEFT_BROW_NEUTRAL_WRINKLED_03",
+      "path": "production/characters/marcus_broker/face/native_slots/20_upper_face_left_brow_neutral_wrinkled_03.png",
+      "rect": {
+        "x": 1622,
+        "y": 774,
+        "w": 288,
+        "h": 291
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "0fef8fbeaa883a50fefa23bcedcdad9bf509f7380b24f52a5b8b56fb52259b67"
+    },
+    {
+      "stack_index": 9,
+      "layer_name": "20_UPPER_FACE_LEFT_BROW_ARCHED_TALL_01",
+      "path": "production/characters/marcus_broker/face/native_slots/20_upper_face_left_brow_arched_tall_01.png",
+      "rect": {
+        "x": 1629,
+        "y": 844,
+        "w": 255,
+        "h": 283
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "dcf96d44eecc498184d5e87c3b853e95d5ec8eca292c081726e4cf164d4726bd"
+    },
+    {
+      "stack_index": 10,
+      "layer_name": "20_UPPER_FACE_LEFT_BROW_FURROW_OUTER_WRINKLE_01",
+      "path": "production/characters/marcus_broker/face/native_slots/20_upper_face_left_brow_furrow_outer_wrinkle_01.png",
+      "rect": {
+        "x": 1604,
+        "y": 811,
+        "w": 326,
+        "h": 252
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "6249e28e9849da01e889dc3afa46b10fb3329fea4132b90de6c5005d7813ed04"
+    },
+    {
+      "stack_index": 11,
+      "layer_name": "20_UPPER_FACE_LEFT_BROW_LOW_FLAT_02",
+      "path": "production/characters/marcus_broker/face/native_slots/20_upper_face_left_brow_low_flat_02.png",
+      "rect": {
+        "x": 1612,
+        "y": 832,
+        "w": 275,
+        "h": 241
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "9d311f62e5885176e7e5d192b6f216a648f0597d10a7828a1267ec9e255ed8c0"
+    },
+    {
+      "stack_index": 12,
+      "layer_name": "20_UPPER_FACE_LEFT_BROW_LOW_HEAVY_01",
+      "path": "production/characters/marcus_broker/face/native_slots/20_upper_face_left_brow_low_heavy_01.png",
+      "rect": {
+        "x": 1612,
+        "y": 812,
+        "w": 276,
+        "h": 274
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "296109d3e34147c833f7222e4db74dcfd6d7d6bd69a876775d79eb052bb92991"
+    },
+    {
+      "stack_index": 13,
+      "layer_name": "20_UPPER_FACE_LEFT_BROW_FURROW_OUTER_WRINKLE_02",
+      "path": "production/characters/marcus_broker/face/native_slots/20_upper_face_left_brow_furrow_outer_wrinkle_02.png",
+      "rect": {
+        "x": 1608,
+        "y": 805,
+        "w": 299,
+        "h": 267
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "1dcbb619b0ea45a92eced0dd11511d385544b78d895fffe5da1d56be0f125812"
+    },
+    {
+      "stack_index": 14,
+      "layer_name": "20_UPPER_FACE_LEFT_BROW_ARCHED_TALL_02",
+      "path": "production/characters/marcus_broker/face/native_slots/20_upper_face_left_brow_arched_tall_02.png",
+      "rect": {
+        "x": 1556,
+        "y": 813,
+        "w": 363,
+        "h": 274
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "6648e9317a95ef1bbb595490937eddf78666493370fe575885c2f93f4e8bd2ff"
+    },
+    {
+      "stack_index": 15,
+      "layer_name": "30_UPPER_FACE_RIGHT_BROW_FURROW_CENTER_DEEP_01",
+      "path": "production/characters/marcus_broker/face/native_slots/30_upper_face_right_brow_furrow_center_deep_01.png",
+      "rect": {
+        "x": 1372,
+        "y": 795,
+        "w": 297,
+        "h": 281
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "a94a591d2bdf4ede1636d84835d8945a029a984cfce0743d557f69b63964a0d3"
+    },
+    {
+      "stack_index": 16,
+      "layer_name": "30_UPPER_FACE_RIGHT_BROW_FURROW_ANGLED_01",
+      "path": "production/characters/marcus_broker/face/native_slots/30_upper_face_right_brow_furrow_angled_01.png",
+      "rect": {
+        "x": 1366,
+        "y": 804,
+        "w": 328,
+        "h": 307
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "155565f71678c8a8c7461b3448d109d022689e9254f10597a9f184f1ece89653"
+    },
+    {
+      "stack_index": 17,
+      "layer_name": "30_UPPER_FACE_RIGHT_BROW_ANGRY_ARCHED_01",
+      "path": "production/characters/marcus_broker/face/native_slots/30_upper_face_right_brow_angry_arched_01.png",
+      "rect": {
+        "x": 1347,
+        "y": 819,
+        "w": 357,
+        "h": 287
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "d65573b85b68f3b11e8b9717280e96845a5609f234c06d80a4fadf7cceed6742"
+    },
+    {
+      "stack_index": 18,
+      "layer_name": "30_UPPER_FACE_RIGHT_BROW_LOW_FLAT_01",
+      "path": "production/characters/marcus_broker/face/native_slots/30_upper_face_right_brow_low_flat_01.png",
+      "rect": {
+        "x": 1368,
+        "y": 940,
+        "w": 298,
+        "h": 135
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "339b9ef389a7fd89e16e0272cb1f1145880f1a56235a43b7f8bdb011f61feb44"
+    },
+    {
+      "stack_index": 19,
+      "layer_name": "30_UPPER_FACE_RIGHT_BROW_FURROW_ANGLED_02",
+      "path": "production/characters/marcus_broker/face/native_slots/30_upper_face_right_brow_furrow_angled_02.png",
+      "rect": {
+        "x": 1323,
+        "y": 789,
+        "w": 371,
+        "h": 327
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "6067fc1cc3c3eff52cb1dec336bb59eb486c6dabe64474f00299d5a2327331fc"
+    },
+    {
+      "stack_index": 20,
+      "layer_name": "30_UPPER_FACE_RIGHT_BROW_NEUTRAL_WRINKLED_01",
+      "path": "production/characters/marcus_broker/face/native_slots/30_upper_face_right_brow_neutral_wrinkled_01.png",
+      "rect": {
+        "x": 1340,
+        "y": 764,
+        "w": 337,
+        "h": 324
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "5194a6361e5b0d8a9f296bbdbc01d0c89eadea4eebd5c975ce9863e0e77b6d77"
+    },
+    {
+      "stack_index": 21,
+      "layer_name": "30_UPPER_FACE_RIGHT_BROW_NEUTRAL_WRINKLED_02",
+      "path": "production/characters/marcus_broker/face/native_slots/30_upper_face_right_brow_neutral_wrinkled_02.png",
+      "rect": {
+        "x": 1308,
+        "y": 767,
+        "w": 384,
+        "h": 319
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "62bc97496340be762b061e16459400a2fe0d35f93114c6719db57129765029ce"
+    },
+    {
+      "stack_index": 22,
+      "layer_name": "30_UPPER_FACE_RIGHT_BROW_ARCHED_TALL_01",
+      "path": "production/characters/marcus_broker/face/native_slots/30_upper_face_right_brow_arched_tall_01.png",
+      "rect": {
+        "x": 1379,
+        "y": 820,
+        "w": 273,
+        "h": 296
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "069f717d87f2c05610a1fc992b5e5dbc3f495aef59108dffbe1d4382cba6cc1c"
+    },
+    {
+      "stack_index": 23,
+      "layer_name": "30_UPPER_FACE_RIGHT_BROW_FURROW_OUTER_WRINKLE_01",
+      "path": "production/characters/marcus_broker/face/native_slots/30_upper_face_right_brow_furrow_outer_wrinkle_01.png",
+      "rect": {
+        "x": 1365,
+        "y": 833,
+        "w": 301,
+        "h": 230
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "6c1e3545e1755b2b4960c4dffc84a4979a5ce813c0a7b290ebdd810a74cb3d74"
+    },
+    {
+      "stack_index": 24,
+      "layer_name": "30_UPPER_FACE_RIGHT_BROW_LOW_HEAVY_01",
+      "path": "production/characters/marcus_broker/face/native_slots/30_upper_face_right_brow_low_heavy_01.png",
+      "rect": {
+        "x": 1393,
+        "y": 836,
+        "w": 245,
+        "h": 239
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "76cf901db6a5d6e63af046779c85d570e07a6378c8f96a7437982606ba25a0c9"
+    },
+    {
+      "stack_index": 25,
+      "layer_name": "30_UPPER_FACE_RIGHT_BROW_LOW_HEAVY_02",
+      "path": "production/characters/marcus_broker/face/native_slots/30_upper_face_right_brow_low_heavy_02.png",
+      "rect": {
+        "x": 1365,
+        "y": 794,
+        "w": 300,
+        "h": 303
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "67f25e5fb4a4806a238b5b04c6fa62d33fe6d2bb087cb10e0151b702bd383761"
+    },
+    {
+      "stack_index": 26,
+      "layer_name": "30_UPPER_FACE_RIGHT_BROW_FURROW_OUTER_WRINKLE_02",
+      "path": "production/characters/marcus_broker/face/native_slots/30_upper_face_right_brow_furrow_outer_wrinkle_02.png",
+      "rect": {
+        "x": 1393,
+        "y": 865,
+        "w": 254,
+        "h": 217
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "ea12fa952f7082647dd4b3aa25ccc2b9fd1cef921d70bdd9f2c220376511c0f6"
+    },
+    {
+      "stack_index": 27,
+      "layer_name": "30_UPPER_FACE_RIGHT_BROW_FURROW_OUTER_WRINKLE_03",
+      "path": "production/characters/marcus_broker/face/native_slots/30_upper_face_right_brow_furrow_outer_wrinkle_03.png",
+      "rect": {
+        "x": 1383,
+        "y": 886,
+        "w": 298,
+        "h": 178
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "74b76998874c3e7bcd7246d39f40e6e0fac23242d33b74cbbb8d07904c470373"
+    },
+    {
+      "stack_index": 28,
+      "layer_name": "40_EYE_LEFT_SHUT_TIGHT_01",
+      "path": "production/characters/marcus_broker/face/native_slots/40_eye_left_shut_tight_01.png",
+      "rect": {
+        "x": 1659,
+        "y": 991,
+        "w": 224,
+        "h": 151
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "88321f6258ebecba3ba8879e3f9b1bcbb8e538996f0c2ab1f94290fdde0bcb9c"
+    },
+    {
+      "stack_index": 29,
+      "layer_name": "50_EYE_RIGHT_SHUT_TIGHT_01",
+      "path": "production/characters/marcus_broker/face/native_slots/50_eye_right_shut_tight_01.png",
+      "rect": {
+        "x": 1396,
+        "y": 1000,
+        "w": 224,
+        "h": 151
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "487c9c17cf7f7fd2fb594b2a5fa22f71f2b76a03722a6e6b7d9f552e71e0b25a"
+    },
+    {
+      "stack_index": 30,
+      "layer_name": "60_EYE_LEFT_CLOSED_TIGHT_01",
+      "path": "production/characters/marcus_broker/face/native_slots/60_eye_left_closed_tight_01.png",
+      "rect": {
+        "x": 1642,
+        "y": 999,
+        "w": 252,
+        "h": 145
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "933ae1a6b17a9c50cee20656c3e9254039281929a491813bdedd20cb0e6f0e5d"
+    },
+    {
+      "stack_index": 31,
+      "layer_name": "65_EYE_RIGHT_CLOSED_TIGHT_01",
+      "path": "production/characters/marcus_broker/face/native_slots/65_eye_right_closed_tight_01.png",
+      "rect": {
+        "x": 1412,
+        "y": 990,
+        "w": 230,
+        "h": 176
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "4748301285ca41a818af58ddead7659dd32e852021854854ac55884b6f439274"
+    },
+    {
+      "stack_index": 32,
+      "layer_name": "60_EYE_LEFT_SQUINT_TIGHT_01",
+      "path": "production/characters/marcus_broker/face/native_slots/60_eye_left_squint_tight_01.png",
+      "rect": {
+        "x": 1680,
+        "y": 1020,
+        "w": 177,
+        "h": 93
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "c504755a90ba348a3cd3fcd8f9a89e4d2384e63018e4aab301c05d2af22fae3e"
+    },
+    {
+      "stack_index": 33,
+      "layer_name": "65_EYE_RIGHT_SQUINT_TIGHT_01",
+      "path": "production/characters/marcus_broker/face/native_slots/65_eye_right_squint_tight_01.png",
+      "rect": {
+        "x": 1412,
+        "y": 1021,
+        "w": 193,
+        "h": 88
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "cfb77353073b60cb7f859627b41af7808533ffdc484eb0fc548576808fc4c08a"
+    },
+    {
+      "stack_index": 34,
+      "layer_name": "60_EYE_LEFT_WIDE_OPEN_ALERT_01",
+      "path": "production/characters/marcus_broker/face/native_slots/60_eye_left_wide_open_alert_01.png",
+      "rect": {
+        "x": 1675,
+        "y": 1029,
+        "w": 165,
+        "h": 87
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "304a77700d34d051181559af99f1d765b3f26993366f1e2e0509ae8f04bc0991"
+    },
+    {
+      "stack_index": 35,
+      "layer_name": "65_EYE_RIGHT_WIDE_OPEN_ALERT_01",
+      "path": "production/characters/marcus_broker/face/native_slots/65_eye_right_wide_open_alert_01.png",
+      "rect": {
+        "x": 1403,
+        "y": 1032,
+        "w": 224,
+        "h": 91
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "68b66beed7c2c76cf427d842d826196e0bc99bb95208caa7ebbbcf07b21d5c53"
+    },
+    {
+      "stack_index": 36,
+      "layer_name": "60_EYE_LEFT_OPEN_NEUTRAL_01",
+      "path": "production/characters/marcus_broker/face/native_slots/60_eye_left_open_neutral_01.png",
+      "rect": {
+        "x": 1657,
+        "y": 1029,
+        "w": 198,
+        "h": 80
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "f941b34c27caacb86f12c4de13eaa4a67f829bf2e660f66ddf1c41257c8a79a3"
+    },
+    {
+      "stack_index": 37,
+      "layer_name": "65_EYE_RIGHT_OPEN_NEUTRAL_01",
+      "path": "production/characters/marcus_broker/face/native_slots/65_eye_right_open_neutral_01.png",
+      "rect": {
+        "x": 1446,
+        "y": 1028,
+        "w": 153,
+        "h": 81
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "28372e126358a63ecdc6b7d37d50911b307b62f5797730898dbe75e37af82252"
+    },
+    {
+      "stack_index": 38,
+      "layer_name": "60_EYE_LEFT_HALF_LID_01",
+      "path": "production/characters/marcus_broker/face/native_slots/60_eye_left_half_lid_01.png",
+      "rect": {
+        "x": 1649,
+        "y": 887,
+        "w": 243,
+        "h": 255
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "69fe587701f963223c859f2cbcc22aa77023f4a8786779f748b2381ee97d7617"
+    },
+    {
+      "stack_index": 39,
+      "layer_name": "65_EYE_RIGHT_HALF_LID_01",
+      "path": "production/characters/marcus_broker/face/native_slots/65_eye_right_half_lid_01.png",
+      "rect": {
+        "x": 1352,
+        "y": 942,
+        "w": 297,
+        "h": 205
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "32818a23ae3c826f547d90cb251550f7ac48ba8247dcf9a78c14694fb38c0f47"
+    },
+    {
+      "stack_index": 40,
+      "layer_name": "60_EYE_LEFT_SIDE_LOOK_01",
+      "path": "production/characters/marcus_broker/face/native_slots/60_eye_left_side_look_01.png",
+      "rect": {
+        "x": 1654,
+        "y": 1012,
+        "w": 215,
+        "h": 110
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "f3aea70403527e405d7d7ffab914f2532cede25fcf7015d4787ca56c86d1be63"
+    },
+    {
+      "stack_index": 41,
+      "layer_name": "65_EYE_RIGHT_SIDE_LOOK_01",
+      "path": "production/characters/marcus_broker/face/native_slots/65_eye_right_side_look_01.png",
+      "rect": {
+        "x": 1398,
+        "y": 1021,
+        "w": 222,
+        "h": 103
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "3cba7219e74cbb15e2c502f4548e1a08b49b0c3c1bd2cc07d702e2917747f574"
+    },
+    {
+      "stack_index": 42,
+      "layer_name": "60_EYE_LEFT_SIDE_LOOK_02",
+      "path": "production/characters/marcus_broker/face/native_slots/60_eye_left_side_look_02.png",
+      "rect": {
+        "x": 1639,
+        "y": 1017,
+        "w": 225,
+        "h": 115
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "ff28f43d0023c525016cd4b9eaf2e15edaaddee3a96a5c68b840c247827f99cf"
+    },
+    {
+      "stack_index": 43,
+      "layer_name": "65_EYE_RIGHT_SIDE_LOOK_02",
+      "path": "production/characters/marcus_broker/face/native_slots/65_eye_right_side_look_02.png",
+      "rect": {
+        "x": 1392,
+        "y": 1010,
+        "w": 247,
+        "h": 124
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "d86434af6fd4976a2fd084b38ab2f4c88b50a4a249cb70c5e6d58430e90feb48"
+    },
+    {
+      "stack_index": 44,
+      "layer_name": "60_EYE_LEFT_SIDE_LOOK_03",
+      "path": "production/characters/marcus_broker/face/native_slots/60_eye_left_side_look_03.png",
+      "rect": {
+        "x": 1658,
+        "y": 1004,
+        "w": 197,
+        "h": 110
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "7bd21aac8ae5a8995fdb416524ed43ba88c651cf247068546dd966312e3fa0b4"
+    },
+    {
+      "stack_index": 45,
+      "layer_name": "65_EYE_RIGHT_SIDE_LOOK_03",
+      "path": "production/characters/marcus_broker/face/native_slots/65_eye_right_side_look_03.png",
+      "rect": {
+        "x": 1429,
+        "y": 1006,
+        "w": 207,
+        "h": 107
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "8287f0bf4f023934ae0733f30dcffe4285bc25ce3ff05fbc8f10b27714d0d05f"
+    },
+    {
+      "stack_index": 46,
+      "layer_name": "60_EYE_LEFT_SIDE_LOOK_04",
+      "path": "production/characters/marcus_broker/face/native_slots/60_eye_left_side_look_04.png",
+      "rect": {
+        "x": 1624,
+        "y": 1007,
+        "w": 207,
+        "h": 107
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "03cb0bb24ea419816faf53c94607016fd1255ee9cb2ca23627c2025abfecac1b"
+    },
+    {
+      "stack_index": 47,
+      "layer_name": "65_EYE_RIGHT_SIDE_LOOK_04",
+      "path": "production/characters/marcus_broker/face/native_slots/65_eye_right_side_look_04.png",
+      "rect": {
+        "x": 1405,
+        "y": 1005,
+        "w": 197,
+        "h": 110
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "b388551b400378c21569307bfb61767053c6f92a3d5160b674242a47acdd48be"
+    },
+    {
+      "stack_index": 48,
+      "layer_name": "70_LOWER_FACE_LAUGH_WIDE_OPEN_01",
+      "path": "production/characters/marcus_broker/face/native_slots/70_lower_face_laugh_wide_open_01.png",
+      "rect": {
+        "x": 1420,
+        "y": 1070,
+        "w": 464,
+        "h": 520
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "e0b3e8c89184efbc4b313aa22eee9bdd31c218a300f0d1ce8e66d5acb543a548"
+    },
+    {
+      "stack_index": 49,
+      "layer_name": "70_LOWER_FACE_SMILE_CLOSED_01",
+      "path": "production/characters/marcus_broker/face/native_slots/70_lower_face_smile_closed_01.png",
+      "rect": {
+        "x": 1420,
+        "y": 1045,
+        "w": 446,
+        "h": 412
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "97e10b08d9f9037d8b5b5d6b242ee8f2461d893f34c1f59c26c27b9422398efa"
+    },
+    {
+      "stack_index": 50,
+      "layer_name": "70_LOWER_FACE_GRIMACE_FEAR_01",
+      "path": "production/characters/marcus_broker/face/native_slots/70_lower_face_grimace_fear_01.png",
+      "rect": {
+        "x": 1394,
+        "y": 1023,
+        "w": 489,
+        "h": 511
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "eba77261cbb76cf1fd0fd14bd19e3c81214d455f01310923874908b03f4013c9"
+    },
+    {
+      "stack_index": 51,
+      "layer_name": "70_LOWER_FACE_SMILE_CLOSED_02",
+      "path": "production/characters/marcus_broker/face/native_slots/70_lower_face_smile_closed_02.png",
+      "rect": {
+        "x": 1394,
+        "y": 1093,
+        "w": 427,
+        "h": 318
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "fb883a1214ab32bf40feb62e14f41f2b0931f9abe658dc363d2313e4b3ae4a5f"
+    },
+    {
+      "stack_index": 52,
+      "layer_name": "70_LOWER_FACE_SMILE_TEETH_01",
+      "path": "production/characters/marcus_broker/face/native_slots/70_lower_face_smile_teeth_01.png",
+      "rect": {
+        "x": 1409,
+        "y": 1097,
+        "w": 451,
+        "h": 397
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "7d98a076415afcdcaa2740dd46d0b896d594fe90833a5407569925393ac54f0f"
+    },
+    {
+      "stack_index": 53,
+      "layer_name": "70_LOWER_FACE_FROWN_POUT_01",
+      "path": "production/characters/marcus_broker/face/native_slots/70_lower_face_frown_pout_01.png",
+      "rect": {
+        "x": 1460,
+        "y": 1074,
+        "w": 371,
+        "h": 360
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "2a4b9e9404496f7695bb2fe435fee53debc70f0d051ed39276ec6025b4a46d11"
+    },
+    {
+      "stack_index": 54,
+      "layer_name": "70_LOWER_FACE_FROWN_TENSE_01",
+      "path": "production/characters/marcus_broker/face/native_slots/70_lower_face_frown_tense_01.png",
+      "rect": {
+        "x": 1393,
+        "y": 1065,
+        "w": 440,
+        "h": 368
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "21dab820944d48ec1b4a8af7380c3c87fee5871d98e0a75ee3e9c251a489e2bd"
+    },
+    {
+      "stack_index": 55,
+      "layer_name": "70_LOWER_FACE_SHOUT_OPEN_01",
+      "path": "production/characters/marcus_broker/face/native_slots/70_lower_face_shout_open_01.png",
+      "rect": {
+        "x": 1434,
+        "y": 1000,
+        "w": 402,
+        "h": 584
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "ec41e8a233b52f00f9a1b26b8727728daecf67196ac07cd033e9b639ec68eadc"
+    },
+    {
+      "stack_index": 56,
+      "layer_name": "70_LOWER_FACE_MOUTH_OPEN_SMALL_01",
+      "path": "production/characters/marcus_broker/face/native_slots/70_lower_face_mouth_open_small_01.png",
+      "rect": {
+        "x": 1398,
+        "y": 1005,
+        "w": 455,
+        "h": 520
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "80bb09fdc09d44e3776d5331b20dbf7ec1e5e15ca1d82f4fca83ecc467ac4741"
+    },
+    {
+      "stack_index": 57,
+      "layer_name": "70_LOWER_FACE_SMILE_CLOSED_03",
+      "path": "production/characters/marcus_broker/face/native_slots/70_lower_face_smile_closed_03.png",
+      "rect": {
+        "x": 1458,
+        "y": 1048,
+        "w": 379,
+        "h": 374
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "3c363286416c0344105508eba5fd61d32d08d04ed8d4b052769fbab08f388eac"
+    },
+    {
+      "stack_index": 58,
+      "layer_name": "70_LOWER_FACE_SMILE_CLOSED_04",
+      "path": "production/characters/marcus_broker/face/native_slots/70_lower_face_smile_closed_04.png",
+      "rect": {
+        "x": 1399,
+        "y": 1093,
+        "w": 499,
+        "h": 371
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "3d48656a3be9fa934671253a7467d464e273d3850950c50b0cdcdbeeed5f4d47"
+    },
+    {
+      "stack_index": 59,
+      "layer_name": "70_LOWER_FACE_MOUTH_OPEN_SOFT_01",
+      "path": "production/characters/marcus_broker/face/native_slots/70_lower_face_mouth_open_soft_01.png",
+      "rect": {
+        "x": 1445,
+        "y": 1106,
+        "w": 419,
+        "h": 356
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "3c1fbb56a2d21ad89ba33a53f09f03c8faf6285b042f3a0e4b31dc23a5bc4933"
+    },
+    {
+      "stack_index": 60,
+      "layer_name": "70_LOWER_FACE_SMILE_TEETH_02",
+      "path": "production/characters/marcus_broker/face/native_slots/70_lower_face_smile_teeth_02.png",
+      "rect": {
+        "x": 1403,
+        "y": 1040,
+        "w": 464,
+        "h": 424
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "b3bd547e6a9a204c662e8abcc80afc166c1b37728194bd27c0b3495f79b7a1b5"
+    },
+    {
+      "stack_index": 61,
+      "layer_name": "70_LOWER_FACE_NEUTRAL_CLOSED_01",
+      "path": "production/characters/marcus_broker/face/native_slots/70_lower_face_neutral_closed_01.png",
+      "rect": {
+        "x": 1445,
+        "y": 1034,
+        "w": 378,
+        "h": 348
+      },
+      "visible_in_export_csv": false,
+      "locked": false,
+      "sha256": "c8fb8426f236640d4cee1af4fb25c5f997c29f9d022346b037219977029e88ad"
+    }
+  ],
+  "puffed_cheeks_override": {
+    "status": "PRODUCTION_CANDIDATE",
+    "path": "production/characters/marcus_broker/face/puffed_cheeks/marcus_puffed_cheeks_override_normalized.png",
+    "sha256": "642598d78d687acceaadb692a1f1f766f791e899837e4638ebcaace31e61a3ce",
+    "placement_rect": {
+      "x": 1317,
+      "y": 795,
+      "w": 615,
+      "h": 818,
+      "r": 0
+    },
+    "source_content": "production/characters/marcus_broker/face/puffed_cheeks/puffed_cheeks_content_from_pxz.png",
+    "source_mask": "production/characters/marcus_broker/face/puffed_cheeks/puffed_cheeks_mask_from_pxz.png",
+    "defective_export_evidence": "provenance/deprecated_source_evidence/marcus_puffed_cheeks_degraded_alpha.png",
+    "finding": "external and canonical RGB match, but external alpha is materially degraded; corrected derivative uses canonical PXZ content+mask"
+  },
+  "pose_attachment": {
+    "supported": false,
+    "reason": "Native slots are cropped/overlapping and no full-pose head registration contract was supplied."
+  }
+}

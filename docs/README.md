@@ -5,9 +5,12 @@ This directory separates **current authority**, **preserved reference material**
 ## Authority order
 
 1. [`../README.md`](../README.md) — repository entry point and current product orientation.
-2. [`current/`](current/) — authoritative Living Comic Engine v0.1 architecture and contracts.
-3. [`reference/`](reference/) — preserved predecessor/reference-system documentation that remains useful for regression and comparison.
-4. [`history/`](history/) — superseded migration, stabilization, maintenance, acceptance, and design-path records retained as an audit trail.
+2. [`trapstar/README.md`](../trapstar/README.md) — authoritative Trapstar package contract, with the portable Room 01 package under `trapstar/packages/room-01/v0.1/`.
+3. [`current/`](current/) — authoritative Living Comic Engine v0.1 architecture and contracts.
+4. [`reference/`](reference/) — preserved predecessor/reference-system documentation that remains useful for regression and comparison.
+5. [`history/`](history/) — superseded migration, stabilization, maintenance, acceptance, and design-path records retained as an audit trail.
+
+Trapstar authority is now authoritative only from the `trapstar/` namespace; it is not governed by `docs/current/`.
 
 ## Current
 
@@ -19,6 +22,7 @@ Use these documents when implementing or reviewing Living Comic v0.1:
 - [`current/CONTENT_AUTHORING.md`](current/CONTENT_AUTHORING.md)
 - [`current/UNITY_ADVENTURE_CREATOR_HANDOFF.md`](current/UNITY_ADVENTURE_CREATOR_HANDOFF.md)
 - [`current/QUICK_SCENE_MAKER_V0_1.md`](current/QUICK_SCENE_MAKER_V0_1.md) — adjacent visual-authoring tool contract
+- [`current/TRAPSTAR_EXPRESSION_MAKER_V0_2.md`](current/TRAPSTAR_EXPRESSION_MAKER_V0_2.md) — multi-character Marcus + Goose facial-expression authoring contract
 
 ## Reference
 
